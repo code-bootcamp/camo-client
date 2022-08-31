@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:ssg": "next build && next export",
     "start": "next start",
     "lint": "next lint",
     "generate": "graphql-codegen"
@@ -47,7 +48,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.31.1",
     "prettier": "2.7.1",
-    "typescript": "*"
+    "typescript": "^4.7.4"
   },
   "resolutions": {
     "@types/react": "17.0.2"
