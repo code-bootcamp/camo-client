@@ -8,11 +8,12 @@ export const Wrapper = styled.section`
   flex-direction: column;
   background-color: white;
   margin: 0 auto;
+  padding: 5rem 0;
 `;
 
 export const Title = styled.h1`
   font-size: 2.25rem;
-  font-weight: bold;
+  font-weight: 500;
   color: black;
   text-align: center;
   margin-bottom: 3.125rem;
