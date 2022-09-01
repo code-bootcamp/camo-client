@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-interface ICancelButtonProps {
+interface ISubmitButtonProps {
   title?: String;
   onClick?: () => void;
   type?: (String & ("button" | "submit" | "reset")) | undefined;
@@ -9,16 +9,16 @@ interface ICancelButtonProps {
 const Button = styled.button`
   width: 16.25rem;
   height: 4rem;
-  background-color: #f4f4f4;
-  border: 1px solid #33413e;
-  color: #33413e;
+  background-color: #33413e;
+  border: none;
+  color: white;
   font-weight: 700;
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
   cursor: pointer;
 `;
 
-export default function CancelButton(props: ICancelButtonProps) {
+export default function SubmitButton(props: ISubmitButtonProps) {
   return (
     <Button onClick={props.onClick} type={props.type}>
       {props.title}
