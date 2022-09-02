@@ -1,0 +1,64 @@
+import {
+  ApolloClient,
+  ApolloLink,
+  ApolloProvider,
+  fromPromise,
+  InMemoryCache,
+} from "@apollo/client";
+import { ReactNode, useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { onError } from "@apollo/client/link/error";
+import { createUploadLink } from "apollo-upload-client";
+import { getAccessToken } from "../../../commons/libraries/getAccessToken";
+import { accessTokenState } from "../../../commons/store";
+
+const APOLLO_CACHE = new InMemoryCache();
+
+interface IApolloSettingProps {
+  children: ReactNode;
+}
+
+export default function ApolloSetting(props: IApolloSettingProps) {
+  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+
+  useEffect(() => {
+    getAccessToken().then((newAccessToken) => {
+      setAccessToken(newAccessToken);
+    });
+  }, []);
+
+  // https://www.apollographql.com/docs/react/data/error-handling/
+  const errorLink = onError(({ graphQLErrors, operation, forward }) => {
+    if (graphQLErrors) {
+      for (const err of graphQLErrors) {
+        if (err.extensions.code === "UNAUTHENTICATED") {
+          return fromPromise(
+            getAccessToken().then((newAccessToken) => {
+              setAccessToken(newAccessToken);
+              operation.setContext({
+                headers: {
+                  ...operation.getContext().headers,
+                  Authorization: `Bearer ${newAccessToken}`,
+                },
+              });
+            })
+          ).flatMap(() => forward(operation));
+        }
+      }
+    }
+  });
+
+  const uploadLink = createUploadLink({
+    uri: "http://34.145.93.33:3000/graphql",
+    headers: { Authorization: `Bearer ${accessToken}` },
+    credentials: "include",
+  });
+
+  const client = new ApolloClient({
+    link: ApolloLink.from([errorLink, uploadLink]),
+    cache: APOLLO_CACHE,
+    connectToDevTools: true,
+  });
+
+  return <ApolloProvider client={client}>{props.children}</ApolloProvider>;
+}

@@ -89,3 +89,36 @@ export const LoginButton = styled.div`
   margin-left: 2rem;
   cursor: pointer;
 `;
+
+export const ButtonWrapper = styled.div`
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const SubmitButton = styled.button`
+  width: 70%;
+  height: 3rem;
+  margin: auto;
+  margin-bottom: 3rem;
+  cursor: pointer;
+`;
+
+export const Form = styled.form`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+`;
+
+export const Error = styled.div`
+  width: 100%;
+  height: 30px;
+  font-size: 12px;
+  color: red;
+`;

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.section`
-  width: 70%;
+  width: 130vh;
   /* height: 30rem; */
   display: flex;
   flex-direction: row;
@@ -30,6 +30,7 @@ export const SideMenu = styled.h3`
   text-align: center;
   font-style: normal;
   font-weight: 400;
+  cursor: pointer;
 `;
 
 export const StaySideMenu = styled(SideMenu)`
