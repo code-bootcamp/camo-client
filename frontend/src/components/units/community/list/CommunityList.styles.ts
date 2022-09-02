@@ -48,16 +48,18 @@ export const LikeList = styled.div`
 `;
 
 export const InputWrapper = styled.div`
-  width: 200px;
+  width: 220px;
   height: 40px;
   display: flex;
   justify-content: space-between;
-  border: 1px solid #ebebf0;
+  align-items: center;
 `;
 
 export const Search = styled.input``;
 
-export const WriteBtn = styled.button``;
+export const WriteBtn = styled.button`
+  width: 60px;
+`;
 
 export const ItemWrapper = styled.div`
   display: grid;

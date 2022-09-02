@@ -31,7 +31,7 @@ export default function LayoutHeaderUI() {
             </a>
           </Link>
 
-          <Link href="/">
+          <Link href="/community">
             <a>
               <MenuFonts>Community</MenuFonts>
             </a>
