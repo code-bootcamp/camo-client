@@ -9,6 +9,10 @@ import {
 } from "./LayoutHeader.style";
 
 export default function LayoutHeaderUI() {
+  // <head>
+  //   <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scaleable="yes" />
+  // </head>;
+
   return (
     <>
       <HeaderWrapper>
@@ -21,19 +25,32 @@ export default function LayoutHeaderUI() {
         </h1>
 
         <MenuWrapper>
-          <MenuFonts>Resevation</MenuFonts>
-          <MenuFonts>Community</MenuFonts>
-          <MenuFonts>My page</MenuFonts>
+          <Link href="/cafe">
+            <a>
+              <MenuFonts>Resevation</MenuFonts>
+            </a>
+          </Link>
+
+          <Link href="/">
+            <a>
+              <MenuFonts>Community</MenuFonts>
+            </a>
+          </Link>
+          <Link href="/myPage/myLike">
+            <a>
+              <MenuFonts>My page</MenuFonts>
+            </a>
+          </Link>
         </MenuWrapper>
 
         <LoginWrapper>
-          <Link href="/">
+          <Link href="/login">
             <a>
               <LoginFonts>LOGIN</LoginFonts>
             </a>
           </Link>
 
-          <Link href="/">
+          <Link href="/login/signUp">
             <a>
               <LoginFonts>&nbsp; JOIN</LoginFonts>
             </a>

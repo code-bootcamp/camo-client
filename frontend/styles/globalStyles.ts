@@ -33,10 +33,7 @@ export const globalStyles = css`
   }
 
   @media (max-width: 767px) {
-    width: 100px;
-    height: 100px;
-    background-color: blue;
-    display: none;
+    font-size: 2em;
   }
 `;
 
