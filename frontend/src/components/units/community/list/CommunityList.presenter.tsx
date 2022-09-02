@@ -1,4 +1,3 @@
-import { HeartOutlined } from "@ant-design/icons";
 import * as S from "./CommunityList.styles";
 
 export default function CommunityListUI() {
@@ -18,39 +17,41 @@ export default function CommunityListUI() {
   return (
     <S.Wrapper>
       <S.Banner></S.Banner>
-      <S.NavWrapper>
-        <div>
-          <div>최신순</div>
-          <div>인기순</div>
-        </div>
-        <div>
-          <input placeholder="게시글을 검색해보세요" />
-          <button>글쓰기</button>
-        </div>
-      </S.NavWrapper>
-      <S.ItemWrapper>
-        {cafeImg.map((e, i) => (
-          <S.ItemContent key={e}>
-            <S.ItemImgWrapper>
-              <S.ItemImg src={e} />
-            </S.ItemImgWrapper>
-            <S.ItemTextWrapper>
-              <S.ItemTextTitleWrapper>
-                <S.ItemTextTitle>제목</S.ItemTextTitle>
-                <S.ItemTextTag>#태그 #태그 #태그</S.ItemTextTag>
-              </S.ItemTextTitleWrapper>
+      <S.BodyWrapper>
+        <S.NavWrapper>
+          <S.SortList>
+            <S.NewList>최신순</S.NewList>
+            <S.LikeList>인기순</S.LikeList>
+          </S.SortList>
+          <S.InputWrapper>
+            <S.Search placeholder="게시글을 검색해보세요" />
+            <S.WriteBtn>글쓰기</S.WriteBtn>
+          </S.InputWrapper>
+        </S.NavWrapper>
+        <S.ItemWrapper>
+          {cafeImg.map((e, i) => (
+            <S.ItemContent key={e}>
+              <S.ItemImgWrapper>
+                <S.ItemImg src={e} />
+              </S.ItemImgWrapper>
+              <S.ItemTextWrapper>
+                <S.ItemTextTitleWrapper>
+                  <S.ItemTextTitle>제목</S.ItemTextTitle>
+                  <S.ItemTextTag>#태그 #태그 #태그</S.ItemTextTag>
+                </S.ItemTextTitleWrapper>
 
-              <S.ItemTextUserWrapper>
-                <S.ItemTextLikeWrapper>
-                  <S.ItemTextLike />
-                  <S.ItemTextLikeCount>32</S.ItemTextLikeCount>
-                </S.ItemTextLikeWrapper>
-                <S.ItemTextUser>닉네임</S.ItemTextUser>
-              </S.ItemTextUserWrapper>
-            </S.ItemTextWrapper>
-          </S.ItemContent>
-        ))}
-      </S.ItemWrapper>
+                <S.ItemTextUserWrapper>
+                  <S.ItemTextLikeWrapper>
+                    <S.ItemTextLike />
+                    <S.ItemTextLikeCount>32</S.ItemTextLikeCount>
+                  </S.ItemTextLikeWrapper>
+                  <S.ItemTextUser>닉네임</S.ItemTextUser>
+                </S.ItemTextUserWrapper>
+              </S.ItemTextWrapper>
+            </S.ItemContent>
+          ))}
+        </S.ItemWrapper>
+      </S.BodyWrapper>
     </S.Wrapper>
   );
 }
