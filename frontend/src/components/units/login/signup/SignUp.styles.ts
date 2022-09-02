@@ -6,8 +6,9 @@ export const Wrapper = styled.section`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* background-color: white; */
+  background-color: white;
   margin: 0 auto;
+  padding: 5rem 0;
 `;
 
 export const Title = styled.h1`
@@ -71,7 +72,7 @@ export const Margin = styled.div`
 `;
 
 export const FooterWrapper = styled.div`
-  width: 40%;
+  width: 30%;
   margin: auto;
   display: flex;
   flex-direction: row;
