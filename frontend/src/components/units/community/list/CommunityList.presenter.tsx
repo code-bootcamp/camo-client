@@ -1,3 +1,4 @@
+import Link from "next/link";
 import * as S from "./CommunityList.styles";
 
 export default function CommunityListUI() {
@@ -25,7 +26,11 @@ export default function CommunityListUI() {
           </S.SortList>
           <S.InputWrapper>
             <S.Search placeholder="게시글을 검색해보세요" />
-            <S.WriteBtn>글쓰기</S.WriteBtn>
+            <Link href="/community/write">
+              <a>
+                <S.WriteBtn>글쓰기</S.WriteBtn>
+              </a>
+            </Link>
           </S.InputWrapper>
         </S.NavWrapper>
         <S.ItemWrapper>
