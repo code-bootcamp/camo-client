@@ -3,9 +3,9 @@ import styled from "@emotion/styled";
 export const HeaderWrapper = styled.div`
   padding: 0 10%;
   /* width: 100vw; */
-  height: 8rem;
-  background-color: #3c565b;
-
+  height: 5rem;
+  /* height: 8rem; */
+  background-color: #5d7572;
   /* font-family: "Jua"; */
   display: flex;
   flex-direction: row;
@@ -20,6 +20,8 @@ export const HeaderWrapper = styled.div`
     background-color: #5d7599;
   }
 `;
+
+export const MobileLogo = styled.img``;
 
 export const Logo = styled.img`
   display: block;
@@ -58,27 +60,35 @@ export const MenuFonts = styled.div`
 `;
 
 export const LoginWrapper = styled.div`
+  width: 18%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   color: white;
-  width: 15%;
   /* border: 1px solid red; */
-  height: 5rem;
   @media screen and (max-width: 767px) {
     display: none;
   }
 `;
 
-export const LoginFonts = styled.div`
-  color: white;
-  font-size: 0.9rem;
-
+export const LoginButton = styled.button`
+  color: #3c3430;
+  font-family: "NanumSquareOTF_ac";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 0.938rem;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+  width: 5.313rem;
+  height: 1.875rem;
+  border-radius: 5px;
   :hover {
     font-weight: 800;
   }
   @media screen and (max-width: 767px) {
     font-size: 0.6rem;
   }
-  /* float: right; */
 `;
+
+export const LoginUser = styled.h3``;

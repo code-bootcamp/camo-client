@@ -15,7 +15,8 @@ export const globalStyles = css`
     /* font-family: 'Nanum Pen Script', cursive; */
     src: url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
     src: url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nanum+Pen+Script&display=swap");
-    font-family: "Inter", sans-serif;
+
+    font-family: "NanumBarunGothic", sans-serif;
     color: #333333;
   }
 
@@ -29,6 +30,11 @@ export const globalStyles = css`
     /* src: url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"); */
     src: url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
     font-family: "Jua", sans-serif;
+  }
+
+  @font-face {
+    font-family: "NanumBarunGothic";
+    src: url("/fonts/NanumBarunGothic.otf");
   }
 
   /* @media (min-width: 768px) and (max-width: 991px) {

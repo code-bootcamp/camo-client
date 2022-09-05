@@ -11,18 +11,23 @@ export type Scalars = {
   Int: number;
   Float: number;
   DateTime: any;
+  Upload: any;
 };
 
 export type IBoard = {
   __typename?: 'Board';
   adress: Scalars['String'];
+  cafeList?: Maybe<ICafeList>;
+  comment?: Maybe<Array<IComment>>;
   contents: Scalars['String'];
   createdAt: Scalars['DateTime'];
   deletedAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
-  likeCount?: Maybe<Scalars['String']>;
+  image: Array<IImage>;
+  likeCount?: Maybe<Scalars['Float']>;
   tag?: Maybe<Array<IBoardTag>>;
   title: Scalars['String'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
   user: IUser;
 };
 
@@ -50,6 +55,7 @@ export type ICafeList = {
 export type ICafeOwner = {
   __typename?: 'CafeOwner';
   cafeList?: Maybe<ICafeList>;
+  cafeOwner?: Maybe<ICafeOwner>;
   deletedAt?: Maybe<Scalars['DateTime']>;
   email: Scalars['String'];
   id: Scalars['String'];
@@ -73,27 +79,67 @@ export type ICafeReservaion = {
   user: IUser;
 };
 
+export type IComment = {
+  __typename?: 'Comment';
+  board: IBoard;
+  comment: Scalars['String'];
+  createdAt: Scalars['DateTime'];
+  deletedAt: Scalars['DateTime'];
+  id: Scalars['String'];
+  updatedAt: Scalars['DateTime'];
+  user: IUser;
+};
+
 export type ICreateBoardInput = {
   adress: Scalars['String'];
   contents: Scalars['String'];
-  tags: Array<Scalars['String']>;
+  image?: InputMaybe<Array<Scalars['String']>>;
+  tag: Array<Scalars['String']>;
   title: Scalars['String'];
+};
+
+export type ICreateCommentInput = {
+  boardId: Scalars['String'];
+  comment?: InputMaybe<Scalars['String']>;
+  userId: Scalars['String'];
+};
+
+export type IImage = {
+  __typename?: 'Image';
+  board: IBoard;
+  cafeList?: Maybe<ICafeList>;
+  id: Scalars['String'];
+  isMain?: Maybe<Scalars['String']>;
+  url: Scalars['String'];
 };
 
 export type IMutation = {
   __typename?: 'Mutation';
+  checkSMSTokenValid: Scalars['Boolean'];
   createBoard: IBoard;
   createCancel: IPayment;
+  createComment: IComment;
   createPayment: IPayment;
   createUser: IUser;
   deleteBoard: Scalars['Boolean'];
+  deleteComment: Scalars['Boolean'];
   deleteLoginUser: Scalars['Boolean'];
   loginUser: Scalars['String'];
-  logout: Scalars['String'];
+  logoutUser: Scalars['String'];
   restoreAccessToken: Scalars['String'];
   restoreUser: Scalars['Boolean'];
+  sendTokenToSMS: Scalars['String'];
+  toggleLikeFeed: Scalars['Boolean'];
   updateBoard: IBoard;
+  updateComment: IComment;
   updateLoginUser: IUser;
+  uploadImage: Array<Scalars['String']>;
+};
+
+
+export type IMutationCheckSmsTokenValidArgs = {
+  SMSToken: Scalars['String'];
+  phoneNumber: Scalars['String'];
 };
 
 
@@ -106,6 +152,11 @@ export type IMutationCreateCancelArgs = {
   amount: Scalars['Int'];
   impUid: Scalars['String'];
   user: Scalars['String'];
+};
+
+
+export type IMutationCreateCommentArgs = {
+  createCommentInput: ICreateCommentInput;
 };
 
 
@@ -129,6 +180,11 @@ export type IMutationDeleteBoardArgs = {
 };
 
 
+export type IMutationDeleteCommentArgs = {
+  commentId: Scalars['String'];
+};
+
+
 export type IMutationDeleteLoginUserArgs = {
   email: Scalars['String'];
 };
@@ -145,6 +201,17 @@ export type IMutationRestoreUserArgs = {
 };
 
 
+export type IMutationSendTokenToSmsArgs = {
+  phoneNumber: Scalars['String'];
+};
+
+
+export type IMutationToggleLikeFeedArgs = {
+  boardId: Scalars['String'];
+  email: Scalars['String'];
+};
+
+
 export type IMutationUpdateBoardArgs = {
   boardId: Scalars['String'];
   nickName: Scalars['String'];
@@ -153,9 +220,20 @@ export type IMutationUpdateBoardArgs = {
 };
 
 
+export type IMutationUpdateCommentArgs = {
+  commentId: Scalars['String'];
+  updateCommentInput: IUpdateCommentInput;
+  userId: Scalars['String'];
+};
+
+
 export type IMutationUpdateLoginUserArgs = {
-  password: Scalars['String'];
   updateUserInput: IUpdateUserInput;
+};
+
+
+export type IMutationUploadImageArgs = {
+  files: Array<Scalars['Upload']>;
 };
 
 export enum IPoint_Transaction_Status_Enum {
@@ -174,17 +252,35 @@ export type IPayment = {
 
 export type IQuery = {
   __typename?: 'Query';
+  checkUserEmail: Scalars['Boolean'];
   fetchBoard: IBoard;
   fetchBoardWithDeleted: Array<IBoard>;
   fetchBoards: Array<IBoard>;
+  fetchLoginUsers: Array<IUser>;
+  fetchMyBoards: IBoard;
   fetchUser: IUser;
   fetchUserWithDeleted: Array<IUser>;
   fetchUsers: Array<IUser>;
 };
 
 
+export type IQueryCheckUserEmailArgs = {
+  email: Scalars['String'];
+};
+
+
 export type IQueryFetchBoardArgs = {
   boardId: Scalars['String'];
+};
+
+
+export type IQueryFetchBoardsArgs = {
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type IQueryFetchMyBoardsArgs = {
+  search?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -195,9 +291,9 @@ export type IQueryFetchUserArgs = {
 export type IReview = {
   __typename?: 'Review';
   cafeOwner?: Maybe<ICafeOwner>;
+  cafeReservation?: Maybe<ICafeReservaion>;
   id: Scalars['String'];
   ownerComment?: Maybe<Scalars['String']>;
-  review?: Maybe<ICafeReservaion>;
   reviewComment: Scalars['String'];
   user: IUser;
 };
@@ -210,25 +306,31 @@ export type IReviewPoint = {
   option3?: Maybe<Scalars['Int']>;
   option4?: Maybe<Scalars['Int']>;
   option5?: Maybe<Scalars['Int']>;
+  user?: Maybe<IUser>;
 };
 
 export type IUpdateBoardInput = {
   adress?: InputMaybe<Scalars['String']>;
   contents?: InputMaybe<Scalars['String']>;
-  tags?: InputMaybe<Array<Scalars['String']>>;
+  image?: InputMaybe<Array<Scalars['String']>>;
+  tag?: InputMaybe<Array<Scalars['String']>>;
   title?: InputMaybe<Scalars['String']>;
 };
 
+export type IUpdateCommentInput = {
+  boardId?: InputMaybe<Scalars['String']>;
+  comment?: InputMaybe<Scalars['String']>;
+  userId?: InputMaybe<Scalars['String']>;
+};
+
 export type IUpdateUserInput = {
-  email: Scalars['String'];
-  name: Scalars['String'];
   nickName: Scalars['String'];
   password: Scalars['String'];
-  phoneNumber: Scalars['String'];
 };
 
 export type IUser = {
   __typename?: 'User';
+  comment?: Maybe<Array<IComment>>;
   deletedAt?: Maybe<Scalars['DateTime']>;
   email: Scalars['String'];
   favoritCafe?: Maybe<Scalars['String']>;

@@ -1,14 +1,18 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../styles/media";
 
 export const Wrapper = styled.section`
-  width: 100vh;
+  width: 50vw;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: white;
-  margin: 0 auto;
-  padding: 5rem 0;
+  padding-top: 3rem;
+
+  @media ${breakPoints.mobile} {
+    width: 100vw;
+  }
 `;
 
 export const Title = styled.h1`
@@ -16,53 +20,42 @@ export const Title = styled.h1`
   font-weight: 500;
   color: black;
   text-align: center;
-  margin-bottom: 3.125rem;
 `;
-
+export const SubTitle = styled.h3``;
 export const MainWrapper = styled.main`
   width: 70%;
-  /* background-color: #f4f4f4; */
   color: black;
   border-radius: 1.25rem;
-  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
   margin: auto;
-  /* position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, 10%);
-  background-color: #f4f4f4;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+
+  @media ${breakPoints.mobile} {
+    width: 100vw;
+  }
 `;
 
-export const RadioWrapper = styled.div`
+export const SelectWrapper = styled.div`
   width: 50%;
   display: flex;
   flex-direction: row;
   margin: 0 auto;
   margin-top: 2rem;
   justify-content: space-between;
+
+  @media ${breakPoints.mobile} {
+    width: 70%;
+  }
 `;
 
-export const Text = styled.text`
+export const Text = styled.h1`
   font-size: 1.5rem;
 `;
+
 export const RadioInputWrapper = styled.div`
   /* width: 100%; */
 `;
 
 export const Radio = styled.input`
   font-size: 1.5rem;
-`;
-
-export const Input = styled.input`
-  width: 70%;
-  height: 4rem;
-  background-color: white;
-  border: 1px solid #d9d9d9;
-  display: flex;
-  margin: auto;
-  margin-top: 3.125rem;
-  margin-bottom: 5rem;
 `;
 
 export const SocialLoginWrapper = styled.div`
@@ -74,14 +67,8 @@ export const SocialLoginWrapper = styled.div`
   margin-bottom: 3rem;
 `;
 
-export const SocialLogin = styled.img`
-  width: 20%;
-  height: 20%;
-  cursor: pointer;
-`;
-
 export const ButtonWrapper = styled.div`
-  width: 70%;
+  width: 25.938rem;
   margin: auto;
   display: flex;
   flex-direction: row;
@@ -90,9 +77,12 @@ export const ButtonWrapper = styled.div`
 
 export const FooterWrapper = styled.div`
   margin: 30px;
+  @media ${breakPoints.mobile} {
+    width: 100vw;
+  }
 `;
 export const RowWrapper = styled.div`
-  width: 50%;
+  width: 80%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -101,11 +91,13 @@ export const RowWrapper = styled.div`
 `;
 
 export const FooterText = styled.text`
+  width: 80%;
   color: #888888;
   font-size: 1.125rem;
 `;
 
 export const FooterButton = styled.div`
+  width: 50%;
   color: black;
   font-size: 1.125rem;
   font-weight: bold;
@@ -123,4 +115,8 @@ export const SubmitButton = styled.button`
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
   cursor: pointer;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
