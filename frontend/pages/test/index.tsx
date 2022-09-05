@@ -17,6 +17,8 @@ export const CREATE_USER = gql`
       nickName: $nickName
     ) {
       id
+      email
+      name
     }
   }
 `;
@@ -25,7 +27,7 @@ export default function TestPage() {
   const [createUser] = useMutation(CREATE_USER);
 
   const [inputs, setInputs] = useState({
-    userEmail: "",
+    email: "",
     password: "",
     name: "",
     phoneNumber: "",
@@ -54,7 +56,7 @@ export default function TestPage() {
   return (
     <>
       이메일
-      <input type="text" id="userEmail" onChange={onChangeInputs} /> <br />
+      <input type="text" id="email" onChange={onChangeInputs} /> <br />
       패스워드
       <input type="password" id="password" onChange={onChangeInputs} /> <br />
       이름

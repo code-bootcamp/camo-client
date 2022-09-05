@@ -22,10 +22,14 @@ export default function SignUpUI(props: ISignUpUIProps) {
             <S.Error>{props.formState.errors.nickname?.message}</S.Error>
             <S.RowWrapper>
               <S.Label>이메일(아이디)</S.Label>
-              <S.Input type="text" placeholder="이메일" {...props.register("email")} />
-              {/* <S.Button type="button" onClick={props.onClickEmailCheck}>
+              <S.Input
+                type="text"
+                placeholder="ex : blended@naver.com"
+                {...props.register("email")}
+              />
+              <S.Button type="button" onClick={props.onClickEmailCheck}>
                 중복확인
-              </S.Button> */}
+              </S.Button>
             </S.RowWrapper>
             <S.Error>{props.formState.errors.email?.message}</S.Error>
             <S.RowWrapper>
@@ -45,17 +49,17 @@ export default function SignUpUI(props: ISignUpUIProps) {
             <S.RowWrapper>
               <S.Label>휴대폰번호</S.Label>
               <S.Input type="tel" placeholder="휴대폰 번호" {...props.register("phoneNumber")} />
-              {/* <S.Button type="button" onClick={props.onClickSendAuthNumber}>
+              <S.Button type="button" onClick={props.onClickSendAuthNumber}>
                 인증번호
-              </S.Button> */}
+              </S.Button>
             </S.RowWrapper>
             <S.Error>{props.formState.errors.phone?.message}</S.Error>
             <S.RowWrapper>
               <S.Label></S.Label>
               <S.Input />
-              {/* <S.GreenButton type="button" onClick={props.onClickNumberConfirm}>
+              <S.GreenButton type="button" onClick={props.onClickNumberConfirm}>
                 확인
-              </S.GreenButton> */}
+              </S.GreenButton>
             </S.RowWrapper>
             <S.Margin />
             <S.ButtonWrapper>

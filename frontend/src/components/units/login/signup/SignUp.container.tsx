@@ -4,17 +4,17 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
-import { CREATE_USER } from "./SignUp.queries";
+import { CREATE_USER, SEND_SMS } from "./SignUp.queries";
 import { IFormSignUp } from "./SignUp.types";
-import { Modal } from "antd";
+import { useState } from "react";
 
 const schema = yup.object({
   name: yup.string().required("이름을 입력해 주세요."),
   nickName: yup.string().required("닉네임을 입력해주세요."),
   email: yup
     .string()
-    .required("이메일을 입력해주세요.")
-    .matches(/^\w+@\w+\.\w+$/, "이메일 형식에 알맞지 않습니다."),
+    .required("이메일(아이디)을 입력해주세요.")
+    .matches(/^\w+@\w+\.\w+$/, "이메일(아이디) 형식에 알맞지 않습니다."),
   password: yup
     .string()
     .required("비밀번호를 입력해주세요")
@@ -27,20 +27,37 @@ const schema = yup.object({
     .string()
     .required("휴대폰 번호를 입력해주세요.")
     .matches(/^\d{3}\d{3,4}\d{4}$/, "휴대폰 형식에 알맞지 않습니다."),
-  phoneNumberCheck: yup.string().required("휴대폰 번호를 인증해주세요."),
+  // phoneNumberCheck: yup.string().required("휴대폰 번호를 인증해주세요."),
 });
 
 export default function SignUp() {
   const router = useRouter();
   const [createUser] = useMutation(CREATE_USER);
-  const { register, handleSubmit, formState } = useForm({
+  const [sendNumber] = useMutation(SEND_SMS);
+
+  // const [phone, setPhone] = useState("")
+  // const [phoneToken, setPhoneToken] = useState()
+  // const [count, setCount] = useState("03:00");
+
+  const { register, handleSubmit, formState, watch } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
   });
 
-  const onClickEmailCheck = () => {};
-  const onClickSendAuthNumber = () => {};
+  const phone = "010" + watch("phoneNumber");
+
+  const onClickSendAuthNumber = async () => {
+    try {
+      await sendNumber({
+        variables: { phone },
+      });
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   const onClickNumberConfirm = () => {};
+  const onClickEmailCheck = () => {};
 
   const onClickSubmit = async (data: any) => {
     try {
@@ -53,7 +70,7 @@ export default function SignUp() {
       console.log(data);
       router.push("/");
     } catch (error) {
-      if (error instanceof Error) Modal.error({ content: error.message });
+      alert(error);
     }
   };
 

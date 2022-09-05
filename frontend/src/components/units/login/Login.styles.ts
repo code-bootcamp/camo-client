@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.section`
-  width: 100%;
+  width: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,10 +21,10 @@ export const Title = styled.h1`
 
 export const MainWrapper = styled.main`
   width: 70%;
-  background-color: #f4f4f4;
+  /* background-color: #f4f4f4; */
   color: black;
   border-radius: 1.25rem;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
   margin: auto;
   /* position: absolute;
   left: 50%;
@@ -56,7 +56,7 @@ export const Radio = styled.input`
 
 export const Input = styled.input`
   width: 70%;
-  height: 6.25rem;
+  height: 4rem;
   background-color: white;
   border: 1px solid #d9d9d9;
   display: flex;
@@ -77,6 +77,7 @@ export const SocialLoginWrapper = styled.div`
 export const SocialLogin = styled.img`
   width: 20%;
   height: 20%;
+  cursor: pointer;
 `;
 
 export const ButtonWrapper = styled.div`
@@ -109,4 +110,17 @@ export const FooterButton = styled.div`
   font-size: 1.125rem;
   font-weight: bold;
   justify-content: flex-end;
+  cursor: pointer;
+`;
+
+export const SubmitButton = styled.button`
+  width: 100%;
+  height: 4rem;
+  background-color: #33413e;
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
 `;
