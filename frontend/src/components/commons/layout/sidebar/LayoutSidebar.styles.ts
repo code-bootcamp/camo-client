@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { ISideMenuProps } from "./LayoutSidebar.types";
 
 export const Wrapper = styled.section`
   width: 130vh;
@@ -31,6 +32,10 @@ export const SideMenu = styled.h3`
   font-style: normal;
   font-weight: 400;
   cursor: pointer;
+
+  font-weight: ${(props: ISideMenuProps) => (props.isActive ? "700" : "400")};
+  text-decoration: ${(props: ISideMenuProps) => (props.isActive ? "underline" : "none")};
+  text-underline-position: ${(props: ISideMenuProps) => (props.isActive ? "under" : "none")};
 `;
 
 export const StaySideMenu = styled(SideMenu)`

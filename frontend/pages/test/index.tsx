@@ -3,16 +3,22 @@ import { useState } from "react";
 
 export const CREATE_USER = gql`
   mutation createUser(
-    $userEmail: String!
-    $password: String!
+    $email: String!
     $name: String!
+    $password: String!
     $phoneNumber: String!
+    $nickName: String!
   ) {
-    createUser(userEmail: $userEmail, password: $password, name: $name, phoneNumber: $phoneNumber) {
+    createUser(
+      email: $email
+      name: $name
+      password: $password
+      phoneNumber: $phoneNumber
+      nickName: $nickName
+    ) {
       id
-      userEmail
+      email
       name
-      nickName
     }
   }
 `;
@@ -21,10 +27,11 @@ export default function TestPage() {
   const [createUser] = useMutation(CREATE_USER);
 
   const [inputs, setInputs] = useState({
-    userEmail: "",
+    email: "",
     password: "",
     name: "",
     phoneNumber: "",
+    nickName: "",
   });
 
   const onClickGraphqlApi = async () => {
@@ -49,11 +56,13 @@ export default function TestPage() {
   return (
     <>
       이메일
-      <input type="text" id="userEmail" onChange={onChangeInputs} /> <br />
+      <input type="text" id="email" onChange={onChangeInputs} /> <br />
       패스워드
       <input type="password" id="password" onChange={onChangeInputs} /> <br />
       이름
       <input type="text" id="name" onChange={onChangeInputs} /> <br />
+      닉네임
+      <input type="text" id="nickName" onChange={onChangeInputs} /> <br />
       휴대폰번호
       <input type="text" id="phoneNumber" onChange={onChangeInputs} />
       <br />
