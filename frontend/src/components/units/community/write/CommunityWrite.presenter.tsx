@@ -5,7 +5,7 @@ export default function CommunityWriteUI() {
   return (
     <S.Wrapper>
       <S.BodyWrapper>
-        <S.Title>등록하기</S.Title>
+        <S.Title>게시글 등록하기</S.Title>
         <S.ContentWrapper>
           <S.ContentTitle>제목</S.ContentTitle>
           <S.Input type="text" placeholder="제목을 입력하세요" />
@@ -18,10 +18,11 @@ export default function CommunityWriteUI() {
           <S.ContentTitle>태그</S.ContentTitle>
           <S.Input type="text" placeholder="#태그" />
         </S.ContentWrapper>
+        <S.ContentTitle>주소</S.ContentTitle>
         <S.MapAddressWrapper>
           <S.MapWrapper>
             <div>주소</div>
-            <div>지도</div>
+            <S.Map>지도</S.Map>
           </S.MapWrapper>
           <S.AddressWrapper>
             <S.AddressDetailWrapper>
@@ -34,7 +35,7 @@ export default function CommunityWriteUI() {
         </S.MapAddressWrapper>
         <Link href="/community">
           <a>
-            <button>등록</button>
+            <S.RegisterBtn>등록</S.RegisterBtn>
           </a>
         </Link>
       </S.BodyWrapper>

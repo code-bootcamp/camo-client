@@ -52,7 +52,7 @@ export default function LayoutHeaderUI() {
 
           <Link href="/login/signUp">
             <a>
-              <LoginFonts>&nbsp; JOIN</LoginFonts>
+              <LoginFonts>&nbsp;&nbsp;JOIN</LoginFonts>
             </a>
           </Link>
         </LoginWrapper>
