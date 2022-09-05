@@ -18,7 +18,7 @@ import {
   Wrapper,
 } from "./CafeDetail.styles";
 
-export default function CafeDetailUI() {
+export default function CafeReserveUI() {
   return (
     <>
       <Wrapper>

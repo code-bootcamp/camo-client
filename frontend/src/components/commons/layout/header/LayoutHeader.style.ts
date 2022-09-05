@@ -1,77 +1,83 @@
 import styled from "@emotion/styled";
 
 export const HeaderWrapper = styled.div`
-  padding: 0 15%;
+  padding: 0 10%;
+  /* width: 100vw; */
+  height: 8rem;
+  background-color: #3c565b;
 
-  width: 100vw;
-  height: 10rem;
-  color: 33413E;
-  background-color: #5d7572;
-  line-height: 10rem;
   /* font-family: "Jua"; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  @media screen and (max-width: 400px) {
+  align-items: center;
+  @media screen and (max-width: 767px) {
     // 모바일
-    height: 5rem;
-    line-height: 5rem;
-  }
-`;
-
-export const MenuWrapper = styled.div`
-  width: 40%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  /* border: 1px solid blue; */
-  @media screen and (max-width: 390px) {
-    // 모바일
-    width: 20rem;
-  }
-`;
-
-export const MenuFonts = styled.div`
-  font-size: 1.4rem;
-  font-weight: 700;
-  :hover {
-    color: white;
-  }
-  @media screen and (max-width: 390px) {
-    // 모바일
-    font-size: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #5d7599;
   }
 `;
 
 export const Logo = styled.img`
-  height: 7rem;
-  padding-top: 10%;
-  @media screen and (max-width: 390px) {
+  display: block;
+  height: 4rem;
+  /* width: 33%; */
+  @media screen and (max-width: 767px) {
     // 모바일
-    height: 2rem;
+    height: 6.6rem;
+  }
+`;
+export const MenuWrapper = styled.div`
+  width: 55%;
+  display: flex;
+  flex-direction: row;
+  /* background-color: azure; */
+  /* border: 1px solid blue; */
+
+  @media screen and (max-width: 767px) {
+    // 모바일
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+export const MenuFonts = styled.div`
+  font-size: 1.1rem;
+  padding: 10px;
+  font-weight: 700;
+  :hover {
+    color: white;
+  }
+  @media screen and (max-width: 767px) {
+    display: none;
   }
 `;
 
 export const LoginWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  width: 10%;
-  padding-bottom: 10%;
+  justify-content: center;
+  color: white;
+  width: 15%;
   /* border: 1px solid red; */
   height: 5rem;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 `;
 
 export const LoginFonts = styled.div`
   color: white;
-  font-size: 1.1rem;
-  position: absolute;
-  top: -3%;
+  font-size: 0.9rem;
+
   :hover {
-    font-weight: 900;
+    font-weight: 800;
   }
-  @media screen and (max-width: 390px) {
-    // 모바일
+  @media screen and (max-width: 767px) {
     font-size: 0.6rem;
   }
   /* float: right; */
