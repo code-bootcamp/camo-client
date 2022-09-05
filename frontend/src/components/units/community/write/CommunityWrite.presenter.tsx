@@ -5,7 +5,7 @@ export default function CommunityWriteUI() {
   return (
     <S.Wrapper>
       <S.BodyWrapper>
-        <S.Title>게시글 등록하기</S.Title>
+        <S.Title>게시글 등록</S.Title>
         <S.ContentWrapper>
           <S.ContentTitle>제목</S.ContentTitle>
           <S.Input type="text" placeholder="제목을 입력하세요" />
