@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../styles/media";
 
 export const Wrapper = styled.section`
   width: 100vw;
@@ -7,7 +8,7 @@ export const Wrapper = styled.section`
   flex-direction: row;
   margin: 0 auto;
   /* border: 5px solid pink; */
-  @media screen and (max-width: 767px) {
+  @media ${breakPoints.mobile} {
     width: 50%;
   }
 `;
@@ -21,7 +22,7 @@ export const SideBar = styled.section`
   padding-top: 3rem;
   padding-left: 3rem;
   align-content: space-around;
-  @media screen and (max-width: 767px) {
+  @media ${breakPoints.mobile} {
     display: none;
   }
 `;
@@ -64,7 +65,7 @@ export const StayMenu = styled.h3`
   margin: auto;
   padding-top: 1.25rem;
   padding-bottom: 0.625rem;
-  @media screen and (max-width: 767px) {
+  @media ${breakPoints.mobile} {
     display: none;
   }
 `;

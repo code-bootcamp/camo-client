@@ -1,7 +1,7 @@
 import * as B from "../MyPage.styles";
 import * as S from "./MyReservation.styles";
 
-export default function MyReservationUI() {
+export default function MyReservationUI(props) {
   return (
     <>
       <B.Wrapper>
@@ -9,7 +9,7 @@ export default function MyReservationUI() {
           <B.UserWrapper>
             <B.Profile src="/profile.jpeg" />
             <B.ColumnWrapper>
-              <B.UserName> OOO 님</B.UserName>
+              <B.UserName>{props.data?.fetchLoginUser.name}님</B.UserName>
               <B.UserButton>
                 <img src="/userEditIcon.png" />
                 회원정보수정

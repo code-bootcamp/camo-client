@@ -8,10 +8,12 @@ import { FETCH_USER, LOGOUT_USER } from "./LayoutHeader.queries";
 export default function LayoutHeader() {
   const [accessToken] = useRecoilState(accessTokenState);
   const [logoutUser] = useMutation<Pick<IMutation, "logoutUser">>(LOGOUT_USER);
-  const { data, refetch } = useQuery<Pick<IQuery, "fetchUser">>(FETCH_USER, {
-    variables: { email: '"qwer@asd.com"' },
-  });
-  // const { data } = useQuery(FETCH_USER);
+  // const { data } = useQuery<Pick<IQuery, "fetchUser">>(FETCH_USER, {
+  //   variables: { email: "1@1" },
+  // });
+  // const { data } = useQuery<Pick<IQuery, "fetchLoginUsers">>(FETCH_USER);
+  // const { data } = useQuery<Pick<IQuery, "fetchLoginUser">>(FETCH_USER);
+  const { data } = useQuery(FETCH_USER);
 
   const onClickLogout = async () => {
     try {
@@ -23,10 +25,11 @@ export default function LayoutHeader() {
     }
   };
 
+  console.log(data);
   return (
     <LayoutHeaderUI
       data={data}
-      refetch={refetch}
+      // refetch={refetch}
       accessToken={accessToken}
       onClickLogout={onClickLogout}
     />

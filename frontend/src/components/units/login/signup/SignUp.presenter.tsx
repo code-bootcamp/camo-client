@@ -59,7 +59,11 @@ export default function SignUpUI(props: ISignUpUIProps) {
               </S.RowWrapper>
               <S.Error>{props.formState.errors.phone?.message}</S.Error>
               <S.RowWrapper>
-                <S.Input type="text" placeholder="인증번호 입력" />
+                <S.Input
+                  type="text"
+                  placeholder="인증번호 입력"
+                  {...props.register("phoneNumberCheck")}
+                />
                 <S.GreenButton type="button" onClick={props.onClickNumberConfirm}>
                   확인
                 </S.GreenButton>

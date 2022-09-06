@@ -47,7 +47,7 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
 
         {props.accessToken ? (
           <LoginWrapper>
-            <LoginUser>{props.data?.fetchUser.name}님</LoginUser>
+            <LoginUser>{props.data?.fetchLoginUser.name}님</LoginUser>
             <LoginButton onClick={props.onClickLogout}>로그아웃</LoginButton>
           </LoginWrapper>
         ) : (

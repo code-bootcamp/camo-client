@@ -8,6 +8,7 @@ import { ILoginType } from "./Login.types";
 import { accessTokenState } from "../../../commons/store";
 import { useRecoilState } from "recoil";
 import { IMutation, IMutationLoginUserArgs } from "../../../commons/types/generated/types";
+import { useRouter } from "next/router";
 
 const schema = yup.object({
   email: yup.string().required("이메일(아이디)을 입력해주세요."),
@@ -20,6 +21,7 @@ const schema = yup.object({
 });
 
 export default function Login() {
+  const router = useRouter();
   const [loginUser] = useMutation(LOGIN_USER);
   // const [loginUser] = useMutation<Pick<IMutation, "loginUser">, IMutationLoginUserArgs>(LOGIN_USER);
   const [, setAccessToken] = useRecoilState(accessTokenState);
@@ -29,6 +31,7 @@ export default function Login() {
   });
 
   const onClickLogin = async (data: ILoginType) => {
+    console.log("1111");
     try {
       const result = await loginUser({
         variables: {
@@ -40,8 +43,11 @@ export default function Login() {
       if (!accessToken) return;
       setAccessToken(accessToken);
       console.log(accessToken);
+      console.log("2222");
+      // router.push("/");
     } catch (error) {
       alert(error);
+      console.log(error);
     }
   };
   return (

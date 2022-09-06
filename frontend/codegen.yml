@@ -1,4 +1,4 @@
-schema: http://34.145.93.33:3000/graphql
+schema: https://cafemoment-backend.site/graphql
 generates:
   ./src/commons/types/generated/types.ts:
     plugins:
