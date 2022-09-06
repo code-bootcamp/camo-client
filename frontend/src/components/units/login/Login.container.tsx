@@ -5,13 +5,13 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "./Login.queries";
 import { ILoginType } from "./Login.types";
+import { accessTokenState } from "../../../commons/store";
+import { useRecoilState } from "recoil";
+import { IMutation, IMutationLoginUserArgs } from "../../../commons/types/generated/types";
 
 const schema = yup.object({
-  email: yup
-    .string()
-    .required("이메일(아이디)을 입력해주세요.")
-    .matches(/^\w+@\w+\.\w+$/, "이메일(아이디) 형식에 알맞지 않습니다."),
-
+  email: yup.string().required("이메일(아이디)을 입력해주세요."),
+  // .matches(/^\w+@\w+\.\w+$/, "이메일(아이디) 형식에 알맞지 않습니다.")
   password: yup.string(),
   // .matches(
   //   /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W))(?=.*[!@#$%^*+=-]).{8,15}$/,
@@ -21,6 +21,8 @@ const schema = yup.object({
 
 export default function Login() {
   const [loginUser] = useMutation(LOGIN_USER);
+  // const [loginUser] = useMutation<Pick<IMutation, "loginUser">, IMutationLoginUserArgs>(LOGIN_USER);
+  const [, setAccessToken] = useRecoilState(accessTokenState);
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
@@ -33,7 +35,11 @@ export default function Login() {
           ...data,
         },
       });
-      console.log(result); // 지울예정
+      console.log(result);
+      const accessToken = result?.data?.loginUser;
+      if (!accessToken) return;
+      setAccessToken(accessToken);
+      console.log(accessToken);
     } catch (error) {
       alert(error);
     }
