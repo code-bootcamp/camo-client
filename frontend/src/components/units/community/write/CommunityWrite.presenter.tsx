@@ -1,33 +1,29 @@
 import Link from "next/link";
+// import ToastEditor from "../../../commons/editor";
 import * as S from "./CommunityWrite.styles";
 
 export default function CommunityWriteUI() {
   return (
     <S.Wrapper>
       <S.BodyWrapper>
-        <S.Title>게시글 등록</S.Title>
+        {/* <S.Title>게시글 등록</S.Title> */}
+        <S.TitleInput type="text" placeholder="제목을 입력하세요" />
+        <S.TagInput type="text" placeholder="태그를 입력하세요" />
         <S.ContentWrapper>
-          <S.ContentTitle>제목</S.ContentTitle>
-          <S.Input type="text" placeholder="제목을 입력하세요" />
+          {/* <ToastEditor /> */}
+          <S.Content placeholder="당신의 이야기를 적어주세요✏️"></S.Content>
         </S.ContentWrapper>
-        <S.ContentWrapper>
-          <S.ContentTitle>내용</S.ContentTitle>
-          <S.ContentInput type="text" placeholder="내용을 입력하세요" />
-        </S.ContentWrapper>
-        <S.ContentWrapper>
-          <S.ContentTitle>태그</S.ContentTitle>
-          <S.Input type="text" placeholder="#태그" />
-        </S.ContentWrapper>
-        <S.ContentTitle>주소</S.ContentTitle>
+        <S.AddressTitle>주소</S.AddressTitle>
         <S.MapAddressWrapper>
           <S.MapWrapper>
-            <div>주소</div>
-            <S.Map>지도</S.Map>
+            <S.Map></S.Map>
           </S.MapWrapper>
           <S.AddressWrapper>
+            <S.AddressInput type="text" placeholder="12345" />
+            <S.AddressButton>주소입력</S.AddressButton>
             <S.AddressDetailWrapper>
-              <S.AddressInput type="text" placeholder="12345" />
-              <button>주소입력</button>
+              <S.AddressDetailInput />
+              <S.AddressDetailInput />
             </S.AddressDetailWrapper>
             <div></div>
             <div></div>

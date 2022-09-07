@@ -25,6 +25,10 @@ export const NavWrapper = styled.div`
   align-items: center;
   background-color: #ffffff;
   padding: 2% 2% 0 2%;
+  @media screen and (max-width: 767px) {
+    // 모바일
+    width: 500px;
+  }
 `;
 
 export const SortList = styled.div`
@@ -35,13 +39,13 @@ export const SortList = styled.div`
   border-radius: 10px;
 `;
 export const NewList = styled.div`
-  width: 50%;
+  width: 100px;
   padding: 10px 25px;
   background-color: #ebebf0;
   border-radius: 10px 0 0 10px;
 `;
 export const LikeList = styled.div`
-  width: 50%;
+  width: 100px;
   border: 1px solid #ebebf0;
   padding: 10px 25px;
   border-radius: 0 10px 10px 0;
@@ -66,6 +70,11 @@ export const ItemWrapper = styled.div`
   grid-template-columns: repeat(2, 50%);
   background-color: #ffffff;
   padding: 2% 0 0 2%;
+  @media screen and (max-width: 767px) {
+    // 모바일
+    display: grid;
+    grid-template-columns: repeat(1, 500px);
+  }
 `;
 
 export const ItemContent = styled.div`

@@ -17,6 +17,7 @@
     "@emotion/styled": "^11.10.0",
     "@graphql-codegen/cli": "^2.11.8",
     "@hookform/resolvers": "^2.9.7",
+    "@toast-ui/editor": "^3.2.0",
     "animate.css": "^4.1.1",
     "antd": "^4.22.8",
     "apollo-upload-client": "^17.0.0",
