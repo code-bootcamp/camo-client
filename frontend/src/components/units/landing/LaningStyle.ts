@@ -1,30 +1,29 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../styles/media";
 
 export const Wrapper = styled.div`
-  /* width: 120rem; */
   width: 100%;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
-  /* padding: 0 15%; */
 `;
 export const MainWrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 60rem;
   position: relative;
 `;
 
 export const ImageWrapper = styled.div`
   display: block;
+  padding: 0 15%;
   width: 100vw;
   height: 90rem;
   opacity: 0.9;
   background-image: url("https://images.unsplash.com/photo-1482350325005-eda5e677279b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
   background-size: cover;
   background-position: center;
-  @media screen and (max-width: 767px) {
-    // 모바일
-    height: 30rem;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+  @media ${breakPoints.mobile} {
   }
 `;
 
@@ -34,32 +33,47 @@ export const MainImage = styled.img`
   object-fit: cover;
   position: absolute;
   opacity: 0.9;
-`;
-
-export const MainTitle = styled.div`
-  position: absolute;
-  /* z-index: 3; */
-  font-size: 6em;
-
-  font-weight: 900;
-  color: white;
-  top: 20%;
-  left: 30%;
-  text-align: center;
 
   @media screen and (max-width: 767px) {
     // 모바일
-    font-size: 4em;
   }
 `;
 
-//
-//
-//
+export const MainTitle = styled.div`
+  padding: 0 15%;
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  text-align: center;
+  font-size: 4em;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  font-weight: 500;
+  color: #ddd3c9;
+
+  div {
+    color: white;
+    font-size: 5.5rem;
+    font-weight: 700;
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: 4em;
+  }
+`;
+export const MainSmallText = styled.div`
+  font-size: 1.6em;
+  color: white;
+  padding: 0 15%;
+  position: absolute;
+  top: 66%;
+  width: 100%;
+  text-align: center;
+`;
 
 export const MiddleWrapper = styled.div`
+  padding: 0 15%;
   display: flex;
-  margin: 20px;
+  margin: 4.4rem 0;
   align-items: center;
 
   .isActive {
@@ -76,24 +90,21 @@ export const MiddleWrapper = styled.div`
       }
     }
   }
+  @media screen and (max-width: 767px) {
+    // 모바일
+  }
 `;
 
 export const ReservationImg = styled.img`
   width: 50%;
+  height: 25rem;
   object-fit: cover;
+  border-radius: 15px;
+  cursor: pointer;
 
-  /* display: flex; */
-  /* width: 55rem;
-  height: 34rem; */
-  /* width: 100%;
-  height: 66rem;
-  flex-direction: row;
-  justify-content: space-around;
-  background-image: url(""); */
-
-  @media screen and (max-width: 767px) {
+  @media ${breakPoints.mobile} {
     // 모바일
-    height: 16rem;
+    width: 100%;
   }
 `;
 
@@ -106,12 +117,11 @@ export const ReservationWrap = styled.div`
   padding: 20px;
   text-align: center;
   cursor: pointer;
+  position: relative;
 
-  /* display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 55rem;
-  height: 34rem; */
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 export const SliderZoom = styled.div`
   display: flex;
@@ -135,18 +145,25 @@ export const SliderZoom = styled.div`
 
 export const SliderTitle = styled.h1`
   text-align: center;
-  font-size: 3.3em;
-  @media screen and (max-width: 767px) {
-    // 모바일
-    font-size: 1.5em;
+  font-size: 3em;
+  color: #3c565b;
+  font-weight: 800;
+  :hover {
+    background-color: #3c565b;
+    color: white;
+    padding: 0 1rem;
+  }
+
+  @media ${breakPoints.mobile} {
+    display: none;
   }
 `;
 
 export const Subtitle = styled.div`
-  font-size: 1.5em;
+  font-size: 1.2em;
 
-  @media screen and (max-width: 767px) {
-    // 모바일
+  @media ${breakPoints.mobile} {
+    display: none;
     font-size: 0.8em;
   }
 `;
@@ -159,39 +176,69 @@ export const CommunityWrap = styled.div`
 `;
 
 export const BlendedWrap = styled.div`
-  flex-direction: column;
+  padding: 0 15%;
+  border-top: 1px solid gray;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 22rem;
-  background-color: #5d7572;
-  text-align: center;
+  height: 33rem;
+  position: relative;
+  /* background-color: #5d7572; */
+  img {
+    display: inline-block;
+    background-color: #3c565b;
+    width: 18rem;
+    margin: 3rem;
+  }
 `;
 
+export const About = styled.div`
+  color: #3c565b;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 15%;
+  left: 15%;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
 export const BlendedText = styled.div`
-  color: white;
+  color: #3c565b;
   font-weight: 900;
-  font-size: 6rem;
+  font-size: 4rem;
 
   @media screen and (max-width: 390px) {
     // 모바일
-    font-size: 3rem;
+    font-size: 2rem;
   }
 `;
 
 export const Footer = styled.div`
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 18rem;
+  height: 15rem;
   background-color: #3c565b;
 `;
 
-export const FooterText = styled.div`
+export const FooterText = styled.span`
+  display: inline-block;
   color: white;
-  font-weight: 700;
-  font-size: 4.4rem;
-  color: white;
+  font-size: 0.9rem;
+  font-weight: 300;
+  margin: 1.3rem;
+  cursor: pointer;
+`;
+
+export const FooterText2 = styled.span`
+  display: inline-block;
   text-align: center;
+  color: white;
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  font-weight: 100;
 `;
