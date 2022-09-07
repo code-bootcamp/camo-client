@@ -8,16 +8,14 @@ export const globalStyles = css`
   html,
   body {
     padding: 0;
-    margin: 0;
-    /* background-color: #3c565b; */
-
+    margin: 0 auto;
+    /* 패딩 15%는 각 페이지에서 콘텐츠가 들어가는 박스 스타일에 줘야함 */
     background-color: #fff;
-    /* font-family: 'Nanum Pen Script', cursive; */
-    src: url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
-    src: url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nanum+Pen+Script&display=swap");
-
-    font-family: "NanumBarunGothic", sans-serif;
-    color: #333333;
+    color: #555;
+    /* font-family: "NanumBarunGothic", sans-serif; */
+    font-family: "Anton", sans-serif;
+    src: url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+    /* src: url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nanum+Pen+Script&display=swap"); */
   }
 
   a {
@@ -26,34 +24,15 @@ export const globalStyles = css`
   }
 
   @font-face {
-    /* font-family: "Inter", sans-serif; */
-    /* src: url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"); */
-    src: url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
-    font-family: "Jua", sans-serif;
+    font-family: "JUA";
+    src: url("/fonts/JUA.otf");
   }
-
+  @font-face {
+    font-family: "DH";
+    src: url("/fonts/DH.otf");
+  }
   @font-face {
     font-family: "NanumBarunGothic";
     src: url("/fonts/NanumBarunGothic.otf");
   }
-
-  /* @media (min-width: 768px) and (max-width: 991px) {
-    width: 500px;
-    height: 500px;
-    background-color: green;
-  }
-
-  @media (max-width: 767px) {
-    font-size: 2em;
-  } */
 `;
-
-// @media (prefers-color-scheme: dark) {
-//   html {
-//     color-scheme: dark;
-//   }
-//   body {
-//     color: white;
-//     background: black;
-//   }
-// }
