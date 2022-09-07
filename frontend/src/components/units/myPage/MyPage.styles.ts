@@ -7,18 +7,15 @@ export const Wrapper = styled.section`
   display: flex;
   flex-direction: row;
   margin: 0 auto;
-  /* border: 5px solid pink; */
   @media ${breakPoints.mobile} {
     width: 50%;
   }
 `;
 
 export const SideBar = styled.section`
-  width: 30%;
-  background-color: #33413e;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  background-color: #33413e;
   padding-top: 3rem;
   padding-left: 3rem;
   align-content: space-around;
@@ -41,15 +38,15 @@ export const MenuWrapper = styled.div`
 export const SideMenu = styled.button`
   color: white;
   border: none;
-
+  margin: auto;
   font-size: 16px;
   width: 11.875rem;
   height: 2.5rem;
   cursor: pointer;
-  margin: 0.5rem;
+  padding: 0.5rem;
   background: #5d7572;
   border-radius: 10px;
-  margin-left: 9rem;
+  margin-block: 0.625rem;
 `;
 
 export const StaySideMenu = styled(SideMenu)`
@@ -57,6 +54,7 @@ export const StaySideMenu = styled(SideMenu)`
   /* text-underline-position: under; */
   font-weight: 700;
   background-color: #6a564f;
+  margin: auto;
 `;
 
 export const StayMenu = styled.h3`
@@ -82,7 +80,7 @@ export const UserWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-right: 3rem;
+  /* margin-right: 3rem; */
 `;
 
 export const Profile = styled.img`
@@ -91,12 +89,15 @@ export const Profile = styled.img`
   border-radius: 5rem;
   margin-right: 1rem;
   margin-top: 0.5rem;
+  margin: auto;
   display: flex;
 `;
 
 export const ColumnWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  width: auto;
 `;
 
 export const UserName = styled.h4`
@@ -113,4 +114,8 @@ export const UserButton = styled.button`
   border-radius: 0.313rem;
   background-color: #6a564f;
   color: white;
+`;
+
+export const SideMenuWrapper = styled.div`
+  margin-right: 3rem;
 `;

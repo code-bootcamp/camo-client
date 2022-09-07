@@ -2,6 +2,7 @@ import * as S from "./Login.styles";
 import * as B from "../../commons/wrapper/LoginWrapper.styles";
 import { ILoginUIProps } from "./Login.types";
 import { Error } from "./signUp/SignUp.styles";
+import Link from "next/link";
 
 export default function LoginUI(props: ILoginUIProps) {
   return (
@@ -18,10 +19,6 @@ export default function LoginUI(props: ILoginUIProps) {
             <S.Title>로그인</S.Title>
             <S.SubTitle>당신이 아는 카페들을 모은 카모</S.SubTitle>
             <S.MainWrapper>
-              <S.SelectWrapper>
-                <B.SelectButton>카페 사장님</B.SelectButton>
-                <B.SelectButton>일반 회원</B.SelectButton>
-              </S.SelectWrapper>
               <B.Input type="text" placeholder="이메일(아이디)" {...props.register("email")} />
               <Error>{props.formState.errors.email?.message}</Error>
               <B.Input type="password" placeholder="비밀번호" {...props.register("password")} />
@@ -37,7 +34,11 @@ export default function LoginUI(props: ILoginUIProps) {
               <S.FooterWrapper>
                 <S.RowWrapper>
                   <S.FooterText>아직 계정이 없으신가요?</S.FooterText>
-                  <S.FooterButton>회원가입</S.FooterButton>
+                  <Link href="/login/signUp">
+                    <S.FooterButton>
+                      <a>회원가입</a>
+                    </S.FooterButton>
+                  </Link>
                 </S.RowWrapper>
                 <S.RowWrapper>
                   <S.FooterText>아이디를 잊으셨나요?</S.FooterText>

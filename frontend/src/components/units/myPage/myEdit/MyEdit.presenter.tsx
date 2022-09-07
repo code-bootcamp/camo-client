@@ -1,3 +1,4 @@
+import LayoutSidebar from "../../../commons/layout/sidebar/LayoutSidebar.container";
 import * as B from "../MyPage.styles";
 import * as S from "./MyEdit.styles";
 
@@ -5,23 +6,7 @@ export default function MyEditUI() {
   return (
     <>
       <B.Wrapper>
-        <B.SideBar>
-          <B.UserWrapper>
-            <B.Profile src="/profile.jpeg" />
-            <B.ColumnWrapper>
-              <B.UserName> OOO 님</B.UserName>
-              <B.UserButton>
-                <img src="/userEditIcon.png" />
-                회원정보수정
-              </B.UserButton>
-            </B.ColumnWrapper>
-          </B.UserWrapper>
-          <B.ColumnWrapper>
-            <B.SideMenu>찜목록</B.SideMenu>
-            <B.SideMenu>예약내역</B.SideMenu>
-            <B.SideMenu>내가쓴글</B.SideMenu>
-          </B.ColumnWrapper>
-        </B.SideBar>
+        <LayoutSidebar />
         <B.Body>
           <B.StayMenu>회원정보수정</B.StayMenu>
           <B.Line />
