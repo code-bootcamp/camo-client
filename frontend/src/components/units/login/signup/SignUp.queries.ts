@@ -25,3 +25,15 @@ export const SEND_SMS = gql`
     sendTokenToSMS(phoneNumber: $phoneNumber)
   }
 `;
+
+export const CHECK_SMS = gql`
+  mutation checkSMSTokenValid($phoneNumber: String!, $SMSToken: String!) {
+    checkSMSTokenValid(phoneNumber: $phoneNumber, SMSToken: $SMSToken)
+  }
+`;
+
+export const CHECK_USER_EMAIL = gql`
+  query checkUserEmail($email: String!) {
+    checkUserEmail(email: $email)
+  }
+`;

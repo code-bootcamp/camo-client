@@ -49,7 +49,7 @@ export default function ApolloSetting(props: IApolloSettingProps) {
   });
 
   const uploadLink = createUploadLink({
-    uri: "http://34.145.93.33:3000/graphql",
+    uri: "https://cafemoment-backend.site/graphql",
     headers: { Authorization: `Bearer ${accessToken}` },
     credentials: "include",
   });

@@ -9,7 +9,7 @@ const RESTORE_ACCESS_TOKEN = gql`
 
 export async function getAccessToken() {
   try {
-    const graphQLClient = new GraphQLClient("http://34.145.93.33:3000/graphql", {
+    const graphQLClient = new GraphQLClient("https://cafemoment-backend.site/graphql", {
       credentials: "include",
     });
     const result = await graphQLClient.request(RESTORE_ACCESS_TOKEN);
