@@ -1,7 +1,7 @@
 import Link from "next/link";
 import * as S from "./CommunityList.styles";
 
-export default function CommunityListUI() {
+export default function CommunityListUI(props) {
   const cafeImg = [
     "https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2047&q=80",
     "https://images.unsplash.com/photo-1567880905822-56f8e06fe630?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80",
@@ -34,10 +34,10 @@ export default function CommunityListUI() {
           </S.InputWrapper>
         </S.NavWrapper>
         <S.ItemWrapper>
-          {cafeImg.map((e, i) => (
-            <S.ItemContent key={e}>
+          {cafeImg.map((el, index) => (
+            <S.ItemContent key={el} onClick={props.onClickDetail(el)}>
               <S.ItemImgWrapper>
-                <S.ItemImg src={e} />
+                <S.ItemImg src={el} />
               </S.ItemImgWrapper>
               <S.ItemTextWrapper>
                 <S.ItemTextTitleWrapper>

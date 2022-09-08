@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 export const TopWrapper = styled.div`
   width: 100%;
   height: 44rem;
-  padding: 0 15%;
+  padding: 0 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -197,18 +197,22 @@ export const PostAllWrap = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   background-color: #fff;
-  padding: 0 15%;
+  padding: 0 20%;
   margin: 1rem 0;
+  /* background-color: pink; */
 
   @media ${breakPoints.mobile} {
+    padding: 0 5%;
+    /* border: 1px solid gray; */
   }
 `;
 
 export const PostWrapper = styled.div`
   display: flex;
+
   flex-direction: column;
   height: 19rem;
-  width: 14.4rem;
+  width: 14rem;
   margin: 1rem;
   border: 1px solid #ccc;
   background-color: white;
