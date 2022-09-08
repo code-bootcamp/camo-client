@@ -33,6 +33,7 @@ export default function SignUp() {
   const [createUser] = useMutation(CREATE_USER);
   const [sendNumber] = useMutation(SEND_SMS);
   const [checkSMSTokenValid] = useMutation(CHECK_SMS);
+  const [checkSMSToken, setCheckSMSToken] = useState(false);
   //  const { data } = useQuery<Pick<IQuery, "fetchUser">>(CHECK_USER_EMAIL, {
   //    variables: { checkUserEmail: String(router.query.email) },
   //  });
@@ -69,6 +70,7 @@ export default function SignUp() {
       });
       const checkPhoneToken = result?.data?.checkSMSTokenValid;
       if (checkPhoneToken) alert("인증이 완료되었습니다.");
+      setCheckSMSToken(true);
       console.log(result);
       console.log(checkPhoneToken);
     } catch (error) {
@@ -83,14 +85,16 @@ export default function SignUp() {
         query: CHECK_USER_EMAIL,
         variables: { email },
       });
+      alert("사용가능한 아이디 입니다.");
       console.log(result2);
     } catch (error) {
-      alert(error);
+      alert("이미 사용되고 있는 아이디입니다.");
       console.log(error);
     }
   };
 
-  const onClickSubmit = async (data: any) => {
+  const onClickSubmit = async (data: IFormSignUp) => {
+    if (!checkSMSToken) return alert("휴대폰 인증을 해야합니다"); // 0908
     try {
       await createUser({
         variables: {

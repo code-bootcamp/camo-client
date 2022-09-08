@@ -11,7 +11,7 @@ export const Wrapper = styled.section`
   padding-top: 3rem;
 
   @media ${breakPoints.mobile} {
-    width: 100vw;
+    width: 100%;
   }
 `;
 
@@ -68,7 +68,7 @@ export const SocialLoginWrapper = styled.div`
 `;
 
 export const ButtonWrapper = styled.div`
-  width: 25.938rem;
+  /* width: 25.938rem; */
   margin: auto;
   display: flex;
   flex-direction: row;

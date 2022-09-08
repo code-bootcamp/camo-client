@@ -2,7 +2,8 @@ import { MouseEvent } from "react";
 
 export interface ILayoutSidebarUIProps {
   currentMenu: string;
-  onClickMenu: (event: MouseEvent<HTMLDivElement>) => void;
+  data: any;
+  onClickMenu: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 export interface ISideMenuProps {
   isActive: boolean;

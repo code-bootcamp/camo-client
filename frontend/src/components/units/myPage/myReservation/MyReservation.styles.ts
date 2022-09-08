@@ -24,6 +24,7 @@ export const MainWrapper = styled.section`
 export const RowWrapper = styled.div`
   display: flex;
   flex-direction: row;
+
   @media ${breakPoints.mobile} {
     width: 50vw;
   }

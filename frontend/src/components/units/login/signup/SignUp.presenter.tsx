@@ -57,7 +57,7 @@ export default function SignUpUI(props: ISignUpUIProps) {
                   인증번호
                 </S.Button>
               </S.RowWrapper>
-              <S.Error>{props.formState.errors.phone?.message}</S.Error>
+              <S.Error>{props.formState.errors.phoneNumber?.message}</S.Error>
               <S.RowWrapper>
                 <S.Input
                   type="text"
@@ -68,6 +68,7 @@ export default function SignUpUI(props: ISignUpUIProps) {
                   확인
                 </S.GreenButton>
               </S.RowWrapper>
+              <S.Error>{props.formState.errors.phoneNumberCheck?.message}</S.Error>
               <S.Margin />
             </S.MainWrapper>
             <S.SubmitButton>회원가입</S.SubmitButton>
