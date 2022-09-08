@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   width: 100vw;
   background-color: #fff;
   padding: 10%;
+  border: 1px solid brown;
 `;
 
 export const TitleWrapper = styled.div`
@@ -38,13 +39,26 @@ export const ContentsWrapper = styled.div`
   width: 100%;
 `;
 
-export const MainImg = styled.div``;
+export const MainImg = styled.div`
+  height: 20rem;
+  width: 100%;
+  background-color: #eee;
+`;
 
 export const ImgWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 4rem;
+  margin: 1rem 0;
   width: 100%;
 `;
 
-export const SubImg = styled.div``;
+export const SubImg = styled.div`
+  height: 4rem;
+  width: 4rem;
+  margin-right: 0.5rem;
+  background-color: #ddd;
+`;
 
 export const Contents = styled.div``;
 

@@ -1,16 +1,15 @@
-// import Image from "next/image";
 // 랜딩페이지
 
 import * as C from "./LaningStyle";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
-import { CoffeeOutlined } from "@ant-design/icons";
+import "animate.css";
 
 export default function LandingPage() {
   // {imageSrc, title, subtitle, flipped}
 
   const [ref, inView] = useInView({
-    threshhold: 0.4,
+    threshhold: 1,
   });
 
   return (
@@ -20,7 +19,7 @@ export default function LandingPage() {
         <C.MainTitle>
           당신이 원하는 <br />
           카페들을 모은
-          <div>카모</div>
+          <div>CAMO</div>
         </C.MainTitle>
         <C.MainSmallText>
           내가 아는 카페 정보부터 카페 예약까지, <br />
@@ -62,11 +61,9 @@ export default function LandingPage() {
       </C.MiddleWrapper>
 
       <C.BlendedWrap>
-        <C.About>
-          about us <CoffeeOutlined />
-        </C.About>
+        <C.About>{/* <CoffeeOutlined /> */}</C.About>
         <C.BlendedText>BLENDED</C.BlendedText>
-        <img src="./CAMO.png" />
+        <C.BlendedText>CAMO</C.BlendedText>
       </C.BlendedWrap>
       <C.Footer>
         <div>

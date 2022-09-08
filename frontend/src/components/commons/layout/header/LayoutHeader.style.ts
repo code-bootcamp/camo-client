@@ -2,9 +2,26 @@ import { MenuOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../../../styles/media";
 
+export const Wrapper = styled.div`
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #3c565b;
+
+  @media ${breakPoints.mobile} {
+    display: flex;
+    background-color: #3c565b;
+    padding: 0 5%;
+  }
+`;
 export const HeaderWrapper = styled.div`
-  padding: 0 15%;
-  height: 5.5rem;
+  height: 5rem;
+  width: 1200px;
+  padding: 0 5%;
   background-color: #3c565b;
   display: flex;
   flex-direction: row;
@@ -12,21 +29,22 @@ export const HeaderWrapper = styled.div`
   align-items: center;
   position: relative;
   @media ${breakPoints.mobile} {
-    // 모바일
     display: flex;
-    background-color: #5d7599;
+    background-color: #3c565b;
   }
 `;
 
 export const LogoMenuWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  /* border: 1px solid yellow; */
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Logo = styled.img`
-  height: 3.3rem;
-  margin-right: 2.2rem;
+  height: 4rem;
+  margin-right: 2rem;
+  margin-top: 1.2rem;
 `;
 export const MenuWrapper = styled.div`
   display: flex;
@@ -53,12 +71,11 @@ export const MenuFonts = styled.div`
 `;
 
 export const LoginWrapper = styled.div`
-  width: 7.7rem;
+  width: 7rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   color: white;
-  /* border: 1px solid red; */
   @media screen and (max-width: 767px) {
     /* display: none; */
     width: 2rem;
@@ -67,19 +84,20 @@ export const LoginWrapper = styled.div`
 `;
 
 export const LoginButton = styled.button`
-  color: #3c565b;
-  font-family: "NanumSquareOTF_ac";
   font-style: normal;
   font-weight: 600;
   font-size: 0.66rem;
+  background-color: #3c565b;
+  color: white;
   cursor: pointer;
-  background-color: white;
   border: none;
   width: 3.5rem;
   height: 1.3rem;
   border-radius: 5px;
   :hover {
     font-weight: 800;
+    background-color: white;
+    color: #5d7572;
   }
   @media screen and (max-width: 767px) {
     display: none;

@@ -9,6 +9,7 @@ export default function CommunityDetailUI() {
           <S.UserImg></S.UserImg>
           <S.UserInfoWrapper>
             <S.UserName>홍길동</S.UserName>
+
             <S.PostWrapper>
               <S.PostDetail>2022.8.6 16:30</S.PostDetail>
               <S.PostDetail>조회: 80</S.PostDetail>
@@ -17,6 +18,7 @@ export default function CommunityDetailUI() {
           </S.UserInfoWrapper>
         </S.UserWrapper>
       </S.TitleWrapper>
+      <hr />
       <S.ContentsWrapper>
         <S.MainImg></S.MainImg>
         <S.ImgWrapper>
@@ -34,6 +36,9 @@ export default function CommunityDetailUI() {
           70
         </S.ContentsIcons>
       </S.ContentsWrapper>
+      <hr />
+
+      <div> 댓글 컴포넌트 삽입하기 </div>
     </S.Wrapper>
   );
 }

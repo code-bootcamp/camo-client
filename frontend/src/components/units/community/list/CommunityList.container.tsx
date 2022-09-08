@@ -1,5 +1,12 @@
+import { useRouter } from "next/router";
 import CommunityListUI from "./CommunityList.presenter";
 
 export default function CommunityList() {
-  return <CommunityListUI />;
+  const router = useRouter();
+
+  const onClickDetail = (el: any) => (event) => {
+    router.push(`/community/${el._comId}`);
+  };
+
+  return <CommunityListUI onClickDetail={onClickDetail} />;
 }

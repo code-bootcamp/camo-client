@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../../styles/media";
+import "animate.css";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -12,7 +13,7 @@ export const MainWrapper = styled.div`
 
 export const ImageWrapper = styled.div`
   display: block;
-  padding: 0 15%;
+  padding: 0 10%;
   width: 100vw;
   height: 90rem;
   opacity: 0.9;
@@ -71,12 +72,19 @@ export const MainSmallText = styled.div`
 `;
 
 export const MiddleWrapper = styled.div`
-  padding: 0 15%;
+  padding: 0 10%;
   display: flex;
-  margin: 4.4rem 0;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  margin: 4.4rem 0;
 
   .isActive {
+    display: inline-block;
+    margin: 0 0.5rem;
+    animation: fadeInDown; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s; /* don't forget to set a duration! */
+    /*     
     animation: "SliderIsActive" 2s ease-in-out;
     @keyframes SliderIsActive {
       from {
@@ -88,10 +96,9 @@ export const MiddleWrapper = styled.div`
         opacity: 1;
         transform: scale(100%);
       }
-    }
+    } */
   }
-  @media screen and (max-width: 767px) {
-    // 모바일
+  @media ${breakPoints.mobile} {
   }
 `;
 
@@ -99,7 +106,6 @@ export const ReservationImg = styled.img`
   width: 50%;
   height: 25rem;
   object-fit: cover;
-  border-radius: 15px;
   cursor: pointer;
 
   @media ${breakPoints.mobile} {
@@ -114,7 +120,6 @@ export const ReservationWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
   text-align: center;
   cursor: pointer;
   position: relative;
@@ -131,7 +136,7 @@ export const SliderZoom = styled.div`
   animation: "SliderZoom" 2s ease-in-out infinite alternate;
   @keyframes SliderZoom {
     from {
-      opacity: 0.1;
+      opacity: 0;
       transform: scale(85%);
     }
 
@@ -207,7 +212,8 @@ export const About = styled.div`
 export const BlendedText = styled.div`
   color: #3c565b;
   font-weight: 900;
-  font-size: 4rem;
+  font-size: 3rem;
+  margin: 1rem;
 
   @media screen and (max-width: 390px) {
     // 모바일
