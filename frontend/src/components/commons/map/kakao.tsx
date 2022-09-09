@@ -46,7 +46,7 @@ export default function KakaoMapPage() {
           src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cfdf1830a138b5b636a4b8216d821441"
         ></script>
       </Head> */}
-      <div id="map" style={{ width: "22rem", height: "13rem" }}></div>
+      <div id="map" style={{ width: "100%", height: "13rem" }}></div>
     </>
   );
 }
