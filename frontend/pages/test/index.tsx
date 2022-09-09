@@ -1,6 +1,7 @@
 // import { gql, useMutation } from "@apollo/client";
 // import { useState } from "react";
 
+import CommentList from "../../src/components/units/comment/list/CommentList.container";
 import CommentWrite from "../../src/components/units/comment/write/CommentWrite.container";
 
 // export const CREATE_USER = gql`
@@ -77,6 +78,7 @@ export default function Test() {
   return (
     <>
       <CommentWrite />
+      <CommentList />
     </>
   );
 }

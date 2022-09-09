@@ -18,7 +18,7 @@ export default function CommentWrite(props: ICommentWriteProps) {
     setComment(event?.target.value);
   };
   const onClickWrite = async () => {
-    if (typeof router.query.communityId !== "string") {
+    if (typeof router.query.communityId !== "string" || !comment) {
       return;
     }
 
@@ -28,6 +28,7 @@ export default function CommentWrite(props: ICommentWriteProps) {
           createCommentInput: {
             comment,
             boardId: String(router.query.communityId),
+            // userId: String(어디서 가져와야하지?),
           },
           refetchQueries: [
             {
@@ -56,7 +57,7 @@ export default function CommentWrite(props: ICommentWriteProps) {
       if (typeof props.el?.id !== "string") return;
       await updateComment({
         variables: {
-          commentId: props.el?.id,
+          commentId: String(props.el?.id),
           updateCommentInput,
         },
         refetchQueries: [
@@ -72,11 +73,16 @@ export default function CommentWrite(props: ICommentWriteProps) {
     }
   };
 
+  const onClickCancel = () => {
+    props.setIsEdit?.(false);
+  };
+
   return (
     <CommentWriteUI
       onChangeComment={onChangeComment}
       onClickWrite={onClickWrite}
       onClickUpdate={onClickUpdate}
+      onClickCancel={onClickCancel}
       comment={comment}
       isEdit={props.isEdit}
       el={props.el}
