@@ -12,66 +12,65 @@ export default function SignUpUI(props: ISignUpUIProps) {
             <B.SubLogo>당신이 원하는 카페들을 모은</B.SubLogo>
             <B.SideLogo src="/CAMO.png" />
           </B.ColumnWrapper>
-          {/* <B.Logo>CAMO</B.Logo> */}
         </B.SideWrapper>
-        <S.SignUpWrapper>
-          <S.Form onSubmit={props.handleSubmit(props.onClickSubmit)}>
-            <S.Title>회원가입</S.Title>
+
+        <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
+          <S.Wrapper>
+            <B.Title>회원가입</B.Title>
             <S.SubTitle>사람들이 말하는 자신의 추억이 있는 이야기들을 들어보아요</S.SubTitle>
-            <S.MainWrapper>
-              <S.Margin />
-              <S.RowWrapper>
-                <S.Input type="text" placeholder="이름" {...props.register("name")} />
-                <S.Empty />
-              </S.RowWrapper>
-              <S.Error>{props.formState.errors.name?.message}</S.Error>
-              <S.RowWrapper>
-                <S.Input type="text" placeholder="닉네임" {...props.register("nickName")} />
-                <S.Empty />
-              </S.RowWrapper>
-              <S.Error>{props.formState.errors.nickname?.message}</S.Error>
-              <S.RowWrapper>
-                <S.Input type="text" placeholder="이메일(아이디)" {...props.register("email")} />
-                <S.Button type="button" onClick={props.onClickEmailCheck}>
-                  중복확인
-                </S.Button>
-              </S.RowWrapper>
-              <S.Error>{props.formState.errors.email?.message}</S.Error>
-              <S.RowWrapper>
-                <S.Input type="password" placeholder="비밀번호" {...props.register("password")} />
-                <S.Empty />
-              </S.RowWrapper>
-              <S.Error>{props.formState.errors.password?.message}</S.Error>
-              <S.RowWrapper>
-                <S.Input
-                  type="password"
-                  placeholder="비밀번호 확인"
-                  {...props.register("passwordConfirm")}
-                />
-                <S.Empty />
-              </S.RowWrapper>
-              <S.Error>{props.formState.errors.passwordConfirm?.message}</S.Error>
-              <S.RowWrapper>
-                <S.Input type="tel" placeholder="휴대폰 번호" {...props.register("phoneNumber")} />
-                <S.Button type="button" onClick={props.onClickSendAuthNumber}>
-                  인증번호
-                </S.Button>
-              </S.RowWrapper>
-              <S.Error>{props.formState.errors.phoneNumber?.message}</S.Error>
-              <S.RowWrapper>
-                <S.Input
-                  type="text"
-                  placeholder="인증번호 입력"
-                  {...props.register("phoneNumberCheck")}
-                />
-                <S.GreenButton type="button" onClick={props.onClickNumberConfirm}>
-                  확인
-                </S.GreenButton>
-              </S.RowWrapper>
-              <S.Error>{props.formState.errors.phoneNumberCheck?.message}</S.Error>
-              <S.Margin />
-            </S.MainWrapper>
+            {/* <S.Margin /> */}
+            <S.RowWrapper>
+              <B.Input type="text" placeholder="이름" {...props.register("name")} />
+              <S.Empty />
+            </S.RowWrapper>
+            <S.Error>{props.formState.errors.name?.message}</S.Error>
+            <S.RowWrapper>
+              <B.Input type="text" placeholder="닉네임" {...props.register("nickName")} />
+              <S.Empty />
+            </S.RowWrapper>
+            <S.Error>{props.formState.errors.nickname?.message}</S.Error>
+            <S.RowWrapper>
+              <B.Input type="text" placeholder="이메일(아이디)" {...props.register("email")} />
+              <S.Button type="button" onClick={props.onClickEmailCheck}>
+                중복확인
+              </S.Button>
+            </S.RowWrapper>
+            <S.Error>{props.formState.errors.email?.message}</S.Error>
+            <S.RowWrapper>
+              <B.Input type="password" placeholder="비밀번호" {...props.register("password")} />
+              <S.Empty />
+            </S.RowWrapper>
+            <S.Error>{props.formState.errors.password?.message}</S.Error>
+            <S.RowWrapper>
+              <B.Input
+                type="password"
+                placeholder="비밀번호 확인"
+                {...props.register("passwordConfirm")}
+              />
+              <S.Empty />
+            </S.RowWrapper>
+            <S.Error>{props.formState.errors.passwordConfirm?.message}</S.Error>
+            <S.RowWrapper>
+              <B.Input type="tel" placeholder="휴대폰 번호" {...props.register("phoneNumber")} />
+              <S.Button type="button" onClick={props.onClickSendAuthNumber}>
+                인증번호
+              </S.Button>
+            </S.RowWrapper>
+            <S.Error>{props.formState.errors.phoneNumber?.message}</S.Error>
+            <S.RowWrapper>
+              <B.Input
+                type="text"
+                placeholder="인증번호 입력"
+                {...props.register("phoneNumberCheck")}
+              />
+              <S.GreenButton type="button" onClick={props.onClickNumberConfirm}>
+                확인
+              </S.GreenButton>
+            </S.RowWrapper>
+            <S.Error>{props.formState.errors.phoneNumberCheck?.message}</S.Error>
+            <S.Margin />
             <S.SubmitButton>회원가입</S.SubmitButton>
+            <hr />
             <S.FooterWrapper>
               <S.FooterText>이미 아이디가 있으신가요?</S.FooterText>
               <Link href="/login">
@@ -80,9 +79,9 @@ export default function SignUpUI(props: ISignUpUIProps) {
                 </a>
               </Link>
             </S.FooterWrapper>
-          </S.Form>
+          </S.Wrapper>
           <S.Margin />
-        </S.SignUpWrapper>
+        </form>
       </B.Wrapper>
     </>
   );

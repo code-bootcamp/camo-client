@@ -6,10 +6,18 @@ export const Wrapper = styled.main`
   display: flex;
   margin: auto;
   flex-direction: row;
-`;
+  height: 100vh;
 
+  @media ${breakPoints.mobile} {
+    display: 100vw;
+  }
+`;
+export const Title = styled.h1`
+  font-weight: 500;
+  color: black;
+`;
 export const SideWrapper = styled.section`
-  width: 50%;
+  width: 40%;
   background-color: #33413e;
 
   @media ${breakPoints.mobile} {
@@ -20,35 +28,23 @@ export const SideWrapper = styled.section`
 export const ColumnWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 15rem;
-  margin-right: 6.25rem;
+  padding-top: 15rem;
+  padding-right: 5rem;
 `;
 
 export const SideLogo = styled.img`
-  width: 30rem;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin: auto;
-  margin-left: 9rem;
-`;
-
-export const Logo = styled.h1`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  color: white;
-  margin-top: 20rem;
-  font-size: 10rem;
+  width: 20rem;
+  margin-left: 6rem;
 `;
 
 export const SubLogo = styled.h2`
   color: white;
   font-weight: 400;
-  font-size: 2.25rem;
+  font-size: 1.5rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
+  margin-left: 7rem;
 `;
 
 export const SelectButton = styled.button`
@@ -61,18 +57,51 @@ export const SelectButton = styled.button`
 `;
 
 export const Input = styled.input`
-  /* width: 25.938rem; */
   width: 100%;
-  height: 3.813rem;
+  height: 3rem;
   border: 2px solid #d9d9d9;
   display: flex;
   margin: auto;
-  margin-top: 3.125rem;
+  padding-left: 1rem;
+
+  @media ${breakPoints.mobile} {
+    width: 80vw;
+  }
 `;
 
 export const SocialLogin = styled.img`
   width: 25%;
   height: 20%;
   cursor: pointer;
-  margin-top: 3rem;
+`;
+
+export const LoginButton = styled.div`
+  font-weight: 500;
+  font-size: 1rem;
+  margin-left: 2rem;
+  cursor: pointer;
+`;
+
+export const SubmitButton = styled.button`
+  width: 100%;
+  height: 3.5rem;
+  background-color: #33413e;
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+
+  @media ${breakPoints.mobile} {
+    width: 80vw;
+    margin: auto;
+  }
+`;
+export const ButtonWrapper = styled.div`
+  /* width: 25.938rem; */
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;

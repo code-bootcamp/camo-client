@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import * as B from "./LayoutSidebar.styles";
 import { ILayoutSidebarUIProps } from "./LayoutSidebar.types";
 
@@ -10,6 +11,9 @@ const SIDE_MENUS = [
 ];
 
 export default function LayoutSideBarUI(props: ILayoutSidebarUIProps) {
+  const router = useRouter();
+
+  // console.log("LayoutSideBarUI", router.asPath);
   return (
     <>
       <B.SideBar>
@@ -26,17 +30,20 @@ export default function LayoutSideBarUI(props: ILayoutSidebarUIProps) {
             </B.ColumnWrapper>
           </B.UserWrapper>
           <B.ColumnWrapper>
-            {SIDE_MENUS.map((el) => (
-              <div key={el.page}>
-                <B.SideMenu
-                  id={el.page}
-                  onClick={props.onClickMenu}
-                  isActive={props.currentMenu?.includes(el.page)}
-                >
-                  {el.name}
-                </B.SideMenu>
-              </div>
-            ))}
+            {SIDE_MENUS.map((el) => {
+              console.log("LayoutbarUI", router.asPath, el.page, router.asPath.includes(el.page));
+              return (
+                <div key={el.page}>
+                  <B.SideMenu
+                    id={el.page}
+                    onClick={props.onClickMenu}
+                    isActive={router.asPath.includes(el.page)}
+                  >
+                    {el.name}
+                  </B.SideMenu>
+                </div>
+              );
+            })}
           </B.ColumnWrapper>
         </B.SideMenuWrapper>
       </B.SideBar>
