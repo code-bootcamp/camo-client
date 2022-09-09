@@ -4,6 +4,7 @@ import { RecoilRoot } from "recoil";
 import ApolloSetting from "../src/components/commons/apollo";
 import Layout from "../src/components/commons/layout";
 import { globalStyles } from "../styles/globalStyles";
+import "antd/dist/antd.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

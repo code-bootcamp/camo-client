@@ -12,22 +12,53 @@ export const Wrapper = styled.div`
   padding: 5% 15%;
 `;
 
+export const TopTitleWrap = styled.span`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+`;
+export const TopTitle = styled.span`
+  font-size: 2.2em;
+  font-weight: 800;
+
+  span {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+`;
+
+export const Form = styled.form`
+  width: 100%;
+`;
 export const BodyWrapper = styled.div`
-  width: 1200px;
+  width: 100%;
   padding: 5%;
   /* border: 1px solid red; */
 `;
 
+export const Lable = styled.div`
+  color: #555;
+  font-size: 1.5rem;
+  padding: 2rem 0 1rem 0;
+`;
+
 export const TitleInput = styled.input`
   width: 100%;
-  height: 5rem;
+  color: #555;
+  height: 3rem;
   border: none;
   border-bottom: 1px solid #d9d9d9;
   padding-left: 1rem;
-  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
   :focus {
     outline: none;
   }
+`;
+
+export const ImageWrap = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 
 export const TagInput = styled.input`
@@ -78,6 +109,8 @@ export const MapAddressWrapper = styled.div`
 export const MapWrapper = styled.div`
   width: 40%;
   padding: 1%;
+  border: 1px solid #ccc;
+
   /* border: 1px solid blue; */
 `;
 
@@ -86,6 +119,7 @@ export const Map = styled.div``;
 export const AddressWrapper = styled.div`
   width: 55%;
   padding: 2%;
+
   /* border: 1px solid red; */
 `;
 
@@ -93,6 +127,7 @@ export const AddressInput = styled.input`
   width: 50%;
   height: 2.5rem;
   border: 1px solid #ccc;
+  padding-left: 1rem;
 
   border-radius: 5px;
 `;
@@ -101,7 +136,7 @@ export const AddressButton = styled.button`
   width: 5rem;
   height: 2.5rem;
   border: none;
-  background: #33413e;
+  background: #3c565b;
   border-radius: 5px;
   font-size: 1rem;
   color: white;
@@ -129,12 +164,12 @@ export const AddressDetailInput = styled.input`
 export const BtnWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
 `;
 export const RegisterBtn = styled.button`
   width: 7.7rem;
   height: 2.5rem;
-  background: #5d7572;
+  background: #3c565b;
   font-size: 1.3rem;
   border-radius: 0.5rem;
   border: none;

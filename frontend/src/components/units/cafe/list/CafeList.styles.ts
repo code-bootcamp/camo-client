@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import "antd/dist/antd.css";
 import { StarFilled } from "@ant-design/icons";
 import { breakPoints } from "../../../../../styles/media";
+import "animate.css";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -18,6 +19,7 @@ export const TopWrapper = styled.div`
   align-items: center;
   background-image: url("https://images.unsplash.com/photo-1521494893888-be7d1bf2933d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80");
   background-size: cover;
+  margin-bottom: 2rem;
   @media ${breakPoints.mobile} {
     height: 33rem;
   }
@@ -35,7 +37,7 @@ export const LogoBody = styled.div`
   }
 `;
 export const LogoImage = styled.img`
-  width: 14rem;
+  width: 13.3rem;
   margin: 1.2rem;
 `;
 export const BigTitle = styled.div`
@@ -45,8 +47,8 @@ export const BigTitle = styled.div`
   margin-top: 2.2rem;
 
   text-align: center;
-  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-  animation: "titleText" 1s ease-in-out infinite alternate;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  /* animation: "titleText" 1s ease-in-out infinite alternate;
   @keyframes titleText {
     0% {
       transform: translateY(100px);
@@ -61,7 +63,7 @@ export const BigTitle = styled.div`
       transform: translateY(0);
       opacity: 1;
     }
-  }
+  } */
 
   @media ${breakPoints.mobile} {
     font-size: 3rem;
@@ -99,19 +101,23 @@ export const CafeRegisterBox = styled.div`
 `;
 
 export const CafeRegister = styled.div`
-  width: 8.8rem;
-  height: 8.8rem;
-  line-height: 8.8rem;
-  background-color: #33413e;
+  width: 7rem;
+  height: 7rem;
+  line-height: 7rem;
+  border-radius: 90px;
+  background-color: #3c565b;
   color: white;
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
   position: absolute;
   :hover {
     cursor: pointer;
+    animation: jello;
+    animation-duration: 1s;
   }
 
-  animation: "MoveCircle" 1s ease-in-out infinite alternate;
+  /* animation: "MoveCircle" 1s ease-in-out infinite alternate;
   @keyframes MoveCircle {
     from {
       border-radius: 0;
@@ -127,7 +133,8 @@ export const CafeRegister = styled.div`
       transform: scale(1);
       font-weight: 800;
     }
-  }
+  } */
+
   @media ${breakPoints.mobile} {
     display: none;
   }
@@ -141,7 +148,7 @@ export const SearchBarWrap = styled.div`
   justify-content: space-around;
   align-items: center;
   height: 4.4rem;
-  background-color: #3c565b;
+  /* background-color: #3c565b; */
   @media ${breakPoints.mobile} {
     display: none;
   }
@@ -170,21 +177,22 @@ export const SearchBtnWrap = styled.div`
   justify-content: center;
 `;
 
-export const SearchBar = styled.div`
+export const SearchBar = styled.input`
   /* width: 18rem; */
   width: 75%;
   padding-left: 1rem;
   line-height: 2.4rem;
   height: 2.4rem;
   background: white;
+  border: none;
 `;
 
 export const SearchbarBtn = styled.div`
   /* width: 7.7rem; */
   width: 22%;
   height: 2.4rem;
-  background: #5d7572;
-  font-size: 0.8rem;
+  /* background: #5d7572; */
+  font-size: 1rem;
   color: white;
   line-height: 2.4rem;
   text-align: center;
@@ -197,7 +205,7 @@ export const PostAllWrap = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   background-color: #fff;
-  padding: 0 20%;
+  padding: 0 10%;
   margin: 1rem 0;
   /* background-color: pink; */
 
@@ -209,16 +217,17 @@ export const PostAllWrap = styled.div`
 
 export const PostWrapper = styled.div`
   display: flex;
-
   flex-direction: column;
   height: 19rem;
-  width: 14rem;
-  margin: 1rem;
-  border: 1px solid #ccc;
+  width: 14.7rem;
+  margin: 1.1rem;
+  border: 1px solid #ddd;
+  /* box-shadow: 0 100px 100px 10px #ddd; */
+
   background-color: white;
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 5px;
   :hover {
     transform: scale(1.1);
   }
@@ -259,7 +268,7 @@ export const DetailImage = styled.div`
   :hover::after {
     content: "예약하기";
     height: 100%;
-    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
     font-size: 1rem;
     text-align: center;
     line-height: 9rem;
@@ -332,6 +341,42 @@ export const NewBtn = styled.div`
   cursor: pointer;
   @media screen and (max-width: 767px) {
     // 모바일
+    display: none;
+  }
+`;
+
+// 푸터 테스트
+
+export const Footer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 18rem;
+  background-color: #786d5f;
+`;
+
+export const FooterText = styled.span`
+  display: inline-block;
+  color: white;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 1.3rem;
+  cursor: pointer;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
+
+export const FooterText2 = styled.span`
+  display: inline-block;
+  text-align: center;
+  color: white;
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  font-weight: 100;
+  @media ${breakPoints.mobile} {
     display: none;
   }
 `;

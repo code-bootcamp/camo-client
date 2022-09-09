@@ -7,25 +7,15 @@ export const Wrapper = styled.div`
 `;
 export const MainWrapper = styled.div`
   width: 100%;
-  height: 60rem;
+  height: 66rem;
   position: relative;
 `;
 
 export const ImageWrapper = styled.div`
   display: block;
-  padding: 0 10%;
-  width: 100vw;
-  height: 90rem;
-  opacity: 0.9;
-  background-image: url("https://images.unsplash.com/photo-1482350325005-eda5e677279b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
-  background-size: cover;
-  background-position: center;
-
-  @media ${breakPoints.mobile} {
-    display: none;
-  }
-  @media ${breakPoints.mobile} {
-  }
+  width: 100%;
+  height: 100%;
+  background-color: black;
 `;
 
 export const MainImage = styled.img`
@@ -33,10 +23,8 @@ export const MainImage = styled.img`
   height: 100%;
   object-fit: cover;
   position: absolute;
-  opacity: 0.9;
-
-  @media screen and (max-width: 767px) {
-    // 모바일
+  opacity: 0.6;
+  @media ${breakPoints.mobile} {
   }
 `;
 
@@ -47,7 +35,7 @@ export const MainTitle = styled.div`
   width: 100%;
   text-align: center;
   font-size: 4em;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
   font-weight: 500;
   color: #ddd3c9;
 
@@ -62,7 +50,9 @@ export const MainTitle = styled.div`
   }
 `;
 export const MainSmallText = styled.div`
-  font-size: 1.6em;
+  font-size: 1.5em;
+  font-weight: 400;
+  line-height: 2rem;
   color: white;
   padding: 0 15%;
   position: absolute;
@@ -82,8 +72,8 @@ export const MiddleWrapper = styled.div`
   .isActive {
     display: inline-block;
     margin: 0 0.5rem;
-    animation: fadeInDown; /* referring directly to the animation's @keyframe declaration */
-    animation-duration: 2s; /* don't forget to set a duration! */
+    animation: pulse; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 1s; /* don't forget to set a duration! */
     /*     
     animation: "SliderIsActive" 2s ease-in-out;
     @keyframes SliderIsActive {
@@ -91,7 +81,6 @@ export const MiddleWrapper = styled.div`
         opacity: 0.1;
         transform: scale(85%);
       }
-
       to {
         opacity: 1;
         transform: scale(100%);
@@ -99,17 +88,18 @@ export const MiddleWrapper = styled.div`
     } */
   }
   @media ${breakPoints.mobile} {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
 export const ReservationImg = styled.img`
-  width: 50%;
+  width: 49%;
   height: 25rem;
   object-fit: cover;
   cursor: pointer;
-
   @media ${breakPoints.mobile} {
-    // 모바일
     width: 100%;
   }
 `;
@@ -117,17 +107,18 @@ export const ReservationImg = styled.img`
 export const ReservationWrap = styled.div`
   flex: 1;
   display: flex;
+
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   cursor: pointer;
   position: relative;
-
   @media ${breakPoints.mobile} {
     display: none;
   }
 `;
+
 export const SliderZoom = styled.div`
   display: flex;
   margin: 20px;
@@ -139,7 +130,6 @@ export const SliderZoom = styled.div`
       opacity: 0;
       transform: scale(85%);
     }
-
     to {
       opacity: 1;
       transform: scale(100%);
@@ -154,19 +144,27 @@ export const SliderTitle = styled.h1`
   color: #3c565b;
   font-weight: 800;
   :hover {
-    background-color: #3c565b;
-    color: white;
-    padding: 0 1rem;
+    font-size: 3.5em;
+    font-weight: 900;
   }
 
   @media ${breakPoints.mobile} {
     display: none;
   }
 `;
+export const Bar = styled.div`
+  width: 2rem;
+  height: 0.2rem;
+  margin-bottom: 2rem;
+  background-color: #3c565b;
+  display: inline-block;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
 
 export const Subtitle = styled.div`
-  font-size: 1.2em;
-
+  font-size: 1.1em;
   @media ${breakPoints.mobile} {
     display: none;
     font-size: 0.8em;
@@ -181,23 +179,64 @@ export const CommunityWrap = styled.div`
 `;
 
 export const BlendedWrap = styled.div`
-  padding: 0 15%;
-  border-top: 1px solid gray;
+  /* width: 1200px; */
+
+  padding: 0 10%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
-  height: 33rem;
-  position: relative;
+  justify-content: center;
+  margin: 4.4rem 0;
+  border-top: 1px solid gray;
+  display: flex;
+  height: 40rem;
+  /* position: relative; */
   /* background-color: #5d7572; */
   img {
     display: inline-block;
     background-color: #3c565b;
-    width: 18rem;
-    margin: 3rem;
+    width: 22rem;
+    height: 100%;
+    margin: 5rem 5rem 0 0;
+  }
+  @media ${breakPoints.mobile} {
+    display: none;
   }
 `;
+export const BottomImageWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 33rem;
+  border-top: 1px solid gray;
+  background-color: gray;
+  position: relative;
 
+  img {
+    opacity: 0.7;
+    width: 100%;
+    height: 33rem;
+    object-fit: cover;
+  }
+  div {
+    /* position: absolute;
+    right: 0;
+    top: 5rem;
+    width: 66%;
+    margin-right: 15%;
+    height: 22rem;
+    background: black;
+    opacity: 0.6;
+    padding: 5% 15% 5% 5%;
+    color: white;
+    font-size: 1rem; */
+  }
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
 export const About = styled.div`
   color: #3c565b;
   font-size: 1.2rem;
@@ -212,12 +251,23 @@ export const About = styled.div`
 export const BlendedText = styled.div`
   color: #3c565b;
   font-weight: 900;
-  font-size: 3rem;
+  font-size: 3.3rem;
   margin: 1rem;
 
+  div {
+    font-size: 1rem;
+  }
   @media screen and (max-width: 390px) {
     // 모바일
     font-size: 2rem;
+  }
+`;
+
+export const smallText = styled.div`
+  margin: 2rem;
+  padding: 3%;
+  @media ${breakPoints.mobile} {
+    display: none;
   }
 `;
 
@@ -227,17 +277,20 @@ export const Footer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 15rem;
-  background-color: #3c565b;
+  height: 18rem;
+  background-color: #786d5f;
 `;
 
 export const FooterText = styled.span`
   display: inline-block;
   color: white;
-  font-size: 0.9rem;
-  font-weight: 300;
+  font-size: 1rem;
+  font-weight: 400;
   margin: 1.3rem;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const FooterText2 = styled.span`
@@ -247,4 +300,7 @@ export const FooterText2 = styled.span`
   margin-top: 1rem;
   font-size: 0.7rem;
   font-weight: 100;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;

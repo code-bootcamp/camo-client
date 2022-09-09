@@ -1,15 +1,18 @@
 import { HeartOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../../styles/media";
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 
 export const BodyWrapper = styled.div`
   width: 1200px;
   padding: 0 5%;
+
   /* background-color: pink; */
 `;
 
@@ -133,8 +136,14 @@ export const ItemTextTitle = styled.div`
   margin-bottom: 0.2rem;
 `;
 
-export const ItemTextTag = styled.div`
-  font-size: 1rem;
+export const TagsWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+export const ItemTextTag = styled.span`
+  font-size: 0.9rem;
+  margin-right: 0.3rem;
+  color: #3c565b;
 `;
 
 export const ItemTextUserWrapper = styled.div`
@@ -158,3 +167,39 @@ export const ItemTextLikeCount = styled.div`
 `;
 
 export const ItemTextUser = styled.div``;
+
+// 푸터 테스트
+
+export const Footer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 18rem;
+  background-color: #786d5f;
+`;
+
+export const FooterText = styled.span`
+  display: inline-block;
+  color: white;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 1.3rem;
+  cursor: pointer;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
+
+export const FooterText2 = styled.span`
+  display: inline-block;
+  text-align: center;
+  color: white;
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  font-weight: 100;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
