@@ -38,6 +38,14 @@ export const CommentLength = styled.div`
   color: gray;
 `;
 
+export const CancelBtn = styled.button`
+  width: 100px;
+  background-color: #33413e;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+`;
+
 export const Btn = styled.button`
   width: 100px;
   background-color: #33413e;

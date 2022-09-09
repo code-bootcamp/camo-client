@@ -18,6 +18,7 @@ export default function CommentWriteUI(props: ICommentWriteUIPros) {
           {(props.comment ? props.comment.length : props.el?.comment.length) || 0}
           /100
         </S.CommentLength>
+        {props.isEdit && <S.CancelBtn onClick={props.onClickCancel}>취소</S.CancelBtn>}
         <S.Btn onClick={props.isEdit ? props.onClickUpdate : props.onClickWrite}>
           {props.isEdit ? "수정" : "등록"}
         </S.Btn>
