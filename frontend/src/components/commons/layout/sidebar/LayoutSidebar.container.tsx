@@ -11,9 +11,9 @@ export default function LayoutSidebar() {
   const { data } = useQuery<Pick<IQuery, "fetchLoginUser">>(FETCH_USER);
 
   const onClickMenu = (event: MouseEvent<HTMLButtonElement>) => {
-    router.push((event.target as HTMLButtonElement).id);
     const currentMenu = (event.target as HTMLButtonElement).id;
     setCurrentMenu(currentMenu);
+    router.push((event.target as HTMLButtonElement).id);
   };
 
   return <LayoutSideBarUI currentMenu={currentMenu} onClickMenu={onClickMenu} data={data} />;

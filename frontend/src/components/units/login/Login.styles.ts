@@ -15,13 +15,12 @@ export const Wrapper = styled.section`
   }
 `;
 
-export const Title = styled.h1`
-  font-size: 2.25rem;
-  font-weight: 500;
-  color: black;
-  text-align: center;
+export const SubTitle = styled.h3`
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
-export const SubTitle = styled.h3``;
+
 export const MainWrapper = styled.main`
   width: 70%;
   color: black;
@@ -59,24 +58,21 @@ export const Radio = styled.input`
 `;
 
 export const SocialLoginWrapper = styled.div`
-  width: 40%;
+  width: 60%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   margin: auto;
-  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  padding-top: 3rem;
+  @media ${breakPoints.mobile} {
+    width: 50vw;
+  }
 `;
 
-export const ButtonWrapper = styled.div`
-  /* width: 25.938rem; */
-  margin: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
+export const FooterWrapper = styled.section`
+  padding-top: 3rem;
 
-export const FooterWrapper = styled.div`
-  margin: 30px;
   @media ${breakPoints.mobile} {
     width: 100vw;
   }
@@ -88,35 +84,29 @@ export const RowWrapper = styled.div`
   justify-content: space-between;
   margin: auto;
   margin-bottom: 1.25rem;
+
+  @media ${breakPoints.mobile} {
+    width: 80vw;
+  }
 `;
 
 export const FooterText = styled.text`
   width: 80%;
   color: #888888;
-  font-size: 1.125rem;
+  font-size: 1rem;
+  @media ${breakPoints.tablet} {
+    font-size: 0.8rem;
+  }
 `;
 
 export const FooterButton = styled.div`
   width: 50%;
   color: black;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: bold;
   justify-content: flex-end;
   cursor: pointer;
-`;
-
-export const SubmitButton = styled.button`
-  width: 100%;
-  height: 4rem;
-  background-color: #33413e;
-  border: none;
-  color: white;
-  font-weight: 700;
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-  cursor: pointer;
-
-  @media ${breakPoints.mobile} {
-    width: 100%;
+  @media ${breakPoints.tablet} {
+    font-size: 0.8rem;
   }
 `;

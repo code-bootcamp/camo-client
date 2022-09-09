@@ -1,5 +1,20 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../../styles/media";
 
+export const Wrapper = styled.section`
+  width: 50vw;
+  height: 100vh !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  padding-top: 3rem;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
+`;
 export const SignUpWrapper = styled.section`
   width: 50%;
   background-color: white;
@@ -14,7 +29,12 @@ export const Title = styled.h1`
   text-align: center;
 `;
 export const SubTitle = styled.h3`
-  color: #c4c4c4;
+  @media ${breakPoints.tablet} {
+    font-size: 1rem;
+  }
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const MainWrapper = styled.main`
@@ -25,9 +45,16 @@ export const MainWrapper = styled.main`
 `;
 
 export const RowWrapper = styled.div`
+  width: 80%;
   display: flex;
   flex-direction: row;
-  text-align: left;
+  justify-content: space-between;
+  margin: auto;
+  margin-bottom: 1.25rem;
+
+  @media ${breakPoints.mobile} {
+    width: 80vw;
+  }
 `;
 
 export const Label = styled.label`
@@ -51,6 +78,7 @@ export const Button = styled.button`
   height: 3rem;
   border: none;
   margin-left: 2rem;
+  /* border-radius: 5px; */
   cursor: pointer;
 `;
 
@@ -90,20 +118,25 @@ export const LoginButton = styled.div`
 `;
 
 export const SubmitButton = styled.button`
-  width: 61%;
-  height: 3rem;
-  margin-bottom: 3rem;
-  margin-left: 2.5rem;
-  border-radius: 5px;
-  cursor: pointer;
-  border: none;
+  width: 100%;
+  height: 3.5rem;
   background-color: #33413e;
+  border: none;
   color: white;
-  font-size: 1.2rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+
+  @media ${breakPoints.mobile} {
+    width: 80vw;
+    margin: auto;
+  }
 `;
 
 export const Form = styled.form`
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -112,7 +145,7 @@ export const Form = styled.form`
 
 export const Error = styled.div`
   width: 100%;
-  height: 30px;
+  height: 0.1rem;
   font-size: 12px;
   color: red;
 `;

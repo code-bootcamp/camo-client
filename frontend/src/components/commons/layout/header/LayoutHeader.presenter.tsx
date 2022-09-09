@@ -53,7 +53,7 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
               {props.accessToken ? (
                 <Link href="/myPage/myLike">
                   <a>
-                    <MenuFonts>My page</MenuFonts>
+                    <MenuFonts>MY PAGE</MenuFonts>
                   </a>
                 </Link>
               ) : (
