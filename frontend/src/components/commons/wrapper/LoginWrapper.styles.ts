@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../styles/media";
 
 export const Wrapper = styled.main`
-  width: 80%;
+  width: 100vw;
   display: flex;
   margin: auto;
   flex-direction: row;
@@ -13,9 +13,11 @@ export const Wrapper = styled.main`
   }
 `;
 export const Title = styled.h1`
-  font-weight: 500;
-  color: black;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
 `;
 export const SideWrapper = styled.section`
   width: 40%;
@@ -61,7 +63,7 @@ export const Input = styled.input`
   width: 100%;
   height: 3rem;
   border: 1px solid #d9d9d9;
-  border-radius: 1rem;
+  border-radius: 4px;
   display: flex;
   margin: auto;
   padding-left: 1rem;
@@ -89,12 +91,13 @@ export const SubmitButton = styled.button`
   height: 3.5rem;
   background-color: #33413e;
   border: none;
-  border-radius: 1rem;
+  border-radius: 4px;
   color: white;
-  font-weight: 700;
-  font-size: 1.25rem;
   margin-bottom: 0.5rem;
   cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 500;
 
   @media ${breakPoints.mobile} {
     width: 80vw;

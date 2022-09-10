@@ -9,7 +9,6 @@ export const Wrapper = styled.section`
   align-items: center;
   flex-direction: column;
   background-color: white;
-  padding-top: 4rem;
 
   @media ${breakPoints.mobile} {
     width: 100%;
@@ -18,6 +17,8 @@ export const Wrapper = styled.section`
 
 export const SubTitle = styled.h3`
   padding-bottom: 1rem;
+  color: #333333;
+
   @media ${breakPoints.mobile} {
     display: none;
   }
@@ -90,6 +91,7 @@ export const SocialLoginWrapper = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   margin: auto;
+  margin-right: 20px;
   /* padding-bottom: 2rem; */
   padding-top: 2rem;
   @media ${breakPoints.mobile} {

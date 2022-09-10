@@ -6,8 +6,8 @@ interface ISubmitButtonProps {
   type?: (String & ("button" | "submit" | "reset")) | undefined;
 }
 
-const Button = styled.button`
-  width: 16.25rem;
+const SubmitButton = styled.button`
+  /* width: 16.25rem;
   height: 4rem;
   background-color: #33413e;
   border: none;
@@ -15,13 +15,19 @@ const Button = styled.button`
   font-weight: 700;
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
-  cursor: pointer;
+  cursor: pointer; */
+  display: block;
+  padding: 0px 10px;
+  text-align: center;
+  overflow: hidden;
+  width: 240px;
+  height: 56px;
+  border-radius: 3px;
+  color: rgb(255, 255, 255);
+  background-color: #1e3932;
+  border: 0px none;
 `;
 
-export default function SubmitButton(props: ISubmitButtonProps) {
-  return (
-    <Button onClick={props.onClick} type={props.type}>
-      {props.title}
-    </Button>
-  );
+export default function SubmitButtonFunc() {
+  return <SubmitButton></SubmitButton>;
 }
