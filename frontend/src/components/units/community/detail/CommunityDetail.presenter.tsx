@@ -1,3 +1,5 @@
+import CommentList from "../../comment/list/CommentList.container";
+import CommentWrite from "../../comment/write/CommentWrite.container";
 import * as S from "./CommunityDetail.styles";
 
 export default function CommunityDetailUI() {
@@ -39,6 +41,8 @@ export default function CommunityDetailUI() {
       <hr />
 
       <div> 댓글 컴포넌트 삽입하기 </div>
+      <CommentWrite />
+      <CommentList />
     </S.Wrapper>
   );
 }

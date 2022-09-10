@@ -10,19 +10,19 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  background-color: #3c565b;
+  background-color: #33413e;
 
   @media ${breakPoints.mobile} {
     display: flex;
-    background-color: #3c565b;
+    background-color: #454545;
     padding: 0 5%;
   }
 `;
 export const HeaderWrapper = styled.div`
   height: 5rem;
-  width: 1200px;
+  width: 1500px;
   padding: 0 5%;
-  background-color: #3c565b;
+  background-color: #33413e;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -30,7 +30,7 @@ export const HeaderWrapper = styled.div`
   position: relative;
   @media ${breakPoints.mobile} {
     display: flex;
-    background-color: #3c565b;
+    background-color: #454545;
   }
 `;
 
@@ -42,7 +42,7 @@ export const LogoMenuWrapper = styled.div`
 `;
 
 export const Logo = styled.img`
-  height: 4rem;
+  height: 3.3rem;
   margin-right: 2rem;
   margin-top: 1.2rem;
 `;
@@ -56,22 +56,22 @@ export const MenuWrapper = styled.div`
 `;
 
 export const MenuFonts = styled.div`
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  margin: 1rem;
+  margin: 0.8rem;
   color: white;
   :hover {
     color: white;
     font-weight: 800;
     border-bottom: 1px solid white;
   }
-  @media screen and (max-width: 767px) {
+  @media ${breakPoints.mobile} {
     display: none;
   }
 `;
 
 export const LoginWrapper = styled.div`
-  width: 7rem;
+  width: 8rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -87,7 +87,7 @@ export const LoginButton = styled.button`
   font-style: normal;
   font-weight: 600;
   font-size: 0.66rem;
-  background-color: #3c565b;
+  background-color: #33413e;
   color: white;
   cursor: pointer;
   border: none;
@@ -104,7 +104,14 @@ export const LoginButton = styled.button`
   }
 `;
 
-export const LoginUser = styled.h3``;
+export const LoginUser = styled.h3`
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
 
 export const MenuTab = styled(MenuOutlined)`
   display: none;

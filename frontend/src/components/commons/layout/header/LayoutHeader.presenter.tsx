@@ -1,3 +1,4 @@
+import { AliwangwangOutlined, SmileOutlined, StarOutlined, UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import {
   HeaderWrapper,
@@ -64,7 +65,11 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
 
           {props.accessToken ? (
             <LoginWrapper>
-              <LoginUser>{props.data?.fetchLoginUser.name}님</LoginUser>
+              <LoginUser>
+                <UserOutlined />
+                &nbsp;
+                {props.data?.fetchLoginedUser.name}님
+              </LoginUser>
 
               <LoginButton onClick={props.onClickLogout}>로그아웃</LoginButton>
               <MenuTab />

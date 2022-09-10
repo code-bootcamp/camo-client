@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 `;
 
 export const BodyWrapper = styled.div`
-  width: 1200px;
+  width: 100%;
   padding: 0 5%;
 
   /* background-color: pink; */
@@ -82,13 +82,13 @@ export const WriteBtn = styled.button`
 `;
 
 export const ItemWrapper = styled.div`
+  width: 1200px;
   display: grid;
   grid-template-columns: repeat(2, 50%);
   background-color: #ffffff;
-  padding: 2% 0 0 2%;
-
-  @media screen and (max-width: 767px) {
-    // 모바일
+  padding: 3%;
+  /* border: 1px solid red; */
+  @media ${breakPoints.mobile} {
     display: grid;
     grid-template-columns: repeat(1, 500px);
   }

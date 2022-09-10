@@ -12,8 +12,8 @@ export function useAuth() {
       restoreAccessToken.toPromise().then((newAccessToken) => {
         console.log(newAccessToken);
         if (!newAccessToken) {
-          alert("로그인을 먼저 해주세요.");
           router.push("/login");
+          alert("로그인을 먼저 해주세요.");
         }
       });
     }
