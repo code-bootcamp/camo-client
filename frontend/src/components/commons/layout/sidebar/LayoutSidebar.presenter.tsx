@@ -21,7 +21,7 @@ export default function LayoutSideBarUI(props: ILayoutSidebarUIProps) {
           <B.UserWrapper>
             <B.Profile src="/profile.jpeg" />
             <B.ColumnWrapper>
-              <B.UserName>{props.data?.fetchLoginUser.name}님</B.UserName>
+              <B.UserName>{props.data?.fetchLoginedUser.name}님</B.UserName>
               <Link href="/myPage/myEdit">
                 <B.UserButton>
                   <a>회원정보수정</a>

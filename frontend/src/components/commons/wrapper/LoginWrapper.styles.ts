@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../styles/media";
 
 export const Wrapper = styled.main`
-  width: 100%;
+  width: 80%;
   display: flex;
   margin: auto;
   flex-direction: row;
@@ -15,6 +15,7 @@ export const Wrapper = styled.main`
 export const Title = styled.h1`
   font-weight: 500;
   color: black;
+  margin-bottom: 3rem;
 `;
 export const SideWrapper = styled.section`
   width: 40%;
@@ -59,7 +60,8 @@ export const SelectButton = styled.button`
 export const Input = styled.input`
   width: 100%;
   height: 3rem;
-  border: 2px solid #d9d9d9;
+  border: 1px solid #d9d9d9;
+  border-radius: 1rem;
   display: flex;
   margin: auto;
   padding-left: 1rem;
@@ -69,10 +71,10 @@ export const Input = styled.input`
   }
 `;
 
-export const SocialLogin = styled.img`
-  width: 25%;
-  height: 20%;
-  cursor: pointer;
+export const SocialA = styled.a`
+  width: 100%;
+  height: 100%;
+  margin-bottom: 21px;
 `;
 
 export const LoginButton = styled.div`
@@ -87,6 +89,7 @@ export const SubmitButton = styled.button`
   height: 3.5rem;
   background-color: #33413e;
   border: none;
+  border-radius: 1rem;
   color: white;
   font-weight: 700;
   font-size: 1.25rem;
@@ -104,4 +107,5 @@ export const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-top: 3rem;
 `;

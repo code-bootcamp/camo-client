@@ -2,13 +2,14 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../styles/media";
 
 export const Wrapper = styled.section`
-  width: 50vw;
+  width: 50%;
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: white;
-  padding-top: 3rem;
+  padding-top: 4rem;
 
   @media ${breakPoints.mobile} {
     width: 100%;
@@ -16,13 +17,14 @@ export const Wrapper = styled.section`
 `;
 
 export const SubTitle = styled.h3`
+  padding-bottom: 1rem;
   @media ${breakPoints.mobile} {
     display: none;
   }
 `;
 
 export const MainWrapper = styled.main`
-  width: 70%;
+  width: 50%;
   color: black;
   border-radius: 1.25rem;
   margin: auto;
@@ -57,14 +59,39 @@ export const Radio = styled.input`
   font-size: 1.5rem;
 `;
 
-export const SocialLoginWrapper = styled.div`
+export const GoogleLogin = styled.img`
+  width: 72%;
+  height: 80%;
+  cursor: pointer;
+  /* margin-right: 10px; */
+  @media ${breakPoints.mobile} {
+    width: 15vw;
+    margin-right: 1rem;
+  }
+
+  @media (max-width: 700px) {
+    width: 15vw;
+    margin-right: 0.625rem;
+  }
+`;
+
+export const SocialLogin = styled.img`
   width: 60%;
+  height: 100%;
+  cursor: pointer;
+  @media ${breakPoints.mobile} {
+    width: 13vw;
+  }
+`;
+
+export const SocialLoginWrapper = styled.div`
+  width: 80%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   margin: auto;
-  padding-bottom: 3rem;
-  padding-top: 3rem;
+  /* padding-bottom: 2rem; */
+  padding-top: 2rem;
   @media ${breakPoints.mobile} {
     width: 50vw;
   }
