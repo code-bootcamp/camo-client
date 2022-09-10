@@ -1,9 +1,9 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../../commons/store";
-import { IMutation, IQuery } from "../../../../commons/types/generated/types";
+import { IMutation } from "../../../../commons/types/generated/types";
 import LayoutHeaderUI from "./LayoutHeader.presenter";
-import { FETCH_USER, LOGOUT_USER } from "./LayoutHeader.queries";
+import { FETCH_LOGINED_USER, FETCH_USER, LOGOUT_USER } from "./LayoutHeader.queries";
 
 export default function LayoutHeader() {
   const [accessToken] = useRecoilState(accessTokenState);
@@ -13,7 +13,7 @@ export default function LayoutHeader() {
   // });
   // const { data } = useQuery<Pick<IQuery, "fetchLoginUsers">>(FETCH_USER);
   // const { data } = useQuery<Pick<IQuery, "fetchLoginUser">>(FETCH_USER);
-  const { data } = useQuery(FETCH_USER);
+  const { data } = useQuery(FETCH_LOGINED_USER);
 
   const onClickLogout = async () => {
     try {

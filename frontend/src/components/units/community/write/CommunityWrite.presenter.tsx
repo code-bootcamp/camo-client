@@ -19,7 +19,7 @@ export default function CommunityWriteUI(props) {
             <button
               key="closeModal"
               id="modalClose"
-              type="primary"
+              // type="primary"
               onClick={props.onClickAddressModal}
             >
               취소

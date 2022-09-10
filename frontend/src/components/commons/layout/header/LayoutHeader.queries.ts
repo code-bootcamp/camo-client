@@ -12,9 +12,9 @@ import { gql } from "@apollo/client";
 //   }
 // `;
 
-export const FETCH_USER = gql`
-  query fetchLoginUser {
-    fetchLoginUser {
+export const FETCH_LOGINED_USER = gql`
+  query fetchLoginedUser {
+    fetchLoginedUser {
       id
       email
       name
@@ -23,15 +23,13 @@ export const FETCH_USER = gql`
   }
 `;
 
-// export const FETCH_USER = gql`
-//   query fetchLoginUsers {
-//     fetchLoginUsers {
-//       id
-//       email
-//       name
-//     }
-//   }
-// `;
+export const FETCH_USER = gql`
+  query fetchUser {
+    fetchUser {
+      email
+    }
+  }
+`;
 
 // export const FETCH_USER = gql`
 //   query fetchUsers {

@@ -1,8 +1,9 @@
 import { useMutation } from "@apollo/client";
+import { Modal } from "antd";
 import { useRouter } from "next/router";
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { IMutationCreateBoardArgs } from "../../../../commons/types/generated/types";
+import useAuth from "../../../commons/hooks";
 import CommunityWriteUI from "./CommunityWrite.presenter";
 import { CREATE_BOARD } from "./CommunityWrite.queries";
 
@@ -11,13 +12,13 @@ declare const window: typeof globalThis & {
 };
 
 export default function CommunityWrite() {
+  useAuth();
   const router = useRouter();
 
   const [isAddressOpen, setIsAddressOpen] = useState(false);
   const [fileUrls, setFileUrls] = useState(["", "", ""]);
 
-  const [createBoard] =
-    useMutation<Pick<IMutationCreateBoardArgs, "createBoardInput">>(CREATE_BOARD);
+  const [createBoard] = useMutation(CREATE_BOARD);
 
   const { register, handleSubmit, setValue, trigger, formState } = useForm({
     mode: "onChange",
@@ -56,7 +57,7 @@ export default function CommunityWrite() {
     }
   };
   const onClickCreate = async (data: any) => {
-    console.log("1");
+    console.log("되니?");
     try {
       const result = await createBoard({
         variables: {
@@ -65,18 +66,18 @@ export default function CommunityWrite() {
             contents: data.contents,
             zipcode: data.zipcode,
             address: data.address,
-            // addressDetail: data.addressDetail,
-            tags: data.tags?.split(","),
-            images: [...fileUrls],
+            addressDetail: data.addressDetail,
+            tags: data.tags.split(","),
+            image: [...fileUrls],
           },
         },
       });
       console.log(result);
       router.push("/community");
       alert("등록에 성공하였습니다!!");
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-      alert("실패!");
+      Modal.error({ content: error.message });
     }
   };
 
