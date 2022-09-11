@@ -18,7 +18,7 @@ export const LikeWrapper = styled.main`
   padding-right: 10px;
 
   @media ${breakPoints.mobile} {
-    width: 60%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;

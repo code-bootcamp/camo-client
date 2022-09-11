@@ -13,7 +13,8 @@ export const globalStyles = css`
     background-color: #fff;
     color: #555;
     /* font-family: "NanumBarunGothic", sans-serif; */
-    font-family: "Anton", sans-serif;
+    font-family: "Anton", "PretendardVariable", sans-serif;
+    /* font-family: "PretendardVariable", sans-serif; */
     src: url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
     /* src: url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nanum+Pen+Script&display=swap"); */
   }
@@ -34,5 +35,10 @@ export const globalStyles = css`
   @font-face {
     font-family: "NanumBarunGothic";
     src: url("/fonts/NanumBarunGothic.otf");
+  }
+
+  @font-face {
+    font-family: "PretendardVariable";
+    src: url("fonts/PretendardVariable.ttf");
   }
 `;

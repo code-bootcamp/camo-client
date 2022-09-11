@@ -255,7 +255,7 @@ export type IMutationDeleteCommentArgs = {
 
 
 export type IMutationDeleteLoginUserArgs = {
-  email: Scalars['String'];
+  password: Scalars['String'];
 };
 
 
@@ -348,7 +348,9 @@ export type IQuery = {
   fetchBoards: Array<IBoard>;
   fetchBoardsCreatedAt: Array<IBoard>;
   fetchBoardsLikeCount: Array<IBoard>;
+  fetchBoardsNumber: Scalars['Int'];
   fetchCafeList: ICafeList;
+  fetchCafeListNumber: Scalars['Int'];
   fetchCafeLists: Array<ICafeList>;
   fetchCafeListsCreatedAt: Array<ICafeList>;
   fetchCafeListsFavoriteCafe: Array<ICafeList>;

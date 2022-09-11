@@ -60,7 +60,7 @@ export const SelectButton = styled.button`
 `;
 
 export const Input = styled.input`
-  width: 100%;
+  width: 25rem;
   height: 3rem;
   border: 1px solid #d9d9d9;
   border-radius: 4px;
@@ -89,7 +89,7 @@ export const LoginButton = styled.div`
 export const SubmitButton = styled.button`
   width: 100%;
   height: 3.5rem;
-  background-color: #33413e;
+  background-color: #1e3932;
   border: none;
   border-radius: 4px;
   color: white;

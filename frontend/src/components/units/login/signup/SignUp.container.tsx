@@ -25,7 +25,7 @@ const schema = yup.object({
     .string()
     .required("휴대폰 번호를 입력해주세요.")
     .matches(/^\d{3}\d{3,4}\d{4}$/, "휴대폰 형식에 알맞지 않습니다."),
-  phoneNumberCheck: yup.string().required("휴대폰 번호를 인증해주세요."),
+  phoneNumberCheck: yup.string().required("휴대폰 인증 번호가 필요합니다."),
 });
 
 export default function SignUp() {
@@ -57,9 +57,10 @@ export default function SignUp() {
       await sendNumber({
         variables: { phoneNumber },
       });
+      if (!phoneNumber) return;
       alert("인증번호가 전송되었습니다.");
     } catch (error) {
-      alert(error);
+      alert("휴대폰 번호를 입력해주세요");
     }
   };
 

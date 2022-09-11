@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../styles/media";
 
 export const Wrapper = styled.section`
-  width: 50%;
+  width: 50rem;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -72,7 +72,7 @@ export const GoogleLogin = styled.img`
 
   @media (max-width: 700px) {
     width: 15vw;
-    margin-right: 0.625rem;
+    margin-right: 0.4rem;
   }
 `;
 
@@ -96,6 +96,7 @@ export const SocialLoginWrapper = styled.div`
   padding-top: 2rem;
   @media ${breakPoints.mobile} {
     width: 50vw;
+    margin: auto;
   }
 `;
 
@@ -126,6 +127,9 @@ export const FooterText = styled.text`
   @media ${breakPoints.tablet} {
     font-size: 0.8rem;
   }
+  @media ${breakPoints.mobile} {
+    font-size: 0.8rem;
+  }
 `;
 
 export const FooterButton = styled.div`
@@ -136,6 +140,9 @@ export const FooterButton = styled.div`
   justify-content: flex-end;
   cursor: pointer;
   @media ${breakPoints.tablet} {
+    font-size: 0.8rem;
+  }
+  @media ${breakPoints.mobile} {
     font-size: 0.8rem;
   }
 `;

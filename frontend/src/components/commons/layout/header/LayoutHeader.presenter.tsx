@@ -82,7 +82,7 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
                 </a>
               </Link>
 
-              <Link href="/login/signUp">
+              <Link href="/login/selectSignUp">
                 <a>
                   <LoginButton>회원가입</LoginButton>
                 </a>

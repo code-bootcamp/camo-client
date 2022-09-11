@@ -54,11 +54,6 @@ const Select = styled.a`
   :hover label {
     color: white;
   }
-
-  :hover CafeIcon,
-  UserIcon {
-    display: none;
-  }
 `;
 
 const Temp = styled.div`
@@ -75,17 +70,11 @@ const CafeIcon = styled.img`
   padding-bottom: 10px;
   width: 70px;
   height: 70px;
-  :hover {
-    display: none;
-  }
 `;
 
 const UserIcon = styled.img`
   width: 70px;
   height: 70px;
-  :hover {
-    display: none;
-  }
 `;
 
 export default function SelectSignUp() {
@@ -99,14 +88,14 @@ export default function SelectSignUp() {
             <Link href="/login/signUp">
               <Select>
                 <Label>카페 사장님</Label>
-                <CafeIcon src="/images/SignUp/Cafe_Black.svg" />
+                <CafeIcon src="/images/signUp/Cafe_Black.svg" />
                 {/* <CafeIcon src="/images/SignUp/Cafe_White.svg" /> */}
               </Select>
             </Link>
             <Link href="/login/signUp">
               <Select>
                 <Label>일반 회원</Label>
-                <UserIcon src="/images/SignUp/User_Black.svg" />
+                <UserIcon src="/images/signUp/User_Black.svg" />
                 {/* <UserIcon src="/images/SignUp/User_White.svg" /> */}
               </Select>
             </Link>

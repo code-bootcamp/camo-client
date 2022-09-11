@@ -94,7 +94,7 @@ export default function MyDeletePage() {
   useAuth();
   const router = useRouter();
   const [, setAccessToken] = useRecoilState(accessTokenState);
-  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [deleteLoginUser] = useMutation<
     Pick<IMutation, "deleteLoginUser">,
     IMutationDeleteLoginUserArgs
@@ -102,16 +102,16 @@ export default function MyDeletePage() {
     fetchPolicy: "network-only",
   });
 
-  const onChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
+  const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
   };
 
   const onClickDelete = async () => {
     try {
       await deleteLoginUser({
-        variables: { email },
+        variables: { password },
       });
-      if (!email) {
+      if (!password) {
         alert("이메일이 다릅니다. 다시 입력해주세요.");
         return;
       }
@@ -140,9 +140,13 @@ export default function MyDeletePage() {
               삭제되는 내용을 확인하시고 필요한 데이터는 미리 백업을 해주세요. <br /> <br />
               현재 예약한 데이터들이 모두 삭제되며, 예약한 내역들 또한 모두 삭제되고, 재가입해도
               자동으로 복구되지 않습니다.
-              <InputTitle>이메일 입력</InputTitle>
+              <InputTitle>비밀번호 입력</InputTitle>
               <InputWrapper>
-                <Input type="text" placeholder="이메일을 입력해주세요" onChange={onChangeEmail} />
+                <Input
+                  type="password"
+                  placeholder="비밀번호를 입력해주세요"
+                  onChange={onChangePassword}
+                />
               </InputWrapper>
               <ButtonWrapper>
                 <CancelButton>취소</CancelButton>

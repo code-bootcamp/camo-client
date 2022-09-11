@@ -8,7 +8,7 @@ import { FETCH_USER } from "./LayoutSidebar.queries";
 export default function LayoutSidebar() {
   const router = useRouter();
   const [currentMenu, setCurrentMenu] = useState("");
-  const { data } = useQuery<Pick<IQuery, "fetchLoginUser">>(FETCH_USER);
+  const { data } = useQuery<Pick<IQuery, "fetchLoginedUser">>(FETCH_USER);
 
   const onClickMenu = (event: MouseEvent<HTMLButtonElement>) => {
     const currentMenu = (event.target as HTMLButtonElement).id;
