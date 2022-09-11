@@ -7,18 +7,19 @@ export default function SignUpUI(props: ISignUpUIProps) {
   return (
     <>
       <B.Wrapper>
-        <B.SideWrapper>
+        {/* <B.SideWrapper>
           <B.ColumnWrapper>
             <B.SubLogo>당신이 원하는 카페들을 모은</B.SubLogo>
             <B.SideLogo src="/CAMO.png" />
           </B.ColumnWrapper>
-        </B.SideWrapper>
+        </B.SideWrapper> */}
 
-        <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
+        <S.Form onSubmit={props.handleSubmit(props.onClickSubmit)}>
           <S.Wrapper>
+            <S.TopMargin />
             <B.Title>회원가입</B.Title>
             <S.SubTitle>사람들이 말하는 자신의 추억이 있는 이야기들을 들어보아요</S.SubTitle>
-            {/* <S.Margin /> */}
+            <S.Margin />
             <S.RowWrapper>
               <B.Input type="text" placeholder="이름" {...props.register("name")} />
               <S.Empty />
@@ -68,9 +69,10 @@ export default function SignUpUI(props: ISignUpUIProps) {
               </S.GreenButton>
             </S.RowWrapper>
             <S.Error>{props.formState.errors.phoneNumberCheck?.message}</S.Error>
-            <S.Margin />
+            <S.Line />
+            {/* <Checkbox /> */}
             <S.SubmitButton>회원가입</S.SubmitButton>
-            <hr />
+            여기 약관동의 추가하기(3차)
             <S.FooterWrapper>
               <S.FooterText>이미 아이디가 있으신가요?</S.FooterText>
               <Link href="/login">
@@ -81,7 +83,7 @@ export default function SignUpUI(props: ISignUpUIProps) {
             </S.FooterWrapper>
           </S.Wrapper>
           <S.Margin />
-        </form>
+        </S.Form>
       </B.Wrapper>
     </>
   );

@@ -8,7 +8,7 @@ export const Wrapper = styled.section`
   flex-direction: row;
   margin: 0 auto;
   @media ${breakPoints.mobile} {
-    width: 50%;
+    width: 50vw;
   }
 `;
 
@@ -25,7 +25,7 @@ export const SideBar = styled.section`
 `;
 
 export const Body = styled.main`
-  width: 70%;
+  width: 100%;
   background-color: white;
 `;
 
@@ -61,8 +61,14 @@ export const StayMenu = styled.h3`
   color: black;
   width: 80%;
   margin: auto;
-  padding-top: 1.25rem;
-  padding-bottom: 0.625rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  font-weight: 500;
+  font-size: 20px;
+  color: rgb(51, 51, 51);
+  letter-spacing: -0.5px;
+
   @media ${breakPoints.mobile} {
     display: none;
   }

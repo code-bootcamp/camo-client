@@ -140,7 +140,6 @@ export type ICreateCafeListInput = {
 export type ICreateCommentInput = {
   boardId: Scalars['String'];
   comment?: InputMaybe<Scalars['String']>;
-  userId: Scalars['String'];
 };
 
 export type IFavoriteCafe = {
@@ -177,6 +176,8 @@ export type IMutation = {
   loginUser: Scalars['String'];
   logoutUser: Scalars['String'];
   restoreAccessToken: Scalars['String'];
+  restoreBoard: Scalars['Boolean'];
+  restoreCafeList: Scalars['Boolean'];
   restoreUser: Scalars['Boolean'];
   sendTokenToSMS: Scalars['String'];
   toggleFavoriteCafes: Scalars['Boolean'];
@@ -264,6 +265,16 @@ export type IMutationLoginUserArgs = {
 };
 
 
+export type IMutationRestoreBoardArgs = {
+  boardId: Scalars['String'];
+};
+
+
+export type IMutationRestoreCafeListArgs = {
+  cafeListId: Scalars['String'];
+};
+
+
 export type IMutationRestoreUserArgs = {
   email: Scalars['String'];
 };
@@ -288,7 +299,6 @@ export type IMutationUpdateBoardArgs = {
   boardId: Scalars['String'];
   nickName: Scalars['String'];
   updateBoardInput: IUpdateBoardInput;
-  userId: Scalars['String'];
 };
 
 
@@ -336,17 +346,20 @@ export type IQuery = {
   fetchBoard: IBoard;
   fetchBoardWithDeleted: Array<IBoard>;
   fetchBoards: Array<IBoard>;
+  fetchBoardsCreatedAt: Array<IBoard>;
+  fetchBoardsLikeCount: Array<IBoard>;
   fetchCafeList: ICafeList;
   fetchCafeLists: Array<ICafeList>;
+  fetchCafeListsCreatedAt: Array<ICafeList>;
+  fetchCafeListsFavoriteCafe: Array<ICafeList>;
   fetchComments: Array<IComment>;
-  fetchLike: IBoard;
   fetchLoginedUser: IUser;
   fetchLogs: Array<IChatMessage>;
-  fetchMyBoards: IBoard;
   fetchUser: IUser;
   fetchUserWithDeleted: Array<IUser>;
   fetchUsers: Array<IUser>;
   searchBoards: Array<IBoard>;
+  searchMyBoards: Array<IBoard>;
 };
 
 
@@ -371,6 +384,18 @@ export type IQueryFetchBoardsArgs = {
 };
 
 
+export type IQueryFetchBoardsCreatedAtArgs = {
+  page?: InputMaybe<Scalars['Float']>;
+  sortBy?: InputMaybe<Scalars['String']>;
+};
+
+
+export type IQueryFetchBoardsLikeCountArgs = {
+  page?: InputMaybe<Scalars['Float']>;
+  sortBy?: InputMaybe<Scalars['String']>;
+};
+
+
 export type IQueryFetchCafeListArgs = {
   cafeListId: Scalars['String'];
 };
@@ -381,12 +406,19 @@ export type IQueryFetchCafeListsArgs = {
 };
 
 
-export type IQueryFetchCommentsArgs = {
-  boardId: Scalars['String'];
+export type IQueryFetchCafeListsCreatedAtArgs = {
+  page?: InputMaybe<Scalars['Float']>;
+  sortBy?: InputMaybe<Scalars['String']>;
 };
 
 
-export type IQueryFetchLikeArgs = {
+export type IQueryFetchCafeListsFavoriteCafeArgs = {
+  page?: InputMaybe<Scalars['Float']>;
+  sortBy?: InputMaybe<Scalars['String']>;
+};
+
+
+export type IQueryFetchCommentsArgs = {
   boardId: Scalars['String'];
 };
 
@@ -396,17 +428,17 @@ export type IQueryFetchLogsArgs = {
 };
 
 
-export type IQueryFetchMyBoardsArgs = {
-  search?: InputMaybe<Scalars['String']>;
-};
-
-
 export type IQueryFetchUserArgs = {
   email: Scalars['String'];
 };
 
 
 export type IQuerySearchBoardsArgs = {
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type IQuerySearchMyBoardsArgs = {
   search?: InputMaybe<Scalars['String']>;
 };
 
@@ -454,7 +486,6 @@ export type IUpdateCafeListInput = {
 export type IUpdateCommentInput = {
   boardId?: InputMaybe<Scalars['String']>;
   comment?: InputMaybe<Scalars['String']>;
-  userId?: InputMaybe<Scalars['String']>;
 };
 
 export type IUpdateUserInput = {
