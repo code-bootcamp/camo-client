@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
 import { FETCH_COMMENTS } from "../list/CommentList.queries";
 import CommentWriteUI from "./CommentWrite.presenter";
@@ -7,7 +7,7 @@ import { CREATE_COMMENT, UPDATE_COMMENT } from "./CommentWrite.queries";
 import { ICommentWriteProps, IUpdateCommentInput } from "./CommentWrite.types";
 
 export default function CommentWrite(props: ICommentWriteProps) {
-  const router = useRouter();
+  // const router = useRouter();
 
   const [comment, setComment] = useState("");
 
@@ -18,22 +18,23 @@ export default function CommentWrite(props: ICommentWriteProps) {
     setComment(event?.target.value);
   };
   const onClickWrite = async () => {
-    if (typeof router.query.communityId !== "string" || !comment) {
-      return;
-    }
+    // if (typeof router.query.communityId !== "string" || !comment) {
+    //   return;
+    // }
 
     try {
       await createComment({
         variables: {
           createCommentInput: {
             comment,
-            boardId: String(router.query.communityId),
-            // userId: String(어디서 가져와야하지?),
+            // boardId: String(router.query.communityId),
+            boardId: String("fb3fc446-ea4e-4b5d-ab69-cb0d3a2271f4"),
           },
           refetchQueries: [
             {
               query: FETCH_COMMENTS,
-              variables: { boardId: router.query.communityId },
+              // variables: { boardId: router.query.communityId },
+              variables: { boardId: "fb3fc446-ea4e-4b5d-ab69-cb0d3a2271f4" },
             },
           ],
         },
@@ -63,7 +64,8 @@ export default function CommentWrite(props: ICommentWriteProps) {
         refetchQueries: [
           {
             query: FETCH_COMMENTS,
-            variables: { boardId: router.query.communityId },
+            // variables: { boardId: router.query.communityId },
+            variables: { boardId: "fb3fc446-ea4e-4b5d-ab69-cb0d3a2271f4" },
           },
         ],
       });

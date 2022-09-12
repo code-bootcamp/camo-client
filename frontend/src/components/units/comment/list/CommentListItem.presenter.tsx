@@ -1,10 +1,10 @@
 // import Modal from "antd/lib/modal/Modal";
 import CommentWrite from "../write/CommentWrite.container";
-import { CommentListItemUIProps } from "./CommentList.types";
+import { ICommentListItemUIProps } from "./CommentList.types";
 import * as S from "./CommentListItem.styles";
 import BasicModal from "./Modal";
 
-export default function CommentListItemUI(props: CommentListItemUIProps) {
+export default function CommentListItemUI(props: ICommentListItemUIProps) {
   return (
     <>
       {props.isOpenModal && (
