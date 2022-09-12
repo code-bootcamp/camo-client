@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../../styles/media";
 
 export const Wrapper = styled.section`
-  width: 50%;
+  width: 50rem;
   /* height: 100vh !important; */
   display: flex;
   justify-content: center;
@@ -12,11 +12,11 @@ export const Wrapper = styled.section`
   padding-top: 3rem;
 
   @media ${breakPoints.mobile} {
-    width: 100%;
+    width: auto;
   }
 `;
 export const SignUpWrapper = styled.section`
-  width: 50%;
+  /* width: 50%; */
   background-color: white;
   padding-top: 3rem;
   /* margin: 0 auto; */
@@ -54,11 +54,13 @@ export const RowWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin: auto;
-  margin-bottom: 1.25rem;
+  /* margin-bottom: 1.25rem; */
   margin-right: 4rem;
 
   @media ${breakPoints.mobile} {
     width: 80vw;
+    margin: auto;
+    /* padding-left: 4rem; */
   }
 `;
 
@@ -85,12 +87,22 @@ export const Button = styled.button`
   margin-left: 2rem;
   border-radius: 4px;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+    width: 5rem;
+    height: 3rem;
+    margin: auto;
+    margin-left: 0.5rem;
+  }
 `;
 
 export const Empty = styled.div`
   width: 5rem;
   height: 3rem;
   margin-left: 2rem;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const GreenButton = styled(Button)`
@@ -104,12 +116,19 @@ export const FooterWrapper = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 2rem;
+  @media ${breakPoints.mobile} {
+    width: 80vw;
+    margin: auto;
+  }
 `;
 export const FooterText = styled.div`
   width: 70%;
   font-weight: 400;
   font-size: 1rem;
   color: #888888;
+  @media ${breakPoints.mobile} {
+    font-size: 13px;
+  }
 `;
 
 export const LoginButton = styled.div`
@@ -117,6 +136,9 @@ export const LoginButton = styled.div`
   font-size: 1rem;
   margin-left: 2rem;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+    font-size: 13px;
+  }
 `;
 
 export const SubmitButton = styled.button`
@@ -131,6 +153,7 @@ export const SubmitButton = styled.button`
   background-color: #1e3932;
   border: 0px none;
   margin-top: 20px;
+  cursor: pointer;
   @media ${breakPoints.mobile} {
     width: 80vw;
     margin: auto;
@@ -147,24 +170,34 @@ export const Form = styled.form`
 `;
 
 export const Error = styled.div`
-  width: 40%;
+  width: 50%;
   height: 0.5rem;
   font-size: 12px;
   color: red;
-  margin-right: 3rem;
-  /* padding-bottom: 1rem; */
+  /* margin-right: 3rem; */
+  padding-bottom: 1.25rem;
+  @media ${breakPoints.mobile} {
+    width: 80vw;
+    margin: auto;
+  }
 `;
 
 export const Line = styled.hr`
   width: 100%;
   /* padding: 10px 0px; */
   border-bottom: 0.5px solid rgb(51, 51, 51);
+  @media ${breakPoints.mobile} {
+    width: 80vw;
+  }
 `;
 
 export const Margin = styled.div`
   margin-top: 2rem;
 `;
 export const TopMargin = styled.div`
-  margin-top: 12rem;
+  margin-top: 10rem;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 export const CheckBox = styled.input``;

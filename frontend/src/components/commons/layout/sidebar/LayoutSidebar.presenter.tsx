@@ -4,7 +4,6 @@ import * as B from "./LayoutSidebar.styles";
 import { ILayoutSidebarUIProps } from "./LayoutSidebar.types";
 
 const SIDE_MENUS = [
-  // { name: "회원정보수정", page: "/myPage/myEdit" },
   { name: "찜목록", page: "/myPage/myLike" },
   { name: "예약내역", page: "/myPage/myReservation" },
   { name: "내가쓴글", page: "#" },
@@ -12,26 +11,26 @@ const SIDE_MENUS = [
 
 export default function LayoutSideBarUI(props: ILayoutSidebarUIProps) {
   const router = useRouter();
-
-  // console.log("LayoutSideBarUI", router.asPath);
   return (
     <>
-      <B.SideBar>
-        <B.SideMenuWrapper>
-          <B.UserWrapper>
-            <B.Profile src="/profile.jpeg" />
-            <B.ColumnWrapper>
-              <B.UserName>{props.data?.fetchLoginedUser.name}님</B.UserName>
-              <Link href="/myPage/myEdit">
-                <B.UserButton>
-                  <a>회원정보수정</a>
-                </B.UserButton>
-              </Link>
-            </B.ColumnWrapper>
-          </B.UserWrapper>
+      <B.Wrapper>
+        <B.SideBar>
           <B.ColumnWrapper>
+            <B.Profile src="/images/myPage/DefaultUserImg.svg" />
+            <B.UserName>{props.data?.fetchLoginedUser.name}님</B.UserName>
+            <Link href="/myPage/myEdit">
+              <B.UserButton>
+                <a>회원정보수정</a>
+              </B.UserButton>
+            </Link>
+          </B.ColumnWrapper>
+          <B.RowWrapper>
+            {/* <B.SideMenuIcon>❤️</B.SideMenuIcon>
+            <B.SideMenuIcon>🗒</B.SideMenuIcon>
+            <B.SideMenuIcon>📝</B.SideMenuIcon> */}
+          </B.RowWrapper>
+          <B.RowWrapper>
             {SIDE_MENUS.map((el) => {
-              console.log("LayoutbarUI", router.asPath, el.page, router.asPath.includes(el.page));
               return (
                 <div key={el.page}>
                   <B.SideMenu
@@ -44,9 +43,9 @@ export default function LayoutSideBarUI(props: ILayoutSidebarUIProps) {
                 </div>
               );
             })}
-          </B.ColumnWrapper>
-        </B.SideMenuWrapper>
-      </B.SideBar>
+          </B.RowWrapper>
+        </B.SideBar>
+      </B.Wrapper>
     </>
   );
 }

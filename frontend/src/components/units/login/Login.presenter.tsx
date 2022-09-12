@@ -20,7 +20,6 @@ export default function LoginUI(props: ILoginUIProps) {
             <S.SubTitle>당신이 아는 카페들을 모은 카모</S.SubTitle>
             <S.MainWrapper>
               <B.Input type="text" placeholder="이메일(아이디)" {...props.register("email")} />
-              <br />
               <Error>{props.formState.errors.email?.message}</Error>
               <B.Input type="password" placeholder="비밀번호" {...props.register("password")} />
               <Error>{props.formState.errors.password?.message}</Error>

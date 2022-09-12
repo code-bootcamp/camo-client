@@ -24,7 +24,7 @@ export const BodyWrapper = styled.main`
 export const RowWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  margin-bottom: 1rem;
+  padding-bottom: 1rem;
 `;
 
 export const LeftContents = styled.section`
@@ -35,7 +35,9 @@ export const LeftContents = styled.section`
   font-weight: 500;
   color: rgb(51, 51, 51);
   line-height: 20px;
-
+  @media ${breakPoints.tablet} {
+    display: none;
+  }
   @media ${breakPoints.mobile} {
     display: none;
   }
@@ -43,6 +45,8 @@ export const LeftContents = styled.section`
 
 export const RightContents = styled.section`
   width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 export const Input = styled.input`
@@ -51,6 +55,9 @@ export const Input = styled.input`
   padding-left: 0.5rem;
   border: 1px solid #848484;
   border-radius: 4px;
+  @media ${breakPoints.tablet} {
+    width: 50vw;
+  }
   @media ${breakPoints.mobile} {
     width: 50vw;
   }
@@ -68,6 +75,9 @@ export const EditButton = styled.button`
   border-radius: 5px;
   border: none;
   cursor: pointer;
+  @media ${breakPoints.tablet} {
+    width: 6rem;
+  }
 `;
 
 export const DeleteButton = styled(EditButton)`
@@ -81,6 +91,10 @@ export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 3rem;
+  @media ${breakPoints.tablet} {
+    padding-top: 0rem;
+    justify-content: space-between;
+  }
   @media ${breakPoints.mobile} {
     padding-top: 0rem;
     width: 50vw;
@@ -90,4 +104,10 @@ export const ButtonWrapper = styled.div`
 export const EmailInput = styled.input`
   width: 50%;
   margin-top: 10px;
+`;
+
+export const Error = styled.div`
+  color: red;
+  font-size: 12px;
+  /* background-color: black; */
 `;

@@ -7,13 +7,6 @@ export default function SignUpUI(props: ISignUpUIProps) {
   return (
     <>
       <B.Wrapper>
-        {/* <B.SideWrapper>
-          <B.ColumnWrapper>
-            <B.SubLogo>당신이 원하는 카페들을 모은</B.SubLogo>
-            <B.SideLogo src="/CAMO.png" />
-          </B.ColumnWrapper>
-        </B.SideWrapper> */}
-
         <S.Form onSubmit={props.handleSubmit(props.onClickSubmit)}>
           <S.Wrapper>
             <S.TopMargin />

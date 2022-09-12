@@ -3,12 +3,15 @@ import { breakPoints } from "../../../../styles/media";
 
 export const Wrapper = styled.section`
   width: 100vw;
-  height: 100vh;
+  /* height: 80vh; */
   display: flex;
   flex-direction: row;
   margin: 0 auto;
-  @media ${breakPoints.mobile} {
+  @media ${breakPoints.tablet} {
     width: 50vw;
+  }
+  @media ${breakPoints.mobile} {
+    width: 0vw;
   }
 `;
 
@@ -25,8 +28,13 @@ export const SideBar = styled.section`
 `;
 
 export const Body = styled.main`
-  width: 100%;
+  width: 70vw;
   background-color: white;
+  padding-top: 100px;
+  @media ${breakPoints.mobile} {
+    width: 100vw;
+    margin: auto;
+  }
 `;
 
 export const MenuWrapper = styled.div`
@@ -75,7 +83,7 @@ export const StayMenu = styled.h3`
 `;
 
 export const Line = styled.hr`
-  border: 0.5px solid #c4c4c4;
+  border: 0.1px solid #c4c4c4;
   width: 80%;
   display: flex;
   justify-content: center;

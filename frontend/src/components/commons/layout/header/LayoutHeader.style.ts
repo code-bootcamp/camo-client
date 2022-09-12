@@ -10,7 +10,8 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  background-color: #33413e;
+  background-color: #1e3932;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
 
   @media ${breakPoints.mobile} {
     display: flex;
@@ -22,12 +23,13 @@ export const HeaderWrapper = styled.div`
   height: 5rem;
   width: 1500px;
   padding: 0 5%;
-  background-color: #33413e;
+  background-color: #1e3932;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   position: relative;
+
   @media ${breakPoints.mobile} {
     display: flex;
     background-color: #454545;
@@ -87,7 +89,7 @@ export const LoginButton = styled.button`
   font-style: normal;
   font-weight: 600;
   font-size: 0.66rem;
-  background-color: #33413e;
+  background-color: #1e3932;
   color: white;
   cursor: pointer;
   border: none;
