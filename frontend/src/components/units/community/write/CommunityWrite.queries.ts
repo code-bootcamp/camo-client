@@ -8,7 +8,6 @@ export const CREATE_BOARD = gql`
       contents
       likeCount
       createdAt
-      deletedAt
       updatedAt
       zipcode
       address
@@ -19,6 +18,7 @@ export const CREATE_BOARD = gql`
       }
       user {
         id
+        name
         nickName
       }
       images {

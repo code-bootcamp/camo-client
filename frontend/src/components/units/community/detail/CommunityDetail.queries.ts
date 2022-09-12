@@ -8,18 +8,23 @@ export const FETCH_BOARD = gql`
       contents
       likeCount
       createdAt
+      zipcode
+      address
+      addressDetail
       tags {
         id
         name
       }
       favoriteBoard {
         id
+        isLike
       }
       user {
         id
         name
+        nickName
       }
-      image {
+      images {
         id
         url
       }
@@ -27,7 +32,18 @@ export const FETCH_BOARD = gql`
         id
         comment
         createdAt
+        user {
+          id
+          name
+          nickName
+        }
       }
     }
+  }
+`;
+
+export const DELETE_BOARD = gql`
+  mutation deleteBoard($boardId: String!) {
+    deleteBoard(boardId: $boardId)
   }
 `;
