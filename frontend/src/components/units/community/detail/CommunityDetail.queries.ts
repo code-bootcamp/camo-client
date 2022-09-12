@@ -32,11 +32,6 @@ export const FETCH_BOARD = gql`
         id
         comment
         createdAt
-        user {
-          id
-          name
-          nickName
-        }
       }
     }
   }

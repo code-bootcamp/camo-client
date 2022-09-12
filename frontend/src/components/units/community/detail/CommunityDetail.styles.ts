@@ -40,9 +40,11 @@ export const ContentsWrapper = styled.div`
 `;
 
 export const MainImg = styled.div`
-  height: 20rem;
-  width: 100%;
+  height: 30rem;
+  width: 70%;
   background-color: #eee;
+  background-image: url("https://images.unsplash.com/photo-1494346480775-936a9f0d0877?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1116&q=80");
+  background-size: contain;
 `;
 
 export const ImgWrapper = styled.div`
@@ -70,6 +72,18 @@ export const CommentIcon = styled(MessageOutlined)``;
 
 export const LikeIcon = styled(LikeOutlined)``;
 
+export const AddressWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  border: 1px solid gray;
+`;
+
+export const MapWrapper = styled.div`
+  width: 22rem;
+  height: 10rem;
+  border: 1px solid gray;
+`;
+
 export const ListBtn = styled.div`
   height: 2rem;
   width: 5rem;
@@ -77,4 +91,5 @@ export const ListBtn = styled.div`
   font-size: 1rem;
   line-height: 2rem;
   background-color: #ddd;
+  cursor: pointer;
 `;

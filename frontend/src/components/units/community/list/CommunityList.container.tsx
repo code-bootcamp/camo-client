@@ -6,10 +6,11 @@ import { FETCH_BOARDS, FETCH_BOARDS_NUMBERS } from "./CommunityList.queries";
 export default function CommunityList() {
   const router = useRouter();
 
-  const { data: dataBoardsCount } = useQuery(FETCH_BOARDS_NUMBERS);
+  const { data: dataBoardsCount, refetch: refetchBoardsNumbers } = useQuery(FETCH_BOARDS_NUMBERS);
   const lastPage = dataBoardsCount ? Math.ceil(dataBoardsCount?.fetchBoardsNumber / 10) : 0;
 
-  const { data, fetchMore, refetch } = useQuery(FETCH_BOARDS);
+  const { data, refetch } = useQuery(FETCH_BOARDS);
+  const { fetchMore } = useQuery(FETCH_BOARDS);
 
   const onClickPage = (event: any) => {
     refetch({ page: Number(event.target.id) });
@@ -33,7 +34,7 @@ export default function CommunityList() {
   };
 
   const onClickDetail = (el: any) => (event) => {
-    router.push(`/community/${el.communityId}`);
+    router.push(`/community/${el.id}`);
   };
 
   return (
@@ -41,6 +42,7 @@ export default function CommunityList() {
       data={data}
       refetch={refetch}
       dataBoardsCount={dataBoardsCount}
+      refetchBoardsNumbers={refetchBoardsNumbers}
       lastPage={lastPage}
       onClickPage={onClickPage}
       onFetchMore={onFetchMore}

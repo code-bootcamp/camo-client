@@ -1,6 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { IQuery, IQueryFetchBoardArgs } from "../../../../commons/types/generated/types";
 import { FETCH_BOARDS } from "../list/CommunityList.queries";
 import CommunityDetailUI from "./CommunityDetail.presenter";
 import { DELETE_BOARD, FETCH_BOARD } from "./CommunityDetail.queries";
@@ -9,9 +8,13 @@ export default function CommunityDetail() {
   const router = useRouter();
   const [deleteBoard] = useMutation(DELETE_BOARD);
 
-  const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(FETCH_BOARD, {
-    variables: { boardId: String(router.query.communityId) },
+  const { data } = useQuery(FETCH_BOARD, {
+    variables: { boardId: router.query.communityId },
+
+    // variables: { boardId: "e4f17275-14df-44bd-8cc0-9b0dde3ff0c4" },
   });
+  console.log(data);
+
   console.log(`데이타"${data}`);
 
   //   const onClickUpdate = () => {
