@@ -1,7 +1,7 @@
 version: "3.3"
 
 services:
-  class_build:
+  cafemoment:
     build:
       context: .
       dockerfile: Dockerfile

@@ -3,11 +3,10 @@ import SignUpUI from "./SignUp.presenter";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { useApolloClient, useMutation, useQuery } from "@apollo/client";
+import { useApolloClient, useMutation } from "@apollo/client";
 import { CHECK_SMS, CHECK_USER_EMAIL, CREATE_USER, SEND_SMS } from "./SignUp.queries";
 import { IFormSignUp } from "./SignUp.types";
 import { useState } from "react";
-import { IQuery } from "../../../../commons/types/generated/types";
 
 const schema = yup.object({
   name: yup.string().required("이름을 입력해 주세요."),
@@ -34,13 +33,6 @@ export default function SignUp() {
   const [sendNumber] = useMutation(SEND_SMS);
   const [checkSMSTokenValid] = useMutation(CHECK_SMS);
   const [checkSMSToken, setCheckSMSToken] = useState(false);
-  //  const { data } = useQuery<Pick<IQuery, "fetchUser">>(CHECK_USER_EMAIL, {
-  //    variables: { checkUserEmail: String(router.query.email) },
-  //  });
-  // const { emailCheck } = useQuery(CHECK_USER_EMAIL);
-
-  // const [phone, setPhone] = useState("")
-  // const [phoneToken, setPhoneToken] = useState()
   // const [count, setCount] = useState("03:00");
 
   const { register, handleSubmit, formState, watch } = useForm({
