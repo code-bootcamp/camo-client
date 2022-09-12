@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const FETCH_BOARDS = gql`
-  query fetchBoards($page: Float) {
+  query fetchBoards($page: Float = 1) {
     fetchBoards(page: $page) {
       id
       title
@@ -20,5 +20,11 @@ export const FETCH_BOARDS = gql`
         url
       }
     }
+  }
+`;
+
+export const FETCH_BOARDS_NUMBERS = gql`
+  query fetchBoardsNumber {
+    fetchBoardsNumber
   }
 `;

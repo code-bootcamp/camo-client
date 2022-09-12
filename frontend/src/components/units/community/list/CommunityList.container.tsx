@@ -1,14 +1,19 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import CommunityListUI from "./CommunityList.presenter";
-import { FETCH_BOARDS } from "./CommunityList.queries";
+import { FETCH_BOARDS, FETCH_BOARDS_NUMBERS } from "./CommunityList.queries";
 
 export default function CommunityList() {
   const router = useRouter();
 
-  // const [isActive, setIsActive] = useRecoilState(isWatchActiveState)
+  const { data: dataBoardsCount } = useQuery(FETCH_BOARDS_NUMBERS);
+  const lastPage = dataBoardsCount ? Math.ceil(dataBoardsCount?.fetchBoardsNumber / 10) : 0;
 
-  const { data, fetchMore } = useQuery(FETCH_BOARDS);
+  const { data, fetchMore, refetch } = useQuery(FETCH_BOARDS);
+
+  const onClickPage = (event: any) => {
+    refetch({ page: Number(event.target.id) });
+  };
 
   const onFetchMore = () => {
     if (!data) return;
@@ -31,5 +36,15 @@ export default function CommunityList() {
     router.push(`/community/${el.communityId}`);
   };
 
-  return <CommunityListUI data={data} onFetchMore={onFetchMore} onClickDetail={onClickDetail} />;
+  return (
+    <CommunityListUI
+      data={data}
+      refetch={refetch}
+      dataBoardsCount={dataBoardsCount}
+      lastPage={lastPage}
+      onClickPage={onClickPage}
+      onFetchMore={onFetchMore}
+      onClickDetail={onClickDetail}
+    />
+  );
 }

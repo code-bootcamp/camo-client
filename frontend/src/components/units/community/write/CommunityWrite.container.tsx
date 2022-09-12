@@ -73,9 +73,11 @@ export default function CommunityWrite() {
         },
       });
       console.log(result);
-      router.push("/community");
+      // router.push(`/community/${communityId}`);
+      router.push(`/community/`);
       alert("등록에 성공하였습니다!!");
     } catch (error: any) {
+      console.log("등록실패");
       console.log(error);
       Modal.error({ content: error.message });
     }

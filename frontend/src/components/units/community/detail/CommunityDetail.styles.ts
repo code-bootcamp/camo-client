@@ -69,3 +69,12 @@ export const ContentsIcons = styled.div``;
 export const CommentIcon = styled(MessageOutlined)``;
 
 export const LikeIcon = styled(LikeOutlined)``;
+
+export const ListBtn = styled.div`
+  height: 2rem;
+  width: 5rem;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 2rem;
+  background-color: #ddd;
+`;
