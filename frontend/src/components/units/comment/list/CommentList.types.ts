@@ -1,4 +1,4 @@
-// import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { IComment, IQuery } from "../../../../commons/types/generated/types";
 
 export interface ICommentListUIProps {
@@ -11,11 +11,11 @@ export interface ICommentListItemProps {
   data: Pick<IQuery, "fetchLoginedUser">;
 }
 
-export interface CommentListItemUIProps {
+export interface ICommentListItemUIProps {
   isEdit: boolean;
-  // setIsEdit: Dispatch<SetStateAction<boolean>>;
+  setIsEdit: Dispatch<SetStateAction<boolean>>;
   isOpenModal: boolean;
-  // el: IComment;
+  el: IComment;
   onClickUpdate: () => void;
   onClickDelete: () => void;
 }
