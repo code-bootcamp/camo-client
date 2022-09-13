@@ -1,4 +1,4 @@
-import { AliwangwangOutlined, SmileOutlined, StarOutlined, UserOutlined } from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import {
   HeaderWrapper,
@@ -81,7 +81,6 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
                   <LoginButton>로그인</LoginButton>
                 </a>
               </Link>
-
               <Link href="/login/selectSignUp">
                 <a>
                   <LoginButton>회원가입</LoginButton>

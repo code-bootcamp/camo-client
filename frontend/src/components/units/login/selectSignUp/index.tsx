@@ -56,10 +56,6 @@ const Select = styled.a`
   }
 `;
 
-const Temp = styled.div`
-  background: url("http://dummyimage.com/100x100/000/fff");
-`;
-
 const Label = styled.label`
   padding-bottom: 2rem;
   font-weight: 500;
@@ -85,7 +81,7 @@ export default function SelectSignUp() {
           <Title>회원가입</Title>
           <SubTitle>사람들이 말하는 자신의 추억이 깃든 이야기들을 들어보세요</SubTitle>
           <RowWrapper>
-            <Link href="/login/signUp">
+            <Link href="/login/cafeOwnerSignUp">
               <Select>
                 <Label>카페 사장님</Label>
                 <CafeIcon src="/images/signUp/Cafe_Black.svg" />

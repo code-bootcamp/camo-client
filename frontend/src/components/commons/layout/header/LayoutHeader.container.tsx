@@ -1,19 +1,19 @@
 import { useMutation, useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../../commons/store";
 import { IMutation } from "../../../../commons/types/generated/types";
 import LayoutHeaderUI from "./LayoutHeader.presenter";
-import { FETCH_LOGINED_USER, FETCH_USER, LOGOUT_USER } from "./LayoutHeader.queries";
+import { FETCH_LOGINED_USER, LOGOUT_USER } from "./LayoutHeader.queries";
+
+const HIDDEN_HEADERS = ["/login/", "/login/cafeOwnerSignUp/", "/login/signUp/"];
 
 export default function LayoutHeader() {
+  const router = useRouter();
   const [accessToken] = useRecoilState(accessTokenState);
   const [logoutUser] = useMutation<Pick<IMutation, "logoutUser">>(LOGOUT_USER);
-  // const { data } = useQuery<Pick<IQuery, "fetchUser">>(FETCH_USER, {
-  //   variables: { email: "1@1" },
-  // });
-  // const { data } = useQuery<Pick<IQuery, "fetchLoginUsers">>(FETCH_USER);
-  // const { data } = useQuery<Pick<IQuery, "fetchLoginUser">>(FETCH_USER);
   const { data } = useQuery(FETCH_LOGINED_USER);
+  const isHiddenHeader = HIDDEN_HEADERS.includes(router.asPath);
 
   const onClickLogout = async () => {
     try {
@@ -24,14 +24,16 @@ export default function LayoutHeader() {
       console.log(error);
     }
   };
-
-  console.log(data);
   return (
-    <LayoutHeaderUI
-      data={data}
-      // refetch={refetch}
-      accessToken={accessToken}
-      onClickLogout={onClickLogout}
-    />
+    <>
+      {/* {!isHiddenHeader && ( */}
+      <LayoutHeaderUI
+        data={data}
+        // refetch={refetch}
+        accessToken={accessToken}
+        onClickLogout={onClickLogout}
+      />
+      {/* )} */}
+    </>
   );
 }

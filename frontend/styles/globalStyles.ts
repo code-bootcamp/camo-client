@@ -39,6 +39,6 @@ export const globalStyles = css`
 
   @font-face {
     font-family: "PretendardVariable";
-    src: url("fonts/PretendardVariable.ttf");
+    src: url("/fonts/PretendardVariable.ttf");
   }
 `;

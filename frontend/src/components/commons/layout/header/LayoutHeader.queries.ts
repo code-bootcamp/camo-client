@@ -1,17 +1,5 @@
 import { gql } from "@apollo/client";
 
-// export const FETCH_USER = gql`
-//   query fetchUser($email: String!) {
-//     fetchUser(email: $email) {
-//       id
-//       email
-//       name
-//       phoneNumber
-//       nickName
-//     }
-//   }
-// `;
-
 export const FETCH_LOGINED_USER = gql`
   query fetchLoginedUser {
     fetchLoginedUser {
@@ -30,16 +18,6 @@ export const FETCH_USER = gql`
     }
   }
 `;
-
-// export const FETCH_USER = gql`
-//   query fetchUsers {
-//     fetchUsers {
-//       id
-//       email
-//       name
-//     }
-//   }
-// `;
 
 export const LOGOUT_USER = gql`
   mutation logoutUser {

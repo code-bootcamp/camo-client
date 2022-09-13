@@ -54,7 +54,7 @@ export type ICafeList = {
   startTime?: Maybe<Scalars['String']>;
   title: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
-  user: IUser;
+  user?: Maybe<IUser>;
   zipcode?: Maybe<Scalars['String']>;
 };
 
@@ -137,9 +137,26 @@ export type ICreateCafeListInput = {
   zipcode?: InputMaybe<Scalars['String']>;
 };
 
+export type ICreateCafeOwnerInput = {
+  cafeName?: InputMaybe<Scalars['String']>;
+  email: Scalars['String'];
+  name: Scalars['String'];
+  nickName?: InputMaybe<Scalars['String']>;
+  password: Scalars['String'];
+  phoneNumber?: InputMaybe<Scalars['String']>;
+};
+
 export type ICreateCommentInput = {
   boardId: Scalars['String'];
   comment?: InputMaybe<Scalars['String']>;
+};
+
+export type ICreateUserInput = {
+  email: Scalars['String'];
+  name: Scalars['String'];
+  nickName?: InputMaybe<Scalars['String']>;
+  password: Scalars['String'];
+  phoneNumber?: InputMaybe<Scalars['String']>;
 };
 
 export type IFavoriteCafe = {
@@ -163,6 +180,7 @@ export type IMutation = {
   checkSMSTokenValid: Scalars['Boolean'];
   createBoard: IBoard;
   createCafeList: ICafeList;
+  createCafeOwner: IUser;
   createCafeReservation: ICafeReservation;
   createCancel: IPayment;
   createComment: IComment;
@@ -186,7 +204,8 @@ export type IMutation = {
   updateCafeList: ICafeList;
   updateComment: IComment;
   updateLoginUser: IUser;
-  uploadImage: Array<Scalars['String']>;
+  updateUserPassword: IUser;
+  uploadFile: Array<Scalars['String']>;
 };
 
 
@@ -203,6 +222,11 @@ export type IMutationCreateBoardArgs = {
 
 export type IMutationCreateCafeListArgs = {
   createCafeListInput: ICreateCafeListInput;
+};
+
+
+export type IMutationCreateCafeOwnerArgs = {
+  CreateCafeOwnerInput: ICreateCafeOwnerInput;
 };
 
 
@@ -231,11 +255,7 @@ export type IMutationCreateRoomArgs = {
 
 
 export type IMutationCreateUserArgs = {
-  email: Scalars['String'];
-  name: Scalars['String'];
-  nickName: Scalars['String'];
-  password: Scalars['String'];
-  phoneNumber: Scalars['String'];
+  CreateUserInput: ICreateUserInput;
 };
 
 
@@ -320,7 +340,13 @@ export type IMutationUpdateLoginUserArgs = {
 };
 
 
-export type IMutationUploadImageArgs = {
+export type IMutationUpdateUserPasswordArgs = {
+  email: Scalars['String'];
+  password: Scalars['String'];
+};
+
+
+export type IMutationUploadFileArgs = {
   files: Array<Scalars['Upload']>;
 };
 
@@ -358,8 +384,12 @@ export type IQuery = {
   fetchLoginedUser: IUser;
   fetchLogs: Array<IChatMessage>;
   fetchUser: IUser;
+  fetchUserByEmail: IUser;
   fetchUserWithDeleted: Array<IUser>;
   fetchUsers: Array<IUser>;
+  roleGuardAdmin: IUser;
+  roleGuardCafeOwner: IUser;
+  roleGuardUser: IUser;
   searchBoards: Array<IBoard>;
   searchMyBoards: Array<IBoard>;
 };
@@ -435,6 +465,26 @@ export type IQueryFetchUserArgs = {
 };
 
 
+export type IQueryFetchUserByEmailArgs = {
+  phoneNumber: Scalars['String'];
+};
+
+
+export type IQueryRoleGuardAdminArgs = {
+  userId: Scalars['String'];
+};
+
+
+export type IQueryRoleGuardCafeOwnerArgs = {
+  userId: Scalars['String'];
+};
+
+
+export type IQueryRoleGuardUserArgs = {
+  userId: Scalars['String'];
+};
+
+
 export type IQuerySearchBoardsArgs = {
   search?: InputMaybe<Scalars['String']>;
 };
@@ -459,6 +509,12 @@ export type ITag = {
   id: Scalars['String'];
   name: Scalars['String'];
 };
+
+export enum IUser_Role_Enum {
+  Admin = 'ADMIN',
+  Cafeowner = 'CAFEOWNER',
+  User = 'USER'
+}
 
 export type IUpdateBoardInput = {
   address?: InputMaybe<Scalars['String']>;
@@ -504,8 +560,8 @@ export type IUser = {
   name: Scalars['String'];
   nickName?: Maybe<Scalars['String']>;
   phoneNumber?: Maybe<Scalars['String']>;
+  role?: Maybe<IUser_Role_Enum>;
   signupDate: Scalars['DateTime'];
-  status?: Maybe<Scalars['String']>;
 };
 
 export type IFavoriteBoard = {

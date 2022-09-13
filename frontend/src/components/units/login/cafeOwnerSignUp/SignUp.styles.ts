@@ -84,11 +84,9 @@ export const Button = styled.button`
   width: 5rem;
   height: 3rem;
   border: none;
-  margin-left: 1rem;
+  margin-left: 2rem;
   border-radius: 4px;
   cursor: pointer;
-  background-color: #33413e;
-  color: white;
   @media ${breakPoints.mobile} {
     width: 5rem;
     height: 3rem;

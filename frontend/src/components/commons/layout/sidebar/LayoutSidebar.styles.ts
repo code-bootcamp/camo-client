@@ -4,12 +4,13 @@ import { ISideMenuProps } from "./LayoutSidebar.types";
 
 export const Wrapper = styled.section`
   /* width: 30vw; */
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   justify-content: space-between;
   /* align-items: center; */
   margin: 0 auto;
-  padding-top: 200px;
+  /* padding-top: 200px; */
+  padding-top: 150px;
   @media ${breakPoints.tablet} {
     display: none;
     width: 0vw;

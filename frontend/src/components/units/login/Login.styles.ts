@@ -60,19 +60,22 @@ export const Radio = styled.input`
   font-size: 1.5rem;
 `;
 
+/** 재인
+ * 구글 로고 다시 가져오기..
+ */
 export const GoogleLogin = styled.img`
-  width: 72%;
-  height: 80%;
+  width: 64%;
+  height: 100%;
   cursor: pointer;
   /* margin-right: 10px; */
+  /* background-color: black; */
   @media ${breakPoints.mobile} {
-    width: 15vw;
+    width: 13vw;
     margin-right: 1rem;
   }
 
   @media (max-width: 700px) {
-    width: 15vw;
-    margin-right: 0.4rem;
+    width: 14vw;
   }
 `;
 
@@ -80,6 +83,7 @@ export const SocialLogin = styled.img`
   width: 60%;
   height: 100%;
   cursor: pointer;
+
   @media ${breakPoints.mobile} {
     width: 13vw;
   }

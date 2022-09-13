@@ -3,7 +3,7 @@ import * as S from "./SignUp.styles";
 import * as B from "../../../commons/wrapper/LoginWrapper.styles";
 import { ISignUpUIProps } from "./SignUp.types";
 
-export default function SignUpUI(props: ISignUpUIProps) {
+export default function CafeSignUpUI(props: ISignUpUIProps) {
   return (
     <>
       <B.Wrapper>
@@ -23,6 +23,11 @@ export default function SignUpUI(props: ISignUpUIProps) {
               <S.Empty />
             </S.RowWrapper>
             <S.Error>{props.formState.errors.nickname?.message}</S.Error>
+            <S.RowWrapper>
+              <B.Input type="text" placeholder="카페이름" {...props.register("cafeName")} />
+              <S.Empty />
+            </S.RowWrapper>
+            <S.Error>{props.formState.errors.cafeName?.message}</S.Error>
             <S.RowWrapper>
               <B.Input type="text" placeholder="이메일(아이디)" {...props.register("email")} />
               <S.Button type="button" onClick={props.onClickEmailCheck}>
@@ -65,7 +70,7 @@ export default function SignUpUI(props: ISignUpUIProps) {
             <S.Line />
             {/* <Checkbox /> */}
             <S.SubmitButton>회원가입</S.SubmitButton>
-            {/* 여기 약관동의 추가하기(3차) */}
+            여기 약관동의 추가하기(3차)
             <S.FooterWrapper>
               <S.FooterText>이미 아이디가 있으신가요?</S.FooterText>
               <Link href="/login">

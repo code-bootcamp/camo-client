@@ -7,7 +7,7 @@ import { LOGIN_USER } from "./Login.queries";
 import { ILoginType } from "./Login.types";
 import { accessTokenState } from "../../../commons/store";
 import { useRecoilState } from "recoil";
-import { IMutation, IMutationLoginUserArgs } from "../../../commons/types/generated/types";
+// import { IMutation, IMutationLoginUserArgs } from "../../../commons/types/generated/types";
 import { useRouter } from "next/router";
 
 const schema = yup.object({

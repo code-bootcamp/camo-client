@@ -1,13 +1,12 @@
 import { gql } from "@apollo/client";
 
-export const CREATE_USER = gql`
-  mutation createUser($CreateUserInput: CreateUserInput!) {
-    createUser(CreateUserInput: $CreateUserInput) {
-      id
+export const FETCH_USER_BY_EMAIL = gql`
+  query fetchUserByEmail($phoneNumber: String!) {
+    fetchUserByEmail(phoneNumber: $phoneNumber) {
+      email
     }
   }
 `;
-
 export const SEND_SMS = gql`
   mutation sendTokenToSMS($phoneNumber: String!) {
     sendTokenToSMS(phoneNumber: $phoneNumber)
@@ -17,11 +16,5 @@ export const SEND_SMS = gql`
 export const CHECK_SMS = gql`
   mutation checkSMSTokenValid($phoneNumber: String!, $SMSToken: String!) {
     checkSMSTokenValid(phoneNumber: $phoneNumber, SMSToken: $SMSToken)
-  }
-`;
-
-export const CHECK_USER_EMAIL = gql`
-  query checkUserEmail($email: String!) {
-    checkUserEmail(email: $email)
   }
 `;
