@@ -3,12 +3,13 @@ import { breakPoints } from "../../../../../styles/media";
 import { ISideMenuProps } from "./LayoutSidebar.types";
 
 export const Wrapper = styled.section`
-  width: 30vw;
+  /* width: 30vw; */
   height: 100vh;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: space-between;
+  /* align-items: center; */
   margin: 0 auto;
+  padding-top: 200px;
   @media ${breakPoints.tablet} {
     display: none;
     width: 0vw;
@@ -23,6 +24,7 @@ export const SideBar = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   width: 18.75rem;
   height: 25rem;
   background-color: white;

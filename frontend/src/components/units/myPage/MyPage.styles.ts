@@ -7,6 +7,7 @@ export const Wrapper = styled.section`
   display: flex;
   flex-direction: row;
   margin: 0 auto;
+
   @media ${breakPoints.tablet} {
     width: 50vw;
   }
