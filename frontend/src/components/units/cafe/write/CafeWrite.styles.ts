@@ -1,119 +1,177 @@
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css";
 import styled from "@emotion/styled";
 import "antd/dist/antd.css";
-import { StarFilled } from "@ant-design/icons";
+import { breakPoints } from "../../../../../styles/media";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export const Wrapper = styled.div`
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  background-color: white;
-  margin: 5rem;
-  padding: 5rem;
-  /* padding: 0 15%; */
-`;
-export const Title = styled.div`
-  font-size: 4rem;
-  font-weight: 700;
-  padding-bottom: 5rem;
-  padding-right: 2rem;
-  display: inline-block;
+  padding: 8%;
+  @media ${breakPoints.mobile} {
+    padding: 3rem;
+  }
 `;
 
-export const Text = styled.span`
-  font-size: 1.8rem;
-  font-weight: 400;
-  padding-bottom: 1.2rem;
+export const Title = styled.div`
+  width: 1200px;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #33413e;
+  padding-bottom: 4rem;
+  span {
+    margin-left: 2rem;
+    font-size: 1.3rem;
+    font-weight: 400;
+    padding-bottom: 1.2rem;
+  }
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    font-size: 1.3rem;
+    padding-bottom: 1.4rem;
+    span {
+      display: none;
+    }
+  }
 `;
-export const LableBox = styled.div`
+
+export const ContentsWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 1200px;
+  border: 1px solid #ddd;
+  padding: 5rem;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    border-radius: 1rem;
+    padding: 1.6rem;
+  }
+`;
+export const LabelBox = styled.div`
   display: flex;
   flex-direction: row;
-  line-height: 6rem;
-  margin-bottom: 3rem;
+  color: #33413e;
+  line-height: 2rem;
+  margin-bottom: 1.8rem;
+  /* background-color: beige; */
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    flex-direction: column;
+    line-height: 0;
+  }
 `;
 
-export const Lable = styled.div`
-  font-size: 2.5rem;
-  font-weight: 600;
-  padding-right: 3rem;
-  width: 15rem;
+export const Label = styled.div`
+  font-size: 1.4rem;
+  font-weight: 500;
+  width: 13rem;
+  line-height: 4rem;
+  /* background-color: pink; */
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1rem;
+  }
 `;
 
 export const InputBox = styled.input`
-  border: 0.07rem solid #555;
-  height: 6rem;
-  width: 75rem;
-  padding-left: 2rem;
-  font-size: 1.3rem;
+  border: none;
+  border-bottom: 0.07rem solid #555;
+  height: 3.3rem;
+  width: 44rem;
+  padding-left: 1.2rem;
+  font-size: 1.1rem;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    font-size: 0.7rem;
+    height: 2rem;
+    margin: 0.5rem;
+  }
+`;
+
+export const ImageWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const InputShortBox = styled.input`
+  border: none;
+  border-bottom: 0.07rem solid #555;
+  height: 3.3rem;
+  width: 12rem;
+  margin-right: 1.2rem;
+  padding-left: 1.2rem;
+  font-size: 1.1rem;
 `;
 
 export const ZipcodeWrapper = styled.div`
   display: flex;
   flex-direction: row;
   /* display: block; */
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 
 export const Zipcode = styled.input`
-  height: 6rem;
-  width: 15rem;
-  padding-left: 2rem;
-  font-size: 1.3rem;
-  border: 0.06rem solid #555;
+  height: 3.3rem;
+  width: 8.8rem;
+  padding-left: 1.2rem;
+  font-size: 1.2rem;
+  border: none;
+  border-bottom: 0.06rem solid #555;
   margin-right: 2rem;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    font-size: 0.7rem;
+    height: 2rem;
+    margin: 0.6rem;
+    padding-left: 0.5rem;
+  }
 `;
 
 export const BR = styled.br``;
 export const AddressButton = styled.div`
-  width: 17rem;
-  height: 6rem;
+  margin-top: 0.3rem;
+  width: 8rem;
+  height: 3rem;
   border: none;
   background: #33413e;
-  font-size: 2rem;
+  font-size: 1rem;
   color: white;
-  line-height: 6rem;
+  line-height: 3rem;
   text-align: center;
+  border-radius: 5px;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+    width: 6rem;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    font-size: 0.6rem;
+  }
 `;
 
 export const WebeditorBox = styled.div`
-  border: 0.07rem solid #555;
-  height: 60rem;
-  width: 75rem;
-  padding-left: 2rem;
-  font-size: 1.3rem;
+  /* border: 0.07rem solid #555; */
+  height: 22rem;
+  width: 44rem;
+  margin-top: 1.2rem;
+  font-size: 1rem;
+  color: gray;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    font-size: 0.7rem;
+    flex-direction: column;
+    padding: 1rem;
+  }
 `;
 
-export const RegisterBtn = styled.div`
-  width: 12rem;
-  height: 4.8rem;
-  background: #5d7572;
-  font-size: 2rem;
-  border-radius: 0.5rem;
-  color: white;
-  line-height: 4.8rem;
-  text-align: center;
-  cursor: pointer;
-`;
-export const PostAllWrap = styled.div`
+export const ContentsReactQuill = styled(ReactQuill)`
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding: 1.5rem;
-`;
-export const PostWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 35rem;
-  width: 26rem;
-  margin: 2rem;
-  border: 1px solid gray;
-  background-color: white;
-  cursor: pointer;
-`;
-export const DetailImage = styled.img`
-  width: 26rem;
-  height: 18.8rem;
+  height: 90%;
 `;
 
 export const TextWrap = styled.div`
@@ -121,66 +179,51 @@ export const TextWrap = styled.div`
   flex-direction: column;
   padding: 1.8rem;
 `;
-export const CafeTag = styled.div`
-  font-size: 1rem;
-  font-weight: 400;
-  margin-bottom: 0.8rem;
-`;
 
-export const CafeName = styled.div`
-  font-size: 1.5rem;
-  font-weight: 800;
-  margin-bottom: 0.8rem;
+export const BottomWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  width: 1200px;
+  margin-top: 2rem;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 0;
+  }
 `;
-export const CafeIntro = styled.div`
+export const RegisterBtn = styled.div`
+  width: 7rem;
+  height: 2.5rem;
+  background: #33413e;
   font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 0.8rem;
-`;
-
-export const Star = styled(StarFilled)`
-  color: red;
-`;
-
-export const CafeRate = styled.span`
-  font-size: 1.1rem;
-  font-weight: 400;
-  margin-bottom: 1.2rem;
-`;
-export const CafeReview = styled.span`
-  font-size: 1.1rem;
-  font-weight: 400;
-  margin-bottom: 1.2rem;
-  color: steelblue;
-`;
-export const CafeAddress = styled.div`
-  margin-top: 1.2rem;
-  font-size: 1rem;
-  font-weight: 400;
-`;
-
-export const NewBtn = styled.div`
-  width: 15rem;
-  height: 4.4rem;
-  background: #5d7572;
-  font-size: 1.5rem;
+  border-radius: 0.5rem;
   color: white;
-  line-height: 4.4rem;
+  line-height: 2.5rem;
   text-align: center;
+  margin: 0.5rem;
+  cursor: pointer;
+  @media ${breakPoints.mobile} {
+    height: 2.2rem;
+    line-height: 2.2rem;
+    width: 5rem;
+    font-size: 0.8rem;
+    font-weight: 300;
+    margin-top: 1.2rem;
+  }
+`;
+
+export const CancelBtn = styled.button`
+  width: 7rem;
+  height: 2.5rem;
+  background: #aaa;
+  border: none;
+  font-size: 1.3rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  text-align: center;
+  margin: 0.5rem;
+
   cursor: pointer;
 `;
-
-// export const @media (min-width: 768px) and (max-width: 991px) {
-//   // 태블릿사이즈일떄 위드사이즈를 어떻게 할 것인가
-//   width: 500px;
-//   height: 500px;
-//   background-color: green;
-// }
-
-// @media (max-width: 767px) {
-//   // 모바일
-//   width: 100px;
-//   height: 100px;
-//   background-color: pink;
-//   /* display: none; */
-// }

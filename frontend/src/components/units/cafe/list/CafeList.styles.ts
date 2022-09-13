@@ -77,7 +77,7 @@ export const MiddleText = styled.div`
   margin-top: 5.5rem;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
 
-  animation: "middleText" 0.8s ease-in-out infinite alternate;
+  animation: "middleText" 0.8s ease-in-out;
   @keyframes middleText {
     from {
       transform: scale(0.9);
@@ -258,6 +258,7 @@ export const imageBox = styled.div`
 export const DetailImage = styled.div`
   width: 100%;
   height: 100%;
+  background-color: #ddd;
 
   :hover {
     background: rgba(9, 9, 9, 0.5);
