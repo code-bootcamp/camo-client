@@ -82,8 +82,11 @@ export const WriteBtn = styled.button`
 `;
 
 export const ItemWrapper = styled.div`
-  width: 1200px;
+  width: 1500px;
   display: grid;
+  justify-items: center;
+  align-items: center;
+  align-self: center;
   grid-template-columns: repeat(2, 50%);
   background-color: #ffffff;
   padding: 3%;

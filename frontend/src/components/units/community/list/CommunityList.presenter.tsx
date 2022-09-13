@@ -3,6 +3,7 @@ import * as S from "./CommunityList.styles";
 import { v4 as uuidv4 } from "uuid";
 import Paginations01 from "../../../commons/pagination/01/Paginations01.container";
 import LayoutFooterUI from "../../../commons/layout/footer/LayoutFooter.presenter";
+import Searchbars01UI from "../../../commons/searchbar/01/Searchbars01.presenter";
 
 export default function CommunityListUI(props) {
   return (
@@ -14,17 +15,26 @@ export default function CommunityListUI(props) {
             <S.NewList>최신순</S.NewList>
             <S.LikeList>인기순</S.LikeList>
           </S.SortList>
+
           <S.InputWrapper>
-            <S.Search placeholder="게시글을 검색해보세요" />
-            <Link href="/community/write">
-              <a>
-                <S.WriteBtn>글쓰기</S.WriteBtn>
-              </a>
-            </Link>
+            <Searchbars01UI
+              placeholder="게시글을 검색해보세요"
+              refetch={props.refetch}
+              refetchBoardsCount={props.refetchBoardsCount}
+              onChangeKeyword={props.onChangeKeyword}
+            />
+            <S.WriteBtn>검색</S.WriteBtn>
           </S.InputWrapper>
+
+          <Link href="/community/write">
+            <a>
+              <S.WriteBtn>글쓰기</S.WriteBtn>
+            </a>
+          </Link>
         </S.NavWrapper>
+
         <S.ItemWrapper>
-          {props.data?.fetchBoards.map((el, index) => (
+          {props.data?.fetchBoards.map((el: any) => (
             <S.ItemContent key={uuidv4()} onClick={props.onClickDetail(el)}>
               <S.ItemImgWrapper>
                 <S.ItemImg />
@@ -55,6 +65,7 @@ export default function CommunityListUI(props) {
             lastPage={props.lastPage}
             refetch={props.refetch}
             onClick={props.onClickPage}
+            count={props.dataBoardsCount}
           />
         </S.PaginationStyle>
       </S.BodyWrapper>

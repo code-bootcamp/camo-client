@@ -515,4 +515,3 @@ export type IFavoriteBoard = {
   isLike: Scalars['Boolean'];
   user?: Maybe<IUser>;
 };
-
