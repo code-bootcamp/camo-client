@@ -2,7 +2,6 @@ import { useMutation } from "@apollo/client";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { SyntheticEvent, useState } from "react";
-
 // import { getDate } from "../../../../commons/libraries/utils";
 // import NestedCommentListContainer from "../../nestedComment/list/NestedCommentList.container";
 // import NestedCommentWrite from "../../nestedComment/write/NestedCommentWrite.container";

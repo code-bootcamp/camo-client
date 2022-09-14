@@ -7,8 +7,6 @@ export const CREATE_BOARD = gql`
       title
       contents
       likeCount
-      createdAt
-      updatedAt
       zipcode
       address
       addressDetail
@@ -18,7 +16,6 @@ export const CREATE_BOARD = gql`
       }
       user {
         id
-        name
         nickName
       }
       images {
@@ -29,37 +26,32 @@ export const CREATE_BOARD = gql`
   }
 `;
 
-// export const UPDATE_USED_ITEM = gql`
-//   mutation updateBoard(
-//     $boardId: String!
-//     $userId: String!
-//     $nickName: String!
-//     $updateBoardInput: UpdateBoardInput!
-//   ) {
-//     updateBoard(
-//       boardId: $boardId
-//       userId: $userId
-//       nickName: $nickName
-//       updateBoardInput: $updateBoardInput
-//     ) {
-//       id
-//       title
-//       contents
-//       likeCount
-//       tags {
-//         id
-//         name
-//       }
-//       user {
-//         id
-//         email
-//         name
-//         nickName
-//       }
-//       image {
-//         id
-//         url
-//       }
-//     }
-//   }
-// `;
+export const UPDATE_BOARD = gql`
+  mutation updateBoard(
+    $boardId: String!
+    $nickName: String!
+    $updateBoardInput: UpdateBoardInput!
+  ) {
+    updateBoard(boardId: $boardId, nickName: $nickName, updateBoardInput: $updateBoardInput) {
+      id
+      title
+      content
+      likeCount
+      zipcode
+      address
+      addressDetail
+      tags {
+        id
+        name
+      }
+      user {
+        id
+        nickName
+      }
+      images {
+        id
+        url
+      }
+    }
+  }
+`;

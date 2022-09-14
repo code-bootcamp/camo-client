@@ -33,7 +33,7 @@ export default function CommunityList() {
     });
   };
 
-  const onClickDetail = (el: any) => (event) => {
+  const onClickDetail = (el: any) => (event: any) => {
     router.push(`/community/${el.id}`);
   };
 
