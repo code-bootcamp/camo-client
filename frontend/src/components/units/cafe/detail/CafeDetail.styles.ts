@@ -51,6 +51,7 @@ export const ImageBox = styled.div`
 export const ImgSmallBox = styled.div`
   display: flex;
   flex-direction: row;
+  cursor: pointer;
   /* border: 1px solid red; */
   img {
     width: 6.6rem;

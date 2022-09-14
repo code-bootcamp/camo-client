@@ -134,7 +134,7 @@ export const Zipcode = styled.input`
 `;
 
 export const BR = styled.br``;
-export const AddressButton = styled.div`
+export const AddressButton = styled.button`
   margin-top: 0.3rem;
   width: 8rem;
   height: 3rem;
@@ -173,7 +173,9 @@ export const ContentsReactQuill = styled(ReactQuill)`
   width: 100%;
   height: 90%;
 `;
-
+export const Form = styled.form`
+  width: 100%;
+`;
 export const TextWrap = styled.div`
   display: flex;
   flex-direction: column;

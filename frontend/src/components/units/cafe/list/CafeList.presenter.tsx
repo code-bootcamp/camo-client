@@ -5,7 +5,7 @@ import Searchbars02 from "../../../commons/searchbar/02/Searchbars02.container";
 import * as C from "./CafeList.styles";
 import { v4 as uuidv4 } from "uuid";
 
-export default function CafeListUI(props) {
+export default function CafeListUI(props: any) {
   const IMAGES = [
     "https://images.unsplash.com/photo-1514481538271-cf9f99627ab4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     "https://images.unsplash.com/photo-1564327367919-cb377ea6a88f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
@@ -58,27 +58,20 @@ export default function CafeListUI(props) {
 
         <InfiniteScroll pageStart={0} loadMore={props.onFetchMore} hasMore={true}>
           <C.PostAllWrap>
-            {props.data?.fetchCafeLists.map((el: any) => (
+            {props.data?.fetchCafeListsCreatedAt.map((el: any) => (
               <>
                 <C.PostWrapper id={el.id} onClick={props.onClickDetail(el)}>
-                  {el.images?.[0] !== "" ? (
-                    <C.imageBox>
-                      <C.DetailImage>
-                        <img
-                          src={`https://storage.googleapis.com/${el.images?.[0].url}`}
-                          alt="이미지"
-                        />
-                      </C.DetailImage>
-                    </C.imageBox>
-                  ) : (
-                    <C.imageBox>
-                      {IMAGES.map((el, index) => (
-                        <C.DetailImage key={uuidv4()}>
-                          <img src={IMAGES[index]} />
-                        </C.DetailImage>
-                      ))}
-                    </C.imageBox>
-                  )}
+                  <C.imageBox>
+                    <C.DetailImage>
+                      <img
+                        src={
+                          props.fetchCafeListsCreatedAt?.cafeListImage[0].url
+                            ? `https://storage.googleapis.com/code-camp-main-project/${el.cafeListImage?.[0].url}`
+                            : IMAGES[1]
+                        }
+                      />
+                    </C.DetailImage>
+                  </C.imageBox>
 
                   <C.TextWrap>
                     <C.CafeTag>#태그 {el.tags}</C.CafeTag>
@@ -86,9 +79,8 @@ export default function CafeListUI(props) {
                     <C.CafeIntro>안국역에 위치한 작은 스콘 맛집</C.CafeIntro>
                     <div>
                       <C.Star />
-                      &nbsp;
-                      <C.CafeRate>4.39/5</C.CafeRate>
-                      &nbsp;&nbsp;&nbsp;
+                      {/* <C.CafeRate>4.39/5</C.CafeRate> */}
+                      &nbsp;&nbsp;
                       <C.CafeReview>방문자리뷰 22</C.CafeReview>
                     </div>
                     <C.CafeAddress>주소 ㅣ {el.address}</C.CafeAddress>
