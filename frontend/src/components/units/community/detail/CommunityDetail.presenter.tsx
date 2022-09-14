@@ -1,6 +1,4 @@
 import Link from "next/link";
-import CommentList from "../../comment/list/CommentList.container";
-import CommentWrite from "../../comment/write/CommentWrite.container";
 import { getDate } from "../../../../commons/libraries/utils";
 import { v4 as uuidv4 } from "uuid";
 import Dompurify from "dompurify";
@@ -111,9 +109,6 @@ export default function CommunityDetailUI(props: any) {
         </a>
       </Link>
       <hr />
-      <div> 댓글 </div>
-      <CommentWrite />
-      <CommentList />
     </S.Wrapper>
   );
 }
