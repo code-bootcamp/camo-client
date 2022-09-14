@@ -14,6 +14,10 @@ export const CREATE_CAFE_LIST = gql`
       homepage
       deposit
       contents
+      cafeListTag {
+        id
+        name
+      }
       cafeListImage {
         id
         url
@@ -36,6 +40,15 @@ export const UPDATE_CAFE_LIST = gql`
       homepage
       deposit
       contents
+      updatedAt
+      cafeListTag {
+        id
+        name
+      }
+      cafeListImage {
+        id
+        url
+      }
     }
   }
 `;

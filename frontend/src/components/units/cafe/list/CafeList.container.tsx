@@ -1,12 +1,17 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { MouseEvent } from "react";
+import useSearch from "../../../commons/hooks/useSearch";
 import CafeListUI from "./CafeList.presenter";
-import { FETCH_CAFE_LISTS, FETCH_CAFE_LISTS_CREATED_AT } from "./CafeList.queries";
+import { FETCH_CAFE_LISTS_CREATED_AT, FETCH_CAFE_LIST_NUMBER } from "./CafeList.queries";
 
 export default function CafeList() {
   const router = useRouter();
-  const { data, fetchMore } = useQuery(FETCH_CAFE_LISTS_CREATED_AT);
+  const { keyword, onChangeKeyword } = useSearch();
+  const { data, fetchMore, refetch } = useQuery(FETCH_CAFE_LISTS_CREATED_AT);
+
+  const { data: dataCafeListNumbers, refetch: refetchCafeListNumbers } =
+    useQuery(FETCH_CAFE_LIST_NUMBER);
 
   const onFetchMore = () => {
     if (!data) return;
@@ -32,5 +37,17 @@ export default function CafeList() {
     router.push(`/cafe/${el.id}`);
   };
 
-  return <CafeListUI data={data} onFetchMore={onFetchMore} onClickDetail={onClickDetail} />;
+  return (
+    <CafeListUI
+      data={data}
+      refetch={refetch}
+      onFetchMore={onFetchMore}
+      keyword={keyword}
+      onChangeKeyword={onChangeKeyword}
+      dataCafeListNumbers={dataCafeListNumbers}
+      refetchCafeListNumbers={refetchCafeListNumbers}
+      count={dataCafeListNumbers?.fetchCafeListNumber}
+      onClickDetail={onClickDetail}
+    />
+  );
 }

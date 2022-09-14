@@ -24,10 +24,20 @@ export const TopWrapper = styled.div`
   /* background-color: pink; */
 `;
 export const Title = styled.div`
-  font-size: 2rem;
-  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 2.6rem;
+  font-weight: 900;
   color: #33413e;
   padding-bottom: 1.5rem;
+
+  span {
+    line-height: 3rem;
+    font-size: 1.2rem;
+    text-align: right;
+    cursor: pointer;
+  }
 
   @media ${breakPoints.mobile} {
     width: 100%;
@@ -93,11 +103,18 @@ export const LabelBox = styled.div`
 `;
 
 export const Label = styled.div`
-  font-size: 1.2rem;
-  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  width: 40rem;
+  /* background-color: red; */
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  font-weight: 800;
   margin-bottom: 0.7rem;
 
   span {
+    width: 20rem;
     font-size: 1.1rem;
     font-weight: 400;
     margin-left: 1rem;
@@ -108,13 +125,12 @@ export const Label2 = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin: 4rem 0;
   text-align: center;
 
   div {
-    width: 80%;
     font-size: 1.1rem;
     font-weight: 400;
     padding: 1.5rem;
@@ -131,7 +147,7 @@ export const BottomWrapper = styled.div`
 export const MapWrapper = styled.div`
   background-color: #eee;
   border: 1px solid gray;
-  width: 90%;
+  width: 80%;
   height: 33rem;
 `;
 
@@ -147,6 +163,18 @@ export const ReserveBtn = styled.div`
   border-radius: 0.5rem;
   height: 3.3rem;
   background: #5d7572;
+  font-size: 1.2rem;
+  color: white;
+  line-height: 3.3rem;
+  text-align: center;
+  cursor: pointer;
+`;
+
+export const CancelBtn = styled.div`
+  width: 10rem;
+  border-radius: 0.5rem;
+  height: 3.3rem;
+  background: gray;
   font-size: 1.2rem;
   color: white;
   line-height: 3.3rem;

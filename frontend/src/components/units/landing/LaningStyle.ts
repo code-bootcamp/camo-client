@@ -36,7 +36,7 @@ export const MainTitle = styled.div`
   text-align: center;
   font-size: 4em;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
-  font-weight: 500;
+  font-weight: 600;
   color: #ddd3c9;
 
   div {
@@ -50,9 +50,9 @@ export const MainTitle = styled.div`
   }
 `;
 export const MainSmallText = styled.div`
-  font-size: 1.5em;
+  font-size: 2em;
   font-weight: 400;
-  line-height: 2rem;
+  line-height: 3rem;
   color: white;
   padding: 0 15%;
   position: absolute;
@@ -107,7 +107,6 @@ export const ReservationImg = styled.img`
 export const ReservationWrap = styled.div`
   flex: 1;
   display: flex;
-
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -142,7 +141,7 @@ export const SliderTitle = styled.h1`
   text-align: center;
   font-size: 3em;
   color: #3c565b;
-  font-weight: 800;
+  font-weight: 900;
   :hover {
     font-size: 3.5em;
     font-weight: 900;
@@ -251,7 +250,7 @@ export const About = styled.div`
 export const BlendedText = styled.div`
   color: #3c565b;
   font-weight: 900;
-  font-size: 3.3rem;
+  font-size: 3rem;
   margin: 1rem;
 
   div {
@@ -264,8 +263,9 @@ export const BlendedText = styled.div`
 `;
 
 export const smallText = styled.div`
-  margin: 2rem;
-  padding: 3%;
+  font-size: 1.2rem;
+  margin: 1.8rem;
+  padding: 2%;
   @media ${breakPoints.mobile} {
     display: none;
   }

@@ -1,6 +1,7 @@
 import "antd/dist/antd.css";
 import Link from "next/link";
 import InfiniteScroll from "react-infinite-scroller";
+import { Footer } from "../../../commons/layout/footer/LayoutFooter.style";
 import Searchbars02 from "../../../commons/searchbar/02/Searchbars02.container";
 import * as C from "./CafeList.styles";
 import { v4 as uuidv4 } from "uuid";
@@ -25,6 +26,7 @@ export default function CafeListUI(props: any) {
     "https://images.unsplash.com/photo-1508424757105-b6d5ad9329d0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80",
     "https://images.unsplash.com/photo-1587337657836-5084db88308c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
   ];
+  console.log(props.data);
 
   return (
     <>
@@ -53,28 +55,41 @@ export default function CafeListUI(props: any) {
             </Link>
           </C.CafeRegisterBox>
 
-          <Searchbars02 />
+          <Searchbars02
+            refetch={props.refetch}
+            refetchCafeListNumbers={props.refetchCafeListNumbers}
+            onChangeKeyword={props.onChangeKeyword}
+          />
         </C.TopWrapper>
 
         <InfiniteScroll pageStart={0} loadMore={props.onFetchMore} hasMore={true}>
           <C.PostAllWrap>
-            {props.data?.fetchCafeListsCreatedAt.map((el: any) => (
+            {props.data?.fetchCafeListsCreatedAt.map((el: any, index: any) => (
               <>
                 <C.PostWrapper id={el.id} onClick={props.onClickDetail(el)}>
                   <C.imageBox>
                     <C.DetailImage>
+                      {/* <img src={`${props.data?.fetchCafeList?.cafeListImage[0]?.url}`} /> */}
+
                       <img
                         src={
-                          props.fetchCafeListsCreatedAt?.cafeListImage[0].url
-                            ? `https://storage.googleapis.com/code-camp-main-project/${el.cafeListImage?.[0].url}`
-                            : IMAGES[1]
+                          `${el.cafeListImage[0]?.url}` ? `${el.cafeListImage[0]?.url}` : IMAGES[1]
                         }
                       />
                     </C.DetailImage>
                   </C.imageBox>
 
                   <C.TextWrap>
-                    <C.CafeTag>#태그 {el.tags}</C.CafeTag>
+                    <C.CafeTag key={uuidv4()}>
+                      #태그, #{el.cafeListTag[index]?.name}
+                      {/* #{el.cafeListTag[0]?.name} &nbsp; #{el.cafeListTag[1]?.name} */}
+                    </C.CafeTag>
+
+                    {/* 
+{props.data?.fetchCafeListsCreatedAt.cafeListTag?.map((el: any, index: any) => (
+                      <C.CafeTag key={uuidv4()}># {el} </C.CafeTag>
+                    ))} */}
+
                     <C.CafeName>카페명 ㅣ {el.title}</C.CafeName>
                     <C.CafeIntro>안국역에 위치한 작은 스콘 맛집</C.CafeIntro>
                     <div>
@@ -119,7 +134,8 @@ export default function CafeListUI(props: any) {
           </C.PostAllWrap>
          */}
 
-        <C.Footer>
+        <Footer />
+        {/* <C.Footer>
           <div>
             <C.FooterText>Cafe Moment 소개</C.FooterText>
             <C.FooterText>cafemoment.site</C.FooterText>
@@ -132,7 +148,7 @@ export default function CafeListUI(props: any) {
             (주)카모 서울특별시 구로구 디지털로 300 13층 Made by 2022 CAMO Corp.
             <br /> © 2022 Betheme by Muffin group | All Rights Reserved | Powered by WordPress
           </C.FooterText2>
-        </C.Footer>
+        </C.Footer> */}
       </C.Wrapper>
     </>
   );

@@ -25,7 +25,6 @@ export default function LandingPage() {
         </C.MainTitle>
 
         <C.MainSmallText>
-          <hr />
           <br />
           내가 아는 카페 정보부터 카페 예약까지, <br />
           사람들과 함께 공유해요.
@@ -43,7 +42,7 @@ export default function LandingPage() {
           <Link href="/community/">
             <C.SliderTitle>Community </C.SliderTitle>
           </Link>
-          <C.Bar />
+          {/* <C.Bar /> */}
           <C.Subtitle>직접 방문한 카페를 공유해보세요.</C.Subtitle>
         </C.ReservationWrap>
       </C.MiddleWrapper>
@@ -53,7 +52,7 @@ export default function LandingPage() {
           <Link href="/cafe">
             <C.SliderTitle>Reservation </C.SliderTitle>
           </Link>
-          <C.Bar />
+          {/* <C.Bar /> */}
           <C.Subtitle>
             마음에 드는 카페를 찾아서 <br /> 예약하고 편하게 방문하세요.
           </C.Subtitle>

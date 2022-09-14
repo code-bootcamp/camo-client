@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../commons/hooks";
 import { FETCH_CAFE_LISTS_CREATED_AT } from "../list/CafeList.queries";
 import CafeWriteUI from "./CafeWrite.presenter";
-import { CREATE_CAFE_LIST } from "./CafeWrite.queries";
+import { CREATE_CAFE_LIST, UPDATE_CAFE_LIST } from "./CafeWrite.queries";
 
 export default function CafeWrite(props) {
   useAuth();
@@ -69,7 +69,7 @@ export default function CafeWrite(props) {
     }
   };
   const onClickCreate = async (data: any) => {
-    console.log("되니?");
+    console.log(data);
     try {
       const result = await createCafeList({
         variables: {
@@ -82,11 +82,11 @@ export default function CafeWrite(props) {
             startTime: data.startTime,
             endTime: data.endTime,
             homepage: data.homepage,
-            deposit: data.deposit,
+            deposit: Number(data.deposit),
             contents: data.contents,
             images: [...fileUrls],
             // tags: data.tags.split(","),
-            tags: data.tags,
+            tags: data.cafeListTag,
           },
         },
         refetchQueries: [
@@ -104,6 +104,32 @@ export default function CafeWrite(props) {
       Modal.error({ content: error.message });
     }
   };
+
+  // const onClickUpdate = async (data: any) => {
+  //   try {
+  //     const result = await updateCafeList({
+  //       variables: {
+  //         cafeListId: router.query.cafeId as string,
+  //         updateCafeListInput: {
+  //           title: data.title,
+  //           zipcode: data.zipcode,
+  //           address: data.address,
+  //           addressDetail: data.addressDetail,
+  //           phone: data.phone,
+  //           startTime: data.startTime,
+  //           endtTime: data.endTime,
+  //           homepage: data.homepage,
+  //           deposit: Number(data.deposit),
+  //           contents: data.contents,
+  //           images: [...fileUrls],
+  //           tags: data.tags.split(","),
+  //         },
+  //       },
+  //     });
+  //     router.push(`/product/${result.data?.updateCafeList.cafeListId}`);
+  //     alert("수정 성공");
+  //   } catch (error) {}
+  // };
 
   const onClickCancel = () => {
     router.push("/cafe/");

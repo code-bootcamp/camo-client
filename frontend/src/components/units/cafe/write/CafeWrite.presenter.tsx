@@ -81,7 +81,10 @@ export default function CafeWriteUI(props: any) {
             </C.LabelBox>
             <C.LabelBox>
               <C.Label>태그</C.Label>
-              <C.InputBox placeholder="#태그를 적어주세요. ex) 분위기 좋은, 예쁜, 조용한" />
+              <C.InputBox
+                placeholder="#태그를 적어주세요. ex) 분위기 좋은, 예쁜, 조용한"
+                {...props.register("tags")}
+              />
             </C.LabelBox>
 
             <C.LabelBox>
@@ -125,7 +128,9 @@ export default function CafeWriteUI(props: any) {
             <C.CancelBtn type="button" onClick={props.onClickCancel}>
               취소하기
             </C.CancelBtn>
-            <C.RegisterBtn onClick={props.onClickCreate}>등록하기</C.RegisterBtn>
+            <C.RegisterBtn onClick={props.handleSubmit(props.onClickCreate)}>
+              등록하기
+            </C.RegisterBtn>
           </C.BottomWrap>
         </C.Form>
       </C.Wrapper>

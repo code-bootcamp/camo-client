@@ -42,6 +42,10 @@ export const FETCH_CAFE_LISTS = gql`
       deposit
       contents
       createdAt
+      cafeListTag {
+        id
+        name
+      }
       cafeListImage {
         id
         url
@@ -50,7 +54,7 @@ export const FETCH_CAFE_LISTS = gql`
   }
 `;
 
-export const FETCH_CAFE_LIST_NUMBERS = gql`
+export const FETCH_CAFE_LIST_NUMBER = gql`
   query fetchCafeListNumber {
     fetchCafeListNumber
   }

@@ -15,6 +15,10 @@ export const FETCH_CAFE_LIST = gql`
       homepage
       deposit
       createdAt
+      cafeListTag {
+        id
+        name
+      }
       cafeListImage {
         id
         url
