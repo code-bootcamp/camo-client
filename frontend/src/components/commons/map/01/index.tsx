@@ -5,7 +5,11 @@ declare const window: typeof globalThis & {
   kakao: any;
 };
 
-export default function WriteMapPage() {
+interface IMapComponent {
+  address?: string;
+}
+
+export default function MapComponent(props: IMapComponent) {
   useEffect(() => {
     // 스크립트를 받은 후 작동되게
     const script = document.createElement("script");
@@ -62,13 +66,7 @@ export default function WriteMapPage() {
   }, []);
   return (
     <>
-      {/* <Head>
-        <script // 이 script를 다운받게 되면 "window"안에 "window.kakao" 라는 게 생긴다.
-          type="text/javascript"
-          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5a45488cd57bac901185662afdf43c1d"
-        ></script>
-      </Head> */}
-      <div id="map" style={{ width: 384, height: 252 }}></div>
+      <div id="map" style={{ width: "100%", height: "100%" }}></div>
     </>
   );
 }

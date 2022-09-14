@@ -1,14 +1,17 @@
 import { Modal } from "antd";
 import DaumPostcodeEmbed from "react-daum-postcode";
 import Upload from "../../../../commons/upload/Upload.container";
-// import KaKaoMap from "../../../commons/map/01";
 import { v4 as uuidv4 } from "uuid";
-
-// import ToastEditor from "../../../commons/editor";
 import * as S from "./CommunityWrite.styles";
 import MapComponent from "../../../commons/map/01";
+import dynamic from "next/dynamic";
+import { ICommunityUIProps } from "./CommunityWrite.types";
 
-export default function CommunityWriteUI(props: any) {
+const ToastUi = dynamic(() => import("../../../commons/editor"), {
+  ssr: false,
+});
+
+export default function CommunityWriteUI(props: ICommunityUIProps) {
   return (
     <S.Wrapper>
       {props.isAddressOpen && (
@@ -38,13 +41,16 @@ export default function CommunityWriteUI(props: any) {
       </S.TopTitleWrap>
       <S.Form onSubmit={props.handleSubmit(props.onClickCreate)}>
         <S.BodyWrapper>
-          {/* <S.Title>게시글 등록</S.Title> */}
           <S.Lable>제목</S.Lable>
           <S.TitleInput type="text" placeholder="제목을 입력하세요" {...props.register("title")} />
           <S.Lable>내용</S.Lable>
           <S.ContentWrapper>
-            {/* <ToastEditor /> */}
-            <S.ContentsReactQuill onChange={props.onChangeContents} />
+            <ToastUi
+              defaultValue={props.editData?.fetchBoard.contents}
+              editorRef={props.editorRef}
+              onChangeContent={props.onChangeContent}
+            />
+            {/* <S.ContentsReactQuill onChange={props.onChangeContents} /> */}
             {/* <S.Content placeholder="당신의 이야기를 적어주세요✏️"></S.Content> */}
           </S.ContentWrapper>
           <S.Lable>이미지</S.Lable>
@@ -63,9 +69,7 @@ export default function CommunityWriteUI(props: any) {
           <S.Lable>주소</S.Lable>{" "}
           <S.MapAddressWrapper>
             <S.MapWrapper>
-              <S.Map>
-                <MapComponent address={props.address} />
-              </S.Map>
+              <MapComponent address={props.address} />
             </S.MapWrapper>
             <S.AddressWrapper>
               <S.AddressInput
@@ -74,7 +78,11 @@ export default function CommunityWriteUI(props: any) {
                 readOnly
                 {...props.register("zipcode")}
               />
-              <S.AddressButton type="button" id="modalOpen" onClick={props.onClickAddressModal}>
+              <S.AddressButton
+                type="button"
+                id="modalOpen"
+                onSubmit={props.handleSubmit(props.onClickAddressModal)}
+              >
                 주소입력
               </S.AddressButton>
               <S.AddressDetailWrapper>
@@ -86,13 +94,9 @@ export default function CommunityWriteUI(props: any) {
             </S.AddressWrapper>
           </S.MapAddressWrapper>
           <S.BtnWrapper>
-            {/* <Link href="/community"> */}
-            <a>
-              <S.RegisterBtn onClick={props.onClickCreate}>등록</S.RegisterBtn>
-            </a>
-            {/* </Link> */}
+            <S.RegisterBtn onSubmit={props.handleSubmit(props.onClickCreate)}>등록</S.RegisterBtn>
 
-            <S.CancelBtn type="button" onClick={props.onClickCancel}>
+            <S.CancelBtn type="button" onSubmit={props.handleSubmit(props.onClickCancel)}>
               취소
             </S.CancelBtn>
           </S.BtnWrapper>

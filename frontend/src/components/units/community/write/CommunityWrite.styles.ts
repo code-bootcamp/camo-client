@@ -114,8 +114,6 @@ export const MapWrapper = styled.div`
   /* border: 1px solid blue; */
 `;
 
-export const Map = styled.div``;
-
 export const AddressWrapper = styled.div`
   width: 55%;
   padding: 2%;
