@@ -9,20 +9,40 @@ import {
   IMutationDeleteLoginUserArgs,
 } from "../../../../src/commons/types/generated/types";
 import useAuth from "../../../../src/components/commons/hooks";
-import LayoutSidebar from "../../../../src/components/commons/layout/sidebar/LayoutSidebar.container";
 import { DELETE_LOGIN_USER } from "../../../../src/components/units/myPage/myEdit/MyEdit.queries";
 import * as B from "../../../../src/components/units/myPage/MyPage.styles";
 import { breakPoints } from "../../../../styles/media";
 
+export const BigWrapper = styled.section`
+  width: 100vw;
+  /* height: 80vh; */
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+
+  @media ${breakPoints.mobile} {
+    width: 100vw;
+  }
+`;
 const Wrapper = styled.body`
   width: 100%;
   margin: auto;
+
   @media ${breakPoints.mobile} {
-    width: auto;
-    // vw 안먹음
+    width: none;
   }
 `;
 
+export const Body = styled.main`
+  width: 70vw;
+  margin: auto;
+  background-color: white;
+  padding-top: 100px;
+  @media ${breakPoints.mobile} {
+    width: 50vw;
+    margin: auto;
+  }
+`;
 const MainWrapper = styled.main`
   width: 30vw;
   margin: auto;
@@ -30,8 +50,12 @@ const MainWrapper = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media ${breakPoints.tablet} {
+    width: 50vw;
+  }
   @media ${breakPoints.mobile} {
-    width: auto;
+    width: 100%;
   }
 `;
 
@@ -83,13 +107,12 @@ const ButtonWrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   padding-top: 3rem;
+  padding-bottom: 3rem;
+  @media ${breakPoints.tablet} {
+    width: 50vw;
+  }
 `;
-/**
- * 재인 수정중
- * 파일 : MyDeletePage.tsx
- * 날짜 : 0911
- * 내용 : 삭제 시 토큰 삭제 확인
- */
+
 export default function MyDeletePage() {
   useAuth();
   const router = useRouter();
@@ -112,7 +135,7 @@ export default function MyDeletePage() {
         variables: { password },
       });
       if (!password) {
-        alert("이메일이 다릅니다. 다시 입력해주세요.");
+        alert("비밀번호가 다릅니다. 다시 입력해주세요.");
         return;
       }
       router.push("/");
@@ -125,9 +148,8 @@ export default function MyDeletePage() {
 
   return (
     <>
-      <B.Wrapper>
-        {/* <LayoutSidebar /> */}
-        <B.Body>
+      <BigWrapper>
+        <Body>
           <B.StayMenu>회원 탈퇴</B.StayMenu>
           <B.Line />
           <Wrapper>
@@ -154,8 +176,8 @@ export default function MyDeletePage() {
               </ButtonWrapper>
             </MainWrapper>
           </Wrapper>
-        </B.Body>
-      </B.Wrapper>
+        </Body>
+      </BigWrapper>
     </>
   );
 }

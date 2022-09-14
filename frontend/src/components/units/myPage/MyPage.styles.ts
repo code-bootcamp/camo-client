@@ -31,7 +31,7 @@ export const SideBar = styled.section`
 export const Body = styled.main`
   width: 70vw;
   background-color: white;
-  padding-top: 100px;
+  padding-top: 30px;
   @media ${breakPoints.mobile} {
     width: 100vw;
     margin: auto;
@@ -79,7 +79,9 @@ export const StayMenu = styled.h3`
   letter-spacing: -0.5px;
 
   @media ${breakPoints.mobile} {
-    display: none;
+    /* display: none; */
+    padding-top: -2rem;
+    padding-bottom: -2rem;
   }
 `;
 

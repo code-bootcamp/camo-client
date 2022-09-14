@@ -2,11 +2,11 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../styles/media";
 
 export const Wrapper = styled.main`
-  width: 100vw;
+  width: 98vw;
   display: flex;
   margin: auto;
-  flex-direction: row;
-  height: 100vh;
+  flex-direction: column;
+  /* height: 100vh; */
 
   @media ${breakPoints.mobile} {
     display: 100vw;

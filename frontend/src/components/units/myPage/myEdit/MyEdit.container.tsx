@@ -1,18 +1,14 @@
-import { useApolloClient, useMutation, useQuery } from "@apollo/client";
-import { useRouter } from "next/router";
+import { useMutation, useQuery } from "@apollo/client";
 import { ChangeEvent, useState } from "react";
 import {
   IMutation,
   IMutationDeleteLoginUserArgs,
   IMutationUpdateLoginUserArgs,
   IQuery,
-  IQueryFetchUserArgs,
-  IUser,
 } from "../../../../commons/types/generated/types";
 import useAuth from "../../../commons/hooks";
 import MyEditUI from "./MyEdit.presenter";
 import { DELETE_LOGIN_USER, FETCH_USER, UPDATE_LOGIN_USER } from "./MyEdit.queries";
-import { IDelete, IUpdate } from "./MyEdit.types";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";

@@ -1,17 +1,3 @@
-export type Maybe<T> = T | null;
-export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-/** All built-in and custom scalars, mapped to their actual values */
-export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
-  DateTime: any;
-  Upload: any;
 };
 
 export type IBoard = {
@@ -164,8 +150,7 @@ export type IMutation = {
   createBoard: IBoard;
   createCafeList: ICafeList;
   createCafeReservation: ICafeReservation;
-  createCancel: IPayment;
-  createComment: IComment;
+	@@ -169,188 +169,163 @@ export type IMutation = {
   createPayment: IPayment;
   createRoom: IChatRoom;
   createUser: IUser;
@@ -329,13 +314,7 @@ export type IQuery = {
   fetchCafeLists: Array<ICafeList>;
   fetchCafeListsCreatedAt: Array<ICafeList>;
   fetchCafeListsFavoriteCafe: Array<ICafeList>;
-  fetchComments: Array<IComment>;
-  fetchLoginedUser: IUser;
-  fetchLogs: Array<IChatMessage>;
-  fetchUser: IUser;
-  fetchUserWithDeleted: Array<IUser>;
-  fetchUsers: Array<IUser>;
-  searchBoards: Array<IBoard>;
+	@@ -364,154 +339,139 @@ export type IQuery = {
   searchMyBoards: Array<IBoard>;
 };
 

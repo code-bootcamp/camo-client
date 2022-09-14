@@ -8,12 +8,6 @@ export default function LoginUI(props: ILoginUIProps) {
   return (
     <>
       <B.Wrapper>
-        {/* <B.SideWrapper>
-          <B.ColumnWrapper>
-            <B.SubLogo>당신이 원하는 카페들을 모은</B.SubLogo>
-            <B.SideLogo src="/CAMO.png" />
-          </B.ColumnWrapper>
-        </B.SideWrapper> */}
         <Form onSubmit={props.handleSubmit(props.onClickLogin)}>
           <S.Wrapper>
             <B.Title>로그인</B.Title>
@@ -42,17 +36,25 @@ export default function LoginUI(props: ILoginUIProps) {
                   <S.FooterText>아직 계정이 없으신가요?</S.FooterText>
                   <Link href="/login/signUp">
                     <S.FooterButton>
-                      <a>회원가입</a>
+                      <a style={{ color: "black" }}>회원가입</a>
                     </S.FooterButton>
                   </Link>
                 </S.RowWrapper>
                 <S.RowWrapper>
                   <S.FooterText>아이디를 잊으셨나요?</S.FooterText>
-                  <S.FooterButton>아이디 찾기</S.FooterButton>
+                  <Link href="/login/FindId">
+                    <S.FooterButton>
+                      <a style={{ color: "black" }}>아이디 찾기</a>
+                    </S.FooterButton>
+                  </Link>
                 </S.RowWrapper>
                 <S.RowWrapper>
                   <S.FooterText>비밀번호를 잊으셨나요?</S.FooterText>
-                  <S.FooterButton>비밀번호 찾기</S.FooterButton>
+                  <Link href="/login/FindPassword">
+                    <S.FooterButton>
+                      <a style={{ color: "black" }}>비밀번호 찾기</a>
+                    </S.FooterButton>
+                  </Link>
                 </S.RowWrapper>
               </S.FooterWrapper>
             </S.MainWrapper>
