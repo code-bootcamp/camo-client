@@ -6,6 +6,8 @@ import { CHECK_SMS, FETCH_USER_BY_EMAIL, SEND_SMS } from "./FindId.queries";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { IFormEmailCheck } from "./FindId.types";
+import { useRouter } from "next/router";
 
 const schema = yup.object({
   phoneNumber: yup
@@ -17,6 +19,7 @@ const schema = yup.object({
 
 export default function FindId() {
   const client = useApolloClient();
+  const router = useRouter();
   const { data: userEmailData } = useQuery<
     Pick<IQuery, "fetchUserByEmail">,
     IQueryCheckUserEmailArgs
@@ -40,7 +43,7 @@ export default function FindId() {
       if (!phoneNumber) return;
       alert("인증번호가 전송되었습니다.");
     } catch (error) {
-      alert("휴대폰 번호를 입력해주세요");
+      alert(error);
     }
   };
 
@@ -59,17 +62,23 @@ export default function FindId() {
     }
   };
 
-  const onClickSubmit = async (data: any) => {
+  const onClickSubmit = async (data: IFormEmailCheck) => {
+    const { phoneNumberCheck, ...dataCheck } = data;
     if (!checkSMSToken) return alert("휴대폰 인증을 해야합니다");
     try {
       const result = await client.query({
         query: FETCH_USER_BY_EMAIL,
         variables: {
-          phoneNumber: data.phoneNumber,
+          // phoneNumber: data.phoneNumber,
+          ...dataCheck,
         },
       });
       console.log(result);
-      alert(`고객님의 아이디는 ${userEmailData?.fetchUserByEmail.email} 입니다.`);
+      console.log(userEmailData?.fetchUserByEmail);
+      console.log(result.data.fetchUserByEmail.email);
+      // alert(`고객님의 아이디는 ${userEmailData?.fetchUserByEmail.email} 입니다.`);
+      alert(`고객님의 아이디는 ${result.data.fetchUserByEmail.email} 입니다.`);
+      router.push("/login");
     } catch (error) {
       console.log(error);
     }

@@ -1,14 +1,14 @@
 import * as S from "../Login.styles";
 import * as B from "../../../commons/wrapper/LoginWrapper.styles";
 import * as R from "../signUp/SignUp.styles";
-import { Form, Error } from "../signUp/SignUp.styles";
-import { RowWrapper } from "./FindId.styles";
+import { Error } from "../signUp/SignUp.styles";
+import { RowWrapper, Wrapper, Form } from "./FindId.styles";
 import { IFindIdUIProps } from "./FindId.types";
 
 export default function FindIdUI(props: IFindIdUIProps) {
   return (
     <>
-      <B.Wrapper>
+      <Wrapper>
         <Form onSubmit={props.handleSubmit(props.onClickSubmit)}>
           <S.Wrapper>
             <B.Title>아이디찾기</B.Title>
@@ -37,7 +37,7 @@ export default function FindIdUI(props: IFindIdUIProps) {
             </S.MainWrapper>
           </S.Wrapper>
         </Form>
-      </B.Wrapper>
+      </Wrapper>
     </>
   );
 }

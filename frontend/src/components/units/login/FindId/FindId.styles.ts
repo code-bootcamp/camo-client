@@ -1,6 +1,17 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../../../styles/media";
 
+export const Wrapper = styled.main`
+  width: 98vw;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  /* height: 100vh; */
+
+  @media ${breakPoints.mobile} {
+    display: 100vw;
+  }
+`;
 export const RowWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -15,4 +26,14 @@ export const RowWrapper = styled.div`
     margin: auto;
     /* padding-left: 4rem; */
   }
+`;
+
+export const Form = styled.form`
+  width: 100%;
+  /* height: 100vh; */
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
