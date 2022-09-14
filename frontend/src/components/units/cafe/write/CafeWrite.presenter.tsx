@@ -1,10 +1,10 @@
 import { Modal } from "antd";
 import { v4 as uuidv4 } from "uuid";
 import DaumPostcodeEmbed from "react-daum-postcode";
-import Upload from "../../../../commons/upload/Upload.container";
 import * as C from "./CafeWrite.styles";
+import Upload02 from "../../../../commons/upload/02/Upload.container";
 
-export default function CafeWriteUI(props) {
+export default function CafeWriteUI(props: any) {
   return (
     <>
       <C.Wrapper>
@@ -30,7 +30,7 @@ export default function CafeWriteUI(props) {
           </C.Title>
         </div>
 
-        <form onSubmit={props.handleSubmit(props.onClickCreate)}>
+        <C.Form onSubmit={props.handleSubmit(props.onClickCreate)}>
           <C.ContentsWrap>
             <C.LabelBox>
               <C.Label>카페 이름</C.Label>
@@ -74,7 +74,10 @@ export default function CafeWriteUI(props) {
 
             <C.LabelBox>
               <C.Label>홈페이지 주소</C.Label>
-              <C.InputBox placeholder="카페 홈페이지 주소 또는 블로그, SNS 주소가 있으면 입력해주세요" />
+              <C.InputBox
+                placeholder="카페 홈페이지 주소 또는 블로그, SNS 주소가 있으면 입력해주세요"
+                {...props.register("hompage")}
+              />
             </C.LabelBox>
             <C.LabelBox>
               <C.Label>태그</C.Label>
@@ -83,16 +86,19 @@ export default function CafeWriteUI(props) {
 
             <C.LabelBox>
               <C.Label>카페 소개</C.Label>
+
               <C.WebeditorBox>
+                {/* <input onChange={props.onChangeContents} /> */}
                 <C.ContentsReactQuill onChange={props.onChangeContents} />
               </C.WebeditorBox>
             </C.LabelBox>
+
             <C.LabelBox>
               <C.Label>사진 첨부</C.Label>
 
               <C.ImageWrap>
-                {props.fileUrls.map((el, index) => (
-                  <Upload
+                {props.fileUrls.map((el: any, index: any) => (
+                  <Upload02
                     key={uuidv4()}
                     index={index}
                     fileUrl={el}
@@ -121,7 +127,7 @@ export default function CafeWriteUI(props) {
             </C.CancelBtn>
             <C.RegisterBtn onClick={props.onClickCreate}>등록하기</C.RegisterBtn>
           </C.BottomWrap>
-        </form>
+        </C.Form>
       </C.Wrapper>
     </>
   );

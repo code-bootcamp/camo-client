@@ -1,13 +1,14 @@
 import { useMutation } from "@apollo/client";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../commons/hooks";
+import { FETCH_CAFE_LISTS_CREATED_AT } from "../list/CafeList.queries";
 import CafeWriteUI from "./CafeWrite.presenter";
 import { CREATE_CAFE_LIST } from "./CafeWrite.queries";
 
-export default function CafeWrite(props: any) {
+export default function CafeWrite(props) {
   useAuth();
   const router = useRouter();
 
@@ -19,6 +20,22 @@ export default function CafeWrite(props: any) {
   const { register, handleSubmit, setValue, getValues, trigger, formState } = useForm({
     mode: "onChange",
   });
+
+  // useEffect(() => {
+  //   if (props.data !== undefined) {
+  //     reset({
+  //       title: props.data.fetchCafeList.title,
+  //       zipcode: props.data.fetchCafeList.zipcode,
+  //       address: props.data.fetchCafeList.address,
+  //       addressDetail: props.data.fetchCafeList.addressDetail,
+  //       tags: props.data.fetchCafeList.cafeListTag?.join(),
+  //       images: props.data.fetchCafeList.cafeListImage,
+  //     });
+  //     if (props.data.fetchCafeList.cafeListImage?.length) {
+  //       setFileUrls([...props.data.fetchCafeList.cafeListImage]);
+  //     }
+  //   }
+  // }, [props.data]);
 
   const onChangeContents = (value: string) => {
     setValue("contents", value === "<p><br></p>" ? "" : value);
@@ -66,12 +83,17 @@ export default function CafeWrite(props: any) {
             endTime: data.endTime,
             homepage: data.homepage,
             deposit: data.deposit,
-            // deposit: Number(data.deposit),
             contents: data.contents,
             images: [...fileUrls],
+            // tags: data.tags.split(","),
             tags: data.tags,
           },
         },
+        refetchQueries: [
+          {
+            query: FETCH_CAFE_LISTS_CREATED_AT,
+          },
+        ],
       });
       console.log(result);
       router.push(`/cafe/`);
@@ -89,7 +111,6 @@ export default function CafeWrite(props: any) {
   return (
     <>
       <CafeWriteUI
-        data={props.data}
         address={getValues("address")}
         isAddressOpen={isAddressOpen}
         onClickAddressModal={onClickAddressModal}
