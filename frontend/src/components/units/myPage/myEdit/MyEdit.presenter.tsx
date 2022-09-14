@@ -82,7 +82,7 @@ export default function MyEditUI(props: IMyEditUI) {
                   </S.RightContents>
                 </S.RowWrapper>
                 <S.Error>{props.formState.errors.password?.message}</S.Error>
-                {/* <S.RowWrapper>
+                <S.RowWrapper>
                   <S.LeftContents>변경 비밀번호 확인</S.LeftContents>
                   <S.RightContents>
                     <S.Input
@@ -93,7 +93,7 @@ export default function MyEditUI(props: IMyEditUI) {
                     />
                   </S.RightContents>
                 </S.RowWrapper>
-                <S.Error>{props.formState.errors.passwordConfirm?.message}</S.Error> */}
+                <S.Error>{props.formState.errors.passwordConfirm?.message}</S.Error>
                 {/* {props.isOpenDeleteModal && (
                 <Modal
                   visible={true}

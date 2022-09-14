@@ -20,7 +20,7 @@ export default function LayoutSideBarUI(props: ILayoutSidebarUIProps) {
             <B.UserName>{props.data?.fetchLoginedUser.name}님</B.UserName>
             <Link href="/myPage/myEdit">
               <B.UserButton>
-                <a>회원정보수정</a>
+                <a style={{ color: "black" }}>회원정보수정</a>
               </B.UserButton>
             </Link>
           </B.ColumnWrapper>

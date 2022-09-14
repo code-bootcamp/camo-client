@@ -12,6 +12,7 @@ import { DELETE_LOGIN_USER, FETCH_USER, UPDATE_LOGIN_USER } from "./MyEdit.queri
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useRouter } from "next/router";
 
 const schema = yup.object({
   nickName: yup
@@ -30,7 +31,7 @@ const schema = yup.object({
 
 export default function MyEdit() {
   useAuth();
-
+  const router = useRouter();
   const { data: userData } = useQuery<Pick<IQuery, "fetchLoginedUser">>(FETCH_USER);
   const [updateLoginUser] = useMutation<
     Pick<IMutation, "updateLoginUser">,
@@ -49,11 +50,13 @@ export default function MyEdit() {
 
   // const onClickUpdate = async (data: IUpdate) => {
   const onClickUpdate = async (data: any) => {
+    const { passwordConfirm, ...dataCheck } = data;
     try {
       const result2 = await updateLoginUser({
-        variables: { updateUserInput: { ...data } },
+        variables: { updateUserInput: { ...dataCheck } },
       });
       console.log(result2);
+      router.push("/");
     } catch (error) {
       console.log(error);
     }

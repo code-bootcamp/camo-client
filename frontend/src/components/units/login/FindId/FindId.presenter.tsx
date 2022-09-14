@@ -2,7 +2,7 @@ import * as S from "../Login.styles";
 import * as B from "../../../commons/wrapper/LoginWrapper.styles";
 import * as R from "../signUp/SignUp.styles";
 import { Error } from "../signUp/SignUp.styles";
-import { RowWrapper, Wrapper, Form } from "./FindId.styles";
+import { RowWrapper, Wrapper, Form, ButtonWrapper } from "./FindId.styles";
 import { IFindIdUIProps } from "./FindId.types";
 
 export default function FindIdUI(props: IFindIdUIProps) {
@@ -31,9 +31,9 @@ export default function FindIdUI(props: IFindIdUIProps) {
                 </R.Button>
               </RowWrapper>
               <Error>{props.formState.errors.phoneNumberCheck?.message}</Error>
-              <B.ButtonWrapper>
-                <B.SubmitButton>아이디찾기</B.SubmitButton>
-              </B.ButtonWrapper>
+              <ButtonWrapper>
+                <B.SubmitButton>확인</B.SubmitButton>
+              </ButtonWrapper>
             </S.MainWrapper>
           </S.Wrapper>
         </Form>

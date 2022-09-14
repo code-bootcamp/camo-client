@@ -17,6 +17,7 @@ export default function Test() {
         dateFormat="yyyy년 MM월 dd일"
         selected={startDate}
         onChange={(date: Date) => setStartDate(date)}
+        // customInput={<CustomInput inputType={type} />}
       />
       <select name="choice">
         <option value="first">11:00</option>

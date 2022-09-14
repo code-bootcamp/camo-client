@@ -3,16 +3,15 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../../styles/media";
 
 export const LikeWrapper = styled.main`
-  /* width: 80%;
+  width: 80%;
   display: grid;
   justify-content: center;
-  grid-template-columns: 1fr 1fr 1fr; */
+  grid-template-columns: 1fr 1fr 1fr;
   /* grid-gap: 1rem; */
   margin: auto;
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  justify-content: center;
-  margin: auto;
+  justify-content: center; */
   width: 60%;
   flex-wrap: wrap;
   padding-right: 10px;
