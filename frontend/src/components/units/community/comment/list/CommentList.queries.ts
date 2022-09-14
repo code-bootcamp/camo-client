@@ -5,10 +5,23 @@ export const FETCH_COMMENTS = gql`
     fetchComments(boardId: $boardId) {
       id
       comment
+      createdAt
+      board {
+        id
+      }
       user {
         id
         nickName
       }
+    }
+  }
+`;
+
+export const FETCH_LOGINED_USER = gql`
+  query fetchLoginedUser {
+    fetchLoginedUser {
+      id
+      nickName
     }
   }
 `;
