@@ -7,10 +7,6 @@ import useAuth from "../../../commons/hooks";
 import CommunityWriteUI from "./CommunityWrite.presenter";
 import { CREATE_BOARD } from "./CommunityWrite.queries";
 
-declare const window: typeof globalThis & {
-  kakao: any;
-};
-
 export default function CommunityWrite() {
   useAuth();
   const router = useRouter();

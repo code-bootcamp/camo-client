@@ -1,14 +1,14 @@
 import { Modal } from "antd";
-import Link from "next/link";
 import DaumPostcodeEmbed from "react-daum-postcode";
 import Upload from "../../../../commons/upload/Upload.container";
-import KaKaoMap from "../../../commons/map/kakao";
+// import KaKaoMap from "../../../commons/map/01";
 import { v4 as uuidv4 } from "uuid";
 
 // import ToastEditor from "../../../commons/editor";
 import * as S from "./CommunityWrite.styles";
+import MapComponent from "../../../commons/map/01";
 
-export default function CommunityWriteUI(props) {
+export default function CommunityWriteUI(props: any) {
   return (
     <S.Wrapper>
       {props.isAddressOpen && (
@@ -33,7 +33,7 @@ export default function CommunityWriteUI(props) {
       <S.TopTitleWrap>
         <S.TopTitle>
           COMMUNITY
-          <span>&nbsp;&nbsp;&nbsp;l&nbsp;&nbsp; 글쓰기</span>
+          <span> | 글쓰기</span>
         </S.TopTitle>
       </S.TopTitleWrap>
       <S.Form onSubmit={props.handleSubmit(props.onClickCreate)}>
@@ -49,7 +49,7 @@ export default function CommunityWriteUI(props) {
           </S.ContentWrapper>
           <S.Lable>이미지</S.Lable>
           <S.ImageWrap>
-            {props.fileUrls.map((el, index) => (
+            {props.fileUrls.map((el: any, index: any) => (
               <Upload
                 key={uuidv4()}
                 index={index}
@@ -64,7 +64,7 @@ export default function CommunityWriteUI(props) {
           <S.MapAddressWrapper>
             <S.MapWrapper>
               <S.Map>
-                <KaKaoMap data={props.data} address={props.address} />
+                <MapComponent address={props.address} />
               </S.Map>
             </S.MapWrapper>
             <S.AddressWrapper>
