@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import Dompurify from "dompurify";
 
 import * as S from "./CommunityDetail.styles";
-import KakaoMapPage from "../../../commons/map/kakao";
+import KakaoMapPage from "../../../commons/map/01";
 import { useRouter } from "next/router";
 
 export default function CommunityDetailUI(props: any) {

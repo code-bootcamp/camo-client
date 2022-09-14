@@ -1,3 +1,4 @@
+import { CommentOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../../commons/styles/media";
 
@@ -18,10 +19,8 @@ export const WrapTitle = styled.div`
   padding-bottom: 40px;
 `;
 
-export const CommentIcon = styled.img`
-  margin-top: 3px;
-  width: 24px;
-  height: 24px;
+export const CommentIcon = styled(CommentOutlined)`
+  font-size: 24px;
 `;
 
 export const CommentTitle = styled.div`
