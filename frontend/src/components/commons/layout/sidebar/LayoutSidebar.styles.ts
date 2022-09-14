@@ -3,18 +3,27 @@ import { breakPoints } from "../../../../../styles/media";
 import { ISideMenuProps } from "./LayoutSidebar.types";
 
 export const Wrapper = styled.section`
-  /* width: 30vw; */
+  /* width: 0vw; */
   /* height: 100vh; */
   display: flex;
   justify-content: space-between;
   /* align-items: center; */
   margin: 0 auto;
-  /* padding-top: 200px; */
-  padding-top: 150px;
+  padding-top: 125px;
+
+  /* @media (min-width: 1920px) {
+    padding-left: 500px;
+  } */
+
+  @media (min-width: 1500px) and (max-width: 1700px) {
+    padding-left: 100px;
+  }
+
   @media ${breakPoints.tablet} {
     display: none;
     width: 0vw;
   }
+
   @media ${breakPoints.mobile} {
     display: none;
     width: auto;

@@ -2,7 +2,7 @@ import LayoutSidebar from "../../../commons/layout/sidebar/LayoutSidebar.contain
 import * as B from "../MyPage.styles";
 import * as S from "./MyReservation.styles";
 
-export default function MyReservationUI(props) {
+export default function MyReservationUI(props: any) {
   return (
     <>
       <B.Wrapper>
@@ -12,7 +12,7 @@ export default function MyReservationUI(props) {
           <B.Line />
           <S.MainWrapper>
             <S.RowWrapper>
-              <S.Image src="/cafe_sample.png" />
+              <S.Image src="/images/sample/cafe_sample4.jpeg" />
               <S.ContentBackGround>
                 <S.ContentWrapper>
                   <S.Title>Cafe Name</S.Title>

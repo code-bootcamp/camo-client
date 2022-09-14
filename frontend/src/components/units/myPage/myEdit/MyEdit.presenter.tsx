@@ -10,7 +10,7 @@ export default function MyEditUI(props: IMyEditUI) {
       <B.Wrapper>
         <LayoutSidebar />
         <B.Body>
-          <form onSubmit={props.handleSubmit(props.onClickUpdate)}>
+          <S.Form onSubmit={props.handleSubmit(props.onClickUpdate)}>
             <B.StayMenu>회원 정보 수정</B.StayMenu>
             <B.Line />
             <S.Wrapper>
@@ -94,19 +94,7 @@ export default function MyEditUI(props: IMyEditUI) {
                   </S.RightContents>
                 </S.RowWrapper>
                 <S.Error>{props.formState.errors.passwordConfirm?.message}</S.Error>
-                {/* {props.isOpenDeleteModal && (
-                <Modal
-                  visible={true}
-                  onOk={props.onClickOpenDeleteModal}
-                  onCancel={props.onClickOpenDeleteModal}
-                  closable={false}
-                >
-                  <div>이메일 입력: </div>
-                  <S.EmailInput type="text" onChange={props.onChangeDeleteUser} />
-                </Modal>
-              )} */}
                 <S.ButtonWrapper>
-                  {/* <S.DeleteButton onClick={props.onClickOpenDeleteModal}>탈퇴</S.DeleteButton> */}
                   <Link href="./myEdit/delete">
                     <a>
                       <S.DeleteButton type="button">탈퇴</S.DeleteButton>
@@ -116,7 +104,7 @@ export default function MyEditUI(props: IMyEditUI) {
                 </S.ButtonWrapper>
               </S.BodyWrapper>
             </S.Wrapper>
-          </form>
+          </S.Form>
         </B.Body>
       </B.Wrapper>
     </>

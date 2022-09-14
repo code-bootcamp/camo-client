@@ -4,9 +4,6 @@ import { breakPoints } from "../../../../../styles/media";
 export const Wrapper = styled.body`
   width: 100%;
   margin: auto;
-  @media ${breakPoints.mobile} {
-    width: 50vw;
-  }
 `;
 
 export const BodyWrapper = styled.main`
@@ -16,6 +13,9 @@ export const BodyWrapper = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  @media ${breakPoints.pc} {
+    width: 50vw;
+  }
   @media ${breakPoints.mobile} {
     width: 50vw;
   }
@@ -76,7 +76,10 @@ export const EditButton = styled.button`
   border: none;
   cursor: pointer;
   @media ${breakPoints.tablet} {
-    width: 6rem;
+    width: 12.5vw;
+  }
+  @media ${breakPoints.mobile} {
+    width: 25vw;
   }
 `;
 
@@ -94,6 +97,7 @@ export const ButtonWrapper = styled.div`
   @media ${breakPoints.tablet} {
     padding-top: 0rem;
     justify-content: space-between;
+    /* width: 100%; */
   }
   @media ${breakPoints.mobile} {
     padding-top: 0rem;
@@ -110,4 +114,13 @@ export const Error = styled.div`
   color: red;
   font-size: 12px;
   /* background-color: black; */
+`;
+
+export const Form = styled.form`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;

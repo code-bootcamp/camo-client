@@ -2,17 +2,20 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../styles/media";
 
 export const Wrapper = styled.section`
-  width: 100vw;
-  /* height: 80vh; */
+  width: 90vw;
+  /* width: 1300px; */
   display: flex;
   flex-direction: row;
   margin: 0 auto;
-
+  /* 
+  @media (min-width: 1300px) {
+    width: 1000px;
+  } */
   @media ${breakPoints.tablet} {
     width: 50vw;
   }
   @media ${breakPoints.mobile} {
-    width: 0vw;
+    width: 100vw;
   }
 `;
 
@@ -29,7 +32,7 @@ export const SideBar = styled.section`
 `;
 
 export const Body = styled.main`
-  width: 70vw;
+  width: 60vw;
   background-color: white;
   padding-top: 30px;
   @media ${breakPoints.mobile} {
@@ -83,6 +86,12 @@ export const StayMenu = styled.h3`
     padding-top: -2rem;
     padding-bottom: -2rem;
   }
+  @media ${breakPoints.mobile} {
+    display: flex;
+    justify-content: center;
+    padding-top: -2rem;
+    padding-bottom: -2rem;
+  }
 `;
 
 export const Line = styled.hr`
@@ -91,6 +100,9 @@ export const Line = styled.hr`
   display: flex;
   justify-content: center;
   margin: auto;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const UserWrapper = styled.div`
