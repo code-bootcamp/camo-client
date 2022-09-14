@@ -1,6 +1,9 @@
 import "antd/dist/antd.css";
 import Link from "next/link";
+import InfiniteScroll from "react-infinite-scroller";
+import Searchbars02 from "../../../commons/searchbar/02/Searchbars02.container";
 import * as C from "./CafeList.styles";
+import { v4 as uuidv4 } from "uuid";
 
 export default function CafeListUI(props) {
   const IMAGES = [
@@ -50,48 +53,79 @@ export default function CafeListUI(props) {
             </Link>
           </C.CafeRegisterBox>
 
-          <C.SearchBarWrap>
-            <C.SearchBar placeholder="검색" />
-            {/* <C.SearchbarBtn>SEARCH</C.SearchbarBtn> */}
-          </C.SearchBarWrap>
+          <Searchbars02 />
         </C.TopWrapper>
 
-        {/* <C.SearchBarWrap>
-          <C.SearchText>카페 찾기</C.SearchText>
-          <C.CityBox>지역</C.CityBox>
+        <InfiniteScroll pageStart={0} loadMore={props.onFetchMore} hasMore={true}>
+          <C.PostAllWrap>
+            {props.data?.fetchCafeLists.map((el: any) => (
+              <>
+                <C.PostWrapper id={el.id} onClick={props.onClickDetail(el)}>
+                  {el.images?.[0] !== "" ? (
+                    <C.imageBox>
+                      <C.DetailImage>
+                        <img
+                          src={`https://storage.googleapis.com/${el.images?.[0].url}`}
+                          alt="이미지"
+                        />
+                      </C.DetailImage>
+                    </C.imageBox>
+                  ) : (
+                    <C.imageBox>
+                      {IMAGES.map((el, index) => (
+                        <C.DetailImage key={uuidv4()}>
+                          <img src={IMAGES[index]} />
+                        </C.DetailImage>
+                      ))}
+                    </C.imageBox>
+                  )}
 
-          <C.SearchBtnWrap>
-            <C.SearchBar>검색</C.SearchBar>
-            <C.SearchbarBtn>SEARCH</C.SearchbarBtn>
-          </C.SearchBtnWrap>
-        </C.SearchBarWrap> */}
-
-        <C.PostAllWrap>
-          {IMAGES.map((el, index) => (
-            <>
-              <C.PostWrapper onClick={props.onClickDetail(el)}>
-                <C.imageBox>
-                  <C.DetailImage className="IMG">
-                    <img src={IMAGES[index]} />
-                  </C.DetailImage>
-                </C.imageBox>
-                <C.TextWrap>
-                  <C.CafeTag>#조용한 카페</C.CafeTag>
-                  <C.CafeName>카페 레이어드</C.CafeName>
-                  <C.CafeIntro>안국역에 위치한 작은 스콘 맛집</C.CafeIntro>
-                  <div>
-                    <C.Star />
-                    &nbsp;
-                    <C.CafeRate>4.39/5</C.CafeRate>
-                    &nbsp;&nbsp;&nbsp;
-                    <C.CafeReview>방문자리뷰 22</C.CafeReview>
-                  </div>
-                  <C.CafeAddress>서울 종로구 북촌2길 2-3</C.CafeAddress>
-                </C.TextWrap>
-              </C.PostWrapper>
-            </>
-          ))}
-        </C.PostAllWrap>
+                  <C.TextWrap>
+                    <C.CafeTag>#태그 {el.tags}</C.CafeTag>
+                    <C.CafeName>카페명 ㅣ {el.title}</C.CafeName>
+                    <C.CafeIntro>안국역에 위치한 작은 스콘 맛집</C.CafeIntro>
+                    <div>
+                      <C.Star />
+                      &nbsp;
+                      <C.CafeRate>4.39/5</C.CafeRate>
+                      &nbsp;&nbsp;&nbsp;
+                      <C.CafeReview>방문자리뷰 22</C.CafeReview>
+                    </div>
+                    <C.CafeAddress>주소 ㅣ {el.address}</C.CafeAddress>
+                  </C.TextWrap>
+                </C.PostWrapper>
+              </>
+            ))}
+          </C.PostAllWrap>
+        </InfiniteScroll>
+        {/*        
+          <C.PostAllWrap>
+            {IMAGES.map((el, index) => (
+              <>
+                <C.PostWrapper id={el.id} onClick={props.onClickDetail(el)}>
+                  <C.imageBox>
+                    <C.DetailImage className="IMG">
+                      <img src={IMAGES[index]} />
+                    </C.DetailImage>
+                  </C.imageBox>
+                  <C.TextWrap>
+                    <C.CafeTag>#조용한 카페</C.CafeTag>
+                    <C.CafeName>카페 레이어드</C.CafeName>
+                    <C.CafeIntro>안국역에 위치한 작은 스콘 맛집</C.CafeIntro>
+                    <div>
+                      <C.Star />
+                      &nbsp;
+                      <C.CafeRate>4.39/5</C.CafeRate>
+                      &nbsp;&nbsp;&nbsp;
+                      <C.CafeReview>방문자리뷰 22</C.CafeReview>
+                    </div>
+                    <C.CafeAddress>서울 종로구 북촌2길 2-3</C.CafeAddress>
+                  </C.TextWrap>
+                </C.PostWrapper>
+              </>
+            ))}
+          </C.PostAllWrap>
+         */}
 
         <C.Footer>
           <div>
