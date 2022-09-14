@@ -37,3 +37,10 @@ export const Form = styled.form`
   justify-content: center;
   align-items: center;
 `;
+
+export const ButtonWrapper = styled.div`
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;

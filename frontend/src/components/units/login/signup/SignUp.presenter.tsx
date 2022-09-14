@@ -69,7 +69,7 @@ export default function SignUpUI(props: ISignUpUIProps) {
             <S.FooterWrapper>
               <S.FooterText>이미 아이디가 있으신가요?</S.FooterText>
               <Link href="/login">
-                <a>
+                <a style={{ color: "black" }}>
                   <S.LoginButton>로그인</S.LoginButton>
                 </a>
               </Link>
