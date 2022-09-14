@@ -13,3 +13,8 @@ export interface IFindIdUIProps {
   onClickSendAuthNumber: () => void;
   onClickNumberConfirm: () => void;
 }
+
+export interface IFormEmailCheck {
+  phoneNumber?: string;
+  phoneNumberCheck?: string;
+}
