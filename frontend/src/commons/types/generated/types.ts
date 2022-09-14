@@ -118,7 +118,7 @@ export type ICreateBoardInput = {
   cafeList?: InputMaybe<Scalars['String']>;
   contents: Scalars['String'];
   image?: InputMaybe<Array<Scalars['String']>>;
-  tags: Array<Scalars['String']>;
+  tags?: InputMaybe<Array<Scalars['String']>>;
   title: Scalars['String'];
   zipcode?: InputMaybe<Scalars['String']>;
 };
