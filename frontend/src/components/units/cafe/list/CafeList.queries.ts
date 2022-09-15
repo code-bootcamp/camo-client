@@ -15,6 +15,7 @@ export const FETCH_CAFE_LISTS_CREATED_AT = gql`
       deposit
       contents
       createdAt
+      remarks
       cafeListTag {
         id
         name
@@ -22,6 +23,10 @@ export const FETCH_CAFE_LISTS_CREATED_AT = gql`
       cafeListImage {
         id
         url
+      }
+      user {
+        id
+        name
       }
     }
   }
@@ -42,6 +47,7 @@ export const FETCH_CAFE_LISTS = gql`
       deposit
       contents
       createdAt
+      remarks
       cafeListTag {
         id
         name

@@ -1,22 +1,21 @@
+import { useRouter } from "next/router";
 import { ReactNode } from "react";
 import LayoutHeader from "./header/LayoutHeader.container";
 
-
-
 interface ILayoutProps {
-    children: ReactNode;
+  children: ReactNode;
 }
 
-export default function Layout(props: ILayoutProps){
+const HIDDEN_HEADERS = ["/"];
 
+export default function Layout(props: ILayoutProps) {
+  const router = useRouter();
+  const isHiddenHeader = HIDDEN_HEADERS.includes(router.asPath);
 
-
-
-    return(
-        
-        <>
-        <LayoutHeader />
-        <div> { props.children }  </div>
-        </>
-    )
+  return (
+    <>
+      {!isHiddenHeader && <LayoutHeader />}
+      <div> {props.children} </div>
+    </>
+  );
 }

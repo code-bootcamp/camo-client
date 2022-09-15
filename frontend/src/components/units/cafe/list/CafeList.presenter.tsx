@@ -58,7 +58,7 @@ export default function CafeListUI(props: any) {
 
           <Searchbars02
             refetch={props.refetch}
-            refetchCafeListNumbers={props.refetchCafeListNumbers}
+            refetchCafeListNumber={props.refetchCafeListNumber}
             onChangeKeyword={props.onChangeKeyword}
           />
         </C.TopWrapper>
@@ -89,8 +89,10 @@ export default function CafeListUI(props: any) {
                     <C.CafeName> {el.title}</C.CafeName>
                     <C.CafeIntro>
                       {" "}
-                      {/* <C.Star />  */}
-                      안국역에 위치한 작은 스콘 맛집
+                      <C.Remarks>
+                        {/* <C.Star />  */}
+                        {el.remarks}
+                      </C.Remarks>
                     </C.CafeIntro>
 
                     <C.CafeAddress>
