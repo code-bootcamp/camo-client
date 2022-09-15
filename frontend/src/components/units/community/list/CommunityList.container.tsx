@@ -1,16 +1,22 @@
+import CommunityListUI from "./CommunityList.presenter";
+import { FETCH_BOARDS, FETCH_BOARDS_NUMBER } from "./CommunityList.queries";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import CommunityListUI from "./CommunityList.presenter";
-import { FETCH_BOARDS, FETCH_BOARDS_NUMBERS } from "./CommunityList.queries";
+import { IQuery, IQueryFetchBoardsArgs } from "../../../../commons/types/generated/types";
+import { SyntheticEvent, useState } from "react";
 
 export default function CommunityList() {
   const router = useRouter();
 
-  const { data: dataBoardsCount, refetch: refetchBoardsNumbers } = useQuery(FETCH_BOARDS_NUMBERS);
-  const lastPage = dataBoardsCount ? Math.ceil(dataBoardsCount?.fetchBoardsNumber / 10) : 0;
+  const [keyword, setKeyword] = useState("");
 
-  const { data, refetch } = useQuery(FETCH_BOARDS);
-  const { fetchMore } = useQuery(FETCH_BOARDS);
+  const { data, refetch, fetchMore } = useQuery<Pick<IQuery, "fetchBoards">, IQueryFetchBoardsArgs>(
+    FETCH_BOARDS
+  );
+
+  const { data: dataBoardsNumber, refetch: refetchBoardsNumber } = useQuery(FETCH_BOARDS_NUMBER);
+
+  const lastPage = dataBoardsNumber ? Math.ceil(dataBoardsNumber?.fetchBoardsNumber / 10) : 0;
 
   const onClickPage = (event: any) => {
     refetch({ page: Number(event.target.id) });
@@ -33,20 +39,38 @@ export default function CommunityList() {
     });
   };
 
-  const onClickDetail = (el: any) => (event: any) => {
+  const onClickMoveToNew = () => {
+    router.push("/community/new");
+  };
+
+  const onClickMoveToDetail = (el: any) => (event: any) => {
     router.push(`/community/${el.id}`);
+  };
+
+  const onChangeKeyword = (value: string) => {
+    setKeyword(value);
+  };
+
+  const onErrorImg = (e: SyntheticEvent<HTMLImageElement>) => {
+    (e.target as HTMLImageElement).src =
+      "https://images.unsplash.com/photo-1458819714733-e5ab3d536722?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTYwfHxjYWZlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60";
   };
 
   return (
     <CommunityListUI
       data={data}
+      dataBoardsNumber={dataBoardsNumber}
+      onClickMoveToNew={onClickMoveToNew}
+      onClickMoveToDetail={onClickMoveToDetail}
       refetch={refetch}
-      dataBoardsCount={dataBoardsCount}
-      refetchBoardsNumbers={refetchBoardsNumbers}
+      refetchBoardsNumber={refetchBoardsNumber}
+      boardsNumber={dataBoardsNumber?.fetchBoardsNumber}
+      keyword={keyword}
+      onChangeKeyword={onChangeKeyword}
       lastPage={lastPage}
       onClickPage={onClickPage}
       onFetchMore={onFetchMore}
-      onClickDetail={onClickDetail}
+      onErrorImg={onErrorImg}
     />
   );
 }

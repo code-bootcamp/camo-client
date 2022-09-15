@@ -4,8 +4,9 @@ import { v4 as uuidv4 } from "uuid";
 import Paginations01 from "../../../commons/pagination/01/Paginations01.container";
 import LayoutFooterUI from "../../../commons/layout/footer/LayoutFooter.presenter";
 import Searchbars01UI from "../../../commons/searchbar/01/Searchbars01.presenter";
+import { IBoardListUIProps } from "./CommunityList.types";
 
-export default function CommunityListUI(props) {
+export default function CommunityListUI(props: IBoardListUIProps) {
   return (
     <S.Wrapper>
       <S.Banner></S.Banner>
@@ -20,13 +21,13 @@ export default function CommunityListUI(props) {
             <Searchbars01UI
               placeholder="게시글을 검색해보세요"
               refetch={props.refetch}
-              refetchBoardsCount={props.refetchBoardsCount}
+              refetchBoardsNumber={props.refetchBoardsNumber}
               onChangeKeyword={props.onChangeKeyword}
             />
             <S.WriteBtn>검색</S.WriteBtn>
           </S.InputWrapper>
 
-          <Link href="/community/write">
+          <Link href="/community/new">
             <a>
               <S.WriteBtn>글쓰기</S.WriteBtn>
             </a>
@@ -34,15 +35,25 @@ export default function CommunityListUI(props) {
         </S.NavWrapper>
 
         <S.ItemWrapper>
-          {props.data?.fetchBoards.map((el: any) => (
-            <S.ItemContent key={uuidv4()} onClick={props.onClickDetail(el)}>
+          {props.data?.fetchBoards.map((el) => (
+            <S.ItemContent key={uuidv4()} onClick={props.onClickMoveToDetail(el)}>
               <S.ItemImgWrapper>
-                <S.ItemImg />
+                <S.ItemImg
+                  src={
+                    el.images[0]?.url ||
+                    el.images[1]?.url ||
+                    el.images[2]?.url ||
+                    !null ||
+                    !undefined
+                      ? `https://storage.googleapis.com/team04-storage/${el.images[0]?.url}`
+                      : "https://images.unsplash.com/photo-1458819714733-e5ab3d536722?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTYwfHxjYWZlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+                  }
+                  onError={props.onErrorImg}
+                />
               </S.ItemImgWrapper>
               <S.ItemTextWrapper>
                 <S.ItemTextTitleWrapper>
-                  <S.ItemTextTitle>제목: {el.title}</S.ItemTextTitle>
-
+                  <S.ItemTextTitle>{el.title}</S.ItemTextTitle>
                   {(el.tags || []).map(({ name }) => {
                     return <S.ItemTextTag key={uuidv4()}>{`#${name}`}</S.ItemTextTag>;
                   })}
@@ -53,7 +64,7 @@ export default function CommunityListUI(props) {
                     <S.ItemTextLike />
                     <S.ItemTextLikeCount>{el.likeCount}</S.ItemTextLikeCount>
                   </S.ItemTextLikeWrapper>
-                  <S.ItemTextUser>닉네임</S.ItemTextUser>
+                  <S.ItemTextUser>{el.user?.nickName}</S.ItemTextUser>
                 </S.ItemTextUserWrapper>
               </S.ItemTextWrapper>
             </S.ItemContent>
@@ -61,12 +72,7 @@ export default function CommunityListUI(props) {
         </S.ItemWrapper>
 
         <S.PaginationStyle>
-          <Paginations01
-            lastPage={props.lastPage}
-            refetch={props.refetch}
-            onClick={props.onClickPage}
-            count={props.dataBoardsCount}
-          />
+          <Paginations01 refetch={props.refetch} boardsNumber={props.dataBoardsNumber} />
         </S.PaginationStyle>
       </S.BodyWrapper>
 
