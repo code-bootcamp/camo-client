@@ -65,38 +65,25 @@ export default function Payment(props: any) {
         m_redirect_url: "http://localhost:3000/myPage/myReservation",
       },
       async (rsp: any) => {
-        /** */
         if (rsp.success) {
           // 결제 성공 시 로직
           try {
             const result = await createPayment({
               variables: {
                 impUid: String(rsp.imp_uid),
-                amount: CafeData?.fetchCafeList.deposit,
+                // amount: CafeData?.fetchCafeList.deposit,
+                amount: 100,
               },
             });
             console.log(result);
-            router.push("/myPage/myReservation");
+            // router.push("/myPage/myReservation");
           } catch (error) {
             console.log(error);
             alert(error);
             // location.reload();
           }
-          router.push("/myPage/myReservation");
+          // router.push("/myPage/myReservation");
           console.log(rsp);
-
-          // createPayment({
-          //   variables: {
-          //     impUid: String(rsp.imp_uid),
-          //     paymentDate: props.paymentDate,
-          //     paymentAmount: props.paymentAmount,
-          //   },
-          // });
-          // 백엔드에 결제 관련 데이터 넘겨주기 -> 즉, 뮤테이션 실행하기
-          // const paymentDate = new Date(); // 프론트에서는 가급적 new Date를 하지 않는다
-          //     createPointTransactionOfLoading({
-          //   variables: { impUid: String(rsp.imp_uid) },
-          // });
         } else {
           // 결제 실패 시 로직
           alert("결제에 실패했습니다. 다시 시도해주세요.");

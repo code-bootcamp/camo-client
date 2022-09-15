@@ -81,8 +81,10 @@ export type ICafeReservation = {
   id: Scalars['String'];
   orderRequest?: Maybe<Scalars['String']>;
   reservationDate: Scalars['DateTime'];
-  reservationStatus: Scalars['Boolean'];
-  reservationTime: Scalars['DateTime'];
+  reservationStatus?: Maybe<Scalars['Boolean']>;
+  reservationTime: Scalars['String'];
+  reservedPeople?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
   user: IUser;
 };
 
@@ -154,6 +156,15 @@ export type ICreateCommentInput = {
   comment?: InputMaybe<Scalars['String']>;
 };
 
+export type ICreateReservationInput = {
+  cafeListId: Scalars['String'];
+  orderRequest?: InputMaybe<Scalars['String']>;
+  reservationDate: Scalars['DateTime'];
+  reservationTime: Scalars['String'];
+  reservedPeople: Scalars['Int'];
+  userId: Scalars['String'];
+};
+
 export type ICreateReviewInput = {
   comment: Scalars['String'];
   userId: Scalars['String'];
@@ -193,6 +204,7 @@ export type IMutation = {
   createCancel: IPayment;
   createComment: IComment;
   createPayment: IPayment;
+  createProduct: ICafeList;
   createReview: IReview;
   createRoom: IChatRoom;
   createUser: IUser;
@@ -242,6 +254,11 @@ export type IMutationCreateCafeOwnerArgs = {
 };
 
 
+export type IMutationCreateCafeReservationArgs = {
+  createReservationInput: ICreateReservationInput;
+};
+
+
 export type IMutationCreateCancelArgs = {
   amount: Scalars['Int'];
   impUid: Scalars['String'];
@@ -257,6 +274,11 @@ export type IMutationCreateCommentArgs = {
 export type IMutationCreatePaymentArgs = {
   amount: Scalars['Int'];
   impUid: Scalars['String'];
+};
+
+
+export type IMutationCreateProductArgs = {
+  createCafeListInput: ICreateCafeListInput;
 };
 
 
@@ -384,12 +406,13 @@ export enum IPoint_Transaction_Status_Enum {
 
 export type IPayment = {
   __typename?: 'Payment';
-  cafeReservation: ICafeReservation;
+  cafeReservation?: Maybe<ICafeReservation>;
+  id: Scalars['String'];
   impUid: Scalars['String'];
   paymentAmount: Scalars['Int'];
   paymentDate: Scalars['DateTime'];
   status: IPoint_Transaction_Status_Enum;
-  user: IUser;
+  user?: Maybe<IUser>;
 };
 
 export type IQuery = {
@@ -410,16 +433,19 @@ export type IQuery = {
   fetchComments: Array<IComment>;
   fetchLoginedUser: IUser;
   fetchLogs: Array<IChatMessage>;
+  fetchReservation: IUser;
   fetchReview: IReview;
   fetchReviews: Array<IReview>;
-  fetchUser: IUser;
   fetchUserByEmail: IUser;
   fetchUserWithDeleted: Array<IUser>;
+  fetchUserbyEmail: IUser;
+  fetchUserbyId: IUser;
   fetchUsers: Array<IUser>;
   roleGuardAdmin: IUser;
   roleGuardCafeOwner: IUser;
   roleGuardUser: IUser;
   searchBoards: Array<IBoard>;
+  searchCafeList: Array<ICafeList>;
   searchMyBoards: Array<IBoard>;
 };
 
@@ -489,18 +515,28 @@ export type IQueryFetchLogsArgs = {
 };
 
 
+export type IQueryFetchReservationArgs = {
+  userId: Scalars['String'];
+};
+
+
 export type IQueryFetchReviewArgs = {
   reviewId: Scalars['String'];
 };
 
 
-export type IQueryFetchUserArgs = {
+export type IQueryFetchUserByEmailArgs = {
+  phoneNumber: Scalars['String'];
+};
+
+
+export type IQueryFetchUserbyEmailArgs = {
   email: Scalars['String'];
 };
 
 
-export type IQueryFetchUserByEmailArgs = {
-  phoneNumber: Scalars['String'];
+export type IQueryFetchUserbyIdArgs = {
+  userId: Scalars['String'];
 };
 
 
@@ -520,6 +556,11 @@ export type IQueryRoleGuardUserArgs = {
 
 
 export type IQuerySearchBoardsArgs = {
+  search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type IQuerySearchCafeListArgs = {
   search?: InputMaybe<Scalars['String']>;
 };
 
@@ -598,6 +639,7 @@ export type IUpdateUserInput = {
 export type IUser = {
   __typename?: 'User';
   cafeName?: Maybe<Scalars['String']>;
+  cafeReservation?: Maybe<Array<ICafeReservation>>;
   deletedAt?: Maybe<Scalars['DateTime']>;
   email: Scalars['String'];
   id: Scalars['String'];
