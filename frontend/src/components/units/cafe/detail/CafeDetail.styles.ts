@@ -8,6 +8,8 @@ export const Wrapper = styled.div`
   flex-direction: column;
   width: 1500px;
   padding: 10%;
+  /* font-family: "KOTRA_BOLD-Bold"; */
+  font-family: "Cafe24Ohsquare";
   /* background-color: yellow; */
   @media ${breakPoints.mobile} {
     padding: 3rem;
@@ -27,7 +29,7 @@ export const Title = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 2.6rem;
+  font-size: 2.5rem;
   font-weight: 900;
   color: #33413e;
   padding-bottom: 1.5rem;
@@ -50,6 +52,7 @@ export const ImageBox = styled.div`
   flex-direction: column;
   align-items: stretch;
   justify-content: space-between;
+
   overflow: hidden;
   width: 50%;
   height: 35rem;
@@ -58,8 +61,8 @@ export const ImageBox = styled.div`
   background-repeat: no-repeat;
 
   img {
+    background-color: #eee;
     height: 66%;
-    object-fit: cover;
   }
 `;
 

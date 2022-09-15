@@ -54,6 +54,9 @@ export default function CafeDetailUI(props: any) {
               </C.Title>
 
               <C.LabelBox>
+                {/* <C.Label>
+                  🎈 작성자 : <span> {props.data?.fetchCafeList?.user.name}</span>
+                </C.Label> */}
                 <C.Label>
                   🎈 카페주소 :{" "}
                   <span>

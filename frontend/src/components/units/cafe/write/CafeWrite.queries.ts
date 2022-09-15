@@ -14,6 +14,7 @@ export const CREATE_CAFE_LIST = gql`
       homepage
       deposit
       contents
+      remarks
       cafeListTag {
         id
         name

@@ -9,7 +9,7 @@ export default function LandingPage() {
   // {imageSrc, title, subtitle, flipped}
 
   const [ref, inView] = useInView({
-    threshhold: 1,
+    threshhold: 0.5,
   });
 
   return (
@@ -18,6 +18,15 @@ export default function LandingPage() {
         <C.ImageWrapper>
           <C.MainImage src="https://images.unsplash.com/photo-1511081692775-05d0f180a065?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1372&q=80" />
         </C.ImageWrapper>
+        <C.Logo>
+          <Link href="/login/selectSignUp">
+            <a>
+              {" "}
+              <img src="CAMO.png" />
+            </a>
+          </Link>
+        </C.Logo>
+        <C.MenuTab />
         <C.MainTitle>
           당신이 원하는 <br />
           카페들을 모은

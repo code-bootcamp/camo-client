@@ -15,11 +15,14 @@ export default function Upload02(props: any) {
 
     try {
       const result = await uploadFile({
-        variables: { file },
+        variables: { files: file },
       });
-      props.onChangeFileUrls(result.data.uploadFile, props.index);
+      console.log(result);
+
+      props.onChangeFileUrls(result.data.uploadFile[0], props.index);
     } catch (error: any) {
       Modal.error({ content: error.message });
+      console.log("실패");
     }
   };
 
@@ -30,7 +33,8 @@ export default function Upload02(props: any) {
   return (
     <UploadUI02
       fileRef={fileRef}
-      fileUrl={props.fileUrl}
+      fileUrl={props.fileUrls}
+      defaultFileUrl={props.defaultFileUrl}
       onChangeFile={onChangeFile}
       onClickUpload={onClickUpload}
     />

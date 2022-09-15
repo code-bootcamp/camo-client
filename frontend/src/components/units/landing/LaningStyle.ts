@@ -1,14 +1,41 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../../styles/media";
 import "animate.css";
+import { MenuOutlined } from "@ant-design/icons";
 
 export const Wrapper = styled.div`
   width: 100%;
 `;
 export const MainWrapper = styled.div`
   width: 100%;
-  height: 66rem;
+  height: 77rem;
   position: relative;
+`;
+
+export const Logo = styled.h1`
+  width: 100%;
+  position: absolute;
+  top: 0;
+  img {
+    width: 6rem;
+    margin-top: 1.4rem;
+    margin-left: 2rem;
+  }
+  hr {
+    width: 100%;
+    height: 0.01px;
+    background-color: white;
+  }
+`;
+
+export const MenuTab = styled(MenuOutlined)`
+  font-size: 2rem;
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  color: white;
+  z-index: 4;
+  cursor: pointer;
 `;
 
 export const ImageWrapper = styled.div`
@@ -16,6 +43,12 @@ export const ImageWrapper = styled.div`
   width: 100%;
   height: 100%;
   background-color: black;
+  /* .logo {
+    margin: 3rem;
+    width: 6.6rem;
+    z-index: 3;
+    cursor: pointer;
+  } */
 `;
 
 export const MainImage = styled.img`
@@ -23,6 +56,7 @@ export const MainImage = styled.img`
   height: 100%;
   object-fit: cover;
   position: absolute;
+  top: 0rem;
   opacity: 0.6;
   @media ${breakPoints.mobile} {
   }
@@ -38,6 +72,9 @@ export const MainTitle = styled.div`
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
   font-weight: 600;
   color: #ddd3c9;
+  font-family: "Cafe24Ohsquare";
+
+  /* font-family: "KOTRA_BOLD-Bold"; */
 
   div {
     color: white;
@@ -51,7 +88,7 @@ export const MainTitle = styled.div`
 `;
 export const MainSmallText = styled.div`
   font-size: 2em;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 3rem;
   color: white;
   padding: 0 15%;
@@ -59,6 +96,9 @@ export const MainSmallText = styled.div`
   top: 66%;
   width: 100%;
   text-align: center;
+  font-family: "Cafe24Ohsquare";
+
+  /* font-family: "KOTRA_BOLD-Bold"; */
 `;
 
 export const MiddleWrapper = styled.div`
@@ -138,12 +178,13 @@ export const SliderZoom = styled.div`
 `;
 
 export const SliderTitle = styled.h1`
+  font-family: "KOTRA_BOLD-Bold";
   text-align: center;
   font-size: 3em;
   color: #3c565b;
-  font-weight: 900;
+  font-weight: 800;
   :hover {
-    font-size: 3.5em;
+    font-size: 3.3rem;
     font-weight: 900;
   }
 
@@ -163,7 +204,10 @@ export const Bar = styled.div`
 `;
 
 export const Subtitle = styled.div`
+  /* font-family: "KOTRA_BOLD-Bold"; */
+  font-family: "Cafe24Ohsquare";
   font-size: 1.1em;
+  font-weight: 100;
   @media ${breakPoints.mobile} {
     display: none;
     font-size: 0.8em;
@@ -179,7 +223,7 @@ export const CommunityWrap = styled.div`
 
 export const BlendedWrap = styled.div`
   /* width: 1200px; */
-
+  font-family: "KOTRA_BOLD-Bold";
   padding: 0 10%;
   display: flex;
   flex-direction: row;
@@ -208,7 +252,8 @@ export const BottomImageWrap = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 33rem;
+  height: 40rem;
+
   border-top: 1px solid gray;
   background-color: gray;
   position: relative;
@@ -216,7 +261,7 @@ export const BottomImageWrap = styled.div`
   img {
     opacity: 0.7;
     width: 100%;
-    height: 33rem;
+    height: 100%;
     object-fit: cover;
   }
   div {

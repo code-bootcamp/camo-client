@@ -5,7 +5,7 @@ import Searchbars02UI from "./Searchbars02.presenter";
 export default function Searchbars02(props: any) {
   const getDebounce = _.debounce((value: string) => {
     props.refetch({ search: value, page: 1 });
-    props.refetchCafeListNumbers({ search: value });
+    props.refetchCafeListNumber({ search: value });
     props.onChangeKeyword(value);
   }, 200);
 

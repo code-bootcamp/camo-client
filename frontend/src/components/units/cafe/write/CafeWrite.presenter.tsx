@@ -24,9 +24,10 @@ export default function CafeWriteUI(props: any) {
 
         <div>
           <C.Title>
-            {props.isEdit ? "카페 정보 수정하기" : "카페 등록하기"}
-
-            <span>카페 소개 내용을 입력해주세요.</span>
+            ✏️ &nbsp; {props.isEdit ? "카페 정보 수정하기" : "카페 등록하기"}
+            <span>
+              {props.isEdit ? "카페 정보를 수정해주세요." : "카페 소개 내용을 입력해주세요."}{" "}
+            </span>
           </C.Title>
         </div>
 

@@ -325,8 +325,8 @@ export const Star = styled(StarFilled)`
   font-size: 0.7rem;
 `;
 
-export const CafeRate = styled.span`
-  font-size: 0.66rem;
+export const Remarks = styled.span`
+  font-size: 0.77rem;
   font-weight: 400;
 `;
 export const Date = styled.span`

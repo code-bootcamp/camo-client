@@ -10,7 +10,7 @@ export default function CafeList() {
   const { keyword, onChangeKeyword } = useSearch();
   const { data, fetchMore, refetch } = useQuery(FETCH_CAFE_LISTS_CREATED_AT);
 
-  const { data: dataCafeListNumbers, refetch: refetchCafeListNumbers } =
+  const { data: dataCafeListNumber, refetch: refetchCafeListNumber } =
     useQuery(FETCH_CAFE_LIST_NUMBER);
 
   const onFetchMore = () => {
@@ -46,9 +46,9 @@ export default function CafeList() {
       onFetchMore={onFetchMore}
       keyword={keyword}
       onChangeKeyword={onChangeKeyword}
-      dataCafeListNumbers={dataCafeListNumbers}
-      refetchCafeListNumbers={refetchCafeListNumbers}
-      count={dataCafeListNumbers?.fetchCafeListNumber}
+      dataCafeListNumber={dataCafeListNumber}
+      refetchCafeListNumber={refetchCafeListNumber}
+      count={dataCafeListNumber?.fetchCafeListNumber}
       onClickDetail={onClickDetail}
     />
   );
