@@ -11,6 +11,22 @@ export default function CommunityDetailUI(props: any) {
     <S.Wrapper>
       <S.TitleWrapper>
         <S.Title>제목 : {props.data?.fetchBoard?.title}</S.Title>
+        {props.data?.fetchBoard.user?.id === props.UserData?.fetchLoginedUser.id ? (
+          <>
+            <S.EditIcon
+              title="수정하기"
+              // src="/comment/create.png"
+              onClick={props.onClickUpdate}
+            />
+            <S.DeleteIcon
+              title="삭제하기"
+              // src="/comment/Trash.png"
+              onClick={props.onClickDelete}
+            />
+          </>
+        ) : (
+          <></>
+        )}
         <S.UserWrapper>
           <S.UserImg></S.UserImg>
           <S.UserInfoWrapper>
@@ -36,21 +52,25 @@ export default function CommunityDetailUI(props: any) {
               />
             </>
           ) : (
-            <>
-              <S.MainImg></S.MainImg>
-            </>
+            <></>
           )}
         </div>
 
         <S.ImgWrapper>
-          {props.data?.fetchBoard.images.map((el, i) => (
-            <S.SubImg key={el.id}>
+          {/* {props.data?.fetchBoard.images.map((el, i) => (
+            <S.SubImg key={uuidv4()}>
               <S.Img
                 src={`https://storage.googleapis.com/team04-storage/${el[i]?.url}`}
-                onError={props.onErrorImg}
+                // onError={props.onErrorImg}
               />
             </S.SubImg>
-          ))}
+          ))} */}
+          <S.SubImg key={uuidv4()}>
+            <S.Img
+              src={`https://storage.googleapis.com/team04-storage/${props.data?.fetchBoard.images[1]?.url}`}
+              onError={props.onErrorImg}
+            />
+          </S.SubImg>
           {/* <S.SubImg></S.SubImg> */}
           {/* {(props.data?.fetchBoard.images || []).map(({ url }) => {
             return <S.SubImg key={uuidv4()}>{url}</S.SubImg>;
@@ -67,8 +87,8 @@ export default function CommunityDetailUI(props: any) {
           ></S.Contents>
         )}
         <S.AddressWrapper>
-          주소: {props.data?.fetchBoard.zipcode}&nbsp;/ {props.data?.fetchBoard?.address}
-          &nbsp;/&nbsp; {props.data?.fetchBoard.addressDetail}
+          주소: {props.data?.fetchBoard.zipcode} {props.data?.fetchBoard?.address}{" "}
+          {props.data?.fetchBoard.addressDetail}
         </S.AddressWrapper>
         <hr />
         <S.MapWrapper style={{ overflow: "hidden" }}>
@@ -80,17 +100,10 @@ export default function CommunityDetailUI(props: any) {
 
         <div>
           태그:
-          {/* {props.data?.fetchBoard.tags.name} */}
-          {(props.data?.fetchBoard.tags || []).map(({ name }) => {
-            return <div key={uuidv4()}>{`#${name}`}</div>;
-          })}
-        </div>
-        {/* <S.Tags>
-          #태그:
-          {props.data?.fetchBoard.tags?.map((el, index) => (
-            <div key={uuidv4()}># {el}</div>
+          {props.data?.fetchBoard.tags?.map((el: any) => (
+            <div key={uuidv4()}>{`#${el.name}`}</div>
           ))}
-        </S.Tags> */}
+        </div>
         <S.ContentsIcons>
           <S.CommentIcon />
           30
@@ -98,8 +111,6 @@ export default function CommunityDetailUI(props: any) {
           70
         </S.ContentsIcons>
       </S.ContentsWrapper>
-      <br />
-      <S.ListBtn onClick={props.onClickDelete}>삭제하기</S.ListBtn>
       <br />
       <Link href="/community/">
         <a>
@@ -115,3 +126,9 @@ export default function CommunityDetailUI(props: any) {
 //   .map((el: any) => (
 //     <S.SubImg key={el} src={`https://storage.googleapis.com/team04-storage/${el.url}`} />
 //   ))}
+
+// {props.data?.fetchBoard.images.map((el, i) => (
+//   <S.SubImg key={el.id}>
+//     <S.Img src={`${el[i]?.url}`} onError={props.onErrorImg} />
+//   </S.SubImg>
+// ))}

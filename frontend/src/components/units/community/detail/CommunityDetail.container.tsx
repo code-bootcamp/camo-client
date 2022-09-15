@@ -1,24 +1,26 @@
 import { useMutation, useQuery } from "@apollo/client";
+import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { SyntheticEvent } from "react";
-import { FETCH_BOARDS } from "../list/CommunityList.queries";
 import CommunityDetailUI from "./CommunityDetail.presenter";
-import { DELETE_BOARD, FETCH_BOARD } from "./CommunityDetail.queries";
+import { DELETE_BOARD, FETCH_BOARD, FETCH_LOGINED_USER } from "./CommunityDetail.queries";
 
 export default function CommunityDetail() {
   const router = useRouter();
   const [deleteBoard] = useMutation(DELETE_BOARD);
+  const { data: UserData } = useQuery(FETCH_LOGINED_USER);
 
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.communityId },
   });
-  console.log(data);
 
-  console.log(`"데이타"${data}`);
+  // console.log("데이타", data.fetchBoard);
+  // console.log("데이타", data.fetchBoard.images);
+  // console.log("데이타", data.fetchBoard.images[0].url);
 
-  //   const onClickUpdate = () => {
-  //     router.push(`/product/${router.query.detail}/edit`)
-  // }
+  const onClickUpdate = () => {
+    router.push(`/community/${router.query.communityId}/edit`);
+  };
 
   const onClickDelete = async () => {
     try {
@@ -26,16 +28,11 @@ export default function CommunityDetail() {
         variables: {
           boardId: router.query.communityId,
         },
-        refetchQueries: [
-          {
-            query: FETCH_BOARDS,
-          },
-        ],
       });
+      Modal.success({ content: "게시글이 삭제되었습니다" });
       router.push("/community");
-      alert("삭제 완료");
     } catch (error) {
-      alert("삭제 실패");
+      Modal.error({ content: (error as Error).message });
     }
   };
 
@@ -44,5 +41,13 @@ export default function CommunityDetail() {
       "https://images.unsplash.com/photo-1458819714733-e5ab3d536722?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTYwfHxjYWZlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60";
   };
 
-  return <CommunityDetailUI data={data} onClickDelete={onClickDelete} onErrorImg={onErrorImg} />;
+  return (
+    <CommunityDetailUI
+      data={data}
+      UserData={UserData}
+      onClickDelete={onClickDelete}
+      onErrorImg={onErrorImg}
+      onClickUpdate={onClickUpdate}
+    />
+  );
 }

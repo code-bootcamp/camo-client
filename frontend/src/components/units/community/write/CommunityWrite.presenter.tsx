@@ -1,6 +1,6 @@
 import { Modal } from "antd";
 import DaumPostcodeEmbed from "react-daum-postcode";
-import Upload from "../../../../commons/upload/Upload.container";
+import Upload from "../../../commons/upload/01/Upload.container";
 import { v4 as uuidv4 } from "uuid";
 import * as S from "./CommunityWrite.styles";
 import MapComponent from "../../../commons/map/01";

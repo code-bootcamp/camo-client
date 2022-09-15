@@ -1,5 +1,6 @@
-import { LikeOutlined, MessageOutlined } from "@ant-design/icons";
+import { CloseOutlined, EditOutlined, LikeOutlined, MessageOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../commons/styles/media";
 
 export const Wrapper = styled.div`
   width: 100vw;
@@ -15,6 +16,28 @@ export const TitleWrapper = styled.div`
 
 export const Title = styled.h1`
   font-weight: 700;
+`;
+
+export const EditIcon = styled(EditOutlined)`
+  width: 23px;
+  height: 23px;
+  cursor: pointer;
+  @media ${breakPoints.mobile} {
+    width: 16px;
+    height: 16px;
+  }
+`;
+
+export const DeleteIcon = styled(CloseOutlined)`
+  padding-top: 2px;
+  margin-left: 20px;
+  width: 21px;
+  height: 22px;
+  cursor: pointer;
+  @media ${breakPoints.mobile} {
+    width: 16px;
+    height: 16px;
+  }
 `;
 
 export const UserWrapper = styled.div`
