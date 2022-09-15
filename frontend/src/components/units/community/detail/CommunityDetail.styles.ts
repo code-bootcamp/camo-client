@@ -39,7 +39,7 @@ export const ContentsWrapper = styled.div`
   width: 100%;
 `;
 
-export const MainImg = styled.div`
+export const MainImg = styled.img`
   height: 30rem;
   width: 70%;
   background-color: #eee;
@@ -60,6 +60,12 @@ export const SubImg = styled.div`
   width: 4rem;
   margin-right: 0.5rem;
   background-color: #ddd;
+  border: 1px solid red;
+`;
+
+export const Img = styled.img`
+  width: 100%;
+  height: 100%;
 `;
 
 export const Contents = styled.div``;

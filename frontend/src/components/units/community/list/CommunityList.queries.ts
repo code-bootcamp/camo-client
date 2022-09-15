@@ -15,15 +15,19 @@ export const FETCH_BOARDS = gql`
         id
         name
       }
-      images {
+      user {
         id
+        nickName
+      }
+      images {
         url
+        id
       }
     }
   }
 `;
 
-export const FETCH_BOARDS_NUMBERS = gql`
+export const FETCH_BOARDS_NUMBER = gql`
   query fetchBoardsNumber {
     fetchBoardsNumber
   }

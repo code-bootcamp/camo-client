@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+import { SyntheticEvent } from "react";
 import { FETCH_BOARDS } from "../list/CommunityList.queries";
 import CommunityDetailUI from "./CommunityDetail.presenter";
 import { DELETE_BOARD, FETCH_BOARD } from "./CommunityDetail.queries";
@@ -10,12 +11,10 @@ export default function CommunityDetail() {
 
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.communityId },
-
-    // variables: { boardId: "e4f17275-14df-44bd-8cc0-9b0dde3ff0c4" },
   });
   console.log(data);
 
-  console.log(`데이타"${data}`);
+  console.log(`"데이타"${data}`);
 
   //   const onClickUpdate = () => {
   //     router.push(`/product/${router.query.detail}/edit`)
@@ -39,5 +38,11 @@ export default function CommunityDetail() {
       alert("삭제 실패");
     }
   };
-  return <CommunityDetailUI data={data} onClickDelete={onClickDelete} />;
+
+  const onErrorImg = (e: SyntheticEvent<HTMLImageElement>) => {
+    (e.target as HTMLImageElement).src =
+      "https://images.unsplash.com/photo-1458819714733-e5ab3d536722?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTYwfHxjYWZlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60";
+  };
+
+  return <CommunityDetailUI data={data} onClickDelete={onClickDelete} onErrorImg={onErrorImg} />;
 }

@@ -7,11 +7,12 @@ import MapComponent from "../../../commons/map/01";
 import dynamic from "next/dynamic";
 import { ICommunityUIProps } from "./CommunityWrite.types";
 
-const ToastUi = dynamic(() => import("../../../commons/editor"), {
+const ToastUI = dynamic(() => import("../../../commons/editor"), {
   ssr: false,
 });
 
 export default function CommunityWriteUI(props: ICommunityUIProps) {
+  // console.log(props.formState);
   return (
     <S.Wrapper>
       {props.isAddressOpen && (
@@ -19,12 +20,7 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
           visible={true}
           closable={false}
           footer={[
-            <button
-              key="closeModal"
-              id="modalClose"
-              // type="primary"
-              onClick={props.onClickAddressModal}
-            >
+            <button key="closeModal" id="modalClose" onClick={props.onClickAddressModal}>
               취소
             </button>,
           ]}
@@ -36,22 +32,31 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
       <S.TopTitleWrap>
         <S.TopTitle>
           COMMUNITY
-          <span> | 글쓰기</span>
+          <span>{props.isEdit ? " | 글쓰기 수정" : " | 글쓰기"}</span>
         </S.TopTitle>
       </S.TopTitleWrap>
-      <S.Form onSubmit={props.handleSubmit(props.onClickCreate)}>
+      <S.Form
+        onSubmit={
+          props.isEdit
+            ? props.handleSubmit(props.onClickEdit)
+            : props.handleSubmit(props.onClickCreate)
+        }
+      >
         <S.BodyWrapper>
           <S.Lable>제목</S.Lable>
-          <S.TitleInput type="text" placeholder="제목을 입력하세요" {...props.register("title")} />
+          <S.TitleInput
+            type="text"
+            placeholder="제목을 입력해주세요"
+            {...props.register("title")}
+          />
           <S.Lable>내용</S.Lable>
           <S.ContentWrapper>
-            <ToastUi
-              defaultValue={props.editData?.fetchBoard.contents}
+            <ToastUI
+              initialValue={props.editData?.fetchBoard.contents}
               editorRef={props.editorRef}
-              onChangeContent={props.onChangeContent}
+              onChangeContents={props.onChangeContents}
             />
             {/* <S.ContentsReactQuill onChange={props.onChangeContents} /> */}
-            {/* <S.Content placeholder="당신의 이야기를 적어주세요✏️"></S.Content> */}
           </S.ContentWrapper>
           <S.Lable>이미지</S.Lable>
           <S.ImageWrap>
@@ -65,7 +70,7 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
             ))}
           </S.ImageWrap>
           <S.Lable>태그</S.Lable>
-          <S.TagInput type="text" placeholder="태그, 태그, 태그" {...props.register("tags")} />
+          <S.TagInput type="text" placeholder="태그를 입력해주세요" {...props.register("tags")} />
           <S.Lable>주소</S.Lable>{" "}
           <S.MapAddressWrapper>
             <S.MapWrapper>
@@ -78,11 +83,7 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
                 readOnly
                 {...props.register("zipcode")}
               />
-              <S.AddressButton
-                type="button"
-                id="modalOpen"
-                onSubmit={props.handleSubmit(props.onClickAddressModal)}
-              >
+              <S.AddressButton type="button" id="modalOpen" onClick={props.onClickAddressModal}>
                 주소입력
               </S.AddressButton>
               <S.AddressDetailWrapper>
@@ -94,9 +95,9 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
             </S.AddressWrapper>
           </S.MapAddressWrapper>
           <S.BtnWrapper>
-            <S.RegisterBtn onSubmit={props.handleSubmit(props.onClickCreate)}>등록</S.RegisterBtn>
+            <S.RegisterBtn type="submit">등록</S.RegisterBtn>
 
-            <S.CancelBtn type="button" onSubmit={props.handleSubmit(props.onClickCancel)}>
+            <S.CancelBtn type="button" onClick={props.onClickCancel}>
               취소
             </S.CancelBtn>
           </S.BtnWrapper>

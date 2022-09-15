@@ -2,16 +2,16 @@ import { useQuery } from "@apollo/client";
 import { MouseEvent, useState } from "react";
 import {
   FETCH_BOARDS,
-  FETCH_BOARDS_NUMBERS,
+  FETCH_BOARDS_NUMBER,
 } from "../../../units/community/list/CommunityList.queries";
 import Paginations01UI from "./Paginations01.presenter";
 
 export default function Paginations01(props: any) {
   const { refetch } = useQuery(FETCH_BOARDS);
 
-  const { data: dataBoardsCount } = useQuery(FETCH_BOARDS_NUMBERS);
+  const { data: dataBoardsNumber } = useQuery(FETCH_BOARDS_NUMBER);
 
-  const lastPage = dataBoardsCount ? Math.ceil(dataBoardsCount?.fetchBoardsCount / 10) : 0;
+  const lastPage = dataBoardsNumber ? Math.ceil(dataBoardsNumber?.fetchBoardsCount / 10) : 0;
 
   const [startPage, setStartPage] = useState(1);
   const [activedPage, setActivedPage] = useState(1);

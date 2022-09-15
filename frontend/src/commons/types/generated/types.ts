@@ -152,6 +152,11 @@ export type ICreateCommentInput = {
   comment?: InputMaybe<Scalars['String']>;
 };
 
+export type ICreateReviewInput = {
+  comment: Scalars['String'];
+  userId: Scalars['String'];
+};
+
 export type ICreateUserInput = {
   email: Scalars['String'];
   name: Scalars['String'];
@@ -186,12 +191,14 @@ export type IMutation = {
   createCancel: IPayment;
   createComment: IComment;
   createPayment: IPayment;
+  createReview: IReview;
   createRoom: IChatRoom;
   createUser: IUser;
   deleteBoard: Scalars['Boolean'];
   deleteCafeList: Scalars['Boolean'];
   deleteComment: Scalars['Boolean'];
   deleteLoginUser: Scalars['Boolean'];
+  deleteReview: Scalars['Boolean'];
   fetchUserFavoriteCafe: Scalars['Boolean'];
   loginUser: Scalars['String'];
   logoutUser: Scalars['String'];
@@ -206,6 +213,7 @@ export type IMutation = {
   updateCafeList: ICafeList;
   updateComment: IComment;
   updateLoginUser: IUser;
+  updateReview: IReview;
   updateUserPassword: IUser;
   uploadFile: Array<Scalars['String']>;
 };
@@ -250,6 +258,11 @@ export type IMutationCreatePaymentArgs = {
 };
 
 
+export type IMutationCreateReviewArgs = {
+  createReviewInput: ICreateReviewInput;
+};
+
+
 export type IMutationCreateRoomArgs = {
   opponentNickName: Scalars['String'];
   userId: Scalars['String'];
@@ -278,6 +291,11 @@ export type IMutationDeleteCommentArgs = {
 
 export type IMutationDeleteLoginUserArgs = {
   password: Scalars['String'];
+};
+
+
+export type IMutationDeleteReviewArgs = {
+  reviewId: Scalars['String'];
 };
 
 
@@ -342,6 +360,11 @@ export type IMutationUpdateLoginUserArgs = {
 };
 
 
+export type IMutationUpdateReviewArgs = {
+  updateReviewInput: IUpdateReviewInput;
+};
+
+
 export type IMutationUpdateUserPasswordArgs = {
   email: Scalars['String'];
   password: Scalars['String'];
@@ -385,6 +408,8 @@ export type IQuery = {
   fetchComments: Array<IComment>;
   fetchLoginedUser: IUser;
   fetchLogs: Array<IChatMessage>;
+  fetchReview: IReview;
+  fetchReviews: Array<IReview>;
   fetchUser: IUser;
   fetchUserByEmail: IUser;
   fetchUserWithDeleted: Array<IUser>;
@@ -462,6 +487,11 @@ export type IQueryFetchLogsArgs = {
 };
 
 
+export type IQueryFetchReviewArgs = {
+  reviewId: Scalars['String'];
+};
+
+
 export type IQueryFetchUserArgs = {
   email: Scalars['String'];
 };
@@ -499,9 +529,12 @@ export type IQuerySearchMyBoardsArgs = {
 export type IReview = {
   __typename?: 'Review';
   cafeList: ICafeList;
+  comment: Scalars['String'];
+  createdAt: Scalars['DateTime'];
+  deletedAt: Scalars['DateTime'];
   id: Scalars['String'];
   ownerComment?: Maybe<Scalars['String']>;
-  reviewComment: Scalars['String'];
+  updatedAt: Scalars['DateTime'];
   user: IUser;
 };
 
@@ -547,6 +580,11 @@ export type IUpdateCafeListInput = {
 export type IUpdateCommentInput = {
   boardId?: InputMaybe<Scalars['String']>;
   comment?: InputMaybe<Scalars['String']>;
+};
+
+export type IUpdateReviewInput = {
+  comment: Scalars['String'];
+  reviewId: Scalars['String'];
 };
 
 export type IUpdateUserInput = {

@@ -13,11 +13,12 @@ import { IUpdateBoardInput } from "../../../../commons/types/generated/types";
 
 const schema = yup.object({
   title: yup.string().required("제목을 입력해주세요."),
-  content: yup.string().required("내용을 입력해주세요."),
+  contents: yup.string().required("내용을 입력해주세요."),
 });
 
 export default function CommunityWrite(props: any) {
   useAuth();
+
   const router = useRouter();
 
   const [isAddressOpen, setIsAddressOpen] = useState(false);
@@ -26,7 +27,7 @@ export default function CommunityWrite(props: any) {
   const [createBoard] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
 
-  const { register, handleSubmit, setValue, trigger, formState } = useForm({
+  const { register, handleSubmit, setValue, trigger, formState, getValues } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
   });
@@ -69,8 +70,12 @@ export default function CommunityWrite(props: any) {
     setFileUrls(newFileUrls);
   };
 
+  // const onClickCreate = (data: any) => {
+  //   console.log("check");
+  // };
+
   const onClickCreate = async (data: any) => {
-    console.log("data", data);
+    console.log("fileUrls Check", fileUrls);
     try {
       const result = await createBoard({
         variables: {
@@ -80,8 +85,10 @@ export default function CommunityWrite(props: any) {
             zipcode: data.zipcode,
             address: data.address,
             addressDetail: data.addressDetail,
-            tags: data.tags.split(" "),
-            images: [...fileUrls],
+            // tags: data.tags.split(" "),
+            tags: data.tags,
+            // images: [...fileUrls],
+            images: fileUrls.join().split(","),
           },
         },
       });
@@ -97,14 +104,14 @@ export default function CommunityWrite(props: any) {
   };
 
   const onClickCancel = () => {
-    router.push("/community");
+    router.push("/community/");
   };
 
-  useEffect(() => {
-    if (props.data?.fetchBoard.images?.length) {
-      setFileUrls([...props.data?.fetchBoard.images]);
-    }
-  }, [props.data]);
+  // useEffect(() => {
+  //   if (props.data?.fetchBoard.images?.length) {
+  //     setFileUrls([...props.data?.fetchBoard.images]);
+  //   }
+  // }, [props.data]);
 
   const onClickEdit = async (data: any) => {
     const updateBoardInput: IUpdateBoardInput = {};
@@ -138,22 +145,22 @@ export default function CommunityWrite(props: any) {
     }
   };
 
-  // // 태그 수정시 defaultValue
-  // useEffect(() => {
-  //   if (props.editData?.fetchBoard.tags.length)
-  //     setTagList(props.editData?.fetchBoard.tags.map((el: any) => el.title));
-  // }, [props.editData]);
+  // // // 태그 수정시 defaultValue
+  // // useEffect(() => {
+  // //   if (props.editData?.fetchBoard.tags.length)
+  // //     setTagList(props.editData?.fetchBoard.tags.map((el: any) => el.title));
+  // // }, [props.editData]);
 
-  // // 이미지 수정시 defaultValue
-  // useEffect(() => {
-  //   if (props.editData?.fetchBoard.images) {
-  //     setImageUrl(props.editData?.fetchBoard.images);
-  //   }
-  // }, [props.editData]);
+  // // // 이미지 수정시 defaultValue
+  // // useEffect(() => {
+  // //   if (props.editData?.fetchBoard.images) {
+  // //     setImageUrl(props.editData?.fetchBoard.images);
+  // //   }
+  // // }, [props.editData]);
 
-  // toastUI defaultValue
+  // toastUI
   useEffect(() => {
-    const html: any = props.editData?.fetchBoard.content;
+    const html: any = props.editData?.fetchBoard.contents;
     editorRef.current?.getInstance().setHTML(html);
   }, [props.editData]);
 
@@ -171,6 +178,9 @@ export default function CommunityWrite(props: any) {
       fileUrls={fileUrls}
       onChangeFileUrls={onChangeFileUrls}
       onClickEdit={onClickEdit}
+      isEdit={props.isEdit}
+      editorRef={editorRef}
+      address={getValues("address")}
     />
   );
 }

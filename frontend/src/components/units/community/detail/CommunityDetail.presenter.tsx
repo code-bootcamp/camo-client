@@ -5,11 +5,8 @@ import Dompurify from "dompurify";
 
 import * as S from "./CommunityDetail.styles";
 import KakaoMapPage from "../../../commons/map/01";
-import { useRouter } from "next/router";
 
 export default function CommunityDetailUI(props: any) {
-  const router = useRouter();
-
   return (
     <S.Wrapper>
       <S.TitleWrapper>
@@ -17,7 +14,6 @@ export default function CommunityDetailUI(props: any) {
         <S.UserWrapper>
           <S.UserImg></S.UserImg>
           <S.UserInfoWrapper>
-            <S.UserName>이름 : {props.data?.fetchBoard?.user?.name}</S.UserName>
             <S.UserName>닉네임 : {props.data?.fetchBoard?.user?.nickName}</S.UserName>
 
             <S.PostWrapper>
@@ -31,32 +27,34 @@ export default function CommunityDetailUI(props: any) {
       <hr />
       <S.ContentsWrapper>
         <div>
-          {props.data?.fetchBoard.images?.[0] !== "" ? (
+          {props.data?.fetchBoard.images[0]?.url !== "" ? (
             <>
-              <S.MainImg
-                src={`https://storage.googleapis.com/${props.data?.fetchBoard.images?.[0]}`}
+              <img
+                src={`https://storage.googleapis.com/team04-storage/${props.data?.fetchBoard.images[0]?.url}`}
                 alt="이미지"
+                onError={props.onErrorImg}
               />
             </>
           ) : (
             <>
-              <S.MainImg />
+              <S.MainImg></S.MainImg>
             </>
           )}
         </div>
-        {/* <S.MainImg> {props.data?.fetchBoard?.images[0]}</S.MainImg> */}
 
-        {/* 0912 예은담당 이미지, 내용 오류있음 */}
         <S.ImgWrapper>
-          {props.data?.fetchBoard.images
-            ?.filter((el: string) => el)
-            .map((el: string) => (
-              <S.SubImg key={el} src={`https://storage.googleapis.com/${el}`} />
-            ))}
-          <S.SubImg></S.SubImg>
-          {(props.data?.fetchBoard.images || []).map(({ url }) => {
+          {props.data?.fetchBoard.images.map((el, i) => (
+            <S.SubImg key={el.id}>
+              <S.Img
+                src={`https://storage.googleapis.com/team04-storage/${el[i]?.url}`}
+                onError={props.onErrorImg}
+              />
+            </S.SubImg>
+          ))}
+          {/* <S.SubImg></S.SubImg> */}
+          {/* {(props.data?.fetchBoard.images || []).map(({ url }) => {
             return <S.SubImg key={uuidv4()}>{url}</S.SubImg>;
-          })}
+          })} */}
         </S.ImgWrapper>
 
         <S.Contents>내용:</S.Contents>
@@ -112,3 +110,8 @@ export default function CommunityDetailUI(props: any) {
     </S.Wrapper>
   );
 }
+// {props.data?.fetchBoard.images
+//   ?.filter((el: any) => el)
+//   .map((el: any) => (
+//     <S.SubImg key={el} src={`https://storage.googleapis.com/team04-storage/${el.url}`} />
+//   ))}
