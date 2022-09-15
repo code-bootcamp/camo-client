@@ -1,8 +1,8 @@
 import { Modal } from "antd";
-import { v4 as uuidv4 } from "uuid";
 import DaumPostcodeEmbed from "react-daum-postcode";
 import * as C from "./CafeWrite.styles";
-import Upload02 from "../../../../commons/upload/02/Upload.container";
+import { v4 as uuidv4 } from "uuid";
+import Upload02 from "../../../commons/upload/02/Upload.container";
 
 export default function CafeWriteUI(props: any) {
   return (
@@ -24,9 +24,9 @@ export default function CafeWriteUI(props: any) {
 
         <div>
           <C.Title>
-            카페 등록하기
-            {/* { props.isEdit ? "카페 정보 수정하기" : "카페 정보 등록하기" } */}
-            <span>카페 정보를 입력해주세요. 카페 이미지는 최소 3장이상 등록해주세요</span>
+            {props.isEdit ? "카페 정보 수정하기" : "카페 등록하기"}
+
+            <span>카페 소개 내용을 입력해주세요.</span>
           </C.Title>
         </div>
 
@@ -42,12 +42,7 @@ export default function CafeWriteUI(props: any) {
             <C.LabelBox>
               <C.Label>카페 주소</C.Label>
               <C.ZipcodeWrapper>
-                <C.Zipcode
-                  type="text"
-                  placeholder="000000"
-                  readOnly
-                  {...props.register("zipcode")}
-                />
+                <C.Zipcode placeholder="000000" readOnly {...props.register("zipcode")} />
                 <C.AddressButton type="button" id="modalOpen" onClick={props.onClickAddressModal}>
                   우편번호 검색
                 </C.AddressButton>
@@ -75,6 +70,7 @@ export default function CafeWriteUI(props: any) {
             <C.LabelBox>
               <C.Label>홈페이지 주소</C.Label>
               <C.InputBox
+                type="text"
                 placeholder="카페 홈페이지 주소 또는 블로그, SNS 주소가 있으면 입력해주세요"
                 {...props.register("hompage")}
               />
@@ -82,7 +78,8 @@ export default function CafeWriteUI(props: any) {
             <C.LabelBox>
               <C.Label>태그</C.Label>
               <C.InputBox
-                placeholder="#태그를 적어주세요. ex) 분위기 좋은, 예쁜, 조용한"
+                type="text"
+                placeholder="태그를 적어주세요. ex) 분위기 좋은, 예쁜, 조용한"
                 {...props.register("tags")}
               />
             </C.LabelBox>
@@ -100,11 +97,27 @@ export default function CafeWriteUI(props: any) {
               <C.Label>사진 첨부</C.Label>
 
               <C.ImageWrap>
+                {/* <div
+                  style={{
+                    width: "100px",
+                    height: "100px",
+                    backgroundColor: "gray",
+                    cursor: "pointer",
+                  }}
+                  onClick={props.onClickImage}
+                >
+                  이미지선택
+                </div>
+                <input type="file" onChange={props.onChangeFile} ref={props.fileRef} />
+                <img src={props.imageUrl[0]} /> */}
+
+                {/* <img src={`https://storage.googleapis.com/${props.imageUrl}`} /> */}
+
                 {props.fileUrls.map((el: any, index: any) => (
                   <Upload02
                     key={uuidv4()}
                     index={index}
-                    fileUrl={el}
+                    fileUrls={el}
                     onChangeFileUrls={props.onChangeFileUrls}
                   />
                 ))}
@@ -112,8 +125,12 @@ export default function CafeWriteUI(props: any) {
             </C.LabelBox>
             <C.LabelBox>
               <C.Label>영업시간</C.Label>
-              <C.InputShortBox placeholder="ex) 9:00" {...props.register("startTime")} />
-              <C.InputShortBox placeholder="ex) 22:00" {...props.register("endTime")} />
+              <C.InputShortBox
+                type="text"
+                placeholder="ex) 9:00"
+                {...props.register("startTime")}
+              />
+              <C.InputShortBox type="text" placeholder="ex) 22:00" {...props.register("endTime")} />
             </C.LabelBox>
             <C.LabelBox>
               <C.Label>예약금</C.Label>
@@ -128,8 +145,15 @@ export default function CafeWriteUI(props: any) {
             <C.CancelBtn type="button" onClick={props.onClickCancel}>
               취소하기
             </C.CancelBtn>
-            <C.RegisterBtn onClick={props.handleSubmit(props.onClickCreate)}>
-              등록하기
+            {/* <C.RegisterBtn onClick={props.onClickCreate}> */}
+            <C.RegisterBtn
+              onSubmit={
+                props.isEdit
+                  ? props.handleSubmit(props.onClickUpdate)
+                  : props.handleSubmit(props.onClickCreate)
+              }
+            >
+              {props.isEdit ? "수정하기" : "등록하기"}
             </C.RegisterBtn>
           </C.BottomWrap>
         </C.Form>

@@ -195,17 +195,24 @@ export const BottomWrap = styled.div`
     margin: 0;
   }
 `;
-export const RegisterBtn = styled.div`
+export const RegisterBtn = styled.button`
   width: 7rem;
   height: 2.5rem;
-  background: #33413e;
   font-size: 1.2rem;
   border-radius: 0.5rem;
-  color: white;
-  line-height: 2.5rem;
   text-align: center;
+  border: none;
   margin: 0.5rem;
+
   cursor: pointer;
+
+  background: #33413e;
+  color: white;
+
+  :hover {
+    color: gold;
+  }
+
   @media ${breakPoints.mobile} {
     height: 2.2rem;
     line-height: 2.2rem;
@@ -219,13 +226,55 @@ export const RegisterBtn = styled.div`
 export const CancelBtn = styled.button`
   width: 7rem;
   height: 2.5rem;
-  background: #aaa;
-  border: none;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   border-radius: 0.5rem;
-  color: #fff;
   text-align: center;
+  border: none;
   margin: 0.5rem;
-
   cursor: pointer;
+
+  background: #aaa;
+  color: #fff;
+  :hover {
+    color: gold;
+  }
+
+  @media ${breakPoints.mobile} {
+    height: 2.2rem;
+    line-height: 2.2rem;
+    width: 5rem;
+    font-size: 0.8rem;
+    font-weight: 300;
+    margin-top: 1.2rem;
+  }
+`;
+
+export const UploadImage = styled.img`
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  margin-right: 24px;
+  cursor: pointer;
+`;
+
+export const UploadButton = styled.div`
+  width: 180px;
+  height: 180px;
+  background-color: #bdbdbd;
+  margin-right: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  cursor: pointer;
+`;
+
+export const Div = styled.div`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  color: #4f4f4f;
+  margin: 5px;
 `;

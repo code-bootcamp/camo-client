@@ -1,20 +1,21 @@
 import styled from "@emotion/styled";
 
-export const UploadBox = styled.div`
-  width: 7rem;
-  height: 7rem;
-  background-color: #ddd;
+export const UploadImage = styled.div`
+  width: 6.6rem;
+  height: 6.6rem;
+  line-height: 6.6rem;
   margin-right: 25px;
   text-align: center;
-  line-height: 7rem;
+  background-color: #eee;
   color: gray;
   cursor: pointer;
 `;
 
-export const PreviewImg = styled.img`
-  width: 7rem;
-  height: 7rem;
+export const UploadButton = styled.img`
+  width: 6.6rem;
+  height: 6.6rem;
   margin-right: 25px;
+  background-color: #aaa;
   cursor: pointer;
 `;
 

@@ -3,7 +3,7 @@
 import CafeWrite from "../../../src/components/units/cafe/write/CafeWrite.container";
 
 export default function CafeNewPage() {
-  return <CafeWrite />;
+  return <CafeWrite isEdit={false} />;
 }
 
 // export default withAuth(CafeNewPage)
