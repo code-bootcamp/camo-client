@@ -97,7 +97,15 @@ export const CafeRegisterBox = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: end;
+  margin-right: 10rem;
   position: relative;
+
+  a {
+    color: white;
+  }
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const CafeRegister = styled.div`
@@ -298,12 +306,13 @@ export const CafeTag = styled.div`
   font-size: 0.7rem;
   font-weight: 400;
   margin-bottom: 0.1rem;
+  color: steelblue;
 `;
 
 export const CafeName = styled.div`
   font-size: 1rem;
   font-weight: 800;
-  margin-bottom: 0.1rem;
+  margin: 0.3rem 0;
 `;
 export const CafeIntro = styled.div`
   font-size: 0.77rem;
@@ -320,11 +329,14 @@ export const CafeRate = styled.span`
   font-size: 0.66rem;
   font-weight: 400;
 `;
-export const CafeReview = styled.span`
-  font-size: 0.66rem;
+export const Date = styled.span`
+  font-size: 0.44rem;
   font-weight: 400;
   color: steelblue;
+  text-align: right;
+  margin-top: 0.3rem;
 `;
+
 export const CafeAddress = styled.div`
   font-size: 0.7rem;
   font-weight: 400;

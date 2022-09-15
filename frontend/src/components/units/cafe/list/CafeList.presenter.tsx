@@ -1,10 +1,11 @@
 import "antd/dist/antd.css";
 import Link from "next/link";
 import InfiniteScroll from "react-infinite-scroller";
-import { Footer } from "../../../commons/layout/footer/LayoutFooter.style";
 import Searchbars02 from "../../../commons/searchbar/02/Searchbars02.container";
 import * as C from "./CafeList.styles";
 import { v4 as uuidv4 } from "uuid";
+import LayoutFooterUI from "../../../commons/layout/footer/LayoutFooter.presenter";
+import { getDate } from "../../../../commons/libraries/utils";
 
 export default function CafeListUI(props: any) {
   const IMAGES = [
@@ -49,7 +50,7 @@ export default function CafeListUI(props: any) {
             <Link href="./cafe/new">
               <C.CafeRegister>
                 <a>
-                  <span>카페 등록하기</span>{" "}
+                  <span>카페 등록하기</span>
                 </a>
               </C.CafeRegister>
             </Link>
@@ -81,74 +82,30 @@ export default function CafeListUI(props: any) {
 
                   <C.TextWrap>
                     <C.CafeTag key={uuidv4()}>
-                      #태그, #{el.cafeListTag[index]?.name}
-                      {/* #{el.cafeListTag[0]?.name} &nbsp; #{el.cafeListTag[1]?.name} */}
+                      {/* #태그, #{el.cafeListTag[index]?.name} */}#{el.cafeListTag[0]?.name} &nbsp;
+                      #{el.cafeListTag[1]?.name}
                     </C.CafeTag>
 
-                    {/* 
-{props.data?.fetchCafeListsCreatedAt.cafeListTag?.map((el: any, index: any) => (
-                      <C.CafeTag key={uuidv4()}># {el} </C.CafeTag>
-                    ))} */}
+                    <C.CafeName> {el.title}</C.CafeName>
+                    <C.CafeIntro>
+                      {" "}
+                      {/* <C.Star />  */}
+                      안국역에 위치한 작은 스콘 맛집
+                    </C.CafeIntro>
 
-                    <C.CafeName>카페명 ㅣ {el.title}</C.CafeName>
-                    <C.CafeIntro>안국역에 위치한 작은 스콘 맛집</C.CafeIntro>
-                    <div>
-                      <C.Star />
-                      {/* <C.CafeRate>4.39/5</C.CafeRate> */}
-                      &nbsp;&nbsp;
-                      <C.CafeReview>방문자리뷰 22</C.CafeReview>
-                    </div>
-                    <C.CafeAddress>주소 ㅣ {el.address}</C.CafeAddress>
+                    <C.CafeAddress>
+                      📍 {el.address} {el.addressDetail}
+                    </C.CafeAddress>
+
+                    <C.Date>{getDate(el.createdAt)}</C.Date>
                   </C.TextWrap>
                 </C.PostWrapper>
               </>
             ))}
           </C.PostAllWrap>
         </InfiniteScroll>
-        {/*        
-          <C.PostAllWrap>
-            {IMAGES.map((el, index) => (
-              <>
-                <C.PostWrapper id={el.id} onClick={props.onClickDetail(el)}>
-                  <C.imageBox>
-                    <C.DetailImage className="IMG">
-                      <img src={IMAGES[index]} />
-                    </C.DetailImage>
-                  </C.imageBox>
-                  <C.TextWrap>
-                    <C.CafeTag>#조용한 카페</C.CafeTag>
-                    <C.CafeName>카페 레이어드</C.CafeName>
-                    <C.CafeIntro>안국역에 위치한 작은 스콘 맛집</C.CafeIntro>
-                    <div>
-                      <C.Star />
-                      &nbsp;
-                      <C.CafeRate>4.39/5</C.CafeRate>
-                      &nbsp;&nbsp;&nbsp;
-                      <C.CafeReview>방문자리뷰 22</C.CafeReview>
-                    </div>
-                    <C.CafeAddress>서울 종로구 북촌2길 2-3</C.CafeAddress>
-                  </C.TextWrap>
-                </C.PostWrapper>
-              </>
-            ))}
-          </C.PostAllWrap>
-         */}
 
-        <Footer />
-        {/* <C.Footer>
-          <div>
-            <C.FooterText>Cafe Moment 소개</C.FooterText>
-            <C.FooterText>cafemoment.site</C.FooterText>
-            <C.FooterText>Contact with Us</C.FooterText>
-            <C.FooterText>(000) 8282-1234</C.FooterText>
-          </div>
-          <C.FooterText2>
-            평일 10:00~17:00 | 점심시간 12:30~14:00 주말 및 공휴일 휴무
-            <br /> <br />
-            (주)카모 서울특별시 구로구 디지털로 300 13층 Made by 2022 CAMO Corp.
-            <br /> © 2022 Betheme by Muffin group | All Rights Reserved | Powered by WordPress
-          </C.FooterText2>
-        </C.Footer> */}
+        <LayoutFooterUI />
       </C.Wrapper>
     </>
   );

@@ -16,6 +16,8 @@ export default function CafeList() {
   const onFetchMore = () => {
     if (!data) return;
     fetchMore({
+      // variables: { page: Math.ceil(data.fetchCafeListsCreatedAt.page / 10) + 1 },
+
       variables: { page: Math.ceil(data.fetchCafeListsCreatedAt.length / 10) + 1 },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult.fetchCafeListsCreatedAt) {
