@@ -1,8 +1,16 @@
 import CommunityListUI from "./CommunityList.presenter";
-import { FETCH_BOARDS, FETCH_BOARDS_NUMBER } from "./CommunityList.queries";
+import {
+  // FETCH_BOARDS,
+  FETCH_BOARDS_CREATED_AT,
+  FETCH_BOARDS_NUMBER,
+} from "./CommunityList.queries";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { IQuery, IQueryFetchBoardsArgs } from "../../../../commons/types/generated/types";
+import {
+  IQuery,
+  // IQueryFetchBoardsArgs,
+  IQueryFetchBoardsCreatedAtArgs,
+} from "../../../../commons/types/generated/types";
 import { SyntheticEvent, useState } from "react";
 
 export default function CommunityList() {
@@ -10,9 +18,13 @@ export default function CommunityList() {
 
   const [keyword, setKeyword] = useState("");
 
-  const { data, refetch, fetchMore } = useQuery<Pick<IQuery, "fetchBoards">, IQueryFetchBoardsArgs>(
-    FETCH_BOARDS
-  );
+  // const { data, refetch, fetchMore } = useQuery<Pick<IQuery, "fetchBoards">, IQueryFetchBoardsArgs>(
+  //   FETCH_BOARDS
+  // );
+  const { data, refetch, fetchMore } = useQuery<
+    Pick<IQuery, "fetchBoardsCreatedAt">,
+    IQueryFetchBoardsCreatedAtArgs
+  >(FETCH_BOARDS_CREATED_AT);
 
   const { data: dataBoardsNumber, refetch: refetchBoardsNumber } = useQuery(FETCH_BOARDS_NUMBER);
 
@@ -25,15 +37,18 @@ export default function CommunityList() {
   const onFetchMore = () => {
     if (!data) return;
     fetchMore({
-      variables: { page: Math.ceil(data.fetchBoards.length / 10) + 1 },
+      variables: { page: Math.ceil(data.fetchBoardsCreatedAt.length / 10) + 1 },
       updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult.fetchBoards) {
+        if (!fetchMoreResult.fetchBoardsCreatedAt) {
           return {
-            fetchBoards: [...prev.fetchBoards],
+            fetchBoardsCreatedAt: [...prev.fetchBoardsCreatedAt],
           };
         }
         return {
-          fetchBoards: [...prev.fetchBoards, ...fetchMoreResult.fetchBoards],
+          fetchBoardsCreatedAt: [
+            ...prev.fetchBoardsCreatedAt,
+            ...fetchMoreResult.fetchBoardsCreatedAt,
+          ],
         };
       },
     });
@@ -62,7 +77,6 @@ export default function CommunityList() {
       dataBoardsNumber={dataBoardsNumber}
       onClickMoveToNew={onClickMoveToNew}
       onClickMoveToDetail={onClickMoveToDetail}
-      refetch={refetch}
       refetchBoardsNumber={refetchBoardsNumber}
       boardsNumber={dataBoardsNumber?.fetchBoardsNumber}
       keyword={keyword}
@@ -71,6 +85,7 @@ export default function CommunityList() {
       onClickPage={onClickPage}
       onFetchMore={onFetchMore}
       onErrorImg={onErrorImg}
+      refetch={refetch}
     />
   );
 }

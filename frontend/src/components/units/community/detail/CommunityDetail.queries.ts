@@ -37,6 +37,15 @@ export const FETCH_BOARD = gql`
   }
 `;
 
+export const FETCH_LOGINED_USER = gql`
+  query fetchLoginedUser {
+    fetchLoginedUser {
+      id
+      nickName
+    }
+  }
+`;
+
 export const DELETE_BOARD = gql`
   mutation deleteBoard($boardId: String!) {
     deleteBoard(boardId: $boardId)
