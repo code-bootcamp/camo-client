@@ -50,6 +50,7 @@ export type ICafeList = {
   homepage?: Maybe<Scalars['String']>;
   id: Scalars['String'];
   phone?: Maybe<Scalars['String']>;
+  remarks?: Maybe<Scalars['String']>;
   reviews?: Maybe<Array<IReview>>;
   startTime?: Maybe<Scalars['String']>;
   title: Scalars['String'];
@@ -132,6 +133,7 @@ export type ICreateCafeListInput = {
   homepage?: InputMaybe<Scalars['String']>;
   images?: InputMaybe<Array<Scalars['String']>>;
   phone?: InputMaybe<Scalars['String']>;
+  remarks?: InputMaybe<Scalars['String']>;
   startTime?: InputMaybe<Scalars['String']>;
   tags?: InputMaybe<Array<Scalars['String']>>;
   title: Scalars['String'];
@@ -571,6 +573,7 @@ export type IUpdateCafeListInput = {
   homepage?: InputMaybe<Scalars['String']>;
   images?: InputMaybe<Array<Scalars['String']>>;
   phone?: InputMaybe<Scalars['String']>;
+  remarks?: InputMaybe<Scalars['String']>;
   startTime?: InputMaybe<Scalars['String']>;
   tags?: InputMaybe<Array<Scalars['String']>>;
   title?: InputMaybe<Scalars['String']>;
