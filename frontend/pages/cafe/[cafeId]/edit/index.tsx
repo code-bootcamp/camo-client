@@ -18,6 +18,7 @@ export const FETCH_CAFE_LIST = gql`
       homepage
       deposit
       createdAt
+      remarks
       cafeListTag {
         id
         name

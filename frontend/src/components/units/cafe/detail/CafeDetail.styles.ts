@@ -8,7 +8,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   width: 1500px;
   padding: 10%;
-  /* font-family: "KOTRA_BOLD-Bold"; */
   font-family: "Cafe24Ohsquare";
   /* background-color: yellow; */
   @media ${breakPoints.mobile} {
@@ -33,6 +32,7 @@ export const Title = styled.div`
   font-weight: 900;
   color: #33413e;
   padding-bottom: 1.5rem;
+  /* font-family: "KOTRA_BOLD-Bold"; */
 
   span {
     line-height: 3rem;
@@ -63,6 +63,7 @@ export const ImageBox = styled.div`
   img {
     background-color: #eee;
     height: 66%;
+    object-fit: cover;
   }
 `;
 

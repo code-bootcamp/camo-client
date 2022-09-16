@@ -19,7 +19,7 @@ export const FooterText = styled.span`
   margin: 1.3rem;
   cursor: pointer;
   @media ${breakPoints.mobile} {
-    display: none;
+    font-size: 0.6rem;
   }
 `;
 

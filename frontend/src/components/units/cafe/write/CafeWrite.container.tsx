@@ -30,6 +30,7 @@ export default function CafeWrite(props: any) {
         startTime: props.data.fetchCafeList.startTime,
         endTime: props.data.fetchCafeList.endTime,
         homepage: props.data.fetchCafeList.homepage,
+        remarks: props.data.fetchCafeList.remarks,
         deposit: props.data.fetchCafeList.deposit,
         contents: props.data.fetchCafeList.contents,
         tags: props.data.fetchCafeList.tags?.join(),
@@ -99,8 +100,8 @@ export default function CafeWrite(props: any) {
             deposit: Number(data.deposit || ""),
             contents: data.contents || "",
             images: [...fileUrls],
-            // tags: data.tags.split(","),
-            tags: data.cafeListTag || "",
+            tags: data.tags.split(","),
+            // tags: data.cafeListTag || "",
           },
         },
         refetchQueries: [
@@ -121,55 +122,29 @@ export default function CafeWrite(props: any) {
     }
   };
 
-  // const onClickUpdate = async (data: any) => {
-  //   const updateCafeListInput: any = {};
-  //   if (data.title) updateCafeListInput.title = data.title;
-  //   if (data.contents) updateCafeListInput.contents = data.contents;
-  //   if (data.tags.split(" ")) updateCafeListInput.tags = data.tags.split(" ");
-  //   if (data.zipcode) updateCafeListInput.zipcode = data.zipcode;
-  //   if (data.address) updateCafeListInput.address = data.address;
-  //   if (data.addressDetail) updateCafeListInput.addressDetail = data.addressDetail;
-
-  //   if (updateCafeListInput) {
-  //     try {
-  //       const result = await updateCafeList({
-  //         variables: {
-  //           cafeListId: router.query.cafeId,
-  //           updateCafeListInput,
-  //         },
-  //       });
-  //       console.log(result);
-  //       router.push(`/cafe/${result.data?.updateCafeList.cafeListId}`);
-  //       message.success("수정에 성공하였습니다!");
-
-  //       location.reload();
-  //     } catch (error) {
-  //       console.log("수정실패", error);
-  //     }
-  //   }
-  // };
-
   const onClickUpdate = async (data: any) => {
     try {
       const result = await updateCafeList({
         variables: {
           cafeListId: router.query.cafeId as string,
           updateCafeListInput: {
-            title: data.title,
-            zipcode: data.zipcode,
-            address: data.address,
-            addressDetail: data.addressDetai,
-            phone: data.phone,
-            startTime: data.startTime,
-            endtTime: data.endTime,
-            homepage: data.homepage,
-            deposit: Number(data.deposit),
-            contents: data.contents,
-            images: [...fileUrls],
-            tags: data.cafeListTag,
+            title: data.title || "",
+            zipcode: data.zipcode || "",
+            address: data.address || "",
+            addressDetail: data.addressDetail || "",
+            phone: data.phone || "",
+            startTime: data.startTime || "",
+            endtTime: data.endTime || "",
+            homepage: data.homepage || "",
+            deposit: Number(data.deposit) || "",
+            contents: data.contents || "",
+            images: [...fileUrls] || "",
+            tags: data.cafeListTag.split(",") || "",
+            remarks: data.remarks || "",
           },
         },
       });
+
       router.push(`/cafe/${result.data?.updateCafeList.cafeListId}`);
       message.success("수정에 성공하였습니다!");
     } catch (error) {
@@ -195,7 +170,7 @@ export default function CafeWrite(props: any) {
         onClickCancel={onClickCancel}
         formState={formState}
         // imageUrl={imageUrl}
-        // fileUrls={fileUrls}
+        fileUrls={fileUrls}
         onChangeFileUrls={onChangeFileUrls}
         // onChangeFile={onChangeFile}
         // onClickImage={onClickImage}
