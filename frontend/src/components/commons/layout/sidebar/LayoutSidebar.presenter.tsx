@@ -6,7 +6,7 @@ import { ILayoutSidebarUIProps } from "./LayoutSidebar.types";
 const SIDE_MENUS = [
   { name: "찜목록", page: "/myPage/myLike" },
   { name: "예약내역", page: "/myPage/myReservation" },
-  { name: "내가쓴글", page: "#" },
+  { name: "내가쓴글", page: "/myPage/myWrite" },
 ];
 
 export default function LayoutSideBarUI(props: ILayoutSidebarUIProps) {
@@ -24,11 +24,6 @@ export default function LayoutSideBarUI(props: ILayoutSidebarUIProps) {
               </B.UserButton>
             </Link>
           </B.ColumnWrapper>
-          <B.RowWrapper>
-            {/* <B.SideMenuIcon>❤️</B.SideMenuIcon>
-            <B.SideMenuIcon>🗒</B.SideMenuIcon>
-            <B.SideMenuIcon>📝</B.SideMenuIcon> */}
-          </B.RowWrapper>
           <B.RowWrapper>
             {SIDE_MENUS.map((el) => {
               return (

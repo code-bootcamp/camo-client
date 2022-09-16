@@ -1,12 +1,14 @@
 import { gql } from "@apollo/client";
 
 export const FETCH_RESERVATION = gql`
-  mutation fetchUserbyId($userId: String!) {
-    fetchUserbyId(userId: $userId) {
+  query fetchCafeList($cafeListId: String!) {
+    fetchCafeList(cafeListId: $cafeListId) {
       id
-      email
       cafeReservation {
         id
+        reservationDate
+        startTime
+        endTime
       }
     }
   }

@@ -7,7 +7,7 @@ export const MainWrapper = styled.section`
   margin: auto;
   margin-top: 1.875rem;
   margin-bottom: 1.875rem;
-  width: 40rem;
+  width: 40vw;
   height: 12.5rem;
   background-color: white;
   border-radius: 20px;
@@ -47,9 +47,10 @@ export const Image = styled.img`
 `;
 
 export const ContentBackGround = styled.section`
-  width: 25rem;
+  width: 100vw;
   height: 11.25rem;
-  background-color: #fff8f0;
+  /* background-color: #fff8f0; */
+  border: 3px solid red;
   display: flex;
   flex-direction: column;
   border-top-right-radius: 10px;
@@ -60,7 +61,7 @@ export const ContentBackGround = styled.section`
 `;
 
 export const ContentWrapper = styled.div`
-  width: 80%;
+  width: 90%;
   margin: auto;
   @media (max-width: 280px) {
     width: 50vw;
@@ -75,9 +76,8 @@ export const Content = styled.main`
 `;
 
 export const Title = styled.h1`
-  /* font-family: "NanumSquare_ac"; */
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   color: #3c3430;
   @media ${breakPoints.mobile} {
     /* padding-left: 10px; */

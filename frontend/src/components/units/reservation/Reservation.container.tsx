@@ -40,13 +40,19 @@ export default function Reservation() {
   // 날짜, 시간, 인원, 가격
   const [price, setPrice] = useState(0);
   const [date, setDate] = useState("");
-  const [guest, setGuest] = useState<number>(0);
+  const [guest, setGuest] = useState(0);
   const [clicked, setClicked] = useState<string[]>([]);
-  const [startTime, setStartTime] = useState<string>("");
-  const [endTime, setEndTime] = useState<string>("");
-  const [timeTable, setTimeTable] = useState<boolean>(false);
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
+  const [timeTable, setTimeTable] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [reserved, setReserved] = useRecoilState<any>(reservedState);
+
+  const { data: UserData } = useQuery(FETCH_LOGINED_USER);
+  const { data: CafeData } = useQuery(FETCH_CAFE_LIST, {
+    // variables: { cafeListId: String(router.query.cafeId) },
+    variables: { cafeListId: "01a152bc-a23a-4077-aafb-c4fa1fdae252" },
+  });
 
   const [createPayment] = useMutation<Pick<IMutation, "createPayment">, IMutationCreatePaymentArgs>(
     CREATE_PAYMENT
@@ -59,9 +65,9 @@ export default function Reservation() {
     newClicked.push((event.target as HTMLButtonElement).value);
     setClicked(newClicked);
     if (Number(startTime.slice(0, 2)) > Number(endTime.slice(0, 2))) {
-      setPrice(100000);
+      setPrice(100);
     } else {
-      setPrice(60000);
+      setPrice(100);
     }
     console.log(price, clicked);
     setTimeTable(false);
@@ -73,9 +79,9 @@ export default function Reservation() {
     setStartTime(clicked.length === 0 ? "" : clicked[0].slice(0, 5));
     setEndTime(clicked.length === 0 ? "" : clicked[0].slice(6));
     if (Number(startTime.slice(0, 2)) > Number(endTime.slice(0, 2))) {
-      setPrice(100000);
+      setPrice(100);
     } else if (Number(startTime.slice(0, 2)) < Number(endTime.slice(0, 2))) {
-      setPrice(60000);
+      setPrice(100);
     } else {
       setPrice(0);
     }
@@ -109,21 +115,16 @@ export default function Reservation() {
     setDate(date);
 
     // 예약된 항목 불러오기
-    // const reserved = await client.query({
-    //   query: FETCH_RESERVATION,
-    //   variables: {
-    //     userId: UserData?.fetchLoginedUser.id,
-    //   },
-    // });
+    const reserved = await client.query({
+      query: FETCH_RESERVATION,
+      variables: {
+        cafeListId: "01a152bc-a23a-4077-aafb-c4fa1fdae252",
+      },
+    });
 
-    // const reservedTime = reserved.data.fetchReservation;
-    // setReserved(reservedTime);
+    const reservedTime = reserved.data.fetchCafeList.cafeReservation.reservationTime;
+    setReserved(reservedTime);
   };
-
-  const { data: UserData } = useQuery(FETCH_LOGINED_USER);
-  const { data: CafeData } = useQuery(FETCH_CAFE_LIST, {
-    variables: { cafeListId: String(router.query.cafeId) },
-  });
 
   const onClickPayment = async () => {
     const IMP = window.IMP;
@@ -167,7 +168,8 @@ export default function Reservation() {
                   orderRequest: "요청 하드코딩",
                   reservedPeople: guest,
                   reservationDate: date,
-                  reservationTime: startTime,
+                  startTime,
+                  endTime,
                   cafeListId: "01a152bc-a23a-4077-aafb-c4fa1fdae252",
                   userId: UserData?.fetchLoginedUser.id,
                 },
