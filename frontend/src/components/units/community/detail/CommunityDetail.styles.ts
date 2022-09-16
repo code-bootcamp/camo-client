@@ -7,6 +7,9 @@ export const Wrapper = styled.div`
   background-color: #fff;
   padding: 10%;
   border: 1px solid brown;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const TitleWrapper = styled.div`
@@ -62,33 +65,46 @@ export const ContentsWrapper = styled.div`
   width: 100%;
 `;
 
-export const MainImg = styled.img`
-  height: 30rem;
-  width: 70%;
-  background-color: #eee;
-  background-image: url("https://images.unsplash.com/photo-1494346480775-936a9f0d0877?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1116&q=80");
-  background-size: contain;
-`;
-
 export const ImgWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  height: 4rem;
-  margin: 1rem 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
-export const SubImg = styled.div`
-  height: 4rem;
-  width: 4rem;
-  margin-right: 0.5rem;
-  background-color: #ddd;
-  border: 1px solid red;
+export const MainImgWrapper = styled.div`
+  width: 70%;
+  height: auto;
+  @media ${breakPoints.mobile} {
+    width: 90%;
+  }
+`;
+
+export const MainImg = styled.img`
+  height: auto;
+  width: 100%;
+  object-fit: scale-down;
+`;
+
+export const SubImgWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 3fr);
+  height: 150px;
+  margin: 1rem 0;
+  width: 70%;
+  background-color: pink;
+  @media ${breakPoints.mobile} {
+    grid-template-columns: repeat(3, 3fr);
+    width: 90%;
+  }
 `;
 
 export const Img = styled.img`
   width: 100%;
-  height: 100%;
+  object-fit: cover;
+  padding: 3%;
+  @media ${breakPoints.mobile} {
+  }
 `;
 
 export const Contents = styled.div``;
@@ -108,9 +124,11 @@ export const AddressWrapper = styled.div`
 `;
 
 export const MapWrapper = styled.div`
-  width: 22rem;
+  width: 100%;
   height: 10rem;
-  border: 1px solid gray;
+  display: flex;
+  justify-content: center;
+  padding: 5%;
 `;
 
 export const ListBtn = styled.div`

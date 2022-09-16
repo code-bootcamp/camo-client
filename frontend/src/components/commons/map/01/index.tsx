@@ -1,5 +1,7 @@
 // import Head from "next/head";
+import styled from "@emotion/styled";
 import { useEffect } from "react";
+import { breakPoints } from "../../styles/media";
 
 declare const window: typeof globalThis & {
   kakao: any;
@@ -8,6 +10,11 @@ declare const window: typeof globalThis & {
 interface IMapComponent {
   address?: string;
 }
+
+const Map = styled.div`
+  width: 100%;
+  height: 100%;
+`;
 
 export default function MapComponent(props: IMapComponent) {
   useEffect(() => {
@@ -66,7 +73,7 @@ export default function MapComponent(props: IMapComponent) {
   }, []);
   return (
     <>
-      <div id="map" style={{ width: "100%", height: "100%" }}></div>
+      <Map id="map"></Map>
     </>
   );
 }

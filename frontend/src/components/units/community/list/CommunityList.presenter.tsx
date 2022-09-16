@@ -11,29 +11,28 @@ export default function CommunityListUI(props: IBoardListUIProps) {
   return (
     <S.Wrapper>
       <S.Banner></S.Banner>
+      <S.NavWrapper>
+        <S.SortList>
+          <S.NewList>최신순</S.NewList>
+          <S.LikeList>인기순</S.LikeList>
+        </S.SortList>
+
+        <S.InputWrapper>
+          <Searchbars01UI
+            placeholder="게시글을 검색해보세요"
+            refetch={props.refetch}
+            refetchBoardsNumber={props.refetchBoardsNumber}
+            onChangeKeyword={props.onChangeKeyword}
+          />
+          <S.SearchBtn>검색</S.SearchBtn>
+        </S.InputWrapper>
+      </S.NavWrapper>
+      <Link href="/community/new">
+        <a>
+          <S.WriteBtn></S.WriteBtn>
+        </a>
+      </Link>
       <S.BodyWrapper>
-        <S.NavWrapper>
-          <S.SortList>
-            <S.NewList>최신순</S.NewList>
-            <S.LikeList>인기순</S.LikeList>
-          </S.SortList>
-
-          <S.InputWrapper>
-            <Searchbars01UI
-              placeholder="게시글을 검색해보세요"
-              refetch={props.refetch}
-              refetchBoardsNumber={props.refetchBoardsNumber}
-              onChangeKeyword={props.onChangeKeyword}
-            />
-            <S.WriteBtn>검색</S.WriteBtn>
-          </S.InputWrapper>
-
-          <Link href="/community/new">
-            <a>
-              <S.WriteBtn>글쓰기</S.WriteBtn>
-            </a>
-          </Link>
-        </S.NavWrapper>
         <InfiniteScroll pageStart={0} loadMore={props.onFetchMore} hasMore={true}>
           <S.ItemWrapper>
             {props.data?.fetchBoardsCreatedAt.map((el) => (
@@ -41,8 +40,8 @@ export default function CommunityListUI(props: IBoardListUIProps) {
                 <S.ItemImgWrapper>
                   <S.ItemImg
                     src={
-                      el.images[0]?.url
-                        ? `https://storage.googleapis.com/team04-storage/${el.images[0]?.url}`
+                      el.images
+                        ? `https://storage.googleapis.com/${el.images[0]?.url}`
                         : "https://images.unsplash.com/photo-1458819714733-e5ab3d536722?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTYwfHxjYWZlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
                     }
                     onError={props.onErrorImg}
@@ -78,9 +77,3 @@ export default function CommunityListUI(props: IBoardListUIProps) {
     </S.Wrapper>
   );
 }
-
-// src={
-//   `${el.images[0]?.url}`
-//     ? `${el.images[0]?.url}`
-//     : "https://images.unsplash.com/photo-1458819714733-e5ab3d536722?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTYwfHxjYWZlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-// }

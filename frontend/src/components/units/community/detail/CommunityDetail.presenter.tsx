@@ -10,19 +10,11 @@ export default function CommunityDetailUI(props: any) {
   return (
     <S.Wrapper>
       <S.TitleWrapper>
-        <S.Title>제목 : {props.data?.fetchBoard?.title}</S.Title>
+        <S.Title>{props.data?.fetchBoard?.title}</S.Title>
         {props.data?.fetchBoard.user?.id === props.UserData?.fetchLoginedUser.id ? (
           <>
-            <S.EditIcon
-              title="수정하기"
-              // src="/comment/create.png"
-              onClick={props.onClickUpdate}
-            />
-            <S.DeleteIcon
-              title="삭제하기"
-              // src="/comment/Trash.png"
-              onClick={props.onClickDelete}
-            />
+            <S.EditIcon title="수정하기" onClick={props.onClickUpdate} />
+            <S.DeleteIcon title="삭제하기" onClick={props.onClickDelete} />
           </>
         ) : (
           <></>
@@ -30,10 +22,10 @@ export default function CommunityDetailUI(props: any) {
         <S.UserWrapper>
           <S.UserImg></S.UserImg>
           <S.UserInfoWrapper>
-            <S.UserName>닉네임 : {props.data?.fetchBoard?.user?.nickName}</S.UserName>
+            <S.UserName>{props.data?.fetchBoard?.user?.nickName}</S.UserName>
 
             <S.PostWrapper>
-              <S.PostDetail>게시일 : {getDate(props.data?.fetchBoard?.createdAt)}</S.PostDetail>
+              <S.PostDetail>{getDate(props.data?.fetchBoard?.createdAt)}</S.PostDetail>
               {/* <S.PostDetail>조회수</S.PostDetail>
               <S.PostDetail>댓글</S.PostDetail> */}
             </S.PostWrapper>
@@ -42,39 +34,33 @@ export default function CommunityDetailUI(props: any) {
       </S.TitleWrapper>
       <hr />
       <S.ContentsWrapper>
-        <div>
-          {props.data?.fetchBoard.images[0]?.url !== "" ? (
-            <>
-              <img
-                src={`https://storage.googleapis.com/team04-storage/${props.data?.fetchBoard.images[0]?.url}`}
+        <S.ImgWrapper>
+          {props.data?.fetchBoard.images?.url !== "" ? (
+            <S.MainImgWrapper>
+              <S.MainImg
+                src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[0]?.url}`}
                 alt="이미지"
                 onError={props.onErrorImg}
               />
-            </>
+            </S.MainImgWrapper>
           ) : (
             <></>
           )}
-        </div>
 
-        <S.ImgWrapper>
-          {/* {props.data?.fetchBoard.images.map((el, i) => (
-            <S.SubImg key={uuidv4()}>
-              <S.Img
-                src={`https://storage.googleapis.com/team04-storage/${el[i]?.url}`}
-                // onError={props.onErrorImg}
-              />
-            </S.SubImg>
-          ))} */}
-          <S.SubImg key={uuidv4()}>
-            <S.Img
-              src={`https://storage.googleapis.com/team04-storage/${props.data?.fetchBoard.images[1]?.url}`}
-              onError={props.onErrorImg}
-            />
-          </S.SubImg>
-          {/* <S.SubImg></S.SubImg> */}
-          {/* {(props.data?.fetchBoard.images || []).map(({ url }) => {
-            return <S.SubImg key={uuidv4()}>{url}</S.SubImg>;
-          })} */}
+          <S.SubImgWrapper>
+            {props.data?.fetchBoard.images.map((el: any) => (
+              <div key={uuidv4()}>
+                {el.url ? (
+                  <S.Img
+                    src={`https://storage.googleapis.com/${el?.url}`}
+                    onError={props.onErrorImg}
+                  />
+                ) : (
+                  <></>
+                )}
+              </div>
+            ))}
+          </S.SubImgWrapper>
         </S.ImgWrapper>
 
         <S.Contents>내용:</S.Contents>
@@ -87,10 +73,9 @@ export default function CommunityDetailUI(props: any) {
           ></S.Contents>
         )}
         <S.AddressWrapper>
-          주소: {props.data?.fetchBoard.zipcode} {props.data?.fetchBoard?.address}{" "}
+          주소 | {props.data?.fetchBoard.zipcode} {props.data?.fetchBoard?.address}
           {props.data?.fetchBoard.addressDetail}
         </S.AddressWrapper>
-        <hr />
         <S.MapWrapper style={{ overflow: "hidden" }}>
           <KakaoMapPage
             data={props.data?.fetchBoard}

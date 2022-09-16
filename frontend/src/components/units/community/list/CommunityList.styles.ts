@@ -1,6 +1,6 @@
 import { HeartOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
-import { breakPoints } from "../../../../../styles/media";
+import { breakPoints } from "../../../commons/styles/media";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -11,9 +11,10 @@ export const Wrapper = styled.div`
 
 export const BodyWrapper = styled.div`
   width: 100%;
-  padding: 0 5%;
-
-  /* background-color: pink; */
+  display: grid;
+  place-items: center;
+  gap: 20px 0;
+  padding-bottom: 50px;
 `;
 
 export const Banner = styled.div`
@@ -24,17 +25,19 @@ export const Banner = styled.div`
 `;
 
 export const NavWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #ffffff;
-  padding: 2% 2% 0 2%;
+  width: 85%;
+  height: 100px;
+  display: grid;
+  /* background-color: #ffffff; */
+  /* background-color: pink; */
+  grid-template-columns: repeat(2, 2fr);
+  place-items: center;
 
-  @media screen and (max-width: 767px) {
+  @media ${breakPoints.mobile} {
     // 모바일
-    width: 500px;
+    width: 100%;
+    height: 100px;
+    grid-template-columns: repeat(1, 1fr);
   }
 `;
 
@@ -45,17 +48,23 @@ export const SortList = styled.div`
   justify-content: space-between;
   border-radius: 10px;
 `;
+
 export const NewList = styled.div`
-  width: 100px;
+  width: 50%;
   padding: 10px 25px;
   background-color: #ebebf0;
   border-radius: 10px 0 0 10px;
+  text-align: center;
+  line-height: 25px;
 `;
+
 export const LikeList = styled.div`
-  width: 100px;
+  width: 50%;
   border: 1px solid #ebebf0;
   padding: 10px 25px;
   border-radius: 0 10px 10px 0;
+  background-color: #fff;
+  text-align: center;
 `;
 
 export const InputWrapper = styled.div`
@@ -64,6 +73,7 @@ export const InputWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  /* background-color: blue; */
 `;
 
 export const Search = styled.input`
@@ -72,7 +82,7 @@ export const Search = styled.input`
   padding-left: 0.7erem;
 `;
 
-export const WriteBtn = styled.button`
+export const SearchBtn = styled.button`
   width: 4rem;
   height: 2rem;
   background-color: #3c565b;
@@ -81,35 +91,60 @@ export const WriteBtn = styled.button`
   cursor: pointer;
 `;
 
+export const WriteBtn = styled.button`
+  width: 5rem;
+  height: 5rem;
+  background-color: #3c565b;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  position: fixed;
+  color: #fff;
+  right: 3%;
+  bottom: 5%;
+
+  ::before {
+    content: "+";
+    font-size: 3rem;
+    line-height: 85px;
+  }
+  :hover::before {
+    content: "글쓰기";
+    font-size: 1.2rem;
+    line-height: 80px;
+  }
+`;
+
 export const ItemWrapper = styled.div`
-  width: 1500px;
+  width: 100%;
   display: grid;
-  justify-items: center;
-  align-items: center;
-  align-self: center;
-  grid-template-columns: repeat(2, 50%);
-  background-color: #ffffff;
-  padding: 3%;
-  /* border: 1px solid red; */
+  place-items: center;
+  grid-template-columns: repeat(2, 600px);
   @media ${breakPoints.mobile} {
     display: grid;
-    grid-template-columns: repeat(1, 500px);
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0 3%;
   }
 `;
 
 export const ItemContent = styled.div`
   width: 95%;
-  height: 150px;
+  height: 200px;
   margin: 1rem 0;
   display: flex;
   flex-direction: row;
   border: 1px solid #d9d9d9;
   border-radius: 5px;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+    width: 95%;
+    height: 200px;
+  }
 `;
 
 export const ItemImgWrapper = styled.div`
-  width: 40%;
+  width: 50%;
   height: 100%;
 `;
 

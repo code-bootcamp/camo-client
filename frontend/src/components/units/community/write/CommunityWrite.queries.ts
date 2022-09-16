@@ -35,7 +35,7 @@ export const UPDATE_BOARD = gql`
     updateBoard(boardId: $boardId, nickName: $nickName, updateBoardInput: $updateBoardInput) {
       id
       title
-      content
+      contents
       likeCount
       zipcode
       address

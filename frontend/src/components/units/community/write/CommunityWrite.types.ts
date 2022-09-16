@@ -1,6 +1,20 @@
 import { EditorType } from "@toast-ui/editor";
 import { Editor } from "@toast-ui/react-editor";
 import { LegacyRef } from "react";
+import { IBoard } from "../../../../commons/types/generated/types";
+
+export interface ICommunityNewProps {
+  isEdit: boolean;
+  el: IBoard;
+  editData?: {
+    fetchBoard: {
+      title: string;
+      contents: string;
+      images: any;
+      tags: any;
+    };
+  };
+}
 
 export interface ICommunityUIProps {
   isEdit: boolean;

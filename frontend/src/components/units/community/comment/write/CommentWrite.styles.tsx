@@ -6,10 +6,10 @@ export const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 5%;
   @media ${breakPoints.mobile} {
-    padding: 0 20px;
-    width: 110%;
+    padding: 5%;
+    width: 100%;
   }
 `;
 
