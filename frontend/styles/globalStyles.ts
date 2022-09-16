@@ -11,15 +11,22 @@ export const globalStyles = css`
     margin: 0 auto;
     /* background-color: #fff; */
     color: #555;
-    font-family: "NanumBarunGothic";
-    src: url("/fonts/NanumBarunGothic.otf");
+    font-family: "Anton", sans-serif;
   }
 
   a {
     color: inherit;
     text-decoration: none;
   }
+  @font-face {
+    font-family: "NanumBarunGothic";
+    src: url("/fonts/NanumBarunGothic.otf");
+  }
 
+  @font-face {
+    font-family: "Anton", sans-serif;
+    src: url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+  }
   @font-face {
     font-family: "Cafe24Ohsquare";
     src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Cafe24Ohsquare.woff")

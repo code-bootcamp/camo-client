@@ -40,6 +40,7 @@ export type ICafeList = {
   addressDetail?: Maybe<Scalars['String']>;
   cafeListImage?: Maybe<Array<ICafeListImage>>;
   cafeListTag?: Maybe<Array<ICafeListTag>>;
+  cafeReservation?: Maybe<Array<ICafeReservation>>;
   contents: Scalars['String'];
   createdAt: Scalars['DateTime'];
   deletedAt?: Maybe<Scalars['DateTime']>;
@@ -430,6 +431,7 @@ export type IQuery = {
   fetchCafeLists: Array<ICafeList>;
   fetchCafeListsCreatedAt: Array<ICafeList>;
   fetchCafeListsFavoriteCafe: Array<ICafeList>;
+  fetchCafeReservation: ICafeReservation;
   fetchComments: Array<IComment>;
   fetchLoginedUser: IUser;
   fetchLogs: Array<IChatMessage>;
@@ -502,6 +504,11 @@ export type IQueryFetchCafeListsCreatedAtArgs = {
 export type IQueryFetchCafeListsFavoriteCafeArgs = {
   page?: InputMaybe<Scalars['Float']>;
   sortBy?: InputMaybe<Scalars['String']>;
+};
+
+
+export type IQueryFetchCafeReservationArgs = {
+  cafeReservationId: Scalars['String'];
 };
 
 

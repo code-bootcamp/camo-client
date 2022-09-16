@@ -5,28 +5,155 @@ import { useInView } from "react-intersection-observer";
 import Link from "next/link";
 import "animate.css";
 
-export default function LandingPage() {
-  // {imageSrc, title, subtitle, flipped}
+import React from "react";
+import clsx from "clsx";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+  Drawer,
+  Button,
+  List,
+  Divider,
+} from "@material-ui/core";
+import MailIcon from "@material-ui/icons/Mail";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import {
+  ControlPoint,
+  Done,
+  DoneOutline,
+  DragHandle,
+  KeyboardArrowRight,
+} from "@material-ui/icons";
 
+const useStyles = makeStyles({
+  list: {
+    width: 250,
+  },
+  fullList: {
+    width: "auto",
+  },
+});
+
+type Anchor = "right";
+
+export default function LandingPage() {
   const [ref, inView] = useInView({
     threshhold: 0.5,
   });
+
+  const classes = useStyles();
+  const [state, setState] = React.useState({
+    right: false,
+  });
+
+  const toggleDrawer =
+    (anchor: Anchor, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === "keydown" &&
+        ((event as React.KeyboardEvent).key === "Tab" ||
+          (event as React.KeyboardEvent).key === "Shift")
+      ) {
+        return;
+      }
+
+      setState({ ...state, [anchor]: open });
+    };
+
+  const list = (anchor: Anchor) => (
+    <div
+      className={clsx(classes.list, {
+        [classes.fullList]: anchor === "top" || anchor === "bottom",
+      })}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        <ListItem button key="로그인">
+          <ListItemIcon>
+            <KeyboardArrowRight />
+          </ListItemIcon>
+          <Link href="/login">
+            <a>
+              <ListItemText primary="로그인" />
+            </a>
+          </Link>
+        </ListItem>
+        <ListItem button key="회원가입">
+          <ListItemIcon>
+            <KeyboardArrowRight />
+          </ListItemIcon>
+          <Link href="/login/selectSignUp">
+            <a>
+              <ListItemText primary="회원가입" />
+            </a>
+          </Link>
+        </ListItem>
+        <ListItem button key="카페예약">
+          <ListItemIcon>
+            <KeyboardArrowRight />
+          </ListItemIcon>
+          <Link href="/cafe">
+            <a>
+              <ListItemText primary="카페예약" />
+            </a>
+          </Link>
+        </ListItem>
+        <ListItem button key="카페등록">
+          <ListItemIcon>
+            <KeyboardArrowRight />
+          </ListItemIcon>
+          <Link href="/cafe">
+            <a>
+              <ListItemText primary="카페등록" />
+            </a>
+          </Link>
+        </ListItem>
+        <ListItem button key="커뮤니티">
+          <ListItemIcon>
+            <KeyboardArrowRight />
+          </ListItemIcon>
+          <Link href="/cafe">
+            <a>
+              <ListItemText primary="커뮤니티" />
+            </a>
+          </Link>
+        </ListItem>
+      </List>
+
+      {/* <Divider /> */}
+    </div>
+  );
 
   return (
     <C.Wrapper>
       <C.MainWrapper>
         <C.ImageWrapper>
           <C.MainImage src="https://images.unsplash.com/photo-1511081692775-05d0f180a065?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1372&q=80" />
+          <C.MenuButton style={{ opacity: "0" }}>
+            {(["right"] as Anchor[""]).map((anchor) => (
+              <React.Fragment key={anchor}>
+                <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+                <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+                  {list(anchor)}
+                </Drawer>
+              </React.Fragment>
+            ))}
+          </C.MenuButton>
         </C.ImageWrapper>
+
+        <C.MenuTab />
         <C.Logo>
-          <Link href="/login/selectSignUp">
+          <Link href="/login/">
             <a>
               {" "}
               <img src="CAMO.png" />
             </a>
           </Link>
         </C.Logo>
-        <C.MenuTab />
+
         <C.MainTitle>
           당신이 원하는 <br />
           카페들을 모은
@@ -84,40 +211,15 @@ export default function LandingPage() {
           <C.BlendedText>CAMO</C.BlendedText>
         </div>
         <C.smallText>
-          Ah.... Gae Him dle da! I want to go home. Hungry Sleepy Amet minim mollit non deserunt
-          ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
-          Exercitation veniam consequat sunt nostrud amet.
+          {/* BLENDED is a team of bootcamp course in CODECAMP. <br /> 카모는 방문자 자신이 경험한 */}
+          특색있는 카페를 공유할 수 있는 커뮤니티 플랫폼입니다. 또한 레스토랑 예약과 같이 인기있는
+          카페를 방문하기 전 미리 예약할 수 있는 서비스를 제공합니다.
         </C.smallText>
       </C.BlendedWrap>
 
       <C.BottomImageWrap>
         <img src="https://images.unsplash.com/photo-1506372023823-741c83b836fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" />
-        <div>
-          {/* <span>
-            What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            when an unknown printer took a galley of type and scrambled it to make a type specimen
-            book. It has survived not only five centuries, but also the leap into electronic
-            typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-            release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-            desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-          </span> */}
-        </div>
       </C.BottomImageWrap>
-      <C.Footer>
-        <div>
-          <C.FooterText>Cafe Moment 소개</C.FooterText>
-          <C.FooterText>cafemoment.site</C.FooterText>
-          <C.FooterText>Contact with Us</C.FooterText>
-          <C.FooterText>(000) 8282-1234</C.FooterText>
-        </div>
-        <C.FooterText2>
-          평일 10:00~17:00 | 점심시간 12:30~14:00 주말 및 공휴일 휴무
-          <br /> <br />
-          (주)카모 서울특별시 구로구 디지털로 300 13층 Made by 2022 CAMO Corp.
-          <br /> © 2022 Betheme by Muffin group | All Rights Reserved | Powered by WordPress
-        </C.FooterText2>
-      </C.Footer>
     </C.Wrapper>
   );
 }

@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../styles/media";
 import "animate.css";
 import { MenuOutlined } from "@ant-design/icons";
+import { Button } from "@material-ui/core";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -28,14 +29,23 @@ export const Logo = styled.h1`
   }
 `;
 
+export const MenuButton = styled(Button)`
+  float: right;
+  font-size: 2rem;
+  height: 3rem;
+  position: absolute;
+  top: 1rem;
+  z-index: 99;
+  cursor: pointer;
+`;
 export const MenuTab = styled(MenuOutlined)`
   font-size: 2rem;
   position: absolute;
   top: 2%;
   right: 2%;
   color: white;
-  z-index: 4;
-  cursor: pointer;
+  z-index: 3;
+  // cursor: pointer;
 `;
 
 export const ImageWrapper = styled.div`
@@ -308,10 +318,11 @@ export const BlendedText = styled.div`
 `;
 
 export const smallText = styled.div`
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  line-height: 2rem;
   margin: 1.8rem;
   padding: 2%;
-  @media ${breakPoints.mobile} {
+  @media screen and (max-width: 1100px) {
     display: none;
   }
 `;

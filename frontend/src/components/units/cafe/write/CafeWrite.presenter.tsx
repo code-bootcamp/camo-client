@@ -77,6 +77,14 @@ export default function CafeWriteUI(props: any) {
               />
             </C.LabelBox>
             <C.LabelBox>
+              <C.Label>한줄소개</C.Label>
+              <C.InputBox
+                type="text"
+                placeholder="카페 한줄 소개를 적어주세요"
+                {...props.register("remarks")}
+              />
+            </C.LabelBox>
+            <C.LabelBox>
               <C.Label>태그</C.Label>
               <C.InputBox
                 type="text"
@@ -84,7 +92,6 @@ export default function CafeWriteUI(props: any) {
                 {...props.register("tags")}
               />
             </C.LabelBox>
-
             <C.LabelBox>
               <C.Label>카페 소개</C.Label>
 

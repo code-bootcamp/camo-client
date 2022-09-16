@@ -3,15 +3,17 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../../styles/media";
 
 export const Wrapper = styled.div`
+  position: absolute;
+  top: 0;
   width: 100%;
   height: 5rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  position: relative;
   background-color: #1e3932;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
+  z-index: 999;
 
   @media ${breakPoints.mobile} {
     display: flex;
@@ -23,7 +25,8 @@ export const HeaderWrapper = styled.div`
   height: 5rem;
   width: 1500px;
   padding: 0 5%;
-  background-color: #1e3932;
+
+  // background-color: #1e3932;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -52,6 +55,7 @@ export const MenuWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+
   @media ${breakPoints.mobile} {
     display: none;
   }
@@ -61,7 +65,11 @@ export const MenuFonts = styled.div`
   font-size: 0.8rem;
   font-weight: 600;
   margin: 0.8rem;
-  color: white;
+  color: red;
+  @font-face {
+    font-family: "Anton", sans-serif;
+    src: url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+  }
 
   :hover {
     color: white;

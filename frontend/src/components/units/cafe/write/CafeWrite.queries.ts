@@ -41,6 +41,7 @@ export const UPDATE_CAFE_LIST = gql`
       homepage
       deposit
       contents
+      remarks
       updatedAt
       cafeListTag {
         id

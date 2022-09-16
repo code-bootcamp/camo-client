@@ -11,8 +11,8 @@ import {
   MenuTab,
   MenuWrapper,
   Wrapper,
-} from "./LayoutHeader.style";
-import { ILayoutHeaderUIProps } from "./LayoutHeader.types";
+} from "./LayoutHeader2.style";
+import { ILayoutHeaderUIProps } from "./LayoutHeader2.types";
 
 export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
   return (
@@ -29,15 +29,20 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
             </h1>
 
             <MenuWrapper>
-              <Link href="/">
+              <Link href="/cafe">
                 <a>
-                  <MenuFonts>BLENDED</MenuFonts>
+                  <MenuFonts>HOME</MenuFonts>
+                </a>
+              </Link>
+              <Link href="/cafe">
+                <a>
+                  <MenuFonts>ABOUT</MenuFonts>
                 </a>
               </Link>
 
               <Link href="/cafe">
                 <a>
-                  <MenuFonts>CAFE</MenuFonts>
+                  <MenuFonts>RESERVATION</MenuFonts>
                 </a>
               </Link>
 

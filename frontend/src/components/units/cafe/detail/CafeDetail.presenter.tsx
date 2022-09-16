@@ -6,6 +6,7 @@ import * as C from "./CafeDetail.styles";
 
 export default function CafeDetailUI(props: any) {
   console.log(props.data);
+  console.log("이미지 url:", props.data?.fetchCafeList?.cafeListImage[0]?.url);
   const IMAGES = [
     "https://images.unsplash.com/photo-1514481538271-cf9f99627ab4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     "https://images.unsplash.com/photo-1564327367919-cb377ea6a88f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
@@ -30,15 +31,19 @@ export default function CafeDetailUI(props: any) {
 
               <img
                 src={
-                  `${props.data?.fetchCafeList?.cafeListImage[0]?.url}`
-                    ? `${props.data?.fetchCafeList?.cafeListImage[0]?.url}`
+                  `${props.data?.fetchCafeList.cafeListImage[0]?.url}`
+                    ? `https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[0]?.url}`
                     : IMAGES[0]
                 }
               />
 
               <C.ImgSmallBox>
-                <img src={`${props.data?.fetchCafeList?.cafeListImage[1]?.url}`} />
-                <img src={`${props.data?.fetchCafeList?.cafeListImage[2]?.url}`} />
+                <img
+                  src={`https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[1]?.url}`}
+                />
+                <img
+                  src={`https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[2]?.url}`}
+                />
                 <img src={IMAGES[1]} />
                 <img src={IMAGES[2]} />
               </C.ImgSmallBox>
@@ -46,7 +51,7 @@ export default function CafeDetailUI(props: any) {
 
             <C.CafeDetailBox>
               <C.Title>
-                카페명 {props.data?.fetchCafeList?.title}{" "}
+                {props.data?.fetchCafeList?.title}{" "}
                 <span>
                   <EditOutlined onClick={onClickUpdate} /> &nbsp;
                   <CloseOutlined onClick={props.onClickDelete} />
@@ -80,7 +85,7 @@ export default function CafeDetailUI(props: any) {
                   🎈 홈페이지 / SNS : <span> {props.data?.fetchCafeList?.homepage} </span>
                 </C.Label>
                 <C.Label>
-                  🎈 매장 서비스 : <span>Wifi / 무료주차 1시간</span>
+                  🎈 매장소개 : <span>{props.data?.fetchCafeList?.remarks}</span>
                 </C.Label>
                 <C.Label>
                   🎈 예약금 : <span>{props.data?.fetchCafeList?.deposit} 원</span>
