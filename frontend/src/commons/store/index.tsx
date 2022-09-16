@@ -1,5 +1,6 @@
 import { atom, selector } from "recoil";
 import { getAccessToken } from "../libraries/getAccessToken";
+import { v4 as uuidv4 } from "uuid";
 
 export const accessTokenState = atom({
   key: "accessTokenState",
@@ -12,4 +13,9 @@ export const restoreAccessTokenLoadable = selector({
     const newAccessToken = await getAccessToken();
     return newAccessToken;
   },
+});
+
+export const reservedState = atom({
+  key: `reservedState/${uuidv4()}`,
+  default: [],
 });
