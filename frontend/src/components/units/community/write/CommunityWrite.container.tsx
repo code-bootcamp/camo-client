@@ -2,7 +2,7 @@ import { useMutation } from "@apollo/client";
 import * as yup from "yup";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
-import { createRef, MouseEvent, useEffect, useState } from "react";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../commons/hooks";
 import CommunityWriteUI from "./CommunityWrite.presenter";
@@ -10,13 +10,15 @@ import { CREATE_BOARD, UPDATE_BOARD } from "./CommunityWrite.queries";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Editor } from "@toast-ui/react-editor";
 import { IUpdateBoardInput } from "../../../../commons/types/generated/types";
+import { ICommunityNewProps } from "./CommunityWrite.types";
+import { FETCH_BOARD } from "../detail/CommunityDetail.queries";
 
 const schema = yup.object({
   title: yup.string().required("제목을 입력해주세요."),
   contents: yup.string().required("내용을 입력해주세요."),
 });
 
-export default function CommunityWrite(props: any) {
+export default function CommunityWrite(props: ICommunityNewProps) {
   useAuth();
 
   const router = useRouter();
@@ -32,13 +34,19 @@ export default function CommunityWrite(props: any) {
     mode: "onChange",
   });
 
-  const editorRef = createRef<Editor>();
-
-  const onChangeContents = () => {
-    const inputs = editorRef.current?.getInstance().getHTML();
-    setValue("contents", inputs);
+  // toastUI
+  const editorRef = useRef<Editor>(null);
+  const onChangeContents = (value: string) => {
+    const htmlData = editorRef.current?.getInstance()?.getHTML();
+    setValue("contents", htmlData);
     trigger("contents");
   };
+
+  // // toastUI edit
+  // useEffect(() => {
+  //   const htmlString = props.editData?.fetchBoard.contents;
+  //   editorRef.current?.getInstance().setHTML(htmlString);
+  // }, [props?.editData]);
 
   const onCompleteAddressSearch = (data: any) => {
     setValue("zipcode", data.zonecode);
@@ -68,14 +76,20 @@ export default function CommunityWrite(props: any) {
     const newFileUrls = [...fileUrls];
     newFileUrls[index] = fileUrl;
     setFileUrls(newFileUrls);
+
+    setValue("FileUrls", newFileUrls);
+    trigger("FileUrls");
   };
 
-  // const onClickCreate = (data: any) => {
-  //   console.log("check");
-  // };
+  // image Edit
+  useEffect(() => {
+    if (props.editData?.fetchBoard.images) {
+      setFileUrls([...props.editData?.fetchBoard.images]);
+    }
+  }, [props.editData]);
 
   const onClickCreate = async (data: any) => {
-    console.log("fileUrls Check", fileUrls);
+    // console.log("fileUrls Check", fileUrls);
     try {
       const result = await createBoard({
         variables: {
@@ -85,14 +99,17 @@ export default function CommunityWrite(props: any) {
             zipcode: data.zipcode,
             address: data.address,
             addressDetail: data.addressDetail,
-            // tags: data.tags.split(" "),
-            tags: data.tags,
-            // images: [...fileUrls],
-            images: fileUrls.join().split(","),
+            tags: [data.tags].join().split(" "),
+            image: [...fileUrls].join().split(","),
           },
         },
+        refetchQueries: [
+          {
+            query: FETCH_BOARD,
+          },
+        ],
       });
-      console.log("result", result);
+      // console.log("result", result);
       router.push(`/community/${result.data?.createBoard.id}`);
     } catch (error: any) {
       console.log("등록실패", error);
@@ -107,33 +124,37 @@ export default function CommunityWrite(props: any) {
     router.push("/community/");
   };
 
-  // useEffect(() => {
-  //   if (props.data?.fetchBoard.images?.length) {
-  //     setFileUrls([...props.data?.fetchBoard.images]);
-  //   }
-  // }, [props.data]);
-
   const onClickEdit = async (data: any) => {
     const updateBoardInput: IUpdateBoardInput = {};
+    const currentFiles = JSON.stringify(fileUrls);
+    const defaultFiles = JSON.stringify(props.editData?.fetchBoard.images);
+    const isChangedFiles = currentFiles !== defaultFiles;
     if (data.title) updateBoardInput.title = data.title;
     if (data.contents) updateBoardInput.contents = data.contents;
-    if (data.tags.split(" ")) updateBoardInput.tags = data.tags.split(" ");
+    // if (data.tags.split(" ")) updateBoardInput.tags = data.tags.split(" ");
     // if (data.fileUrl) updateBoardInput.images = data.fileUrl;
     if (data.zipcode) updateBoardInput.zipcode = data.zipcode;
     if (data.address) updateBoardInput.address = data.address;
     if (data.addressDetail) updateBoardInput.addressDetail = data.addressDetail;
+    if (isChangedFiles) updateBoardInput.image = fileUrls;
 
     if (updateBoardInput) {
       try {
         const result = await updateBoard({
           variables: {
-            boardId: router.query.communityId,
-            nickName: props.el?.User.nickName,
+            boardId: String(router.query.communityId),
+            nickName: props.el?.user.nickName,
             updateBoardInput,
+            // : {
+            //   title: data.title,
+            //   contents: data.contents,
+            //   tags: [data.tags].join().split(" "),
+            //   image: [...fileUrls].join().split(","),
+            // }
           },
         });
         console.log(result);
-        await router.push(`/community/${result.data?.updateBoard.id}`);
+        router.push(`/community/${result.data?.updateBoard.id}`);
         location.reload();
       } catch (error: any) {
         console.log("수정실패", error);
@@ -144,25 +165,6 @@ export default function CommunityWrite(props: any) {
       }
     }
   };
-
-  // // // 태그 수정시 defaultValue
-  // // useEffect(() => {
-  // //   if (props.editData?.fetchBoard.tags.length)
-  // //     setTagList(props.editData?.fetchBoard.tags.map((el: any) => el.title));
-  // // }, [props.editData]);
-
-  // // // 이미지 수정시 defaultValue
-  // // useEffect(() => {
-  // //   if (props.editData?.fetchBoard.images) {
-  // //     setImageUrl(props.editData?.fetchBoard.images);
-  // //   }
-  // // }, [props.editData]);
-
-  // toastUI
-  useEffect(() => {
-    const html: any = props.editData?.fetchBoard.contents;
-    editorRef.current?.getInstance().setHTML(html);
-  }, [props.editData]);
 
   return (
     <CommunityWriteUI

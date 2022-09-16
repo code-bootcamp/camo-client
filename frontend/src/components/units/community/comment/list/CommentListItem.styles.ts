@@ -3,18 +3,16 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../commons/styles/media";
 
 export const Wrapper = styled.div`
-  width: 97%;
-  margin-left: 16px;
-  margin-bottom: 13px;
+  width: 100%;
+  padding: 5%;
   display: flex;
   flex-direction: column;
   padding: 20px;
   background-color: #f6f6f6;
   border-radius: 8px;
   @media ${breakPoints.mobile} {
-    padding: 0 20px;
-    margin-top: 15px;
-    width: 97%;
+    padding: 5%;
+    width: 100%;
   }
 `;
 
@@ -88,12 +86,12 @@ export const Comment = styled.div`
 `;
 
 export const WrapUserInfo = styled.div`
-  padding-top: 5px;
+  /* padding-top: 5px; */
   display: flex;
   align-items: center;
   @media ${breakPoints.mobile} {
     width: 100%;
-    height: 55px;
+    /* height: 55px; */
   }
 `;
 
@@ -104,22 +102,22 @@ export const Name = styled.div`
   @media ${breakPoints.mobile} {
     font-size: 0.75rem;
     position: relative;
-    right: 88px;
-    top: 12px;
-    width: 160%;
+    /* right: 88px;
+    top: 12px; */
+    width: 100%;
   }
 `;
 
 export const Date = styled.div`
   color: #808080;
   font-size: 1.063rem;
-  margin-left: 10px;
+  /* margin-left: 10px; */
   @media ${breakPoints.mobile} {
     font-size: 0.75rem;
-    width: 450px;
+    /* width: 450px; */
     position: relative;
-    right: 138px;
-    top: 12px;
+    /* right: 138px;
+    top: 12px; */
     /* top: 100px; */
     /* left: 40px; */
   }

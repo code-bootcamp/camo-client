@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { SyntheticEvent } from "react";
+import { FETCH_BOARDS_CREATED_AT } from "../list/CommunityList.queries";
 import CommunityDetailUI from "./CommunityDetail.presenter";
 import { DELETE_BOARD, FETCH_BOARD, FETCH_LOGINED_USER } from "./CommunityDetail.queries";
 
@@ -14,10 +15,6 @@ export default function CommunityDetail() {
     variables: { boardId: router.query.communityId },
   });
 
-  // console.log("데이타", data.fetchBoard);
-  // console.log("데이타", data.fetchBoard.images);
-  // console.log("데이타", data.fetchBoard.images[0].url);
-
   const onClickUpdate = () => {
     router.push(`/community/${router.query.communityId}/edit`);
   };
@@ -28,6 +25,11 @@ export default function CommunityDetail() {
         variables: {
           boardId: router.query.communityId,
         },
+        refetchQueries: [
+          {
+            query: FETCH_BOARDS_CREATED_AT,
+          },
+        ],
       });
       Modal.success({ content: "게시글이 삭제되었습니다" });
       router.push("/community");
