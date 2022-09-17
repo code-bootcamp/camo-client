@@ -35,7 +35,7 @@ export default function ReservationUI(props: IReservationUIProps) {
                 <S.TimeHead style={{ width: "100%" }}></S.TimeHead>
                 {props.hour.map((el) => (
                   <S.TimeBox
-                    disabled={props.reserved.includes(`${el.start_time} - ${el.end_time}`) && true}
+                    disabled={props.reserved?.includes(`${el.start_time} - ${el.end_time}`) && true}
                     reserved={el.reserved}
                     value={el.start_time + "-" + el.end_time}
                     id={String(props.hour.indexOf(el))}
