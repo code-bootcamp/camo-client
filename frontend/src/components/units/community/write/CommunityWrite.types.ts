@@ -1,23 +1,16 @@
 import { EditorType } from "@toast-ui/editor";
 import { Editor } from "@toast-ui/react-editor";
 import { LegacyRef } from "react";
-import { IBoard } from "../../../../commons/types/generated/types";
+import { IQuery } from "../../../../commons/types/generated/types";
 
 export interface ICommunityNewProps {
   isEdit: boolean;
-  el: IBoard;
-  editData?: {
-    fetchBoard: {
-      title: string;
-      contents: string;
-      images: any;
-      tags: any;
-    };
-  };
+  data?: Pick<IQuery, "fetchBoard">;
 }
 
 export interface ICommunityUIProps {
   isEdit: boolean;
+  data?: Pick<IQuery, "fetchBoard">;
   editorRef: LegacyRef<Editor>;
   onChangeContents: (editorType: EditorType) => void;
   isAddressOpen: boolean;
@@ -28,14 +21,6 @@ export interface ICommunityUIProps {
   onClickEdit: any;
   register: any;
   formState: any;
-  editData?: {
-    fetchBoard: {
-      title: string;
-      contents: string;
-      images: any;
-      tags: any;
-    };
-  };
   fileUrls: any;
   onChangeFileUrls: any;
   address: string;

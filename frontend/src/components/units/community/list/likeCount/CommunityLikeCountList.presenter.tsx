@@ -30,7 +30,9 @@ export default function CommunityLikeCountListUI(props: ILikeCountListUIProps) {
 
               <S.ItemTextUserWrapper>
                 <S.ItemTextLikeWrapper>
-                  <S.ItemTextLikeCount>{el.likeCount}</S.ItemTextLikeCount>
+                  <S.ItemTextLikeCount>
+                    {el.likeCount === null || undefined ? 0 : el.likeCount}
+                  </S.ItemTextLikeCount>
                   <S.ItemTextLike />
                 </S.ItemTextLikeWrapper>
                 <S.ItemTextUser>{el.user?.nickName}</S.ItemTextUser>

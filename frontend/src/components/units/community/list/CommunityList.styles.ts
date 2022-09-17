@@ -113,6 +113,31 @@ export const WriteBtn = styled.button`
   }
 `;
 
+// export const WriteBtn = styled(PlusCircleFilled)`
+//   width: 5rem;
+//   height: 5rem;
+//   background-color: #3c565b;
+//   border: none;
+//   border-radius: 50%;
+//   color: white;
+//   cursor: pointer;
+//   position: fixed;
+//   color: #fff;
+//   right: 3%;
+//   bottom: 5%;
+
+//   ::before {
+//     content: "+";
+//     font-size: 3rem;
+//     line-height: 2rem;
+//   }
+//   :hover::before {
+//     content: "글쓰기";
+//     font-size: 1.2rem;
+//     line-height: 1.3rem;
+//   }
+// `;
+
 export const ItemWrapper = styled.div`
   width: 100%;
   display: grid;
