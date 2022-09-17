@@ -48,7 +48,7 @@ export default function Payment(props: any) {
   const { data: CafeData } = useQuery(FETCH_CAFE_LIST, {
     variables: { cafeListId: String(router.query.cafeId) },
   });
-
+  console.log(CafeData);
   const onClickPayment = async () => {
     const IMP = window.IMP;
     IMP.init("imp27128482");

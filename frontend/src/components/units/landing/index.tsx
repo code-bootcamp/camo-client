@@ -4,11 +4,10 @@ import * as C from "./LaningStyle";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
 import "animate.css";
-
 import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
-import { ListItem, ListItemText, ListItemIcon, Drawer, Button, List } from "@material-ui/core";
+import { ListItem, ListItemText, ListItemIcon, List, Button, Drawer } from "@material-ui/core";
 import { KeyboardArrowRight } from "@material-ui/icons";
 import MainPageQuestionContainer from "../../commons/mainPageQuestion/mainPageQuestion.container";
 
@@ -25,7 +24,7 @@ type Anchor = "right";
 
 export default function LandingPage() {
   const [ref, inView] = useInView({
-    threshhold: 10,
+    threshold: 1,
   });
 
   const classes = useStyles();
@@ -49,7 +48,7 @@ export default function LandingPage() {
   const list = (anchor: Anchor) => (
     <div
       className={clsx(classes.list, {
-        [classes.fullList]: anchor === "top" || anchor === "bottom",
+        // [classes.fullList]: anchor === "top" || anchor === "bottom",
       })}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
@@ -118,7 +117,7 @@ export default function LandingPage() {
         <C.ImageWrapper>
           <C.MainImage src="https://images.unsplash.com/photo-1511081692775-05d0f180a065?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1372&q=80" />
           <C.MenuButton style={{ opacity: "0" }}>
-            {(["right"] as Anchor[""]).map((anchor) => (
+            {(["right"] as Anchor[]).map((anchor) => (
               <React.Fragment key={anchor}>
                 <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
                 <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>

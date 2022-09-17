@@ -1,10 +1,8 @@
-import { Calendar } from "antd";
 import {
   BottomWrapper,
   CALENDAR,
   CalendarBox,
   DateBox,
-  IMG,
   ImgBox,
   PaymentBox,
   PersonBox,

@@ -16,7 +16,7 @@ export default function PaginationUI(props: IPaginationProps) {
                 key={index + props.startPage}
                 id={String(index + props.startPage)}
                 onClick={props.onClickPage}
-                currentPage={props.startPage + Number(index) === props.currentPage}
+                isActive={props.startPage + Number(index) === props.currentPage}
               >
                 {index + props.startPage}
               </S.PageButton>

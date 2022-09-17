@@ -1,7 +1,7 @@
 import * as S from "./mainPageQuestion.styles";
-import { IMainPageQuestionPresenterProps } from "./mainPageQuestion.types";
+// import { IMainPageQuestionPresenterProps } from "./mainPageQuestion.types";
 
-export default function Q3Presenter(props: IMainPageQuestionPresenterProps) {
+export default function Q3Presenter(props) {
   return (
     <S.QuestionBox3 onClick={props.onClickQuestion3} isAnswer3={props.isAnswer3}>
       <S.QuestionContents3 isAnswer3={props.isAnswer3}>

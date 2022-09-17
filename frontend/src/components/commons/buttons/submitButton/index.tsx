@@ -1,11 +1,5 @@
 import styled from "@emotion/styled";
 
-interface ISubmitButtonProps {
-  title?: String;
-  onClick?: () => void;
-  type?: (String & ("button" | "submit" | "reset")) | undefined;
-}
-
 const SubmitButton = styled.button`
   /* width: 16.25rem;
   height: 4rem;

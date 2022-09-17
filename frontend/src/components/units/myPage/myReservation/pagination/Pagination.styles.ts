@@ -1,5 +1,8 @@
 import styled from "@emotion/styled";
-import { IPaginationProps, ISlideButtonProps } from "./Pagination.types";
+
+interface IPageProps {
+  isActive?: boolean;
+}
 export const Row = styled.div`
   display: flex;
 `;
@@ -27,15 +30,15 @@ export const PageButton = styled.button`
   border: 3px solid black;
   text-align: center;
   cursor: pointer;
-  color: ${(props: IPaginationProps) => (props.currentPage ? "white" : "black")};
-  background-color: ${(props: IPaginationProps) => (props.currentPage ? "#cbb8ee" : "white")};
+  color: ${(props: IPageProps) => (props.isActive ? "white" : "black")};
+  background-color: ${(props: IPageProps) => (props.isActive ? "#cbb8ee" : "white")};
 `;
 
 export const SlideButton = styled.button`
   /* margin: 5%; */
   width: 30px;
-  cursor: ${(props: ISlideButtonProps) => (props.isActive ? "default" : "pointer")};
+  cursor: ${(props: IPageProps) => (props.isActive ? "default" : "pointer")};
   /* border: 3px solid black; */
   border-radius: 100px;
-  background-color: ${(props: ISlideButtonProps) => (props.isActive ? "white" : "pink")};
+  background-color: ${(props: IPageProps) => (props.isActive ? "white" : "pink")};
 `;

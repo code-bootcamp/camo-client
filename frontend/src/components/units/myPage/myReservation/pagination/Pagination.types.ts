@@ -1,9 +1,5 @@
-import {
-  IQuery,
-  IQueryFetchMyCafeReservationArgs,
-} from "../../../../../commons/types/generated/types";
+import { IQuery } from "../../../../../commons/types/generated/types";
 import { MouseEvent } from "react";
-import { ApolloQueryResult } from "@apollo/client";
 
 export interface IPaginationProps {
   data?: Pick<IQuery, "fetchMyCafeReservation">;

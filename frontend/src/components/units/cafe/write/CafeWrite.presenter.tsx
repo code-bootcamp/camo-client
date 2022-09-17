@@ -5,12 +5,11 @@ import { v4 as uuidv4 } from "uuid";
 import Upload02 from "../../../commons/upload/02/Upload.container";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
-import ToastUI from "../../../commons/editor";
 // import ReactQuill from "react-quill";
 
 // const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
-const ToastUi = dynamic(() => import("../../../commons/editor"), {
+const ToastUI = dynamic(() => import("../../../commons/editor"), {
   ssr: false,
 });
 
