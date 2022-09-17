@@ -1,11 +1,12 @@
 import { Modal } from "antd";
 import DaumPostcodeEmbed from "react-daum-postcode";
-import Upload from "../../../commons/upload/01/Upload.container";
 import { v4 as uuidv4 } from "uuid";
 import * as S from "./CommunityWrite.styles";
-import MapComponent from "../../../commons/map/01";
+// import MapComponent from "../../../commons/map/01";
 import dynamic from "next/dynamic";
 import { ICommunityUIProps } from "./CommunityWrite.types";
+import Upload02 from "../../../commons/upload/02/Upload.container";
+import KakaoMap02 from "../../../commons/map/02";
 
 const ToastUI = dynamic(() => import("../../../commons/editor"), {
   ssr: false,
@@ -61,7 +62,7 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
           <S.Lable>이미지</S.Lable>
           <S.ImageWrap>
             {props.fileUrls.map((el: any, index: any) => (
-              <Upload
+              <Upload02
                 key={uuidv4()}
                 index={index}
                 fileUrl={el}
@@ -74,7 +75,13 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
           <S.Lable>주소</S.Lable>{" "}
           <S.MapAddressWrapper>
             <S.MapWrapper>
-              <MapComponent address={props.address} />
+              {/* <MapComponent address={props.address} /> */}
+              <KakaoMap02
+                data={props.data?.fetchCafeList}
+                address={props.data?.fetchCafeList?.address as string}
+                width="100%"
+                height="100%"
+              />
             </S.MapWrapper>
             <S.AddressWrapper>
               <S.AddressInput

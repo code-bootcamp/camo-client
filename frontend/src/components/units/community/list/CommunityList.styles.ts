@@ -1,20 +1,13 @@
-import { HeartOutlined } from "@ant-design/icons";
+import { LikeFilled } from "@ant-design/icons";
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
 
 export const Wrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
-
-export const BodyWrapper = styled.div`
-  width: 100%;
-  display: grid;
-  place-items: center;
-  gap: 20px 0;
-  padding-bottom: 50px;
 `;
 
 export const Banner = styled.div`
@@ -24,20 +17,25 @@ export const Banner = styled.div`
   background-size: cover;
 `;
 
-export const NavWrapper = styled.div`
-  width: 85%;
-  height: 100px;
+export const BodyWrapper = styled.div`
+  width: 100%;
   display: grid;
-  /* background-color: #ffffff; */
-  /* background-color: pink; */
-  grid-template-columns: repeat(2, 2fr);
-  place-items: center;
+  justify-content: center;
+  gap: 20px 0;
+  padding-bottom: 50px;
+`;
 
+export const NavWrapper = styled.div`
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   @media ${breakPoints.mobile} {
     // 모바일
     width: 100%;
     height: 100px;
-    grid-template-columns: repeat(1, 1fr);
   }
 `;
 
@@ -68,12 +66,11 @@ export const LikeList = styled.div`
 `;
 
 export const InputWrapper = styled.div`
-  width: 18rem;
+  width: 290px;
   height: 40px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  /* background-color: blue; */
 `;
 
 export const Search = styled.input`
@@ -107,12 +104,12 @@ export const WriteBtn = styled.button`
   ::before {
     content: "+";
     font-size: 3rem;
-    line-height: 85px;
+    line-height: 2rem;
   }
   :hover::before {
     content: "글쓰기";
     font-size: 1.2rem;
-    line-height: 80px;
+    line-height: 1.3rem;
   }
 `;
 
@@ -137,6 +134,7 @@ export const ItemContent = styled.div`
   border: 1px solid #d9d9d9;
   border-radius: 5px;
   cursor: pointer;
+  background-color: #fff;
   @media ${breakPoints.mobile} {
     width: 95%;
     height: 200px;
@@ -191,20 +189,24 @@ export const ItemTextUserWrapper = styled.div`
 `;
 
 export const ItemTextLikeWrapper = styled.div`
-  margin-bottom: 0.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
-export const ItemTextLike = styled(HeartOutlined)`
-  font-size: 0.7rem;
+export const ItemTextLike = styled(LikeFilled)`
+  font-size: 1rem;
   margin-bottom: 0.1rem;
 `;
 
 export const ItemTextLikeCount = styled.div`
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   margin-bottom: 0.2rem;
 `;
 
-export const ItemTextUser = styled.div``;
+export const ItemTextUser = styled.div`
+  padding: 5px 0;
+`;
 
 export const PaginationStyle = styled.div`
   cursor: pointer;

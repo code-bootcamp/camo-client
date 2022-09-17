@@ -51,3 +51,9 @@ export const DELETE_BOARD = gql`
     deleteBoard(boardId: $boardId)
   }
 `;
+
+export const TOGGLE_LIKE_FEED = gql`
+  mutation toggleLikeFeed($boardId: boardId) {
+    toggleLikeFeed(boardId: $boardId)
+  }
+`;
