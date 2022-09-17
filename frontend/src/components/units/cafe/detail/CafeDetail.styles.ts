@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
   width: 1500px;
   padding: 10%;
   font-family: "Cafe24Ohsquare";
-  /* background-color: yellow; */
   @media ${breakPoints.mobile} {
     padding: 3rem;
   }
@@ -28,10 +27,10 @@ export const Title = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  /* background-color: red; */
   font-size: 2.5rem;
   font-weight: 900;
   color: #33413e;
-  padding-bottom: 1.5rem;
   /* font-family: "KOTRA_BOLD-Bold"; */
 
   span {
@@ -52,18 +51,21 @@ export const ImageBox = styled.div`
   flex-direction: column;
   align-items: stretch;
   justify-content: space-between;
-
   overflow: hidden;
   width: 50%;
   height: 35rem;
+  /* background-color: blue; */
   /* background-image: url("https://images.unsplash.com/photo-1570806879179-3582cdacfb60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"); */
   background-size: contain;
   background-repeat: no-repeat;
+  .BigImage {
+    height: 28rem;
+  }
 
   img {
     background-color: #eee;
-    height: 66%;
     object-fit: cover;
+    border-radius: 10px;
   }
 `;
 
@@ -71,10 +73,12 @@ export const ImgSmallBox = styled.div`
   display: flex;
   flex-direction: row;
   cursor: pointer;
+  height: 6em;
+  /* background-color: yellow; */
   /* border: 1px solid red; */
   img {
-    width: 6.6rem;
-    height: 5rem;
+    width: 7rem;
+    /* height: 6rem; */
     object-fit: cover;
     background-color: #999;
     margin-right: 1rem;
@@ -86,7 +90,7 @@ export const ContentsWrap = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 1200px;
-  /* background-color: cadetblue; */
+  /* background-color: green; */
   @media ${breakPoints.mobile} {
     width: 100%;
     border-radius: 1rem;
@@ -102,28 +106,39 @@ export const CafeDetailBox = styled.div`
   padding: 0 2rem;
   /* border: 0.06rem solid #555; */
 `;
+export const Favorite = styled.div`
+  height: 2rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  /* background-color: blue; */
+`;
+
+export const BtnPick = styled.div`
+  cursor: pointer;
+  width: 5.5rem;
+  font-size: 20px;
+  border: none;
+  color: ${(props: any) => (props.isActive === true ? "tomato" : "#33413e")};
+`;
+
 export const LabelBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 20rem;
+  height: 19rem;
   /* background-color: aliceblue; */
   /* border: 0.06rem solid #555; */
 `;
-
 export const Label = styled.div`
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
   width: 40rem;
-  /* background-color: red; */
   font-size: 1.4rem;
   line-height: 1.4rem;
   font-weight: 800;
   margin-bottom: 0.7rem;
 
   span {
-    width: 20rem;
     font-size: 1.1rem;
     font-weight: 400;
     margin-left: 1rem;
@@ -151,7 +166,19 @@ export const BottomWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 1200px;
-  /* border: 1px solid gray; */
+  /* border: 1px solid grady; */
+`;
+
+export const ReservationWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 180%;
+  /* border: 1px solid red; */
+  div {
+    width: 50%;
+    height: 100%;
+    /* border: 1px solid black; */
+  }
 `;
 export const MapWrapper = styled.div`
   background-color: #eee;
@@ -163,20 +190,23 @@ export const MapWrapper = styled.div`
 export const ButtonWrap = styled.div`
   display: flex;
   flex-direction: row;
-  /* justify-content: flex-end; */
+  /* justify-content: center; */
   align-items: flex-end;
   height: 6rem;
 `;
 export const ReserveBtn = styled.div`
-  width: 10rem;
+  width: 8rem;
   border-radius: 0.5rem;
-  height: 3.3rem;
+  height: 3rem;
   background: #5d7572;
   font-size: 1.2rem;
   color: white;
-  line-height: 3.3rem;
+  line-height: 3rem;
   text-align: center;
   cursor: pointer;
+  :hover {
+    color: gold;
+  }
 `;
 
 export const CancelBtn = styled.div`
@@ -225,18 +255,3 @@ export const SearchBarWrap = styled.div`
   height: 9rem;
   background-color: #33413e;
 `;
-
-// export const @media (min-width: 768px) and (max-width: 991px) {
-//   // 태블릿사이즈일떄 위드사이즈를 어떻게 할 것인가
-//   width: 500px;
-//   height: 500px;
-//   background-color: green;
-// }
-
-// @media (max-width: 767px) {
-//   // 모바일
-//   width: 100px;
-//   height: 100px;
-//   background-color: pink;
-//   /* display: none; */
-// }

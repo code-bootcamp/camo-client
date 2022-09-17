@@ -1,12 +1,12 @@
 import { useMutation } from "@apollo/client";
 import { message, Modal } from "antd";
 import { useRouter } from "next/router";
-import { ChangeEvent, MouseEvent, useEffect, useRef, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../commons/hooks";
 import { FETCH_CAFE_LISTS_CREATED_AT } from "../list/CafeList.queries";
 import CafeWriteUI from "./CafeWrite.presenter";
-import { CREATE_CAFE_LIST, UPDATE_CAFE_LIST, UPLOAD_FILE } from "./CafeWrite.queries";
+import { CREATE_CAFE_LIST, UPDATE_CAFE_LIST } from "./CafeWrite.queries";
 
 export default function CafeWrite(props: any) {
   useAuth();
@@ -46,7 +46,6 @@ export default function CafeWrite(props: any) {
 
   const onChangeContents = (value: string) => {
     console.log(value);
-
     setValue("contents", value === "<p><br></p>" ? " " : value);
     trigger("contents");
   };
@@ -67,12 +66,8 @@ export default function CafeWrite(props: any) {
   const onCompleteAddressSearch = (data: any) => {
     setValue("zipcode", data.zonecode || "");
     setValue("address", data.address || "");
-    // setValue("addressDetail", data.addressDetail || "");
-
     trigger("zipcode");
     trigger("address");
-    // trigger("addressDetail");
-
     setIsAddressOpen(false);
   };
 
@@ -97,11 +92,11 @@ export default function CafeWrite(props: any) {
             startTime: data.startTime || "",
             endTime: data.endTime || "",
             homepage: data.homepage || "",
+            remarks: data.remarks || "",
             deposit: Number(data.deposit || ""),
             contents: data.contents || "",
-            images: [...fileUrls],
-            tags: data.tags.split(","),
-            // tags: data.cafeListTag || "",
+            images: [...fileUrls] || "",
+            tags: data.tags.split(",") || "",
           },
         },
         refetchQueries: [
@@ -169,11 +164,8 @@ export default function CafeWrite(props: any) {
         onChangeContents={onChangeContents}
         onClickCancel={onClickCancel}
         formState={formState}
-        // imageUrl={imageUrl}
         fileUrls={fileUrls}
         onChangeFileUrls={onChangeFileUrls}
-        // onChangeFile={onChangeFile}
-        // onClickImage={onClickImage}
       />
     </>
   );

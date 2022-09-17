@@ -27,9 +27,41 @@ export const FETCH_CAFE_LIST = gql`
         id
         url
       }
+      user {
+        id
+        name
+      }
     }
   }
 `;
+
+// export const FETCH_CAFE_LIST = gql`
+//   query fetchCafeList($cafeListId: String!) {
+//     fetchCafeList(cafeListId: $cafeListId) {
+//       id
+//       title
+//       contents
+//       zipcode
+//       address
+//       addressDetail
+//       phone
+//       startTime
+//       endTime
+//       homepage
+//       remarks
+//       deposit
+//       createdAt
+//       cafeListTag {
+//         id
+//         name
+//       }
+//       cafeListImage {
+//         id
+//         url
+//       }
+//     }
+//   }
+// `;
 
 export default function EditPage() {
   const router = useRouter();

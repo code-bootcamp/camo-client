@@ -37,3 +37,9 @@ export const DELETE_CAFE_LIST = gql`
     deleteCafeList(cafeListId: $cafeListId)
   }
 `;
+
+export const TOGGLE_FAVORITE_CAFES = gql`
+  mutation toggleFavoriteCafes($cafeListId: String!) {
+    toggleFavoriteCafes(cafeListId: $cafeListId)
+  }
+`;

@@ -47,7 +47,7 @@ export const BigTitle = styled.div`
   margin-top: 2.2rem;
 
   text-align: center;
-  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
   /* animation: "titleText" 1s ease-in-out infinite alternate;
   @keyframes titleText {
     0% {
@@ -75,7 +75,7 @@ export const MiddleText = styled.div`
   font-size: 1.2rem;
   text-align: center;
   margin-top: 5.5rem;
-  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 
   animation: "middleText" 0.8s ease-in-out;
   @keyframes middleText {
@@ -98,8 +98,11 @@ export const CafeRegisterBox = styled.div`
   flex-direction: row;
   justify-content: end;
   margin-right: 10rem;
-  position: relative;
-
+  position: fixed;
+  right: 0%;
+  bottom: 33%;
+  z-index: 99;
+  cursor: pointer;
   a {
     color: white;
   }
@@ -109,21 +112,29 @@ export const CafeRegisterBox = styled.div`
 `;
 
 export const CafeRegister = styled.div`
-  width: 7rem;
-  height: 7rem;
-  line-height: 7rem;
-  border-radius: 90px;
-  background-color: #3c565b;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50px;
+  background-color: #1e3932;
+  box-shadow: 3px 3px 9px rgba(1, 1, 1, 0.5);
   color: white;
   text-align: center;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 400;
   position: absolute;
-  :hover {
+  span {
+    color: white;
+    font-size: 3rem;
+  }
+
+  a {
+    color: white;
+  }
+  /* :hover {
     cursor: pointer;
     animation: jello;
     animation-duration: 1s;
-  }
+  } */
 
   /* animation: "MoveCircle" 1s ease-in-out infinite alternate;
   @keyframes MoveCircle {
@@ -215,7 +226,6 @@ export const PostAllWrap = styled.div`
   background-color: #fff;
   padding: 0 10%;
   margin: 1rem 0;
-  /* background-color: pink; */
 
   @media ${breakPoints.mobile} {
     padding: 0 5%;
@@ -301,10 +311,24 @@ export const TextWrap = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1.2rem;
+  display: flex;
+  .zzim {
+    position: absolute;
+    top: 9.5rem;
+    right: 0.3rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: inline;
+  }
 `;
-export const CafeTag = styled.div`
+export const TagsWrap = styled.div`
+  display: flex;
+`;
+export const CafeTag = styled.span`
+  /* background-color: red; */
   font-size: 0.7rem;
   font-weight: 400;
+  margin-right: 0.5rem;
   margin-bottom: 0.1rem;
   color: steelblue;
 `;
@@ -341,55 +365,4 @@ export const CafeAddress = styled.div`
   font-size: 0.7rem;
   font-weight: 400;
   margin-top: 0.2rem;
-`;
-
-export const NewBtn = styled.div`
-  width: 15rem;
-  height: 4.4rem;
-  background: #5d7572;
-  font-size: 1.5rem;
-  color: white;
-  line-height: 4.4rem;
-  text-align: center;
-  cursor: pointer;
-  @media screen and (max-width: 767px) {
-    // 모바일
-    display: none;
-  }
-`;
-
-// 푸터 테스트
-
-export const Footer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 18rem;
-  background-color: #786d5f;
-`;
-
-export const FooterText = styled.span`
-  display: inline-block;
-  color: white;
-  font-size: 1rem;
-  font-weight: 400;
-  margin: 1.3rem;
-  cursor: pointer;
-  @media ${breakPoints.mobile} {
-    display: none;
-  }
-`;
-
-export const FooterText2 = styled.span`
-  display: inline-block;
-  text-align: center;
-  color: white;
-  margin-top: 1rem;
-  font-size: 0.7rem;
-  font-weight: 100;
-  @media ${breakPoints.mobile} {
-    display: none;
-  }
 `;
