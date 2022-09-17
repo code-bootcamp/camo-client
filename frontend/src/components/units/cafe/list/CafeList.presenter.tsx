@@ -93,7 +93,7 @@ export default function CafeListUI(props: any) {
                     {/* #{el.cafeListTag[1]?.name} */}
                     {/* <C.CafeTag key={uuidv4()}> #테스트{el.cafeListTag[0]?.name} &nbsp;</C.CafeTag> */}
                     <C.TagsWrap>
-                      {el.cafeListTag?.map(({ name }) => {
+                      {el.cafeListTag?.map(({ name }: { name: any }) => {
                         return <C.CafeTag key={uuidv4()}>{`#${name}`}</C.CafeTag>;
                       })}
                     </C.TagsWrap>

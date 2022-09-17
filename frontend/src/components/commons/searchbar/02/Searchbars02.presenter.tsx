@@ -1,6 +1,6 @@
 import * as C from "./Searchbars02.styles";
 
-export default function Searchbars02UI(props) {
+export default function Searchbars02UI(props: any) {
   return (
     <>
       <C.SearchBarWrap>

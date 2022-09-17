@@ -1,6 +1,5 @@
-import { useApolloClient, useMutation, useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { useEffect, useState, MouseEvent } from "react";
 import { useRecoilState } from "recoil";
 import { reservedState } from "../../../commons/store";
@@ -12,7 +11,6 @@ import {
   CREATE_PAYMENT,
   FETCH_CAFE_LIST,
   FETCH_LOGINED_USER,
-  FETCH_RESERVATION,
 } from "./Reservation.queries";
 
 declare const window: typeof globalThis & {
@@ -34,9 +32,6 @@ const hour: Array<timeTable> = [
 ];
 
 export default function Reservation() {
-  const client = useApolloClient();
-  const router = useRouter();
-
   // 날짜, 시간, 인원, 가격
   const [price, setPrice] = useState(0);
   const [guest, setGuest] = useState(0);
@@ -46,7 +41,8 @@ export default function Reservation() {
   const [endTime, setEndTime] = useState("");
   const [timeTable, setTimeTable] = useState(false);
   const [disabled, setDisabled] = useState(false);
-  const [reserved, setReserved] = useRecoilState<any>(reservedState);
+  // const [reserved, setReserved] = useRecoilState<any>(reservedState);
+  const [reserved] = useRecoilState<any>(reservedState);
 
   const { data: UserData } = useQuery(FETCH_LOGINED_USER);
 

@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 import { message, Modal } from "antd";
 import { useRouter } from "next/router";
-import { MouseEvent, useEffect, useRef, useState } from "react";
+import { createRef, MouseEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../commons/hooks";
 import { FETCH_CAFE_LISTS_CREATED_AT } from "../list/CafeList.queries";
@@ -31,7 +31,7 @@ export default function CafeWrite(props: any) {
   });
 
   // toastUI
-  const editorRef = useRef;
+  const editorRef = createRef<Editor>();
   const onChangeContents = (value: string) => {
     const htmlData = editorRef.current?.getInstance()?.getHTML();
     setValue("contents", htmlData);

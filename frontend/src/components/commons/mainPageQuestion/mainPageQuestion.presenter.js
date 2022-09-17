@@ -3,7 +3,7 @@ import Q1Presenter from "./Q1.presenter";
 import Q2Presenter from "./Q2.presenter";
 import Q3Presenter from "./Q3.presenter";
 
-export default function MainPageQuestionPresenter(props: any) {
+export default function MainPageQuestionPresenter(props) {
   return (
     <S.QuestionWrapper>
       <S.QuestionTitle>Q & A</S.QuestionTitle>

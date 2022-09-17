@@ -49,18 +49,23 @@ export default function KakaoMap02(props: IKaKaoMapProps) {
               }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
               // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-              const markerImage = new window.kakao.maps.MarkerImage(
-                imageSrc,
-                imageSize,
-                imageOption
-              );
-
+              // const markerImage = new window.kakao.maps.MarkerImage(
+              //   imageSrc,
+              //   imageSize,
+              //   imageOption
+              // );
+              // console.log(markerImage);
+              window.kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
               // 마커를 생성합니다
-              const marker = new window.kakao.maps.Marker({
-                map: map,
+              // const marker = new window.kakao.maps.Marker({
+              //   map: map,
+              //   position: coords,
+              // });
+              // console.log(marker);
+              window.kakao.maps.Marker({
+                map,
                 position: coords,
               });
-
               map.setCenter(coords);
             }
           }

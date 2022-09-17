@@ -1,25 +1,22 @@
-import { CloseOutlined, EditOutlined, HeartFilled } from "@ant-design/icons";
+import { CloseOutlined, EditOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import KakaoMap02 from "../../../commons/map/02";
-import Reservation from "../../reservation/Reservation.container";
 import * as C from "./CafeDetail.styles";
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
-import { useState } from "react";
-import MainPageQuestionContainer from "../../../commons/mainPageQuestion/mainPageQuestion.container";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 export default function CafeDetailUI(props: any) {
   console.log(props.data);
   console.log("이미지 url:", props.data?.fetchCafeList?.cafeListImage[0]?.url);
-  const IMAGES = [
-    "https://images.unsplash.com/photo-1514481538271-cf9f99627ab4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-    "https://images.unsplash.com/photo-1564327367919-cb377ea6a88f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-    "https://images.unsplash.com/photo-1598797259268-14875817f1df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80",
-  ];
+  // const IMAGES = [
+  //   "https://images.unsplash.com/photo-1514481538271-cf9f99627ab4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+  //   "https://images.unsplash.com/photo-1564327367919-cb377ea6a88f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+  //   "https://images.unsplash.com/photo-1598797259268-14875817f1df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80",
+  // ];
 
   const router = useRouter();
 
@@ -27,30 +24,30 @@ export default function CafeDetailUI(props: any) {
     router.push(`/cafe/${router.query.cafeId}/edit`);
   };
 
-  const [content, setContent] = useState();
-  const handleClickButton = (event: any) => {
-    const { name } = event.currentTarget.id;
-    setContent(name);
-    console.log("네임은", name);
-  };
+  // const [, setContent] = useState();
+  // const handleClickButton = (event: any) => {
+  //   const { name } = event.currentTarget.id;
+  //   setContent(name);
+  //   console.log("네임은", name);
+  // };
 
-  const selectComponent = {
-    first: (
-      <img
-        src={`https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[0]?.url}`}
-      />
-    ),
-    second: (
-      <img
-        src={`https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[0]?.url}`}
-      />
-    ),
-    third: (
-      <img
-        src={`https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[0]?.url}`}
-      />
-    ),
-  };
+  // const selectComponent = {
+  //   first: (
+  //     <img
+  //       src={`https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[0]?.url}`}
+  //     />
+  //   ),
+  //   second: (
+  //     <img
+  //       src={`https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[0]?.url}`}
+  //     />
+  //   ),
+  //   third: (
+  //     <img
+  //       src={`https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[0]?.url}`}
+  //     />
+  //   ),
+  // };
 
   return (
     <>
