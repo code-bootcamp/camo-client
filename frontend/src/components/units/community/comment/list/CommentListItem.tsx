@@ -1,10 +1,10 @@
 import { useMutation } from "@apollo/client";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
-import { SyntheticEvent, useState } from "react";
-// import { getDate } from "../../../../commons/libraries/utils";
-// import NestedCommentListContainer from "../../nestedComment/list/NestedCommentList.container";
-// import NestedCommentWrite from "../../nestedComment/write/NestedCommentWrite.container";
+import {
+  // SyntheticEvent,
+  useState,
+} from "react";
 import CommentWrite from "../write/CommentWrite.container";
 import {
   DELETE_COMMENT,
@@ -13,13 +13,13 @@ import {
 } from "./CommentList.queries";
 import * as S from "./CommentListItem.styles";
 import { ICommentListItemProps } from "./CommentList.types";
+import { getDate } from "../../../../../commons/libraries/utils";
 
 export default function CommentListItem(props: ICommentListItemProps) {
   const router = useRouter();
   const [isEdit, setIsEdit] = useState(false);
 
   const [deleteComment] = useMutation(DELETE_COMMENT);
-  // const [isNested, setIsNested] = useState(false);
 
   // const onWriteAnswer = () => {
   //   setIsNested((prev) => !prev);
@@ -39,7 +39,7 @@ export default function CommentListItem(props: ICommentListItemProps) {
         refetchQueries: [
           {
             // query: FETCH_BOARD,
-            // variables: { boardID: String(router.query._id) },
+            // variables: { boardID: String(router.query.communityId) },
             query: FETCH_COMMENTS,
             variables: { boardId: String(router.query.communityId) },
           },
@@ -52,66 +52,54 @@ export default function CommentListItem(props: ICommentListItemProps) {
     }
   };
 
-  const onErrorImg = (e: SyntheticEvent<HTMLImageElement>) => {
-    (e.target as HTMLImageElement).src = "/user_icon.png";
-  };
+  // const onErrorImg = (e: SyntheticEvent<HTMLImageElement>) => {
+  //   (e.target as HTMLImageElement).src = "/user_icon.png";
+  // };
 
   return (
     <>
       {!isEdit && (
         <S.Wrapper>
-          <S.WrapperUserInfo>
-            <S.WrapInfo>
-              {props.el.user?.images ? (
-                <S.ProfileIcon src={props.el.images[0]} onError={onErrorImg} />
-              ) : (
-                <></>
-              )}
-              <S.WrapCommentInfo>
-                <S.CommentWrap>
-                  <S.Comment>{props.el?.comment}</S.Comment>
-                </S.CommentWrap>
+          <S.BodyWrapper>
+            {/* {props.el.user?.images ? (
+              <S.ProfileIcon src={props.el.images[0]} onError={onErrorImg} />
+            ) : (
+              <></>
+            )} */}
 
-                <S.WrapUserInfo>
-                  <S.Name>{props.el?.user?.nickName}</S.Name>
+            <S.WrapUserInfo>
+              <S.Name>{props.el?.user?.nickName}</S.Name>
+              <S.Date>{getDate(props.el?.createdAt)}</S.Date>
+            </S.WrapUserInfo>
 
-                  {/* <S.Date>{getDate(props.el?.createAt)}</S.Date> */}
-                  <S.Date>{props.el?.createAt}</S.Date>
+            <S.CommentWrap>
+              <S.Comment>{props.el?.comment}</S.Comment>
+            </S.CommentWrap>
 
-                  {props.el.user?.id === props.UserData?.fetchLoginedUser.id ? (
-                    <S.WrapIcon>
-                      <S.EditIcon
-                        title="수정하기"
-                        // src="/comment/create.png"
-                        onClick={onClickUpdate}
-                      />
-                      <S.DeleteIcon
-                        title="삭제하기"
-                        // src="/comment/Trash.png"
-                        onClick={onClickDelete}
-                      />
+            {props.el.user?.id === props.UserData?.fetchLoginedUser.id ? (
+              <S.WrapIcon>
+                <S.EditIcon title="수정하기" onClick={onClickUpdate} />
+                <S.DeleteIcon title="삭제하기" onClick={onClickDelete} />
 
-                      {/* <S.AnswerIcon
+                {/* <S.AnswerIcon
                       title="대댓글 달기"
                       src="/comment/insert_comment.png"
                       onClick={onWriteAnswer}
                     /> */}
-                    </S.WrapIcon>
-                  ) : (
-                    <S.WrapIcon>
-                      {/* <S.AnswerIcon
+              </S.WrapIcon>
+            ) : (
+              <S.WrapIcon>
+                {/* <S.AnswerIcon
                       title="대댓글 달기"
                       src="/comment/insert_comment.png"
                       onClick={onWriteAnswer}
                     /> */}
-                    </S.WrapIcon>
-                  )}
-                </S.WrapUserInfo>
-              </S.WrapCommentInfo>
-            </S.WrapInfo>
-          </S.WrapperUserInfo>
+              </S.WrapIcon>
+            )}
+          </S.BodyWrapper>
         </S.Wrapper>
       )}
+
       <S.FooterWrapper>
         {isEdit && (
           <CommentWrite
@@ -122,13 +110,6 @@ export default function CommentListItem(props: ICommentListItemProps) {
             // isAnswer={undefined}
           />
         )}
-        {/* {isNested && (
-          <>
-            <NestedCommentWrite isNested={true} el={props.el} setIsNested={setIsNested} />
-          </>
-        )} */}
-
-        {/* <NestedCommentListContainer el={props.el} CommentData={props.CommentData} isEdit={false} /> */}
       </S.FooterWrapper>
     </>
   );

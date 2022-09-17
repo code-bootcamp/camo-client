@@ -2,18 +2,62 @@ import { useMutation, useQuery } from "@apollo/client";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { SyntheticEvent } from "react";
+import {
+  IMutation,
+  IMutationDeleteBoardArgs,
+  IMutationToggleLikeFeedArgs,
+  IQuery,
+} from "../../../../commons/types/generated/types";
 import { FETCH_BOARDS_CREATED_AT } from "../list/CommunityList.queries";
 import CommunityDetailUI from "./CommunityDetail.presenter";
-import { DELETE_BOARD, FETCH_BOARD, FETCH_LOGINED_USER } from "./CommunityDetail.queries";
+import {
+  DELETE_BOARD,
+  FETCH_BOARD,
+  FETCH_LOGINED_USER,
+  TOGGLE_LIKE_FEED,
+} from "./CommunityDetail.queries";
 
 export default function CommunityDetail() {
   const router = useRouter();
-  const [deleteBoard] = useMutation(DELETE_BOARD);
-  const { data: UserData } = useQuery(FETCH_LOGINED_USER);
+
+  const [deleteBoard] = useMutation<Pick<IMutation, "deleteBoard">, IMutationDeleteBoardArgs>(
+    DELETE_BOARD
+  );
+
+  const [toggleLikeFeed] = useMutation<
+    Pick<IMutation, "toggleLikeFeed">,
+    IMutationToggleLikeFeedArgs
+  >(TOGGLE_LIKE_FEED);
+
+  const { data: UserData } = useQuery<Pick<IQuery, "fetchLoginedUser">>(FETCH_LOGINED_USER);
 
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.communityId },
   });
+
+  const onClickLike = async () => {
+    console.log(data?.fetchBoard.likeCount);
+    try {
+      await toggleLikeFeed({
+        variables: {
+          boardId: String(router.query.communityId),
+        },
+        refetchQueries: [
+          {
+            query: FETCH_BOARD,
+            variables: {
+              boardId: String(router.query.communityId),
+            },
+          },
+        ],
+      });
+    } catch (error) {
+      if (error instanceof Error) {
+        Modal.error({ content: error.message });
+        console.log(error.message);
+      }
+    }
+  };
 
   const onClickUpdate = () => {
     router.push(`/community/${router.query.communityId}/edit`);
@@ -23,7 +67,7 @@ export default function CommunityDetail() {
     try {
       await deleteBoard({
         variables: {
-          boardId: router.query.communityId,
+          boardId: String(router.query.communityId),
         },
         refetchQueries: [
           {
@@ -50,6 +94,7 @@ export default function CommunityDetail() {
       onClickDelete={onClickDelete}
       onErrorImg={onErrorImg}
       onClickUpdate={onClickUpdate}
+      onClickLike={onClickLike}
     />
   );
 }

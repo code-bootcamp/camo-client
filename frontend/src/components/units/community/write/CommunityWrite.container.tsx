@@ -11,7 +11,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Editor } from "@toast-ui/react-editor";
 import { IUpdateBoardInput } from "../../../../commons/types/generated/types";
 import { ICommunityNewProps } from "./CommunityWrite.types";
-import { FETCH_BOARD } from "../detail/CommunityDetail.queries";
 
 const schema = yup.object({
   title: yup.string().required("제목을 입력해주세요."),
@@ -90,6 +89,7 @@ export default function CommunityWrite(props: ICommunityNewProps) {
 
   const onClickCreate = async (data: any) => {
     // console.log("fileUrls Check", fileUrls);
+
     try {
       const result = await createBoard({
         variables: {
@@ -99,15 +99,10 @@ export default function CommunityWrite(props: ICommunityNewProps) {
             zipcode: data.zipcode,
             address: data.address,
             addressDetail: data.addressDetail,
-            tags: [data.tags].join().split(" "),
-            image: [...fileUrls].join().split(","),
+            tags: data.tags.split(" "),
+            image: [...fileUrls],
           },
         },
-        refetchQueries: [
-          {
-            query: FETCH_BOARD,
-          },
-        ],
       });
       // console.log("result", result);
       router.push(`/community/${result.data?.createBoard.id}`);
@@ -144,16 +139,15 @@ export default function CommunityWrite(props: ICommunityNewProps) {
           variables: {
             boardId: String(router.query.communityId),
             nickName: props.el?.user.nickName,
-            updateBoardInput,
-            // : {
-            //   title: data.title,
-            //   contents: data.contents,
-            //   tags: [data.tags].join().split(" "),
-            //   image: [...fileUrls].join().split(","),
-            // }
+            updateBoardInput: {
+              title: data.title,
+              contents: data.contents,
+              tags: data.tags.join().split(" "),
+              image: [...fileUrls],
+            },
           },
         });
-        console.log(result);
+        // console.log(result);
         router.push(`/community/${result.data?.updateBoard.id}`);
         location.reload();
       } catch (error: any) {
