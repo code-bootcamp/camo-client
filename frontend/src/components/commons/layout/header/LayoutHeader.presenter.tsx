@@ -23,7 +23,7 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
             <h1>
               <Link href="/">
                 <a>
-                  <Logo src="/logo_test.png" alt="logo" />
+                  <Logo src="/Final_logo1.png" alt="logo" />
                 </a>
               </Link>
             </h1>

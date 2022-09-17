@@ -208,7 +208,6 @@ export type IMutation = {
   createCancel: IPayment;
   createComment: IComment;
   createPayment: IPayment;
-  createProduct: ICafeList;
   createReview: IReview;
   createRoom: IChatRoom;
   createUser: IUser;
@@ -277,11 +276,6 @@ export type IMutationCreateCommentArgs = {
 export type IMutationCreatePaymentArgs = {
   amount: Scalars['Int'];
   impUid: Scalars['String'];
-};
-
-
-export type IMutationCreateProductArgs = {
-  createCafeListInput: ICreateCafeListInput;
 };
 
 
@@ -437,6 +431,7 @@ export type IQuery = {
   fetchComments: Array<IComment>;
   fetchLoginedUser: IUser;
   fetchLogs: Array<IChatMessage>;
+  fetchMyCafeReservation: Array<ICafeReservation>;
   fetchReservation: IUser;
   fetchReview: IReview;
   fetchReviews: Array<IReview>;
@@ -525,6 +520,12 @@ export type IQueryFetchLogsArgs = {
 };
 
 
+export type IQueryFetchMyCafeReservationArgs = {
+  page?: InputMaybe<Scalars['Float']>;
+  userId: Scalars['String'];
+};
+
+
 export type IQueryFetchReservationArgs = {
   userId: Scalars['String'];
 };
@@ -537,6 +538,12 @@ export type IQueryFetchReviewArgs = {
 
 export type IQueryFetchUserByEmailArgs = {
   phoneNumber: Scalars['String'];
+};
+
+
+export type IQueryFetchUserFavoriteCafeArgs = {
+  page?: InputMaybe<Scalars['Float']>;
+  userId: Scalars['String'];
 };
 
 
@@ -566,12 +573,12 @@ export type IQueryRoleGuardUserArgs = {
 
 
 export type IQuerySearchBoardsArgs = {
-  search?: InputMaybe<Scalars['String']>;
+  search_board?: InputMaybe<Scalars['String']>;
 };
 
 
 export type IQuerySearchCafeListArgs = {
-  search?: InputMaybe<Scalars['String']>;
+  search_cafelist?: InputMaybe<Scalars['String']>;
 };
 
 

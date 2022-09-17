@@ -264,7 +264,7 @@ export const BottomImageWrap = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 40rem;
+  height: 33rem;
 
   border-top: 1px solid gray;
   background-color: gray;

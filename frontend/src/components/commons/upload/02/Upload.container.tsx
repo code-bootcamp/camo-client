@@ -15,11 +15,14 @@ export default function Upload02(props: any) {
 
     try {
       const result = await uploadFile({
-        variables: { files: file },
+        // variables: { files: file },
+        variables: { files: [file] },
       });
       console.log(result);
+      // props.onChangeFileUrls(result.data.uploadFile, props.index);
 
       props.onChangeFileUrls(result.data.uploadFile[0], props.index);
+      // 왜[0]을 해야하는가
     } catch (error: any) {
       Modal.error({ content: error.message });
       console.log("실패");

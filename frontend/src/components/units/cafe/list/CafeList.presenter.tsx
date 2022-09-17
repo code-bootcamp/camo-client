@@ -57,16 +57,34 @@ export default function CafeListUI(props: any) {
               <>
                 <C.PostWrapper>
                   <C.imageBox>
-                    <C.DetailImage id={el.id} onClick={props.onClickDetail(el)}>
+                    <C.DetailImage key={el.id} id={el.id} onClick={props.onClickDetail(el)}>
                       {/* <img src={`${props.data?.fetchCafeList?.cafeListImage[0]?.url}`} /> */}
+                      {/* {props.data?.fetchCafeList?.cafeListImage[0] ? ( */}
 
                       <img
                         src={
-                          `${el.cafeListImage[0]?.url}`
-                            ? `https://storage.googleapis.com/${el.cafeListImage[0]?.url}`
+                          el.cafeListImage?.length !== 0 && el.cafeListImage?.[0] !== ""
+                            ? `https://storage.googleapis.com/${el.cafeListImage[0].url}`
                             : "https://images.unsplash.com/photo-1513267048331-5611cad62e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                         }
                       />
+
+                      {/*                   
+                      {el?.cafeListImage[0] ? (
+                        <img src={`https://storage.googleapis.com/${el.cafeListImage[0]?.url}`} />
+                      ) : (
+                        <img src={`https://storage.googleapis.com/${el.cafeListImage[0]?.url}`} />
+
+                        // <img src="https://images.unsplash.com/photo-1513267048331-5611cad62e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" />
+                      )} */}
+                      {/* <img
+                        src={
+                          `${el?.cafeListImage[0]?.url}`
+                            ? `https://storage.googleapis.com/${el.cafeListImage[0]?.url}`
+                            : "https://images.unsplash.com/photo-1513267048331-5611cad62e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                        }
+                      /> */}
+                      {/* <img src={`https://storage.googleapis.com/${el?.cafeListImage[0]?.url}`} /> */}
                     </C.DetailImage>
                   </C.imageBox>
 
@@ -80,13 +98,14 @@ export default function CafeListUI(props: any) {
                       })}
                     </C.TagsWrap>
                     <Checkbox
+                      onClick={props.onClickFavorite}
                       className="zzim"
                       {...label}
                       icon={<FavoriteBorder />}
                       checkedIcon={<Favorite />}
                     />
 
-                    <C.CafeName>Title {el.title}</C.CafeName>
+                    <C.CafeName> {el.title}</C.CafeName>
                     <C.CafeIntro>
                       {" "}
                       <C.Remarks>{el.remarks}</C.Remarks>

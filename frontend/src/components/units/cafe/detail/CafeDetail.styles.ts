@@ -28,7 +28,7 @@ export const Title = styled.div`
   flex-direction: row;
   justify-content: space-between;
   /* background-color: red; */
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 900;
   color: #33413e;
   /* font-family: "KOTRA_BOLD-Bold"; */
@@ -59,13 +59,18 @@ export const ImageBox = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   .BigImage {
+    width: 96%;
     height: 28rem;
+    border: 1px solid #eee;
+    box-shadow: 9px 9px 9px 1px rgba(0, 0, 0, 0.1);
   }
 
   img {
+    height: 93%;
     background-color: #eee;
     object-fit: cover;
     border-radius: 10px;
+    box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -75,13 +80,13 @@ export const ImgSmallBox = styled.div`
   cursor: pointer;
   height: 6em;
   /* background-color: yellow; */
-  /* border: 1px solid red; */
   img {
     width: 7rem;
     /* height: 6rem; */
     object-fit: cover;
     background-color: #999;
     margin-right: 1rem;
+    border: 1px solid #eee;
   }
 `;
 
@@ -118,7 +123,9 @@ export const BtnPick = styled.div`
   width: 5.5rem;
   font-size: 20px;
   border: none;
-  color: ${(props: any) => (props.isActive === true ? "tomato" : "#33413e")};
+  .zzim {
+    /* color: ${(props: any) => (props.isActive === true ? "tomato" : "blue")}; */
+  }
 `;
 
 export const LabelBox = styled.div`
@@ -133,16 +140,19 @@ export const Label = styled.div`
   display: flex;
   flex-direction: row;
   width: 40rem;
-  font-size: 1.4rem;
-  line-height: 1.4rem;
-  font-weight: 800;
   margin-bottom: 0.7rem;
-
-  span {
-    font-size: 1.1rem;
-    font-weight: 400;
-    margin-left: 1rem;
+  /* background-color: purple; */
+  .title {
+    font-size: 1.3rem;
+    line-height: 1.4rem;
+    font-weight: 800;
+    width: 10rem;
+    /* background-color: yellow; */
   }
+
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-left: 1rem;
 `;
 
 export const Label2 = styled.div`
@@ -153,7 +163,6 @@ export const Label2 = styled.div`
   font-weight: 600;
   margin: 4rem 0;
   text-align: center;
-
   div {
     font-size: 1.1rem;
     font-weight: 400;
@@ -254,4 +263,28 @@ export const SearchBarWrap = styled.div`
   align-items: center;
   height: 9rem;
   background-color: #33413e;
+`;
+
+//
+
+export const TestButton = styled.button`
+  width: 5rem;
+  height: 5rem;
+  background-color: pink;
+  color: green;
+  cursor: pointer;
+`;
+export const Container = styled.div`
+  height: 20rem;
+  width: 20rem;
+  background-color: red;
+`;
+
+export const Content = styled.div`
+  /* width: 100%; */
+  /* height: 100%; */
+  height: 5rem;
+  width: 5rem;
+  background-color: blue;
+  color: yellow;
 `;
