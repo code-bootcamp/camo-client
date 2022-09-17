@@ -117,8 +117,8 @@ export const FooterWrapper = styled.div`
   margin: auto;
   display: flex;
   flex-direction: row;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 4rem;
+  margin-bottom: 7rem;
   @media ${breakPoints.mobile} {
     width: 80vw;
     margin: auto;
@@ -165,7 +165,7 @@ export const SubmitButton = styled.button`
 
 export const Form = styled.form`
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -198,7 +198,7 @@ export const Margin = styled.div`
   margin-top: 2rem;
 `;
 export const TopMargin = styled.div`
-  margin-top: 10rem;
+  margin-top: 2rem;
   @media ${breakPoints.mobile} {
     display: none;
   }

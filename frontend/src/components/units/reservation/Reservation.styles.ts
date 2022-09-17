@@ -1,18 +1,12 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../commons/styles/media";
 
-// 상세내용으로 옮길 때 변경
-export const Wrapper = styled.div`
-  margin-right: 300px;
-  margin-top: 100px;
-`;
-
 export const MainWrapper = styled.main`
   width: 300px;
   height: auto;
   position: sticky;
-  left: 90%;
-  bottom: 30%;
+  /* left: 90%;
+  bottom: 30%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -132,16 +126,18 @@ export const Option = styled.div`
   margin-bottom: 15px;
 `;
 
-// 시간 선택 문구
 export const CheckInTime = styled.div`
-  width: 80%;
+  width: 50%;
   height: 42px;
+  padding: 10px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  color: #9ca0ac;
-  border: 1px solid #d9dbe3;
+  text-align: center;
+  color: #504e48;
+  border: 1px solid #c4c4c4;
+  border-radius: 10px;
   cursor: pointer;
 `;
 
@@ -221,7 +217,7 @@ export const TimeToggleCancel = styled.div`
 `;
 
 export const CheckGuest = styled.div`
-  width: 50%;
+  width: 80%;
   height: 42px;
   border-top: 1px solid #d9dbe3;
   border-bottom: 1px solid #d9dbe3;
@@ -251,4 +247,18 @@ export const GuestBtn = styled.button`
     opacity: 0.4;
     cursor: initial;
   }
+`;
+
+export const RowWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const Text = styled.div`
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 10px;
 `;

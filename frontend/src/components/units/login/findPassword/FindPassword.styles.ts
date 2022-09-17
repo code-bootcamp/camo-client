@@ -6,7 +6,7 @@ export const Wrapper = styled.main`
   display: flex;
   margin: auto;
   flex-direction: column;
-  /* height: 100vh; */
+  height: 100vh;
 
   @media ${breakPoints.mobile} {
     display: 100vw;

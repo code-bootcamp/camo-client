@@ -3,21 +3,38 @@ import { IQuery, IQueryFetchUserbyIdArgs } from "../../../../commons/types/gener
 import useAuth from "../../../commons/hooks";
 import { FETCH_LOGINED_USER } from "../MyPage.queries";
 import MyReservationUI from "./MyReservation.presenter";
-import { FETCH_USER_BY_ID } from "./MyReservation.queries";
+import { FETCH_MY_CAFE_RESERVATION, FETCH_USER_BY_ID } from "./MyReservation.queries";
 
 export default function MyReservation() {
   useAuth();
 
   const { data: UserData } = useQuery<Pick<IQuery, "fetchLoginedUser">>(FETCH_LOGINED_USER);
-  const { data: ReservationData } = useQuery<
+  const { data: ReservationData, refetch } = useQuery<
     Pick<IQuery, "fetchUserbyId">,
     IQueryFetchUserbyIdArgs
   >(FETCH_USER_BY_ID, {
     variables: {
       userId: String(UserData?.fetchLoginedUser.id),
-      // userId: "4cfb4d7f-d3d7-4686-acfd-f76df7f46dd8",
     },
   });
-  // console.log(ReservationData);
-  return <MyReservationUI UserData={UserData} ReservationData={ReservationData} />;
+
+  const { data: count } = useQuery(FETCH_MY_CAFE_RESERVATION, {
+    variables: {
+      userId: String(UserData?.fetchLoginedUser.id),
+      // page: 3,
+    },
+  });
+
+  const onClickCancelButton = () => {
+    alert("예약 취소는 카페 사장님과 문의하세요.");
+  };
+  return (
+    <MyReservationUI
+      UserData={UserData}
+      ReservationData={ReservationData}
+      onClickCancelButton={onClickCancelButton}
+      count={count}
+      refetch={refetch}
+    />
+  );
 }

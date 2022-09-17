@@ -3,6 +3,7 @@ import { breakPoints } from "../../../../styles/media";
 
 export const Wrapper = styled.section`
   width: 90vw;
+  /* width: 1500px; */
   /* width: 1300px; */
   display: flex;
   flex-direction: row;
@@ -33,6 +34,7 @@ export const SideBar = styled.section`
 
 export const Body = styled.main`
   width: 60vw;
+  height: 100vh;
   background-color: white;
   padding-top: 30px;
   @media ${breakPoints.mobile} {

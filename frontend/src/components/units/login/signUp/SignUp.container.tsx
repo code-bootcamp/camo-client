@@ -11,14 +11,17 @@ import { IMutation, IMutationCreateUserArgs } from "../../../../commons/types/ge
 const schema = yup.object({
   name: yup.string().required("이름을 입력해 주세요."),
   nickName: yup.string().required("닉네임을 입력해주세요."),
-  email: yup.string().required("이메일(아이디)을 입력해주세요."),
-  // .matches(/^\w+@\w+\.\w+$/, "이메일(아이디) 형식에 알맞지 않습니다.")
-  password: yup.string().required("비밀번호를 입력해주세요"),
-  // .matches(
-  //   /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W))(?=.*[!@#$%^*+=-]).{8,15}$/,
-  //   "영문, 숫자, 특수문자를 포함한 8자리 이상 15자리 이하의 비밀번호여야 합니다."
-  // )
-
+  email: yup
+    .string()
+    .required("이메일(아이디)을 입력해주세요.")
+    .matches(/^\w+@\w+\.\w+$/, "이메일(아이디) 형식에 알맞지 않습니다."),
+  password: yup
+    .string()
+    .required("비밀번호를 입력해주세요")
+    .matches(
+      /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W))(?=.*[!@#$%^*+=-]).{8,15}$/,
+      "영문, 숫자, 특수문자를 포함한 8자리 이상 15자리 이하의 비밀번호여야 합니다."
+    ),
   passwordConfirm: yup.string().oneOf([yup.ref("password"), null], "패스워드와 일치하지 않습니다."),
   phoneNumber: yup
     .string()

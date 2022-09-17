@@ -8,15 +8,14 @@ export const MainWrapper = styled.section`
   margin-top: 1.875rem;
   margin-bottom: 1.875rem;
   width: 40vw;
-  height: 12.5rem;
+  /* height: 12.5rem; */
   background-color: white;
   border-radius: 20px;
 
   @media ${breakPoints.mobile} {
     width: 50vw;
-    height: 12.5rem;
-    padding-right: 45vw;
     display: flex;
+    font-size: 10px;
     justify-content: center;
     align-items: center;
     margin: auto;
@@ -28,33 +27,27 @@ export const RowWrapper = styled.div`
   flex-direction: row;
 
   @media ${breakPoints.mobile} {
-    width: 42vw;
-  }
-`;
-
-export const Image = styled.img`
-  width: 11.25rem;
-  height: 11.25rem;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  @media ${breakPoints.mobile} {
-    width: 50vw;
-  }
-  @media (max-width: 280px) {
-    width: 40vw;
-    font-size: 8px;
+    width: 70vw;
   }
 `;
 
 export const ContentBackGround = styled.section`
   width: 100vw;
-  height: 11.25rem;
-  /* background-color: #fff8f0; */
-  border: 3px solid red;
+  /* height: 11.25rem; */
+  /* background-color: #eef6f4; */
   display: flex;
   flex-direction: column;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-radius: 10px;
+  box-shadow: rgb(0 0 0 / 12%) 0px 6px 2px;
+  border: 0.5px solid gray;
+
+  display: inline-block;
+  font-size: 1.083em;
+  font-weight: bold;
+  margin-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
   @media (max-width: 280px) {
     width: 50vw;
   }
@@ -73,21 +66,18 @@ export const Content = styled.main`
   font-size: 0.75rem;
   line-height: 1.875rem;
   color: #3d3d3d;
+  width: 100%;
 `;
 
 export const Title = styled.h1`
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #3c3430;
   @media ${breakPoints.mobile} {
     /* padding-left: 10px; */
-    width: 30vw;
+    width: 70vw;
+    font-size: 1.25rem;
     padding-left: 15px;
-  }
-  @media (max-width: 280px) {
-    font-size: 10px;
-    width: 30vw;
-    /* margin-left: 15px; */
   }
 `;
 
@@ -111,9 +101,12 @@ export const RightContent = styled(LeftContent)`
   width: 100%;
   color: #848484;
   @media ${breakPoints.mobile} {
+    display: inline-block;
+    width: 60vw;
     padding-left: 10px;
-    width: 15vw;
     font-size: 10px;
+    height: 100px;
+    overflow: hidden;
   }
   @media (max-width: 280px) {
     font-size: 10px;
