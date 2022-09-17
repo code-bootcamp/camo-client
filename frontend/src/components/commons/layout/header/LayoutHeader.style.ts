@@ -46,7 +46,7 @@ export const LogoMenuWrapper = styled.div`
 export const Logo = styled.img`
   height: 3.3rem;
   margin-right: 2rem;
-  margin-top: 1.2rem;
+  margin-top: 0.8rem;
 `;
 export const MenuWrapper = styled.div`
   display: flex;

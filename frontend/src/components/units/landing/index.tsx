@@ -10,6 +10,7 @@ import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import { ListItem, ListItemText, ListItemIcon, Drawer, Button, List } from "@material-ui/core";
 import { KeyboardArrowRight } from "@material-ui/icons";
+import MainPageQuestionContainer from "../../commons/mainPageQuestion/mainPageQuestion.container";
 
 const useStyles = makeStyles({
   list: {
@@ -24,7 +25,7 @@ type Anchor = "right";
 
 export default function LandingPage() {
   const [ref, inView] = useInView({
-    threshhold: 0.5,
+    threshhold: 10,
   });
 
   const classes = useStyles();
@@ -133,7 +134,8 @@ export default function LandingPage() {
           <Link href="/login/">
             <a>
               {" "}
-              <img src="CAMO.png" />
+              <img src="/Final_logo1.png" alt="logo" />
+              {/* <img src="CAMO.png" /> */}
             </a>
           </Link>
         </C.Logo>
@@ -200,8 +202,9 @@ export default function LandingPage() {
           또한 인기있는 카페를 방문하기 전 미리 예약할 수 있는 서비스를 제공합니다.
         </C.smallText>
       </C.BlendedWrap>
-
+      <MainPageQuestionContainer />
       <C.BottomImageWrap>
+        <span></span>
         <img src="https://images.unsplash.com/photo-1506372023823-741c83b836fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" />
       </C.BottomImageWrap>
     </C.Wrapper>

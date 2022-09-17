@@ -314,10 +314,11 @@ export const TextWrap = styled.div`
   display: flex;
   .zzim {
     position: absolute;
-    top: 9.5rem;
+    top: 10rem;
     right: 0.3rem;
     width: 2.5rem;
-    height: 2.5rem;
+    height: 2rem;
+    text-align: center;
     display: inline;
   }
 `;

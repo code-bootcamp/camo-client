@@ -43,3 +43,12 @@ export const TOGGLE_FAVORITE_CAFES = gql`
     toggleFavoriteCafes(cafeListId: $cafeListId)
   }
 `;
+
+export const FETCH_USER_FAVORITE_CAFE = gql`
+  mutation fetchUserFavoriteCafe {
+    id
+    isLike
+    user
+    cafeList
+  }
+`;

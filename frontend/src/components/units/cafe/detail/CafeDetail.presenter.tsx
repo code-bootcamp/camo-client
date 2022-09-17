@@ -7,6 +7,8 @@ import * as C from "./CafeDetail.styles";
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
+import { useState } from "react";
+import MainPageQuestionContainer from "../../../commons/mainPageQuestion/mainPageQuestion.container";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -25,6 +27,31 @@ export default function CafeDetailUI(props: any) {
     router.push(`/cafe/${router.query.cafeId}/edit`);
   };
 
+  const [content, setContent] = useState();
+  const handleClickButton = (event: any) => {
+    const { name } = event.currentTarget.id;
+    setContent(name);
+    console.log("네임은", name);
+  };
+
+  const selectComponent = {
+    first: (
+      <img
+        src={`https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[0]?.url}`}
+      />
+    ),
+    second: (
+      <img
+        src={`https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[0]?.url}`}
+      />
+    ),
+    third: (
+      <img
+        src={`https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[0]?.url}`}
+      />
+    ),
+  };
+
   return (
     <>
       <C.Wrapper>
@@ -39,17 +66,33 @@ export default function CafeDetailUI(props: any) {
                 src={
                   `${props.data?.fetchCafeList.cafeListImage[0]?.url}`
                     ? `https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[0]?.url}`
-                    : IMAGES[0]
+                    : // : IMAGES[0]
+                      ""
                 }
               />
 
               <C.ImgSmallBox>
                 <img
+                  src={
+                    `${props.data?.fetchCafeList.cafeListImage[1]?.url}`
+                      ? `https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[1]?.url}`
+                      : ""
+                  }
+                />
+                <img
+                  src={
+                    `${props.data?.fetchCafeList.cafeListImage[2]?.url}`
+                      ? `https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[2]?.url}`
+                      : ""
+                  }
+                />
+
+                {/* <img
                   src={`https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[1]?.url}`}
                 />
                 <img
                   src={`https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[2]?.url}`}
-                />
+                /> */}
                 {/* <img src={IMAGES[1]} />
                 <img src={IMAGES[2]} /> */}
               </C.ImgSmallBox>
@@ -64,10 +107,11 @@ export default function CafeDetailUI(props: any) {
                 </span>
               </C.Title>
 
-              <C.Favorite>
-                <C.BtnPick isActive={props.isActive} onClick={props.onClickFavorite}>
+              <C.Favorite onClick={props.onClickFavorite}>
+                <C.BtnPick>
                   찜
                   <Checkbox
+                    // isActive={props.isActive}
                     className="zzim"
                     {...label}
                     icon={<FavoriteBorder />}
@@ -80,7 +124,7 @@ export default function CafeDetailUI(props: any) {
                   🎈 작성자 : <span> {props.data?.fetchCafeList?.user.name}</span>
                 </C.Label> */}
                 <C.Label>
-                  🎈 카페주소 :{" "}
+                  <span className="title"> 🎈 카페주소 </span>
                   <span>
                     ( {props.data?.fetchCafeList?.zipcode} )&nbsp;
                     {props.data?.fetchCafeList?.address} &nbsp;
@@ -88,10 +132,11 @@ export default function CafeDetailUI(props: any) {
                   </span>
                 </C.Label>
                 <C.Label>
-                  🎈 연락처 : <span> {props.data?.fetchCafeList?.phone}</span>
+                  <span className="title">🎈 연락처 </span>
+                  <span> {props.data?.fetchCafeList?.phone}</span>
                 </C.Label>
                 <C.Label>
-                  🎈 영업시간 :{" "}
+                  <span className="title"> 🎈 영업시간 </span>
                   <span>
                     {" "}
                     월-금 {props.data?.fetchCafeList?.startTime} / 토-일{" "}
@@ -99,13 +144,16 @@ export default function CafeDetailUI(props: any) {
                   </span>
                 </C.Label>
                 <C.Label>
-                  🎈 홈페이지 :<span> {props.data?.fetchCafeList?.homepage} </span>
+                  <span className="title"> 🎈 홈페이지 </span>
+                  <span> {props.data?.fetchCafeList?.homepage} </span>
                 </C.Label>
                 <C.Label>
-                  🎈 매장소개 : <span>{props.data?.fetchCafeList?.remarks}</span>
+                  <span className="title"> 🎈 매장소개 </span>
+                  <span>{props.data?.fetchCafeList?.remarks}</span>
                 </C.Label>
                 <C.Label>
-                  🎈 예약금 : <span>{props.data?.fetchCafeList?.deposit} 원</span>
+                  <span className="title">🎈 예약금 </span>{" "}
+                  <span>{props.data?.fetchCafeList?.deposit} 원</span>
                 </C.Label>
               </C.LabelBox>
               <C.ButtonWrap>
@@ -118,16 +166,30 @@ export default function CafeDetailUI(props: any) {
             </C.CafeDetailBox>
           </C.ContentsWrap>
         </C.TopWrapper>
+
         <C.BottomWrapper>
           <C.Label2>
+            {/* <C.Container>
+              <C.TestButton
+                style={{ overflow: "hidden" }}
+                onClick={handleClickButton}
+                name={content}
+                // name={props.name}
+              >
+                1번 버튼{" "}
+                <img
+                  id="1"
+                  src="https://images.unsplash.com/photo-1514481538271-cf9f99627ab4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                />
+              </C.TestButton>
+
+              {content ? <C.Content>{selectComponent[content]}</C.Content> : <div>없음</div>}
+            </C.Container> */}
             <C.ReservationWrap></C.ReservationWrap>
             ✨ &nbsp;카페 서비스 <br />
             <div>
               Wifi ㅣ &nbsp;무료주차 1시간 ㅣ &nbsp; 담요 대여
-              <br />
-              <br />
-              <br />
-              <br />
+              <br /> <br /> <br /> <br />
             </div>
             ☕️ &nbsp;카페 소개 <br />
             <div>
@@ -148,7 +210,8 @@ export default function CafeDetailUI(props: any) {
             />{" "}
           </C.MapWrapper>
         </C.BottomWrapper>
-        <Reservation />
+        {/* <MainPageQuestionContainer /> */}
+        {/* <Reservation /> */}
       </C.Wrapper>
     </>
   );

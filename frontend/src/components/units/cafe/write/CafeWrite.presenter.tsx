@@ -1,8 +1,18 @@
-import { Modal } from "antd";
+import { Button, Modal } from "antd";
 import DaumPostcodeEmbed from "react-daum-postcode";
 import * as C from "./CafeWrite.styles";
 import { v4 as uuidv4 } from "uuid";
 import Upload02 from "../../../commons/upload/02/Upload.container";
+import "react-quill/dist/quill.snow.css";
+import dynamic from "next/dynamic";
+import ToastUI from "../../../commons/editor";
+// import ReactQuill from "react-quill";
+
+// const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
+const ToastUi = dynamic(() => import("../../../commons/editor"), {
+  ssr: false,
+});
 
 export default function CafeWriteUI(props: any) {
   return (
@@ -13,9 +23,9 @@ export default function CafeWriteUI(props: any) {
             visible={true}
             closable={false}
             footer={[
-              <button key="closeModal" id="modalClose" onClick={props.onClickAddressModal}>
+              <Button key="closeModal" id="modalClose" onClick={props.onClickAddressModal}>
                 취소
-              </button>,
+              </Button>,
             ]}
           >
             <DaumPostcodeEmbed onComplete={props.onCompleteAddressSearch} />
@@ -31,7 +41,13 @@ export default function CafeWriteUI(props: any) {
           </C.Title>
         </div>
 
-        <C.Form onSubmit={props.handleSubmit(props.onClickCreate)}>
+        <C.Form
+          onSubmit={
+            props.isEdit
+              ? props.handleSubmit(props.onClickUpdate)
+              : props.handleSubmit(props.onClickCreate)
+          }
+        >
           <C.ContentsWrap>
             <C.LabelBox>
               <C.Label>카페 이름</C.Label>
@@ -90,14 +106,25 @@ export default function CafeWriteUI(props: any) {
                 type="text"
                 placeholder="태그를 적어주세요. ex) 분위기 좋은, 예쁜, 조용한"
                 {...props.register("tags")}
+                // defaultValue={props.data?.createCafeList.cafeListTag}
               />
             </C.LabelBox>
             <C.LabelBox>
               <C.Label>카페 소개</C.Label>
 
               <C.WebeditorBox>
+                <ToastUI
+                  onChangeContents={props.onChangeContents}
+                  editorRef={props.editorRef}
+                  initialValue={props.data?.createCafeList.contents}
+                />
+
                 {/* <input onChange={props.onChangeContents} /> */}
-                <C.ContentsReactQuill onChange={props.onChangeContents} />
+                {/* <C.ContentsReactQuill
+                   <ReactQuill onChange={props.onChangeContents}
+                   defaultValue={props.el?.contents}
+                   defaultValue={props.data?.contents}
+                /> */}
               </C.WebeditorBox>
             </C.LabelBox>
 
