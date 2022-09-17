@@ -34,7 +34,7 @@ export const SideBar = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
   width: 18.75rem;
   height: 25rem;
   background-color: white;

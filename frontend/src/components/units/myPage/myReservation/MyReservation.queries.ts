@@ -20,3 +20,17 @@ export const FETCH_USER_BY_ID = gql`
     }
   }
 `;
+
+export const FETCH_MY_CAFE_RESERVATION = gql`
+  query fetchMyCafeReservation($userId: String!, $page: Float = 1) {
+    fetchMyCafeReservation(userId: $userId, page: $page) {
+      id
+      title
+      reservedPeople
+      reservationDate
+      startTime
+      endTime
+      deposit
+    }
+  }
+`;

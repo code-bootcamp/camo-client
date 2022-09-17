@@ -4,9 +4,11 @@ import * as S from "./MyReservation.styles";
 import { IMyReservationUIProps } from "./MyReservation.types";
 import { v4 as uuidv4 } from "uuid";
 import { ICafeReservation } from "../../../../commons/types/generated/types";
+import PaginationContainer from "./pagination/Pagination.container";
 
 export default function MyReservationUI(props: IMyReservationUIProps) {
-  console.log(props.ReservationData);
+  // console.log(props.ReservationData);
+  console.log(props.count);
   return (
     <>
       <B.Wrapper>
@@ -14,6 +16,7 @@ export default function MyReservationUI(props: IMyReservationUIProps) {
         <B.Body>
           <B.StayMenu>예약내역</B.StayMenu>
           <B.Line />
+          {/* {props.count?.fetchMyCafeReservation?.map((el: ICafeReservation) => ( */}
           {props.ReservationData?.fetchUserbyId?.cafeReservation?.map((el: ICafeReservation) => (
             <div key={uuidv4()}>
               <S.MainWrapper>
@@ -34,6 +37,9 @@ export default function MyReservationUI(props: IMyReservationUIProps) {
                         <S.LeftContent>예약 시간 </S.LeftContent>
                         <S.RightContent>
                           | {el.startTime} - {el.endTime}
+                          <S.CancelButton onClick={props.onClickCancelButton}>
+                            예약 취소
+                          </S.CancelButton>
                         </S.RightContent>
                       </S.RowWrapper>
                     </S.ContentWrapper>
@@ -42,6 +48,9 @@ export default function MyReservationUI(props: IMyReservationUIProps) {
               </S.MainWrapper>
             </div>
           ))}
+          <S.PaginationWrapper>
+            <PaginationContainer refetch={props.refetch} count={props.count} />
+          </S.PaginationWrapper>
         </B.Body>
       </B.Wrapper>
     </>

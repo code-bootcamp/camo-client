@@ -1,8 +1,11 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
+import { breakPoints } from "../../../commons/styles/media";
+import { Title } from "../../../commons/wrapper/LoginWrapper.styles";
 
 const Wrapper = styled.div`
   width: 100%;
+  height: 98vh;
   display: flex;
   justify-content: center;
 `;
@@ -13,16 +16,17 @@ const MainWrapper = styled.main`
   justify-content: center;
   text-align: center;
   padding-top: 5rem;
+  padding-bottom: 15rem;
 `;
 
-const Title = styled.h1`
-  margin-bottom: 50px;
-  font-size: 28px;
-  line-height: 35px;
-  font-weight: 500;
-  letter-spacing: -1px;
-  color: rgb(51, 51, 51);
-`;
+// const Title = styled.h1`
+//   margin-bottom: 50px;
+//   font-size: 28px;
+//   line-height: 35px;
+//   font-weight: 500;
+//   letter-spacing: -1px;
+//   color: rgb(51, 51, 51);
+// `;
 
 const SubTitle = styled.h3`
   color: #858585;
@@ -33,6 +37,9 @@ const RowWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  @media ${breakPoints.mobile} {
+    flex-direction: column;
+  }
 `;
 
 const Select = styled.a`

@@ -14,20 +14,18 @@ export default function MyWriteUI(props: IMyWriteUIProps) {
           <B.StayMenu>내가 쓴 글</B.StayMenu>
           <B.Line />
           {props.WriteData?.fetchUserbyId?.board?.map((el: IBoard) => (
-            <div key={uuidv4()}>
-              <S.MainWrapper>
-                <S.RowWrapper>
-                  <S.ContentBackGround>
-                    <S.ContentWrapper>
-                      <S.Title>{el.title}</S.Title>
-                      <S.RowWrapper>
-                        <S.RightContent>{el.contents}</S.RightContent>
-                      </S.RowWrapper>
-                    </S.ContentWrapper>
-                  </S.ContentBackGround>
-                </S.RowWrapper>
-              </S.MainWrapper>
-            </div>
+            <S.MainWrapper key={uuidv4()}>
+              <S.RowWrapper>
+                <S.ContentBackGround>
+                  <S.ContentWrapper>
+                    <S.Title>{el.title}</S.Title>
+                    <S.RowWrapper>
+                      <S.RightContent>{el.contents}</S.RightContent>
+                    </S.RowWrapper>
+                  </S.ContentWrapper>
+                </S.ContentBackGround>
+              </S.RowWrapper>
+            </S.MainWrapper>
           ))}
         </B.Body>
       </B.Wrapper>

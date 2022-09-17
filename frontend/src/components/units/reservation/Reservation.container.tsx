@@ -39,9 +39,9 @@ export default function Reservation() {
 
   // 날짜, 시간, 인원, 가격
   const [price, setPrice] = useState(0);
-  const [date, setDate] = useState("");
   const [guest, setGuest] = useState(0);
   const [clicked, setClicked] = useState<string[]>([]);
+  const [date, setDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [timeTable, setTimeTable] = useState(false);
@@ -49,10 +49,14 @@ export default function Reservation() {
   const [reserved, setReserved] = useRecoilState<any>(reservedState);
 
   const { data: UserData } = useQuery(FETCH_LOGINED_USER);
+
+  // variables: { cafeListId: String(router.query.cafeId) },
+
   const { data: CafeData } = useQuery(FETCH_CAFE_LIST, {
-    // variables: { cafeListId: String(router.query.cafeId) },
-    variables: { cafeListId: "01a152bc-a23a-4077-aafb-c4fa1fdae252" },
+    variables: { cafeListId: "f5998e10-0bca-465e-a294-b6af0b717183" },
   });
+
+  // console.log("ReservationContainer", CafeData);
 
   const [createPayment] = useMutation<Pick<IMutation, "createPayment">, IMutationCreatePaymentArgs>(
     CREATE_PAYMENT
@@ -75,6 +79,7 @@ export default function Reservation() {
   const onClickCancel = () => {
     setTimeTable((prev) => !prev);
   };
+
   useEffect(() => {
     setStartTime(clicked.length === 0 ? "" : clicked[0].slice(0, 5));
     setEndTime(clicked.length === 0 ? "" : clicked[0].slice(6));
@@ -86,6 +91,10 @@ export default function Reservation() {
       setPrice(0);
     }
   }, [clicked, startTime]);
+
+  useEffect(() => {
+    console.log("changeDate", date);
+  }, [date]);
 
   const onIncrease = () => {
     setGuest((prev) => prev + 1);
@@ -104,26 +113,33 @@ export default function Reservation() {
   };
 
   const NextDay = new Date();
-  NextDay.setDate(NextDay.getDate() + 1);
-  // maxDate 30일
   const MaxDay = new Date();
+
+  NextDay.setDate(NextDay.getDate() + 1);
   MaxDay.setDate(MaxDay.getDate() + 30);
 
   const onChangeDate = async (newValue: string) => {
+    console.log("onChangeDate", newValue);
     const date = getTime(newValue);
+    console.log("onChangeDate", date);
     setDisabled(false);
     setDate(date);
 
-    // 예약된 항목 불러오기
-    const reserved = await client.query({
-      query: FETCH_RESERVATION,
-      variables: {
-        cafeListId: "01a152bc-a23a-4077-aafb-c4fa1fdae252",
-      },
-    });
+    // 카페에 있는 예약 항목 불러와야함
+    // 예약된 시간 불러오기
+    // const reserved = await client.query({
+    //   query: FETCH_CAFE_LIST,
+    //   variables: {
+    //     cafeListId: "c6e87014-b5d9-4be1-a5f1-6dfc73af938d",
+    //   },
+    // });
 
-    const reservedTime = reserved.data.fetchCafeList.cafeReservation.reservationTime;
-    setReserved(reservedTime);
+    // console.log("onChangeDate", reserved);
+
+    // const reservedTime = reserved.data.fetchCafeList.cafeReservation.startTime;
+    // setReserved(reservedTime);
+
+    // console.log(reservedTime);
   };
 
   const onClickPayment = async () => {
@@ -226,7 +242,6 @@ export default function Reservation() {
         onClickSetTime={onClickSetTime}
         CafeData={CafeData}
       />
-      ;
     </>
   );
 }

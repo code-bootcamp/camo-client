@@ -42,7 +42,7 @@ export default function LoginUI(props: ILoginUIProps) {
                 </S.RowWrapper>
                 <S.RowWrapper>
                   <S.FooterText>아이디를 잊으셨나요?</S.FooterText>
-                  <Link href="/login/FindId">
+                  <Link href="/login/findId">
                     <S.FooterButton>
                       <a style={{ color: "black" }}>아이디 찾기</a>
                     </S.FooterButton>
@@ -50,7 +50,7 @@ export default function LoginUI(props: ILoginUIProps) {
                 </S.RowWrapper>
                 <S.RowWrapper>
                   <S.FooterText>비밀번호를 잊으셨나요?</S.FooterText>
-                  <Link href="/login/FindPassword">
+                  <Link href="/login/findPassword">
                     <S.FooterButton>
                       <a style={{ color: "black" }}>비밀번호 찾기</a>
                     </S.FooterButton>

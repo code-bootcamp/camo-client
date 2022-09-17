@@ -120,3 +120,24 @@ export const RightContent = styled(LeftContent)`
     width: 20vw;
   }
 `;
+
+export const CancelButton = styled.button`
+  width: 4rem;
+  height: 2rem;
+  border: none;
+  color: #1e3932;
+  background-color: #ffebd5;
+  border-radius: 5px;
+  margin-left: 120px;
+  cursor: pointer;
+
+  @media ${breakPoints.mobile} {
+    margin-left: -280px;
+    width: 15vw;
+  }
+`;
+
+export const PaginationWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;

@@ -4,6 +4,7 @@ import { breakPoints } from "../../../../styles/media";
 export const Wrapper = styled.section`
   width: 50rem;
   margin: auto;
+  margin-bottom: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;

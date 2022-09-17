@@ -1,15 +1,14 @@
 import { gql } from "@apollo/client";
 
 export const FETCH_RESERVATION = gql`
-  query fetchCafeList($cafeListId: String!) {
-    fetchCafeList(cafeListId: $cafeListId) {
+  query fetchCafeReservation($cafeReservationId: String!) {
+    fetchCafeReservation(cafeReservationId: $cafeReservationId) {
       id
-      cafeReservation {
-        id
-        reservationDate
-        startTime
-        endTime
-      }
+      title
+      reservationDate
+      startTime
+      endTime
+      reservationStatus
     }
   }
 `;
@@ -54,6 +53,11 @@ export const FETCH_CAFE_LIST = gql`
       user {
         id
         name
+      }
+      cafeReservation {
+        reservationDate
+        startTime
+        endTime
       }
     }
   }

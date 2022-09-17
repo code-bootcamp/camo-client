@@ -11,13 +11,16 @@ import { useRecoilState } from "recoil";
 import { useRouter } from "next/router";
 
 const schema = yup.object({
-  email: yup.string().required("이메일(아이디)을 입력해주세요."),
-  // .matches(/^\w+@\w+\.\w+$/, "이메일(아이디) 형식에 알맞지 않습니다.")
-  password: yup.string(),
-  // .matches(
-  //   /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W))(?=.*[!@#$%^*+=-]).{8,15}$/,
-  //   "영문, 숫자, 특수문자를 포함한 8자리 이상 15자리 이하의 비밀번호여야 합니다."
-  // ),
+  email: yup
+    .string()
+    .required("이메일(아이디)을 입력해주세요.")
+    .matches(/^\w+@\w+\.\w+$/, "이메일(아이디) 형식에 알맞지 않습니다."),
+  password: yup
+    .string()
+    .matches(
+      /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W))(?=.*[!@#$%^*+=-]).{8,15}$/,
+      "영문, 숫자, 특수문자를 포함한 8자리 이상 15자리 이하의 비밀번호여야 합니다."
+    ),
 });
 
 export default function Login() {

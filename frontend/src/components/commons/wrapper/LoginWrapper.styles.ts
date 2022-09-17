@@ -5,6 +5,7 @@ export const Wrapper = styled.main`
   width: 98vw;
   display: flex;
   margin: auto;
+  margin-top: 5rem;
   flex-direction: column;
   /* height: 100vh; */
 
@@ -15,7 +16,7 @@ export const Wrapper = styled.main`
 export const Title = styled.h1`
   margin-bottom: 2rem;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 20px;
   text-align: center;
 `;
