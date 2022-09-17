@@ -11,9 +11,9 @@ export const CREATE_CAFE_LIST = gql`
       phone
       startTime
       endTime
-      homepage
       deposit
       contents
+      homepage
       remarks
       cafeListTag {
         id
@@ -38,9 +38,9 @@ export const UPDATE_CAFE_LIST = gql`
       phone
       startTime
       endTime
-      homepage
       deposit
       contents
+      homepage
       remarks
       updatedAt
       cafeListTag {

@@ -79,12 +79,14 @@ export type ICafeListTag = {
 export type ICafeReservation = {
   __typename?: 'CafeReservation';
   cafeList: ICafeList;
+  deposit: Scalars['Int'];
+  endTime: Scalars['String'];
   id: Scalars['String'];
   orderRequest?: Maybe<Scalars['String']>;
   reservationDate: Scalars['DateTime'];
   reservationStatus?: Maybe<Scalars['Boolean']>;
-  reservationTime: Scalars['String'];
   reservedPeople?: Maybe<Scalars['Int']>;
+  startTime: Scalars['String'];
   title?: Maybe<Scalars['String']>;
   user: IUser;
 };
@@ -159,10 +161,11 @@ export type ICreateCommentInput = {
 
 export type ICreateReservationInput = {
   cafeListId: Scalars['String'];
+  endTime: Scalars['String'];
   orderRequest?: InputMaybe<Scalars['String']>;
   reservationDate: Scalars['DateTime'];
-  reservationTime: Scalars['String'];
   reservedPeople: Scalars['Int'];
+  startTime: Scalars['String'];
   userId: Scalars['String'];
 };
 
@@ -214,7 +217,6 @@ export type IMutation = {
   deleteComment: Scalars['Boolean'];
   deleteLoginUser: Scalars['Boolean'];
   deleteReview: Scalars['Boolean'];
-  fetchUserFavoriteCafe: Scalars['Boolean'];
   loginUser: Scalars['String'];
   logoutUser: Scalars['String'];
   restoreAccessToken: Scalars['String'];
@@ -439,6 +441,7 @@ export type IQuery = {
   fetchReview: IReview;
   fetchReviews: Array<IReview>;
   fetchUserByEmail: IUser;
+  fetchUserFavoriteCafe: Array<IFavoriteCafe>;
   fetchUserWithDeleted: Array<IUser>;
   fetchUserbyEmail: IUser;
   fetchUserbyId: IUser;
@@ -645,10 +648,12 @@ export type IUpdateUserInput = {
 
 export type IUser = {
   __typename?: 'User';
+  board?: Maybe<Array<IBoard>>;
   cafeName?: Maybe<Scalars['String']>;
   cafeReservation?: Maybe<Array<ICafeReservation>>;
   deletedAt?: Maybe<Scalars['DateTime']>;
   email: Scalars['String'];
+  favoriteCafe?: Maybe<Array<IFavoriteCafe>>;
   id: Scalars['String'];
   name: Scalars['String'];
   nickName?: Maybe<Scalars['String']>;

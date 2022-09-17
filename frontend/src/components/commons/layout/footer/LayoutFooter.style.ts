@@ -31,6 +31,6 @@ export const FooterText2 = styled.span`
   font-size: 0.7rem;
   font-weight: 100;
   @media ${breakPoints.mobile} {
-    display: none;
+    font-size: 0.6rem;
   }
 `;

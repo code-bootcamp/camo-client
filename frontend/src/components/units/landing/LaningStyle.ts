@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 `;
 export const MainWrapper = styled.div`
   width: 100%;
-  height: 77rem;
+  height: 66rem;
   position: relative;
 `;
 
@@ -75,7 +75,7 @@ export const MainImage = styled.img`
 export const MainTitle = styled.div`
   padding: 0 15%;
   position: absolute;
-  top: 20%;
+  top: 22%;
   width: 100%;
   text-align: center;
   font-size: 4em;
@@ -93,7 +93,7 @@ export const MainTitle = styled.div`
   }
 
   @media screen and (max-width: 767px) {
-    font-size: 4em;
+    font-size: 2.5rem;
   }
 `;
 export const MainSmallText = styled.div`
@@ -103,11 +103,13 @@ export const MainSmallText = styled.div`
   color: white;
   padding: 0 15%;
   position: absolute;
-  top: 66%;
+  top: 58%;
   width: 100%;
   text-align: center;
   font-family: "Cafe24Ohsquare";
-
+  @media screen and (max-width: 767px) {
+    font-size: 1.5rem;
+  }
   /* font-family: "KOTRA_BOLD-Bold"; */
 `;
 
@@ -322,7 +324,7 @@ export const smallText = styled.div`
   line-height: 2rem;
   margin: 1.8rem;
   padding: 2%;
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: 1200px) {
     display: none;
   }
 `;

@@ -73,7 +73,7 @@ export default function CafeWriteUI(props: any) {
               <C.InputBox
                 type="text"
                 placeholder="카페 홈페이지 주소 또는 블로그, SNS 주소가 있으면 입력해주세요"
-                {...props.register("hompage")}
+                {...props.register("homepage")}
               />
             </C.LabelBox>
             <C.LabelBox>

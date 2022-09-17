@@ -8,24 +8,8 @@ import "animate.css";
 import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  Drawer,
-  Button,
-  List,
-  Divider,
-} from "@material-ui/core";
-import MailIcon from "@material-ui/icons/Mail";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import {
-  ControlPoint,
-  Done,
-  DoneOutline,
-  DragHandle,
-  KeyboardArrowRight,
-} from "@material-ui/icons";
+import { ListItem, ListItemText, ListItemIcon, Drawer, Button, List } from "@material-ui/core";
+import { KeyboardArrowRight } from "@material-ui/icons";
 
 const useStyles = makeStyles({
   list: {
@@ -211,9 +195,9 @@ export default function LandingPage() {
           <C.BlendedText>CAMO</C.BlendedText>
         </div>
         <C.smallText>
-          {/* BLENDED is a team of bootcamp course in CODECAMP. <br /> 카모는 방문자 자신이 경험한 */}
-          특색있는 카페를 공유할 수 있는 커뮤니티 플랫폼입니다. 또한 레스토랑 예약과 같이 인기있는
-          카페를 방문하기 전 미리 예약할 수 있는 서비스를 제공합니다.
+          {/* BLENDED is a team of bootcamp course in CODECAMP. <br />  방문자 자신이 경험한 */}
+          카모는 방문자가 경험한 특색있는 카페를 공유할 수 있는 커뮤니티 플랫폼입니다. <br />
+          또한 인기있는 카페를 방문하기 전 미리 예약할 수 있는 서비스를 제공합니다.
         </C.smallText>
       </C.BlendedWrap>
 
