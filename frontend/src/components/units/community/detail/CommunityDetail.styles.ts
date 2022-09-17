@@ -99,7 +99,7 @@ export const LikeCount = styled.div`
   color: black;
 `;
 
-export const LikeIcon = styled(LikeOutlined)`
+export const LikeIcon = styled(LikeFilled)`
   font-size: 24px;
   cursor: pointer;
   @media ${breakPoints.mobile} {
@@ -107,7 +107,7 @@ export const LikeIcon = styled(LikeOutlined)`
   }
 `;
 
-export const DisLikeIcon = styled(LikeFilled)`
+export const DisLikeIcon = styled(LikeOutlined)`
   font-size: 24px;
   cursor: pointer;
   @media ${breakPoints.mobile} {

@@ -21,14 +21,6 @@ export const UploadButton = styled.div`
   cursor: pointer;
 `;
 
-export const Div = styled.div`
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 110px;
-  color: #4f4f4f;
-  margin: 5px;
-`;
-
 export const UploadFileHidden = styled.input`
   display: none;
 `;

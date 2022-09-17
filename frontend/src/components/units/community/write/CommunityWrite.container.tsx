@@ -41,11 +41,11 @@ export default function CommunityWrite(props: ICommunityNewProps) {
     trigger("contents");
   };
 
-  // // toastUI edit
-  // useEffect(() => {
-  //   const htmlString = props.editData?.fetchBoard.contents;
-  //   editorRef.current?.getInstance().setHTML(htmlString);
-  // }, [props?.editData]);
+  // toastUI edit
+  useEffect(() => {
+    const htmlString = props.data?.fetchBoard.contents;
+    editorRef.current?.getInstance().setHTML(String(htmlString));
+  }, [props?.data]);
 
   const onCompleteAddressSearch = (data: any) => {
     setValue("zipcode", data.zonecode);
@@ -80,12 +80,12 @@ export default function CommunityWrite(props: ICommunityNewProps) {
     trigger("FileUrls");
   };
 
-  // image Edit
-  useEffect(() => {
-    if (props.editData?.fetchBoard.images) {
-      setFileUrls([...props.editData?.fetchBoard.images]);
-    }
-  }, [props.editData]);
+  // // image Edit
+  // useEffect(() => {
+  //   if (props.data?.fetchBoard.images) {
+  //     setFileUrls([...props.data?.fetchBoard.images]);
+  //   }
+  // }, [props.data]);
 
   const onClickCreate = async (data: any) => {
     // console.log("fileUrls Check", fileUrls);
@@ -100,7 +100,7 @@ export default function CommunityWrite(props: ICommunityNewProps) {
             address: data.address,
             addressDetail: data.addressDetail,
             tags: data.tags.split(" "),
-            image: [...fileUrls],
+            image: [...fileUrls].join().split(","),
           },
         },
       });
@@ -122,7 +122,7 @@ export default function CommunityWrite(props: ICommunityNewProps) {
   const onClickEdit = async (data: any) => {
     const updateBoardInput: IUpdateBoardInput = {};
     const currentFiles = JSON.stringify(fileUrls);
-    const defaultFiles = JSON.stringify(props.editData?.fetchBoard.images);
+    const defaultFiles = JSON.stringify(props.data?.fetchBoard.images);
     const isChangedFiles = currentFiles !== defaultFiles;
     if (data.title) updateBoardInput.title = data.title;
     if (data.contents) updateBoardInput.contents = data.contents;
@@ -138,7 +138,7 @@ export default function CommunityWrite(props: ICommunityNewProps) {
         const result = await updateBoard({
           variables: {
             boardId: String(router.query.communityId),
-            nickName: props.el?.user.nickName,
+            nickName: props.data?.fetchBoard.user.nickName,
             updateBoardInput: {
               title: data.title,
               contents: data.contents,
@@ -174,6 +174,7 @@ export default function CommunityWrite(props: ICommunityNewProps) {
       fileUrls={fileUrls}
       onChangeFileUrls={onChangeFileUrls}
       onClickEdit={onClickEdit}
+      data={props.data}
       isEdit={props.isEdit}
       editorRef={editorRef}
       address={getValues("address")}

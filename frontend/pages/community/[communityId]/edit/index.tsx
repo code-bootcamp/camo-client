@@ -1,7 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { IQuery, IQueryFetchBoardArgs } from "../../../../src/commons/types/generated/types";
-import BoardWrite from "../../../../src/components/units/community/write/CommunityWrite.container";
+import CommunityWrite from "../../../../src/components/units/community/write/CommunityWrite.container";
 
 export const FETCH_BOARD = gql`
   query fetchBoard($boardId: String!) {
@@ -21,6 +21,10 @@ export const FETCH_BOARD = gql`
       favoriteBoard {
         id
         isLike
+        user {
+          id
+          nickName
+        }
       }
       user {
         id
@@ -42,9 +46,10 @@ export const FETCH_BOARD = gql`
 
 export default function BoardsEditPage() {
   const router = useRouter();
+
   const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(FETCH_BOARD, {
     variables: { boardId: String(router.query.communityId) },
   });
 
-  return <BoardWrite isEdit={true} data={data} />;
+  return <CommunityWrite isEdit={true} data={data} />;
 }

@@ -1,7 +1,7 @@
-import { Wrapper, UploadButton, UploadFileHidden, UploadImage, Div } from "./Upload.styles";
+import { Wrapper, UploadButton, UploadFileHidden, UploadImage } from "./Upload.styles";
 import { IUploadUIProps } from "./Upload.types";
 
-export default function UploadNewUI(props: IUploadUIProps) {
+export default function UploadUI(props: IUploadUIProps) {
   return (
     <Wrapper>
       {props.fileUrl ? (
@@ -11,7 +11,7 @@ export default function UploadNewUI(props: IUploadUIProps) {
         />
       ) : (
         <UploadButton onClick={props.onClickUpload}>
-          <Div>+</Div>
+          <>+</>
         </UploadButton>
       )}
       <UploadFileHidden type="file" ref={props.fileRef} onChange={props.onChangeFile} />

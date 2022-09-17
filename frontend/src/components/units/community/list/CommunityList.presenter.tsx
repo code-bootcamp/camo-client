@@ -42,7 +42,7 @@ export default function CommunityListUI(props: IBoardListUIProps) {
         </S.NavWrapper>
         <Link href="/community/new">
           <a>
-            <S.WriteBtn></S.WriteBtn>
+            <S.WriteBtn />
           </a>
         </Link>
         {props.alignment === "createdAt" ? <CommunityCreatedAtList /> : <CommunityLikeCountList />}

@@ -1,7 +1,11 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
-import { SyntheticEvent } from "react";
+import {
+  SyntheticEvent,
+  // useEffect,
+  useState,
+} from "react";
 import {
   IMutation,
   IMutationDeleteBoardArgs,
@@ -20,6 +24,9 @@ import {
 export default function CommunityDetail() {
   const router = useRouter();
 
+  const [like, setLike] = useState(false);
+  // console.log(like, setLike);
+
   const [deleteBoard] = useMutation<Pick<IMutation, "deleteBoard">, IMutationDeleteBoardArgs>(
     DELETE_BOARD
   );
@@ -31,26 +38,29 @@ export default function CommunityDetail() {
 
   const { data: UserData } = useQuery<Pick<IQuery, "fetchLoginedUser">>(FETCH_LOGINED_USER);
 
-  const { data } = useQuery(FETCH_BOARD, {
+  const { data: BoardData, refetch } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.communityId },
   });
 
   const onClickLike = async () => {
-    console.log(data?.fetchBoard.likeCount);
+    console.log("likeCount", BoardData?.fetchBoard.likeCount);
     try {
-      await toggleLikeFeed({
+      const result = await toggleLikeFeed({
         variables: {
           boardId: String(router.query.communityId),
         },
-        refetchQueries: [
-          {
-            query: FETCH_BOARD,
-            variables: {
-              boardId: String(router.query.communityId),
-            },
-          },
-        ],
+        // refetchQueries: [
+        //   {
+        //     query: FETCH_BOARD,
+        //     variables: {
+        //       boardId: String(router.query.communityId),
+        //     },
+        //   },
+        // ],
       });
+      refetch();
+      console.log("toggleLikeFeed", result.data?.toggleLikeFeed);
+      setLike((prev) => !prev);
     } catch (error) {
       if (error instanceof Error) {
         Modal.error({ content: error.message });
@@ -58,6 +68,17 @@ export default function CommunityDetail() {
       }
     }
   };
+
+  const onClickLike2 = async () => {
+    // refetch();
+    await setLike((prev) => !prev);
+  };
+
+  // useEffect(() => {
+  //   BoardData?.fetchBoard.favoriteBoard.user.filter((el: IFetchBoardEl) => el.id === UserData?.fetchLoginedUser.id )
+  //     ? setLike(true)
+  //     : setLike(false);
+  // }, [BoardData?.fetchBoard.favoriteBoard.user]);
 
   const onClickUpdate = () => {
     router.push(`/community/${router.query.communityId}/edit`);
@@ -89,12 +110,14 @@ export default function CommunityDetail() {
 
   return (
     <CommunityDetailUI
-      data={data}
+      like={like}
+      BoardData={BoardData}
       UserData={UserData}
       onClickDelete={onClickDelete}
       onErrorImg={onErrorImg}
       onClickUpdate={onClickUpdate}
       onClickLike={onClickLike}
+      onClickLike2={onClickLike2}
     />
   );
 }
