@@ -65,7 +65,7 @@ export type ICafeListImage = {
   cafeList?: Maybe<ICafeList>;
   deletedAt?: Maybe<Scalars['String']>;
   id: Scalars['String'];
-  isMain?: Maybe<Scalars['String']>;
+  isMain?: Maybe<Scalars['Boolean']>;
   url: Scalars['String'];
 };
 
@@ -194,7 +194,7 @@ export type IImage = {
   __typename?: 'Image';
   board: IBoard;
   id: Scalars['String'];
-  isMain?: Maybe<Scalars['String']>;
+  isMain?: Maybe<Scalars['Boolean']>;
   url: Scalars['String'];
 };
 
@@ -428,7 +428,11 @@ export type IQuery = {
   fetchCafeListsCreatedAt: Array<ICafeList>;
   fetchCafeListsFavoriteCafe: Array<ICafeList>;
   fetchCafeReservation: ICafeReservation;
+  fetchCafeReservationNumber: Scalars['Float'];
   fetchComments: Array<IComment>;
+  fetchFavoriteCafeNumber: Scalars['Float'];
+  fetchFavoriteCafeUser: Scalars['Float'];
+  fetchFavoriteUser: Array<IFavoriteBoard>;
   fetchLoginedUser: IUser;
   fetchLogs: Array<IChatMessage>;
   fetchMyCafeReservation: Array<ICafeReservation>;
@@ -437,9 +441,12 @@ export type IQuery = {
   fetchReviews: Array<IReview>;
   fetchUserByEmail: IUser;
   fetchUserFavoriteCafe: Array<IFavoriteCafe>;
+  fetchUserMyBoard: IUser;
+  fetchUserMyBoard1: IBoard;
   fetchUserWithDeleted: Array<IUser>;
   fetchUserbyEmail: IUser;
   fetchUserbyId: IUser;
+  fetchUsermyBoardNumber: Scalars['Float'];
   fetchUsers: Array<IUser>;
   roleGuardAdmin: IUser;
   roleGuardCafeOwner: IUser;
@@ -510,7 +517,27 @@ export type IQueryFetchCafeReservationArgs = {
 };
 
 
+export type IQueryFetchCafeReservationNumberArgs = {
+  userId: Scalars['String'];
+};
+
+
 export type IQueryFetchCommentsArgs = {
+  boardId: Scalars['String'];
+};
+
+
+export type IQueryFetchFavoriteCafeNumberArgs = {
+  userId: Scalars['String'];
+};
+
+
+export type IQueryFetchFavoriteCafeUserArgs = {
+  cafeListId: Scalars['String'];
+};
+
+
+export type IQueryFetchFavoriteUserArgs = {
   boardId: Scalars['String'];
 };
 
@@ -547,12 +574,29 @@ export type IQueryFetchUserFavoriteCafeArgs = {
 };
 
 
+export type IQueryFetchUserMyBoardArgs = {
+  page?: InputMaybe<Scalars['Float']>;
+  userId: Scalars['String'];
+};
+
+
+export type IQueryFetchUserMyBoard1Args = {
+  page?: InputMaybe<Scalars['Float']>;
+  userId: Scalars['String'];
+};
+
+
 export type IQueryFetchUserbyEmailArgs = {
   email: Scalars['String'];
 };
 
 
 export type IQueryFetchUserbyIdArgs = {
+  userId: Scalars['String'];
+};
+
+
+export type IQueryFetchUsermyBoardNumberArgs = {
   userId: Scalars['String'];
 };
 

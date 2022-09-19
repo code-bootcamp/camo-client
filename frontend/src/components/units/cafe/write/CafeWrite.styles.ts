@@ -74,8 +74,9 @@ export const Label = styled.div`
   @media ${breakPoints.mobile} {
     width: 100%;
     font-size: 1rem;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1rem;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -88,9 +89,9 @@ export const InputBox = styled.input`
   font-size: 1.1rem;
   @media ${breakPoints.mobile} {
     width: 100%;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     height: 2rem;
-    margin: 0.5rem;
+    padding: 0;
   }
 `;
 
@@ -107,6 +108,11 @@ export const InputShortBox = styled.input`
   margin-right: 1.2rem;
   padding-left: 1.2rem;
   font-size: 1.1rem;
+  @media ${breakPoints.mobile} {
+    font-size: 0.8rem;
+    padding: 0;
+    height: 2.2rem;
+  }
 `;
 
 export const ZipcodeWrapper = styled.div`
@@ -149,7 +155,7 @@ export const AddressButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
   @media ${breakPoints.mobile} {
-    width: 6rem;
+    width: 60%;
     height: 2.2rem;
     line-height: 2.2rem;
     font-size: 0.6rem;
@@ -158,7 +164,7 @@ export const AddressButton = styled.button`
 
 export const WebeditorBox = styled.div`
   /* border: 0.07rem solid #555; */
-  height: 22rem;
+  height: 25rem;
   width: 44rem;
   margin-top: 1.2rem;
   font-size: 1rem;
@@ -166,8 +172,8 @@ export const WebeditorBox = styled.div`
   @media ${breakPoints.mobile} {
     width: 100%;
     font-size: 0.7rem;
-    flex-direction: column;
-    padding: 1rem;
+    padding: 0;
+    margin: 0;
   }
 `;
 
@@ -182,6 +188,9 @@ export const TextWrap = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1.8rem;
+  @media ${breakPoints.mobile} {
+    padding: 0;
+  }
 `;
 
 export const BottomWrap = styled.div`
@@ -205,10 +214,9 @@ export const RegisterBtn = styled.button`
   text-align: center;
   border: none;
   margin: 0.5rem;
-
   cursor: pointer;
 
-  background: #33413e;
+  background: #3c565b;
   color: white;
 
   :hover {
@@ -257,12 +265,14 @@ export const UploadImage = styled.img`
   object-fit: cover;
   margin-right: 24px;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+  }
 `;
 
 export const UploadButton = styled.div`
   width: 180px;
   height: 180px;
-  background-color: #bdbdbd;
+  background-color: #eee;
   margin-right: 24px;
   display: flex;
   flex-direction: column;

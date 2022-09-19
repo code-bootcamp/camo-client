@@ -10,6 +10,7 @@ import * as React from "react";
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
+import PopUp from "../../../commons/popup";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -21,10 +22,13 @@ export default function CafeListUI(props: any) {
       <C.Wrapper>
         <C.TopWrapper>
           <C.LogoBody>
+            <C.LogoImage src="/Final_logo1.png" />
+
             <div>
-              당신이 원하는 <span>카</span>페들을 <span>모</span>았습니다
+              당신이 원하는 <span>카</span>페들을 <span>모</span>았습니다. <br />
+              원하는 시간에 예약하고 방문하세요!
             </div>
-            <C.LogoImage src="/CAMO.png" />
+            {/* <C.LogoImage src="/CAMO.png" /> */}
           </C.LogoBody>
 
           <C.BigTitle>Reserve Your Cafe</C.BigTitle>
@@ -37,7 +41,7 @@ export default function CafeListUI(props: any) {
             <Link href="./cafe/new">
               <C.CafeRegister>
                 <a>
-                  <span>+</span>
+                  <div>+</div>
                   {/* <span>카페 등록하기</span> */}
                 </a>
               </C.CafeRegister>
@@ -51,7 +55,13 @@ export default function CafeListUI(props: any) {
           />
         </C.TopWrapper>
 
-        <InfiniteScroll pageStart={0} loadMore={props.onFetchMore} hasMore={true}>
+        {/* <div style={{ border: "1px solid #fff", width: "80%", height: "800px", overflow: "auto" }}> */}
+        <InfiniteScroll
+          pageStart={0}
+          loadMore={props.onFetchMore}
+          hasMore={true}
+          // useWindow={false}
+        >
           <C.PostAllWrap>
             {props.data?.fetchCafeListsCreatedAt.map((el: any, index: any) => (
               <>
@@ -60,7 +70,6 @@ export default function CafeListUI(props: any) {
                     <C.DetailImage key={el.id} id={el.id} onClick={props.onClickDetail(el)}>
                       {/* <img src={`${props.data?.fetchCafeList?.cafeListImage[0]?.url}`} /> */}
                       {/* {props.data?.fetchCafeList?.cafeListImage[0] ? ( */}
-
                       <img
                         src={
                           el.cafeListImage?.length !== 0 && el.cafeListImage?.[0] !== ""
@@ -68,8 +77,10 @@ export default function CafeListUI(props: any) {
                             : "https://images.unsplash.com/photo-1513267048331-5611cad62e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                         }
                       />
+                    </C.DetailImage>
+                  </C.imageBox>
 
-                      {/*                   
+                  {/*                   
                       {el?.cafeListImage[0] ? (
                         <img src={`https://storage.googleapis.com/${el.cafeListImage[0]?.url}`} />
                       ) : (
@@ -77,16 +88,13 @@ export default function CafeListUI(props: any) {
 
                         // <img src="https://images.unsplash.com/photo-1513267048331-5611cad62e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" />
                       )} */}
-                      {/* <img
+                  {/* <img
                         src={
                           `${el?.cafeListImage[0]?.url}`
                             ? `https://storage.googleapis.com/${el.cafeListImage[0]?.url}`
                             : "https://images.unsplash.com/photo-1513267048331-5611cad62e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                         }
                       /> */}
-                      {/* <img src={`https://storage.googleapis.com/${el?.cafeListImage[0]?.url}`} /> */}
-                    </C.DetailImage>
-                  </C.imageBox>
 
                   <C.TextWrap>
                     {/* #태그, #{el.cafeListTag[index]?.name} */}
@@ -94,10 +102,11 @@ export default function CafeListUI(props: any) {
                     {/* <C.CafeTag key={uuidv4()}> #테스트{el.cafeListTag[0]?.name} &nbsp;</C.CafeTag> */}
                     <C.TagsWrap>
                       {el.cafeListTag?.map(({ name }: { name: any }) => {
-                        return <C.CafeTag key={uuidv4()}>{`#${name}`}</C.CafeTag>;
+                        return <C.CafeTag key={uuidv4()}>#{name}</C.CafeTag>;
                       })}
                     </C.TagsWrap>
                     <Checkbox
+                      id={el.id}
                       onClick={props.onClickFavorite}
                       className="zzim"
                       {...label}
@@ -121,7 +130,9 @@ export default function CafeListUI(props: any) {
             ))}
           </C.PostAllWrap>
         </InfiniteScroll>
+        {/* </div> */}
       </C.Wrapper>
+      <PopUp />
     </>
   );
 }

@@ -24,7 +24,11 @@ type Anchor = "right";
 
 export default function LandingPage() {
   const [ref, inView] = useInView({
-    threshold: 1,
+    threshold: 0.1,
+  });
+
+  const [ref2, inView2] = useInView({
+    threshold: 0.1,
   });
 
   const classes = useStyles();
@@ -89,7 +93,7 @@ export default function LandingPage() {
           <ListItemIcon>
             <KeyboardArrowRight />
           </ListItemIcon>
-          <Link href="/cafe">
+          <Link href="/cafe/new/">
             <a>
               <ListItemText primary="카페등록" />
             </a>
@@ -99,7 +103,7 @@ export default function LandingPage() {
           <ListItemIcon>
             <KeyboardArrowRight />
           </ListItemIcon>
-          <Link href="/cafe">
+          <Link href="/community">
             <a>
               <ListItemText primary="커뮤니티" />
             </a>
@@ -116,7 +120,7 @@ export default function LandingPage() {
       <C.MainWrapper>
         <C.ImageWrapper>
           <C.MainImage src="https://images.unsplash.com/photo-1511081692775-05d0f180a065?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1372&q=80" />
-          <C.MenuButton style={{ opacity: "0" }}>
+          <C.MenuButton id="none" style={{ opacity: "0" }}>
             {(["right"] as Anchor[]).map((anchor) => (
               <React.Fragment key={anchor}>
                 <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
@@ -159,6 +163,8 @@ export default function LandingPage() {
             src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
           />
         </Link>
+        <C.SliderTitle2>Community </C.SliderTitle2>
+
         <C.ReservationWrap className={inView ? "isActive" : ""}>
           <Link href="/community/">
             <C.SliderTitle>Community </C.SliderTitle>
@@ -168,8 +174,8 @@ export default function LandingPage() {
         </C.ReservationWrap>
       </C.MiddleWrapper>
 
-      <C.MiddleWrapper className={inView ? "isActive" : ""} ref={ref}>
-        <C.ReservationWrap className={inView ? "isActive" : ""}>
+      <C.MiddleWrapper className={inView2 ? "isActive" : ""} ref={ref2}>
+        <C.ReservationWrap className={inView2 ? "isActive" : ""}>
           <Link href="/cafe">
             <C.SliderTitle>Reservation </C.SliderTitle>
           </Link>
@@ -180,10 +186,11 @@ export default function LandingPage() {
         </C.ReservationWrap>
         <Link href="/cafe/community">
           <C.ReservationImg
-            className={inView ? "isActive" : ""}
+            className={inView2 ? "isActive" : ""}
             src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
           />
         </Link>
+        <C.SliderTitle2>Reservation </C.SliderTitle2>
       </C.MiddleWrapper>
 
       <C.BlendedWrap>
@@ -203,8 +210,8 @@ export default function LandingPage() {
       </C.BlendedWrap>
       <MainPageQuestionContainer />
       <C.BottomImageWrap>
-        <span></span>
         <img src="https://images.unsplash.com/photo-1506372023823-741c83b836fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" />
+        <img className="btlogo" src="/Final_logo2.png" />
       </C.BottomImageWrap>
     </C.Wrapper>
   );

@@ -1,91 +1,218 @@
 import { UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import {
-  HeaderWrapper,
-  LoginButton,
-  LoginUser,
-  LoginWrapper,
-  Logo,
-  LogoMenuWrapper,
-  MenuFonts,
-  MenuTab,
-  MenuWrapper,
-  Wrapper,
-} from "./LayoutHeader.style";
+import * as C from "./LayoutHeader.style";
+import "animate.css";
+import { makeStyles } from "@material-ui/core/styles";
+import { KeyboardArrowRight } from "@material-ui/icons";
+import clsx from "clsx";
+
 import { ILayoutHeaderUIProps } from "./LayoutHeader.types";
+import { ListItem, ListItemText, ListItemIcon, List, Button, Drawer } from "@material-ui/core";
+import React from "react";
+
+const useStyles = makeStyles({
+  list: {
+    width: 250,
+  },
+  fullList: {
+    width: "auto",
+  },
+});
+
+type Anchor = "right";
 
 export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
+  const [state, setState] = React.useState({
+    right: false,
+  });
+
+  const classes = useStyles();
+
+  const toggleDrawer =
+    (anchor: Anchor, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === "keydown" &&
+        ((event as React.KeyboardEvent).key === "Tab" ||
+          (event as React.KeyboardEvent).key === "Shift")
+      ) {
+        return;
+      }
+
+      setState({ ...state, [anchor]: open });
+    };
+
+  const list = (anchor: Anchor) => (
+    <div
+      className={clsx(classes.list, {
+        // [classes.fullList]: anchor === "top" || anchor === "bottom",
+      })}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        <ListItem button key="로그인">
+          <ListItemIcon>
+            <KeyboardArrowRight />
+          </ListItemIcon>
+          <Link href="/login">
+            <a>
+              <ListItemText primary="로그인" />
+            </a>
+          </Link>
+        </ListItem>
+        <ListItem button key="회원가입">
+          <ListItemIcon>
+            <KeyboardArrowRight />
+          </ListItemIcon>
+          <Link href="/login/selectSignUp">
+            <a>
+              <ListItemText primary="회원가입" />
+            </a>
+          </Link>
+        </ListItem>
+        <ListItem button key="카페예약">
+          <ListItemIcon>
+            <KeyboardArrowRight />
+          </ListItemIcon>
+          <Link href="/cafe">
+            <a>
+              <ListItemText primary="카페예약" />
+            </a>
+          </Link>
+        </ListItem>
+        <ListItem button key="카페등록">
+          <ListItemIcon>
+            <KeyboardArrowRight />
+          </ListItemIcon>
+          <Link href="/cafe/new">
+            <a>
+              <ListItemText primary="카페등록" />
+            </a>
+          </Link>
+        </ListItem>
+        <ListItem button key="커뮤니티">
+          <ListItemIcon>
+            <KeyboardArrowRight />
+          </ListItemIcon>
+          <Link href="/community">
+            <a>
+              <ListItemText primary="커뮤니티" />
+            </a>
+          </Link>
+        </ListItem>
+        {/* <ListItem button key="로그아웃">
+          <ListItemIcon>
+            <KeyboardArrowRight />
+          </ListItemIcon>
+          <Link href="/community">
+            <a>
+              <ListItemText primary="커뮤니티" />
+            </a>
+          </Link>
+        </ListItem> */}
+      </List>
+    </div>
+  );
+
   return (
     <>
-      <Wrapper>
-        <HeaderWrapper>
-          <LogoMenuWrapper>
+      <C.Wrapper>
+        <C.HeaderWrapper>
+          <C.LogoMenuWrapper>
             <h1>
               <Link href="/">
                 <a>
-                  <Logo src="/Final_logo1.png" alt="logo" />
+                  <C.Logo src="/Final_logo1.png" alt="logo" />
                 </a>
               </Link>
             </h1>
 
-            <MenuWrapper>
+            <C.MenuWrapper>
               <Link href="/">
                 <a>
-                  <MenuFonts>BLENDED</MenuFonts>
+                  <C.MenuFonts>BLENDED</C.MenuFonts>
                 </a>
               </Link>
 
               <Link href="/cafe">
                 <a>
-                  <MenuFonts>CAFE</MenuFonts>
+                  <C.MenuFonts>CAFE</C.MenuFonts>
                 </a>
               </Link>
 
               <Link href="/community">
                 <a>
-                  <MenuFonts>COMMUNITY</MenuFonts>
+                  <C.MenuFonts>COMMUNITY</C.MenuFonts>
                 </a>
               </Link>
               {props.accessToken ? (
                 <Link href="/myPage/myLike">
                   <a>
-                    <MenuFonts>MY PAGE</MenuFonts>
+                    <C.MenuFonts>MY PAGE</C.MenuFonts>
                   </a>
                 </Link>
               ) : (
                 <a></a>
               )}
-            </MenuWrapper>
-          </LogoMenuWrapper>
+            </C.MenuWrapper>
+          </C.LogoMenuWrapper>
 
           {props.accessToken ? (
-            <LoginWrapper>
-              <LoginUser>
+            <C.LoginWrapper>
+              <C.LoginUser>
                 <UserOutlined />
                 &nbsp;
                 {props.data?.fetchLoginedUser.name}님
-              </LoginUser>
-
-              <LoginButton onClick={props.onClickLogout}>로그아웃</LoginButton>
-              <MenuTab />
-            </LoginWrapper>
+              </C.LoginUser>
+              <C.LoginButton onClick={props.onClickLogout}>로그아웃</C.LoginButton>
+              <C.MenuTab />
+              <C.MenuButton id="none" style={{ opacity: "0" }}>
+                {(["right"] as Anchor[]).map((anchor) => (
+                  <React.Fragment key={anchor}>
+                    <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+                    <Drawer
+                      anchor={anchor}
+                      open={state[anchor]}
+                      onClose={toggleDrawer(anchor, false)}
+                    >
+                      {list(anchor)}
+                    </Drawer>
+                  </React.Fragment>
+                ))}
+              </C.MenuButton>
+            </C.LoginWrapper>
           ) : (
-            <LoginWrapper>
+            <C.LoginWrapper>
               <Link href="/login">
                 <a>
-                  <LoginButton>로그인</LoginButton>
+                  <C.LoginButton>로그인</C.LoginButton>
                 </a>
               </Link>
               <Link href="/login/selectSignUp">
                 <a>
-                  <LoginButton>회원가입</LoginButton>
+                  <C.LoginButton>회원가입</C.LoginButton>
                 </a>
               </Link>
-              <MenuTab />
-            </LoginWrapper>
+              <C.MenuTab />
+              <C.MenuButton id="none" style={{ opacity: "0" }}>
+                {(["right"] as Anchor[]).map((anchor) => (
+                  <React.Fragment key={anchor}>
+                    <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+                    <Drawer
+                      anchor={anchor}
+                      open={state[anchor]}
+                      onClose={toggleDrawer(anchor, false)}
+                    >
+                      {list(anchor)}
+                    </Drawer>
+                  </React.Fragment>
+                ))}
+              </C.MenuButton>
+            </C.LoginWrapper>
           )}
-        </HeaderWrapper>
-      </Wrapper>
+        </C.HeaderWrapper>
+      </C.Wrapper>
     </>
   );
 }

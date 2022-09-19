@@ -2,11 +2,12 @@ import * as S from "./mainPageQuestion.styles";
 import Q1Presenter from "./Q1.presenter";
 import Q2Presenter from "./Q2.presenter";
 import Q3Presenter from "./Q3.presenter";
+import Q4Presenter from "./Q4.presenter";
 
 export default function MainPageQuestionPresenter(props) {
   return (
     <S.QuestionWrapper>
-      <S.QuestionTitle>Q & A</S.QuestionTitle>
+      <S.QuestionTitle>자주 묻는 질문 (Q & A)</S.QuestionTitle>
       <Q1Presenter
         onClickQuestion1={props.onClickQuestion1}
         isAnswer1={props.isAnswer1}
@@ -36,6 +37,17 @@ export default function MainPageQuestionPresenter(props) {
         isAnswer1={undefined}
         isAnswer2={undefined}
         isAnswer4={undefined}
+      />
+
+      <Q4Presenter
+        onClickQuestion4={props.onClickQuestion4}
+        isAnswer4={props.isAnswer4}
+        onClickQuestion3={undefined}
+        onClickQuestion2={undefined}
+        onClickQuestion1={undefined}
+        isAnswer1={undefined}
+        isAnswer2={undefined}
+        isAnswer3={undefined}
       />
     </S.QuestionWrapper>
   );

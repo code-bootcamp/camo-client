@@ -120,7 +120,7 @@ export const MiddleWrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin: 4.4rem 0;
-
+  position: relative;
   .isActive {
     display: inline-block;
     margin: 0 0.5rem;
@@ -204,6 +204,24 @@ export const SliderTitle = styled.h1`
     display: none;
   }
 `;
+
+export const SliderTitle2 = styled.h2`
+  display: none;
+  @media ${breakPoints.mobile} {
+    display: block;
+    background-color: #3c565b;
+    /* opacity: 0.8; */
+    padding: 0.4rem 0.9rem;
+    font-family: "KOTRA_BOLD-Bold";
+    text-align: center;
+    font-size: 2.2em;
+    color: white;
+    /* color: #3c565b; */
+    font-weight: 700;
+    position: absolute;
+    cursor: pointer;
+  }
+`;
 export const Bar = styled.div`
   width: 2rem;
   height: 0.2rem;
@@ -275,6 +293,11 @@ export const BottomImageWrap = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+  .btlogo {
+    width: 18rem;
+    object-fit: contain;
+    position: absolute;
   }
   div {
     /* position: absolute;

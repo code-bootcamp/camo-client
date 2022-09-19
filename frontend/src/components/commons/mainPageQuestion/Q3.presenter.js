@@ -1,5 +1,4 @@
 import * as S from "./mainPageQuestion.styles";
-// import { IMainPageQuestionPresenterProps } from "./mainPageQuestion.types";
 
 export default function Q3Presenter(props) {
   return (

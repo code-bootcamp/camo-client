@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../styles/media";
 
 export const UploadImage = styled.div`
   width: 6.6rem;
@@ -9,14 +10,23 @@ export const UploadImage = styled.div`
   background-color: #eee;
   color: gray;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+    width: 4rem;
+    height: 4rem;
+    line-height: 4rem;
+  }
 `;
 
 export const UploadButton = styled.img`
   width: 6.6rem;
   height: 6.6rem;
   margin-right: 25px;
-  background-color: #aaa;
+  background-color: #ddd;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+    width: 4rem;
+    height: 4rem;
+  }
 `;
 
 export const UploadFileHidden = styled.input`

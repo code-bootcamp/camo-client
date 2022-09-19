@@ -8,11 +8,13 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media ${breakPoints.mobile} {
+  }
 `;
 
 export const TopWrapper = styled.div`
   width: 100%;
-  height: 44rem;
+  height: 100vh;
   padding: 0 10%;
   display: flex;
   flex-direction: column;
@@ -26,26 +28,33 @@ export const TopWrapper = styled.div`
 `;
 
 export const LogoBody = styled.div`
-  width: 16rem;
-  margin-top: 4.4rem;
+  width: 30rem;
+  margin-top: 5rem;
   color: white;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
+  text-align: center;
   div span {
     font-size: 1.6rem;
   }
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    flex-direction: column;
+  }
 `;
 export const LogoImage = styled.img`
-  width: 13.3rem;
-  margin: 1.2rem;
+  width: 10rem;
+  margin: 1rem;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 export const BigTitle = styled.div`
   color: white;
-  font-size: 5rem;
+  font-size: 6rem;
   font-weight: 800;
-  margin-top: 2.2rem;
-
+  margin: 3rem 0;
   text-align: center;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
   /* animation: "titleText" 1s ease-in-out infinite alternate;
@@ -74,7 +83,7 @@ export const MiddleText = styled.div`
   width: 60%;
   font-size: 1.2rem;
   text-align: center;
-  margin-top: 5.5rem;
+  margin-top: 4rem;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 
   animation: "middleText" 0.8s ease-in-out;
@@ -93,43 +102,81 @@ export const MiddleText = styled.div`
 `;
 
 export const CafeRegisterBox = styled.div`
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   flex-direction: row;
   justify-content: end;
   margin-right: 10rem;
   position: fixed;
+  text-align: center;
   right: 0%;
   bottom: 33%;
   z-index: 99;
+  line-height: 5.5rem;
   cursor: pointer;
-  a {
-    color: white;
-  }
+  /* 
+  div {
+    :hover {
+      animation: "middleText" 0.8s ease-in-out;
+      @keyframes middleText {
+        from {
+          transform: scale(0.5);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+    }
+  } */
   @media ${breakPoints.mobile} {
     display: none;
   }
 `;
 
 export const CafeRegister = styled.div`
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50px;
+  width: 6rem;
+  height: 6rem;
+  line-height: 6rem;
+  border-radius: 99rem;
   background-color: #1e3932;
   box-shadow: 3px 3px 9px rgba(1, 1, 1, 0.5);
   color: white;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 2rem;
   font-weight: 400;
   position: absolute;
-  span {
+
+  a div {
     color: white;
-    font-size: 3rem;
+  }
+  :hover {
+    font-size: 3.3rem;
+    line-height: 5.5rem;
+  }
+  /* div { */
+  /* :hover { */
+  /* color: white; */
+  /* font-size: 3rem; */
+  /* display: none; */
+  /* animation: "middleText" 0.8s ease-in-out;
+      @keyframes middleText {
+        from {
+          transform: scale(0.8);
+        }
+        to {
+          transform: scale(1);
+        }
+      } */
+  /* } */
+  /* } */
+  /* :hover::after {
+    content: "예약하기";
+    height: 60%;
+  } */
+  @media ${breakPoints.mobile} {
+    display: none;
   }
 
-  a {
-    color: white;
-  }
   /* :hover {
     cursor: pointer;
     animation: jello;

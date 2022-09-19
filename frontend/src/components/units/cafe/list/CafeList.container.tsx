@@ -18,20 +18,17 @@ export default function CafeList() {
 
   const onClickFavorite = async (event: MouseEvent<HTMLElement>) => {
     try {
-      await toggleFavoriteCafes({
+      const result = await toggleFavoriteCafes({
         variables: {
           cafeListId: event.currentTarget.id,
           // cafeListId: router.query.cafeId as string,
         },
-        refetchQueries: [
-          {
-            query: FETCH_CAFE_LISTS_CREATED_AT,
-          },
-        ],
+        refetchQueries: [{ query: FETCH_CAFE_LISTS_CREATED_AT }],
       });
+      console.log("리저트", result);
       message.success("찜 성공");
     } catch (error) {
-      message.error("찜하기 실패");
+      // message.error("찜하기 실패");
     }
   };
 
