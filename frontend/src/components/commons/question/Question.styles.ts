@@ -21,7 +21,7 @@ export const QuestionTitleWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
-  border-bottom: 1px solid #3c565b;
+  border-bottom: 1px solid #1e3932;
   margin-bottom: 20px;
   @media ${breakPoints.mobile} {
   }
@@ -42,7 +42,7 @@ export const QuestionButton = styled.button`
   font-weight: bold;
   /* background-color: white; */
 
-  background-color: #3c565b;
+  background-color: #1e3932;
   color: white;
   width: 7rem;
   border-radius: 10px;
@@ -257,7 +257,7 @@ export const RegistrationEditButton = styled.button`
   height: 40px;
   font-size: 1rem;
   color: white;
-  background-color: #3c565b;
+  background-color: #1e3932;
   border: 0px solid;
   cursor: pointer;
 `;

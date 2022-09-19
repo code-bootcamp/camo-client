@@ -220,12 +220,12 @@ export const Label = styled.div`
 export const Label2 = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   font-size: 1.8rem;
   font-weight: 700;
   color: #333;
-  margin: 4rem 0;
-  text-align: center;
+  /* margin: 4rem 0; */
+  /* text-align: center; */
   div {
     font-size: 1.1rem;
     font-weight: 500;
@@ -246,7 +246,7 @@ export const Label2 = styled.div`
 export const BottomWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   width: 1200px;
   /* border: 1px solid grady; */
   @media ${breakPoints.mobile} {
@@ -277,8 +277,9 @@ export const ReservationWrap = styled.div`
 export const MapWrapper = styled.div`
   background-color: #eee;
   border: 1px solid gray;
-  width: 80%;
+  width: 100%;
   height: 33rem;
+  margin-top: 3rem;
   @media ${breakPoints.mobile} {
     /* background-color: blue; */
     border: none;
@@ -302,16 +303,13 @@ export const ReserveBtn = styled.div`
   width: 8rem;
   border-radius: 0.5rem;
   height: 3rem;
-  background: #3c565b;
+  background: #1e3932;
   font-size: 1.3rem;
   font-weight: 700;
   color: white;
   line-height: 3rem;
   text-align: center;
   cursor: pointer;
-  :hover {
-    color: gold;
-  }
   @media ${breakPoints.mobile} {
     /* background-color: bisque; */
     display: none;
@@ -468,3 +466,18 @@ export const SubImage = styled.img`
 
   /* background-color: blue; */
 `;
+
+/**
+ * 재인수정
+ * date: 0920 04:52AM -
+ */
+
+export const RowWrapper = styled.div`
+  width: 1200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 4rem;
+`;
+
+export const ContentsTitle = styled.h3``;

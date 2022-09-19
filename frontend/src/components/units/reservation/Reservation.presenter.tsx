@@ -25,10 +25,6 @@ export default function ReservationUI(props: IReservationUIProps) {
             mask={"____-__-__"}
             onChange={props.onChangeDate}
             renderInput={(params) => <TextField {...params} />}
-            // renderInput={(params) => {
-            //   console.log("params", params);
-            //   return <TextField {...params} />;
-            // }}
           />
         </LocalizationProvider>
         <S.CheckInWrapper>
@@ -75,9 +71,7 @@ export default function ReservationUI(props: IReservationUIProps) {
 
         <S.MoneyWrapper>
           <S.MoneyLabel>예약금</S.MoneyLabel>
-          {/* 카페 deposit */}
-          {/* <S.Money>{props.CafeData?.fetchCafeList.deposit}</S.Money> */}
-          <S.Money>100원</S.Money>
+          <S.Money>{props.CafeData?.fetchCafeList.deposit}원</S.Money>
         </S.MoneyWrapper>
         <S.SubmitButton onClick={props.onClickPayment}>결제하기</S.SubmitButton>
       </S.MainWrapper>

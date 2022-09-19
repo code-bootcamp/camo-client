@@ -193,7 +193,7 @@ export const SliderTitle = styled.h1`
   font-family: "KOTRA_BOLD-Bold";
   text-align: center;
   font-size: 3em;
-  color: #3c565b;
+  color: #1e3932;
   font-weight: 800;
   :hover {
     font-size: 3.3rem;
@@ -209,14 +209,14 @@ export const SliderTitle2 = styled.h2`
   display: none;
   @media ${breakPoints.mobile} {
     display: block;
-    background-color: #3c565b;
+    background-color: #1e3932;
     /* opacity: 0.8; */
     padding: 0.4rem 0.9rem;
     font-family: "KOTRA_BOLD-Bold";
     text-align: center;
     font-size: 2.2em;
     color: white;
-    /* color: #3c565b; */
+    /* color: #1e3932; */
     font-weight: 700;
     position: absolute;
     cursor: pointer;
@@ -226,7 +226,7 @@ export const Bar = styled.div`
   width: 2rem;
   height: 0.2rem;
   margin-bottom: 2rem;
-  background-color: #3c565b;
+  background-color: #1e3932;
   display: inline-block;
   @media ${breakPoints.mobile} {
     display: none;
@@ -267,7 +267,7 @@ export const BlendedWrap = styled.div`
   /* background-color: #5d7572; */
   img {
     display: inline-block;
-    background-color: #3c565b;
+    background-color: #1e3932;
     width: 22rem;
     height: 100%;
     margin: 5rem 5rem 0 0;
@@ -317,7 +317,7 @@ export const BottomImageWrap = styled.div`
   }
 `;
 export const About = styled.div`
-  color: #3c565b;
+  color: #1e3932;
   font-size: 1.2rem;
   position: absolute;
   top: 15%;
@@ -328,7 +328,7 @@ export const About = styled.div`
   }
 `;
 export const BlendedText = styled.div`
-  color: #3c565b;
+  color: #1e3932;
   font-weight: 900;
   font-size: 3rem;
   margin: 1rem;

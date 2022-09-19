@@ -2,10 +2,10 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../commons/styles/media";
 
 export const MainWrapper = styled.main`
-  width: 300px;
-  height: auto;
-  position: sticky;
-  /* left: 90%;
+  width: 18.75rem;
+  height: 400px;
+  /* position: sticky;
+  left: 90%;
   bottom: 30%; */
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@ export const MainWrapper = styled.main`
   border-radius: 12px;
   padding: 24px;
   box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-  margin-top: 30px;
+  /* margin-top: 300px; */
   color: black;
 `;
 
@@ -176,6 +176,7 @@ export const TimesWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
+  width: 18.75rem;
 `;
 
 export const TimeHead = styled.div`

@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useEffect, useState, MouseEvent } from "react";
 import { useRecoilState } from "recoil";
 import { reservedState } from "../../../commons/store";
@@ -28,10 +29,15 @@ const hour: Array<timeTable> = [
   { start_time: "13:00", end_time: "14:00", reserved: false },
   { start_time: "14:00", end_time: "15:00", reserved: false },
   { start_time: "15:00", end_time: "16:00", reserved: false },
-  { start_time: "16:00", end_time: "17:00", reserved: true },
+  { start_time: "16:00", end_time: "17:00", reserved: false },
+  { start_time: "17:00", end_time: "18:00", reserved: false },
+  { start_time: "18:00", end_time: "19:00", reserved: false },
+  { start_time: "19:00", end_time: "20:00", reserved: false },
+  { start_time: "20:00", end_time: "21:00", reserved: false },
 ];
 
 export default function Reservation() {
+  const router = useRouter();
   // 날짜, 시간, 인원, 가격
   const [price, setPrice] = useState(0);
   const [guest, setGuest] = useState(0);
@@ -45,11 +51,9 @@ export default function Reservation() {
   const [reserved] = useRecoilState<any>(reservedState);
 
   const { data: UserData } = useQuery(FETCH_LOGINED_USER);
-
-  // variables: { cafeListId: String(router.query.cafeId) },
-
   const { data: CafeData } = useQuery(FETCH_CAFE_LIST, {
-    variables: { cafeListId: "f5998e10-0bca-465e-a294-b6af0b717183" },
+    // variables: { cafeListId: "f5998e10-0bca-465e-a294-b6af0b717183" },
+    variables: { cafeListId: String(router.query.cafeId) },
   });
 
   // console.log("ReservationContainer", CafeData);
@@ -65,7 +69,7 @@ export default function Reservation() {
     newClicked.push((event.target as HTMLButtonElement).value);
     setClicked(newClicked);
     if (Number(startTime.slice(0, 2)) > Number(endTime.slice(0, 2))) {
-      setPrice(100);
+      setPrice(10000);
     } else {
       setPrice(100);
     }
@@ -139,6 +143,15 @@ export default function Reservation() {
   };
 
   const onClickPayment = async () => {
+    if (!date) {
+      alert("예약일을 선택해주세요");
+      return;
+    } else if (!startTime) {
+      alert("시간을 선택해주세요");
+    } else if (!guest) {
+      alert("인원을 선택해주세요");
+      return;
+    }
     const IMP = window.IMP;
     IMP.init("imp27128482");
     IMP.request_pay(
@@ -146,13 +159,12 @@ export default function Reservation() {
         pg: "nice",
         pay_method: "card",
         name: "CAMO",
-        // 카페 리스트의 deposit을 가져와야함(props.deposit)
-        amount: 100, // 최소 금액: 100원이라 100원 이상 결제해야 함
+        amount: CafeData?.fetchCafeList.deposit,
         buyer_email: UserData?.fetchLoginedUser.email,
         buyer_name: UserData?.fetchLoginedUser.name,
         buyer_tel: UserData?.fetchLoginedUser.phoneNumber,
-        // m_redirect_url: "http://localhost:3000/myPage/myReservation",
-        m_redirect_url: "https://cafemoment.stie/myPage/myReservation",
+        m_redirect_url: "http://localhost:3000/myPage/myReservation",
+        // m_redirect_url: "https://cafemoment.stie/myPage/myReservation",
       },
       async (rsp: any) => {
         if (rsp.success) {
@@ -161,12 +173,12 @@ export default function Reservation() {
             const paymentResult = await createPayment({
               variables: {
                 impUid: String(rsp.imp_uid),
-                amount: 100,
-                // amount: CafeData?.fetchCafeList.deposit,
+                // amount: 100,
+                amount: CafeData?.fetchCafeList.deposit,
               },
             });
             console.log(paymentResult);
-            // router.push("/myPage/myReservation")
+            router.push("/myPage/myReservation");
           } catch (error) {
             console.log(error);
             alert(error);
@@ -176,12 +188,13 @@ export default function Reservation() {
             const ReservationResult = await createCafeReservation({
               variables: {
                 createReservationInput: {
-                  orderRequest: "요청 하드코딩",
+                  orderRequest: "",
                   reservedPeople: guest,
                   reservationDate: date,
                   startTime,
                   endTime,
-                  cafeListId: "01a152bc-a23a-4077-aafb-c4fa1fdae252",
+                  // cafeListId: "01a152bc-a23a-4077-aafb-c4fa1fdae252",
+                  cafeListId: String(router.query.cafeId),
                   userId: UserData?.fetchLoginedUser.id,
                 },
               },
