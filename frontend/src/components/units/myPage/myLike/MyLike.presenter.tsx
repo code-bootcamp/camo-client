@@ -3,6 +3,7 @@ import * as B from "../MyPage.styles";
 import * as S from "./MyLike.styles";
 import { IMyLikeUIProps } from "./MyLike.types";
 import { v4 as uuidv4 } from "uuid";
+import PaginationContainer from "./pagination/Pagination.container";
 
 export default function MyLikeUI(props: IMyLikeUIProps) {
   return (
@@ -26,6 +27,12 @@ export default function MyLikeUI(props: IMyLikeUIProps) {
               </>
             ))}
           </S.LikeWrapper>
+          <S.PaginationWrapper>
+            <PaginationContainer
+              refetch={props.refetch}
+              count={props.count?.fetchFavoriteCafeNumber}
+            />
+          </S.PaginationWrapper>
         </B.Body>
       </B.Wrapper>
     </>

@@ -22,13 +22,13 @@ export default function LoginUI(props: ILoginUIProps) {
               </B.ButtonWrapper>
               <S.SocialLoginWrapper>
                 <B.SocialA href="https://cafemoment-backend.site/login/google">
-                  <S.GoogleLogin src="/Google.png" />
+                  <S.SocialLogin src="https://static.gabia.com/responsive/assets/images/accounts/icon_google.svg" />
                 </B.SocialA>
                 <B.SocialA href="https://cafemoment-backend.site/login/kakao">
-                  <S.SocialLogin src="/Kakao.png" />
+                  <S.SocialLogin src="https://static.gabia.com/responsive/assets/images/accounts/icon_kakao.svg" />
                 </B.SocialA>
                 <B.SocialA href="https://cafemoment-backend.site/login/naver">
-                  <S.SocialLogin src="/Naver.png" />
+                  <S.SocialLogin src="https://static.gabia.com/responsive/assets/images/accounts/icon_naver.svg" />
                 </B.SocialA>
               </S.SocialLoginWrapper>
               <S.FooterWrapper>

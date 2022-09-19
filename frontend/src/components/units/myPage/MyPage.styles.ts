@@ -3,15 +3,11 @@ import { breakPoints } from "../../../../styles/media";
 
 export const Wrapper = styled.section`
   width: 90vw;
-  /* width: 1500px; */
-  /* width: 1300px; */
+  /* height: 100vh; */
   display: flex;
   flex-direction: row;
   margin: 0 auto;
-  /* 
-  @media (min-width: 1300px) {
-    width: 1000px;
-  } */
+
   @media ${breakPoints.tablet} {
     width: 50vw;
   }
@@ -34,9 +30,10 @@ export const SideBar = styled.section`
 
 export const Body = styled.main`
   width: 60vw;
-  height: 100vh;
+  /* height: 100vh; */
   background-color: white;
   padding-top: 30px;
+  padding-bottom: 30px;
   @media ${breakPoints.mobile} {
     width: 100vw;
     margin: auto;

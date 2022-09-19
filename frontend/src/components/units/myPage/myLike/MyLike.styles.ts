@@ -4,6 +4,7 @@ import { breakPoints } from "../../../../../styles/media";
 
 export const LikeWrapper = styled.main`
   width: 80%;
+  /* height: 100vh; */
   display: grid;
   justify-content: center;
   text-align: start;
@@ -60,4 +61,12 @@ export const CafeDetail = styled.h5`
 export const HeartIcon = styled(HeartFilled)`
   color: #ee8383;
   /* padding-left: 100px; */
+`;
+
+export const PaginationWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
 `;

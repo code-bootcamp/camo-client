@@ -87,6 +87,10 @@ export const SocialLogin = styled.img`
 
   @media ${breakPoints.mobile} {
     width: 13vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 `;
 
@@ -100,8 +104,9 @@ export const SocialLoginWrapper = styled.div`
   /* padding-bottom: 2rem; */
   padding-top: 2rem;
   @media ${breakPoints.mobile} {
-    width: 50vw;
+    width: 55vw;
     margin: auto;
+    /* margin-left: 90px; */
   }
 `;
 
