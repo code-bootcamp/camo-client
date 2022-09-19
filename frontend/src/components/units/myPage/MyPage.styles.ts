@@ -3,7 +3,7 @@ import { breakPoints } from "../../../../styles/media";
 
 export const Wrapper = styled.section`
   width: 90vw;
-  /* height: 100vh; */
+  height: 110vh;
   display: flex;
   flex-direction: row;
   margin: 0 auto;

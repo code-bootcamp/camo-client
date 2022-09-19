@@ -1,8 +1,7 @@
-import { IQuery } from "../../../../../commons/types/generated/types";
 import { MouseEvent } from "react";
 
 export interface IPaginationProps {
-  data?: Pick<IQuery, "fetchMyCafeReservation">;
+  data?: any;
   onClickPage: (event: MouseEvent<HTMLButtonElement>) => void;
   onClickPrevPage: () => void;
   onClickNextPage: () => void;

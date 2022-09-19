@@ -8,8 +8,6 @@ import PaginationContainer from "../myReservation/pagination/Pagination.containe
 import { PaginationWrapper } from "../myReservation/MyReservation.styles";
 
 export default function MyWriteUI(props: IMyWriteUIProps) {
-  console.log(props.WriteData?.fetchUserMyBoard1);
-
   return (
     <>
       <B.Wrapper>
@@ -34,7 +32,7 @@ export default function MyWriteUI(props: IMyWriteUIProps) {
           <PaginationWrapper>
             <PaginationContainer
               refetch={props.refetch}
-              count={props.count?.fetchCafeReservationNumber}
+              count={props.count?.fetchUsermyBoardNumber}
             />
           </PaginationWrapper>
         </B.Body>
