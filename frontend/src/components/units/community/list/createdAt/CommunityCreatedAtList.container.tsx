@@ -17,32 +17,32 @@ export default function CommunityCreatedAtList() {
   //   FETCH_BOARDS
   // );
 
-  const { data, fetchMore } = useQuery<
+  const { data, refetch } = useQuery<
     Pick<IQuery, "fetchBoardsCreatedAt">,
     IQueryFetchBoardsCreatedAtArgs
   >(FETCH_BOARDS_CREATED_AT, {
     fetchPolicy: "network-only",
   });
-
-  const onFetchMore = () => {
-    if (!data) return;
-    fetchMore({
-      variables: { page: Math.ceil(data.fetchBoardsCreatedAt.length / 10) + 1 },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult.fetchBoardsCreatedAt) {
-          return {
-            fetchBoardsCreatedAt: [...prev.fetchBoardsCreatedAt],
-          };
-        }
-        return {
-          fetchBoardsCreatedAt: [
-            ...prev.fetchBoardsCreatedAt,
-            ...fetchMoreResult.fetchBoardsCreatedAt,
-          ],
-        };
-      },
-    });
-  };
+  console.log("asd", data?.fetchBoardsCreatedAt);
+  // const onFetchMore = () => {
+  //   if (!data) return;
+  //   fetchMore({
+  //     variables: { page: Math.ceil(data.fetchBoardsCreatedAt.length / 10) + 1 },
+  //     updateQuery: (prev, { fetchMoreResult }) => {
+  //       if (!fetchMoreResult.fetchBoardsCreatedAt) {
+  //         return {
+  //           fetchBoardsCreatedAt: [...prev.fetchBoardsCreatedAt],
+  //         };
+  //       }
+  //       return {
+  //         fetchBoardsCreatedAt: [
+  //           ...prev.fetchBoardsCreatedAt,
+  //           ...fetchMoreResult.fetchBoardsCreatedAt,
+  //         ],
+  //       };
+  //     },
+  //   });
+  // };
 
   const onClickMoveToDetail = (el: any) => (event: any) => {
     router.push(`/community/${el.id}`);
@@ -60,10 +60,11 @@ export default function CommunityCreatedAtList() {
   return (
     <CommunityListUI
       data={data}
+      refetch={refetch}
       onClickMoveToDetail={onClickMoveToDetail}
       keyword={keyword}
       onChangeKeyword={onChangeKeyword}
-      onFetchMore={onFetchMore}
+      // onFetchMore={onFetchMore}
       onErrorImg={onErrorImg}
     />
   );

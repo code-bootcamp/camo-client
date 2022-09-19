@@ -100,7 +100,7 @@ export default function CommunityWrite(props: ICommunityNewProps) {
             address: data.address,
             addressDetail: data.addressDetail,
             tags: data.tags.split(" "),
-            image: [...fileUrls].join().split(","),
+            image: [...fileUrls],
           },
         },
       });

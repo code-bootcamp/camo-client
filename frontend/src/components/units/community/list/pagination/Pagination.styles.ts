@@ -16,7 +16,7 @@ export const Div = styled.span`
 
 export const Page = styled.span`
   margin: 0px 10px;
-  color: ${(props: IPageProps) => (props.isActive ? "#7ebcf2" : "black")};
+  color: ${(props: IPageProps) => (props.isActive ? "##1e3932" : "black")};
   font-weight: ${(props: IPageProps) => (props.isActive ? "bold" : "normal")};
-  cursor: ${(props: IPageProps) => (props.isActive ? "none" : "pointer")};
+  cursor: ${(props: IPageProps) => (props.isActive ? "pointer" : "pointer")};
 `;

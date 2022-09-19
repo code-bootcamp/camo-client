@@ -1,33 +1,34 @@
+import { useQuery } from "@apollo/client";
 import { MouseEvent, useState } from "react";
+import { IQuery } from "../../../../../commons/types/generated/types";
 import CommunityPaginationUI from "./Pagination.presenter";
+import { FETCH_BOARDS_NUMBER } from "./Pagination.querise";
 
 export default function CommunityPagination(props: any) {
+  const { data: dataBoardsNumber } =
+    useQuery<Pick<IQuery, "fetchBoardsNumber">>(FETCH_BOARDS_NUMBER);
+
   const [startPage, setStartPage] = useState(1);
-  const [activePage, setActivePage] = useState(1);
-  // const [isActive, setIsActive] = useState(false);
 
-  const lastPage = props.count ? Math.ceil(props.count / 10) : 0;
-
-  const onClickPage = (event: MouseEvent<HTMLSpanElement>) => {
-    if (!(event.target instanceof Element)) return;
-    const activePage = Number(event.target.id);
-    setActivePage(activePage);
-    props.refetch({ page: activePage });
+  const onClickPage = (event: MouseEvent<HTMLElement>) => {
+    if (!(event.target instanceof HTMLElement)) return;
+    props.refetch({ page: Number(event.target.id) });
   };
 
   const onClickPrevPage = () => {
-    if (startPage <= 1) return;
+    if (startPage === 1) return;
     setStartPage((prev) => prev - 10);
-    setActivePage(startPage - 10);
     props.refetch({ page: startPage - 10 });
   };
 
   const onClickNextPage = () => {
-    if (startPage + 10 > lastPage) return;
-    setStartPage((prev) => prev + 10);
-    setActivePage(startPage + 10);
-    props.refetch({ page: startPage + 10 });
+    if (startPage + 10 <= props.lastPage) {
+      setStartPage((prev) => prev + 10);
+      props.refetch({ page: startPage + 10 });
+    }
   };
+
+  const lastPage = dataBoardsNumber ? Math.ceil(dataBoardsNumber?.fetchBoardsNumber / 10) : 0;
 
   return (
     <CommunityPaginationUI
@@ -36,8 +37,6 @@ export default function CommunityPagination(props: any) {
       onClickNextPage={onClickNextPage}
       startPage={startPage}
       lastPage={lastPage}
-      activePage={activePage}
-      // isActive={isActive}
     />
   );
 }

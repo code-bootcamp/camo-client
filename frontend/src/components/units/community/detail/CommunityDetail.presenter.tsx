@@ -53,14 +53,14 @@ export default function CommunityDetailUI(props: any) {
           {props.dataBoard?.fetchBoard.images[0]?.url !== "" ? (
             <S.MainImgWrapper>
               <S.MainImg
-                src={`https://storage.googleapis.com/${props.dataBoard?.fetchBoard.images[0]?.url}`}
+                src={`https://storage.googleapis.com/team04-storage/${props.dataBoard?.fetchBoard.images[0]?.url}`}
                 alt="이미지"
                 onError={props.onErrorImg}
               />
             </S.MainImgWrapper>
           ) : (
             <S.MainImg
-              src={`https://storage.googleapis.com/${props.dataBoard?.fetchBoard.images[1]?.url}`}
+              src={`https://storage.googleapis.com/team04-storage/${props.dataBoard?.fetchBoard.images[1]?.url}`}
               alt="이미지"
               onError={props.onErrorImg}
             />
@@ -71,7 +71,7 @@ export default function CommunityDetailUI(props: any) {
               <div key={uuidv4()}>
                 {el.url ? (
                   <S.Img
-                    src={`https://storage.googleapis.com/${el?.url}`}
+                    src={`https://storage.googleapis.com/team04-storage/${el?.url}`}
                     onError={props.onErrorImg}
                   />
                 ) : (

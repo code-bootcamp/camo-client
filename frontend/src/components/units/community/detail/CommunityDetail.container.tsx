@@ -70,13 +70,27 @@ export default function CommunityDetail() {
     getDebounce();
   };
 
+  // useEffect(() => {
+  //   dataFavoriteUser?.fetchFavoriteUser.user?.filter(
+  //     (el: any) => el.id === dataUser?.fetchLoginedUser.id
+  //   )
+  //     ? setLike(true)
+  //     : setLike(false);
+  // }, [dataFavoriteUser?.fetchFavoriteUser.user]);
+
   useEffect(() => {
-    dataFavoriteUser?.fetchFavoriteUser.user?.filter(
-      (el: any) => el.id === dataUser?.fetchLoginedUser.id
-    )
-      ? setLike(true)
-      : setLike(false);
-  }, [dataFavoriteUser?.fetchFavoriteUser.user]);
+    if (dataFavoriteUser?.fetchFavoriteUser[0]?.user.id === dataUser?.fetchLoginedUser.id)
+      setLike(true);
+  }, [dataFavoriteUser]);
+  // useEffect(() => {
+  //   console.log(dataFavoriteUser?.fetchFavoriteUser.map((el) => el.id));
+  //   if (
+  //     dataFavoriteUser?.fetchFavoriteUser
+  //       .map((el) => el.id)
+  //       .includes(router.query.communityId as string)
+  //   )
+  //     setLike(true);
+  // }, [dataFavoriteUser]);
 
   const onClickUpdate = () => {
     router.push(`/community/${router.query.communityId}/edit`);
