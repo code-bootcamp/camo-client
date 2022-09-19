@@ -28,7 +28,9 @@
     "src/components/commons/mainPageQuestion/mainPageQuestion.types.js",
     "src/components/commons/mainPageQuestion/mainPageQuestion.styles.js",
     "src/components/commons/mainPageQuestion/mainPageQuestion.presenter.js",
-    "src/components/commons/mainPageQuestion/mainPageQuestion.container.js"
+    "src/components/commons/mainPageQuestion/mainPageQuestion.container.js",
+    "src/components/commons/mainPageQuestion/Q4.presenter.js",
+    "src/commons/libraries/utils.js"
   ],
   "exclude": ["node_modules"]
 }

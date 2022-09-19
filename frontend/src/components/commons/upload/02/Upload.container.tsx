@@ -12,19 +12,20 @@ export default function Upload02(props: any) {
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = checkValidationImage(event.target.files?.[0]);
     if (!file) return;
-
     try {
-      const result = await uploadFile({
-        // variables: { files: file },
-        variables: { files: [file] },
-      });
-      console.log(result);
+      console.log("업로드파일", file);
+      // const result = await uploadFile({variables: { files:[file]},
+
+      const result = await uploadFile({ variables: { files: [file] } });
+      console.log("업로드결과", result);
       // props.onChangeFileUrls(result.data.uploadFile, props.index);
 
       props.onChangeFileUrls(result.data.uploadFile[0], props.index);
       // 왜[0]을 해야하는가
-    } catch (error: any) {
-      Modal.error({ content: error.message });
+    } catch (error) {
+      if (error instanceof Error) Modal.error({ content: error.message });
+
+      // if (error instanceof Error) Modal.error({ content: error.message });
       console.log("실패");
     }
   };
@@ -36,7 +37,8 @@ export default function Upload02(props: any) {
   return (
     <UploadUI02
       fileRef={fileRef}
-      fileUrl={props.fileUrls}
+      fileUrl={props.fileUrl}
+      // fileUrl={props.fileUrls}
       defaultFileUrl={props.defaultFileUrl}
       onChangeFile={onChangeFile}
       onClickUpload={onClickUpload}

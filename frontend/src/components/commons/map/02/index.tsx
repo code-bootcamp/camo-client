@@ -42,7 +42,7 @@ export default function KakaoMap02(props: IKaKaoMapProps) {
           function (result: any, status: any) {
             if (status === window.kakao.maps.services.Status.OK) {
               const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
-              const imageSrc = "images/Kakao.png"; // 마커이미지의 주소입니다
+              const imageSrc = "/Kakao.png"; // 마커이미지의 주소입니다
               const imageSize = new window.kakao.maps.Size(55, 55); // 마커이미지의 크기입니다
               const imageOption = {
                 offset: new window.kakao.maps.Point(27, 69),
@@ -53,19 +53,16 @@ export default function KakaoMap02(props: IKaKaoMapProps) {
               //   imageSrc,
               //   imageSize,
               //   imageOption
-              // );
+              //  );
               // console.log(markerImage);
-              window.kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+              // window.kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
               // 마커를 생성합니다
-              // const marker = new window.kakao.maps.Marker({
-              //   map: map,
-              //   position: coords,
-              // });
-              // console.log(marker);
-              window.kakao.maps.Marker({
+              const marker = new window.kakao.maps.Marker({
                 map,
                 position: coords,
               });
+              console.log(marker);
+
               map.setCenter(coords);
             }
           }

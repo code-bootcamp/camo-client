@@ -1,5 +1,6 @@
 import { MenuOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
+import { Button } from "antd";
 import { breakPoints } from "../../../../../styles/media";
 
 export const Wrapper = styled.div`
@@ -15,7 +16,7 @@ export const Wrapper = styled.div`
 
   @media ${breakPoints.mobile} {
     display: flex;
-    background-color: #454545;
+    /* background-color: #454545; */
     padding: 0 5%;
   }
 `;
@@ -32,7 +33,7 @@ export const HeaderWrapper = styled.div`
 
   @media ${breakPoints.mobile} {
     display: flex;
-    background-color: #454545;
+    /* background-color: #454545; */
   }
 `;
 
@@ -74,7 +75,7 @@ export const MenuFonts = styled.div`
 `;
 
 export const LoginWrapper = styled.div`
-  width: 8rem;
+  width: 9rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -117,10 +118,25 @@ export const LoginUser = styled.h3`
 `;
 
 export const MenuTab = styled(MenuOutlined)`
-  display: none;
+  display: none !important;
   @media ${breakPoints.mobile} {
-    display: block;
+    display: block !important;
     font-size: 2rem;
     cursor: pointer;
+  }
+`;
+
+export const MenuButton = styled(Button)`
+  display: none !important;
+
+  @media ${breakPoints.mobile} {
+    width: 5rem;
+    height: 3rem;
+    position: absolute;
+    top: 1rem;
+    right: 2%;
+    z-index: 99;
+    cursor: pointer;
+    display: block !important;
   }
 `;

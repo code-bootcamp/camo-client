@@ -67,8 +67,8 @@ export const FETCH_CAFE_LIST_NUMBER = gql`
 `;
 
 export const SEARCH_CAFE_LIST = gql`
-  query searchCafeList($search: String!) {
-    searchCafeList(search: $search) {
+  query searchCafeList($search_cafelist: String) {
+    searchCafeList(search_cafelist: $search_cafelist) {
       id
       title
       zipcode
@@ -78,8 +78,10 @@ export const SEARCH_CAFE_LIST = gql`
       startTime
       endTime
       homepage
+      deposit
       contents
       remarks
+      createdAt
       cafeListTag {
         id
         name

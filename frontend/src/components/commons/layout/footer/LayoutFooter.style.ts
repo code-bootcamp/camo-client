@@ -9,6 +9,12 @@ export const Footer = styled.div`
   width: 100%;
   height: 18rem;
   background-color: #786d5f;
+  @media ${breakPoints.mobile} {
+    /* display: none; */
+    flex-direction: row;
+    padding: 3rem;
+    height: 11rem;
+  }
 `;
 
 export const FooterText = styled.span`
@@ -20,6 +26,7 @@ export const FooterText = styled.span`
   cursor: pointer;
   @media ${breakPoints.mobile} {
     font-size: 0.6rem;
+    display: none;
   }
 `;
 

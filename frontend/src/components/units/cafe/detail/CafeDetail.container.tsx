@@ -5,16 +5,22 @@ import { message } from "antd";
 import { FETCH_CAFE_LISTS_CREATED_AT } from "../list/CafeList.queries";
 import CafeDetailUI from "./CafeDetail.presenter";
 import { DELETE_CAFE_LIST, FETCH_CAFE_LIST, TOGGLE_FAVORITE_CAFES } from "./CafeDetail.queries";
-import { useState } from "react";
+import { MouseEvent, SyntheticEvent, useEffect, useState } from "react";
 
-export default function CafeDetail() {
+export default function CafeDetail(props: any) {
   const router = useRouter();
   const [isActive, setIsActive] = useState(false);
+  // const [like, setLike] = useState(false);
 
   const [deleteCafeList] = useMutation(DELETE_CAFE_LIST);
   const [toggleFavoriteCafes] = useMutation(TOGGLE_FAVORITE_CAFES);
 
-  const { data } = useQuery(FETCH_CAFE_LIST, {
+  const onClickUpdate = () => {
+    router.push(`/cafe/${router.query.cafeId}/edit`);
+  };
+
+  // refetch 추가
+  const { data, refetch } = useQuery(FETCH_CAFE_LIST, {
     variables: { cafeListId: router.query.cafeId },
   });
   console.log(data);
@@ -47,19 +53,25 @@ export default function CafeDetail() {
 
   // const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const onClickFavorite = async () => {
+  const onClickFavorite = async (event: MouseEvent<HTMLElement>) => {
     try {
-      await toggleFavoriteCafes({
+      const result = await toggleFavoriteCafes({
         variables: {
-          cafeListId: router.query.cafeId as string,
+          cafeListId: event.currentTarget.id,
+          // cafeListId: router.query.cafeId as string,
         },
+        // 리패치 퀘리랑 리패치 차이?
         refetchQueries: [{ query: FETCH_CAFE_LISTS_CREATED_AT }],
       });
+      console.log("리저트", result);
+
+      refetch();
+      console.log("toggleFavoriteCafes", result.data?.toggleFavoriteCafes);
+      setIsActive((prev) => !prev);
       message.success("찜 성공");
     } catch (error) {
-      message.error("찜하기 실패");
+      // message.error("찜하기 실패");
     }
-    setIsActive((prev) => !prev);
   };
 
   const onClickDelete = async () => {
@@ -68,7 +80,6 @@ export default function CafeDetail() {
         variables: {
           cafeListId: router.query.cafeId as string,
         },
-
         refetchQueries: [
           {
             query: FETCH_CAFE_LISTS_CREATED_AT,
@@ -82,12 +93,19 @@ export default function CafeDetail() {
       message.error("삭제에 실패했습니다!");
     }
   };
+
+  const onErrorImg = (e: SyntheticEvent<HTMLImageElement>) => {
+    (e.target as HTMLImageElement).src =
+      "https://images.unsplash.com/photo-1481833761820-0509d3217039?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
+  };
   return (
     <CafeDetailUI
       data={data}
       isActive={isActive}
       onClickFavorite={onClickFavorite}
       onClickDelete={onClickDelete}
+      onErrorImg={onErrorImg}
+      onClickUpdate={onClickUpdate}
       // handleClickButton={handleClickButton}
       // name={name}
       // content={content}

@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../../styles/media";
 
 export const SearchBarWrap = styled.div`
+  margin-left: 3rem;
   width: 33rem;
   height: 3rem;
   font-size: 0.8rem;
