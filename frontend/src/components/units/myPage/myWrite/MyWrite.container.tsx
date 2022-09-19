@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { IQuery } from "../../../../commons/types/generated/types";
+import { IQuery, IQueryFetchUserMyBoard1Args } from "../../../../commons/types/generated/types";
 import useAuth from "../../../commons/hooks";
 import { FETCH_LOGINED_USER } from "../MyPage.queries";
 import MyWriteUI from "./MyWrite.presenter";
@@ -15,16 +15,11 @@ export default function MyWrite() {
   useAuth();
 
   const { data: UserData } = useQuery<Pick<IQuery, "fetchLoginedUser">>(FETCH_LOGINED_USER);
-  // const { data: WriteData } = useQuery<Pick<IQuery, "fetchUserbyId">, IQueryFetchUserbyIdArgs>(
-  //   FETCH_USER_BY_ID,
-  //   {
-  //     variables: {
-  //       userId: String(UserData?.fetchLoginedUser.id),
-  //     },
-  //   }
-  // );
   const { data: count } = useQuery(FETCH_USER_MY_BOARD_NUMBER);
-  const { data: WriteData, refetch } = useQuery(FETCH_USER_MY_BOARD, {
+  const { data: WriteData, refetch } = useQuery<
+    Pick<IQuery, "fetchUserMyBoard1">,
+    IQueryFetchUserMyBoard1Args
+  >(FETCH_USER_MY_BOARD, {
     variables: {
       userId: String(UserData?.fetchLoginedUser.id),
     },
