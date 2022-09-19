@@ -22,6 +22,7 @@ export const CREATE_CAFE_LIST = gql`
       cafeListImage {
         id
         url
+        isMain
       }
     }
   }
@@ -42,6 +43,7 @@ export const UPDATE_CAFE_LIST = gql`
       contents
       homepage
       remarks
+      createdAt
       updatedAt
       cafeListTag {
         id
@@ -50,6 +52,7 @@ export const UPDATE_CAFE_LIST = gql`
       cafeListImage {
         id
         url
+        isMain
       }
     }
   }

@@ -9,8 +9,8 @@ import { v4 as uuidv4 } from "uuid";
 import Dompurify from "dompurify";
 import QuestionUI from "../../../commons/question/Question.presenter";
 import RatingPage from "../../../commons/rating";
-import CafeDetailImagePage from "./CafeImage";
-import MainPageQuestionContainer from "../../../commons/mainPageQuestion/mainPageQuestion.container";
+// import CafeDetailImagePage from "./CafeImage";
+import Reservation from "../../reservation/Reservation.container";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -28,10 +28,10 @@ export default function CafeDetailUI(props: any) {
         <C.TopWrapper>
           <C.ContentsWrap>
             <C.ImageBox>
-              {props.data?.fetchCafeList.cafeListImage[0]?.url !== "" ? (
+              {props.data?.fetchCafeList?.cafeListImage[0]?.url ? (
                 <img
                   className="BigImage"
-                  src={`https://storage.googleapis.com/${props.data?.fetchCafeList.cafeListImage[0]?.url}`}
+                  src={`https://storage.googleapis.com/team04-storage/${props.data?.fetchCafeList.cafeListImage[0]?.url}`}
                   alt="이미지"
                 />
               ) : (
@@ -42,8 +42,8 @@ export default function CafeDetailUI(props: any) {
                   <div key={uuidv4()}>
                     {el.url ? (
                       <img
-                        src={`https://storage.googleapis.com/${el?.url}`}
-                        onError={props.onErrorImg}
+                        src={`https://storage.googleapis.com/team04-storage/${el?.url}`}
+                        // onError={props.onErrorImg}
                       />
                     ) : (
                       <>
@@ -52,21 +52,6 @@ export default function CafeDetailUI(props: any) {
                     )}
                   </div>
                 ))}
-
-                {/* <img
-                  src={
-                    `${props.data?.fetchCafeList.cafeListImage[1]?.url}`
-                      ? `https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[1]?.url}`
-                      : ""
-                  }
-                />
-                <img
-                  src={
-                    `${props.data?.fetchCafeList.cafeListImage[2]?.url}`
-                      ? `https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[2]?.url}`
-                      : ""
-                  }
-                /> */}
 
                 {/* <img
                   src={`https://storage.googleapis.com/${props.data?.fetchCafeList?.cafeListImage[1]?.url}`}
@@ -118,7 +103,7 @@ export default function CafeDetailUI(props: any) {
                   <span className="title"> 🎈 영업시간 </span>
                   <span>
                     {" "}
-                    월-금 {props.data?.fetchCafeList?.startTime} / 토-일{" "}
+                    (Open) {props.data?.fetchCafeList?.startTime} ~ (Close){" "}
                     {props.data?.fetchCafeList?.endTime}{" "}
                   </span>
                 </C.Label>
@@ -200,8 +185,8 @@ export default function CafeDetailUI(props: any) {
 
           <QuestionUI />
         </C.BottomWrapper>
-        <CafeDetailImagePage />
-        {/* <Reservation /> */}
+        {/* <CafeDetailImagePage /> */}
+        <Reservation />
       </C.Wrapper>
     </>
   );

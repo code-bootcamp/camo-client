@@ -216,6 +216,7 @@ export type IMutation = {
   deleteComment: Scalars['Boolean'];
   deleteLoginUser: Scalars['Boolean'];
   deleteReview: Scalars['Boolean'];
+  deleteUser: Scalars['Boolean'];
   loginUser: Scalars['String'];
   logoutUser: Scalars['String'];
   restoreAccessToken: Scalars['String'];
@@ -317,6 +318,11 @@ export type IMutationDeleteLoginUserArgs = {
 
 export type IMutationDeleteReviewArgs = {
   reviewId: Scalars['String'];
+};
+
+
+export type IMutationDeleteUserArgs = {
+  userId: Scalars['String'];
 };
 
 
@@ -447,9 +453,6 @@ export type IQuery = {
   fetchUserbyId: IUser;
   fetchUsermyBoardNumber: Scalars['Float'];
   fetchUsers: Array<IUser>;
-  roleGuardAdmin: IUser;
-  roleGuardCafeOwner: IUser;
-  roleGuardUser: IUser;
   searchBoards: Array<IBoard>;
   searchCafeList: Array<ICafeList>;
   searchMyBoards: Array<IBoard>;
@@ -590,21 +593,6 @@ export type IQueryFetchUserbyIdArgs = {
 
 
 export type IQueryFetchUsermyBoardNumberArgs = {
-  userId: Scalars['String'];
-};
-
-
-export type IQueryRoleGuardAdminArgs = {
-  userId: Scalars['String'];
-};
-
-
-export type IQueryRoleGuardCafeOwnerArgs = {
-  userId: Scalars['String'];
-};
-
-
-export type IQueryRoleGuardUserArgs = {
   userId: Scalars['String'];
 };
 

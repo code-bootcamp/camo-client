@@ -1,8 +1,7 @@
 import styled from "@emotion/styled";
 import "antd/dist/antd.css";
 import { breakPoints } from "../../../../../styles/media";
-import Slider from "react-slick";
-import { Image, Input } from "antd";
+import { Image, Slider } from "antd";
 
 export const Wrapper = styled.div`
   margin: 0 auto;
@@ -160,6 +159,7 @@ export const BtnPick = styled.div`
   width: 10rem;
   padding-left: 1rem;
   font-size: 20px;
+  font-weight: 800;
   border: none;
   .zzim {
     /* color: ${(props: any) => (props.isActive === true ? "tomato" : "blue")}; */
@@ -177,6 +177,7 @@ export const LabelBox = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 19rem;
+
   /* background-color: aliceblue; */
   /* border: 0.06rem solid #555; */
   @media ${breakPoints.mobile} {
@@ -190,13 +191,14 @@ export const Label = styled.div`
   flex-direction: row;
   width: 40rem;
   margin-bottom: 0.7rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 400;
   margin-left: 1rem;
+  color: #333;
   .title {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     line-height: 1.4rem;
-    font-weight: 800;
+    font-weight: 700;
     width: 10rem;
     /* background-color: yellow; */
     @media ${breakPoints.mobile} {
@@ -220,7 +222,8 @@ export const Label2 = styled.div`
   flex-direction: column;
   align-items: center;
   font-size: 1.8rem;
-  font-weight: 600;
+  font-weight: 700;
+  color: #333;
   margin: 4rem 0;
   text-align: center;
   div {
@@ -300,7 +303,8 @@ export const ReserveBtn = styled.div`
   border-radius: 0.5rem;
   height: 3rem;
   background: #3c565b;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: 700;
   color: white;
   line-height: 3rem;
   text-align: center;
