@@ -7,8 +7,7 @@ import { ICafeReservation } from "../../../../commons/types/generated/types";
 import PaginationContainer from "./pagination/Pagination.container";
 
 export default function MyReservationUI(props: IMyReservationUIProps) {
-  // console.log(props.ReservationData);
-  console.log(props.count);
+  console.log(props.data);
   return (
     <>
       <B.Wrapper>
@@ -16,8 +15,7 @@ export default function MyReservationUI(props: IMyReservationUIProps) {
         <B.Body>
           <B.StayMenu>예약내역</B.StayMenu>
           <B.Line />
-          {/* {props.count?.fetchMyCafeReservation?.map((el: ICafeReservation) => ( */}
-          {props.ReservationData?.fetchUserbyId?.cafeReservation?.map((el: ICafeReservation) => (
+          {props.data?.fetchMyCafeReservation?.map((el: ICafeReservation) => (
             <div key={uuidv4()}>
               <S.MainWrapper>
                 <S.RowWrapper>
@@ -49,7 +47,10 @@ export default function MyReservationUI(props: IMyReservationUIProps) {
             </div>
           ))}
           <S.PaginationWrapper>
-            <PaginationContainer refetch={props.refetch} count={props.count} />
+            <PaginationContainer
+              refetch={props.refetch}
+              count={props.count?.fetchCafeReservationNumber}
+            />
           </S.PaginationWrapper>
         </B.Body>
       </B.Wrapper>

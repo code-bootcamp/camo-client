@@ -17,8 +17,8 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "/*.ts",
+    "/*.tsx",
     "pages/cafe/[boardId]/index.js",
     "pages/test/calendar.tsx",
     "src/components/units/myPage/MyPage.styles.js",

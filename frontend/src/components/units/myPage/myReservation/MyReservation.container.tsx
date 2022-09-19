@@ -3,13 +3,17 @@ import { IQuery, IQueryFetchUserbyIdArgs } from "../../../../commons/types/gener
 import useAuth from "../../../commons/hooks";
 import { FETCH_LOGINED_USER } from "../MyPage.queries";
 import MyReservationUI from "./MyReservation.presenter";
-import { FETCH_MY_CAFE_RESERVATION, FETCH_USER_BY_ID } from "./MyReservation.queries";
+import {
+  FETCH_CAFE_RESERVATION_NUMBER,
+  FETCH_MY_CAFE_RESERVATION,
+  FETCH_USER_BY_ID,
+} from "./MyReservation.queries";
 
 export default function MyReservation() {
   useAuth();
 
   const { data: UserData } = useQuery<Pick<IQuery, "fetchLoginedUser">>(FETCH_LOGINED_USER);
-  const { data: ReservationData, refetch } = useQuery<
+  const { data: ReservationData } = useQuery<
     Pick<IQuery, "fetchUserbyId">,
     IQueryFetchUserbyIdArgs
   >(FETCH_USER_BY_ID, {
@@ -17,11 +21,15 @@ export default function MyReservation() {
       userId: String(UserData?.fetchLoginedUser.id),
     },
   });
-
-  const { data: count } = useQuery(FETCH_MY_CAFE_RESERVATION, {
+  const { data, refetch } = useQuery(FETCH_MY_CAFE_RESERVATION, {
     variables: {
       userId: String(UserData?.fetchLoginedUser.id),
-      // page: 3,
+    },
+  });
+
+  const { data: count } = useQuery(FETCH_CAFE_RESERVATION_NUMBER, {
+    variables: {
+      userId: String(UserData?.fetchLoginedUser.id),
     },
   });
 
@@ -35,6 +43,7 @@ export default function MyReservation() {
       onClickCancelButton={onClickCancelButton}
       count={count}
       refetch={refetch}
+      data={data}
     />
   );
 }
