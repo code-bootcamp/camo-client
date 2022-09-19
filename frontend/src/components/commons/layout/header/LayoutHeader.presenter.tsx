@@ -51,56 +51,56 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem button key="로그인">
-          <ListItemIcon>
-            <KeyboardArrowRight />
-          </ListItemIcon>
-          <Link href="/login">
-            <a>
+        <Link href="/login">
+          <ListItem button key="로그인">
+            <ListItemIcon>
+              <KeyboardArrowRight />
+            </ListItemIcon>
+            <a style={{ color: "black" }}>
               <ListItemText primary="로그인" />
             </a>
-          </Link>
-        </ListItem>
-        <ListItem button key="회원가입">
-          <ListItemIcon>
-            <KeyboardArrowRight />
-          </ListItemIcon>
-          <Link href="/login/selectSignUp">
-            <a>
+          </ListItem>
+        </Link>
+        <Link href="/login/selectSignUp">
+          <ListItem button key="회원가입">
+            <ListItemIcon>
+              <KeyboardArrowRight />
+            </ListItemIcon>
+            <a style={{ color: "black" }}>
               <ListItemText primary="회원가입" />
             </a>
-          </Link>
-        </ListItem>
-        <ListItem button key="카페예약">
-          <ListItemIcon>
-            <KeyboardArrowRight />
-          </ListItemIcon>
-          <Link href="/cafe">
-            <a>
+          </ListItem>
+        </Link>
+        <Link href="/cafe">
+          <ListItem button key="카페예약">
+            <ListItemIcon>
+              <KeyboardArrowRight />
+            </ListItemIcon>
+            <a style={{ color: "black" }}>
               <ListItemText primary="카페예약" />
             </a>
-          </Link>
-        </ListItem>
-        <ListItem button key="카페등록">
-          <ListItemIcon>
-            <KeyboardArrowRight />
-          </ListItemIcon>
-          <Link href="/cafe/new">
-            <a>
+          </ListItem>
+        </Link>
+        <Link href="/cafe/new">
+          <ListItem button key="카페등록">
+            <ListItemIcon>
+              <KeyboardArrowRight />
+            </ListItemIcon>
+            <a style={{ color: "black" }}>
               <ListItemText primary="카페등록" />
             </a>
-          </Link>
-        </ListItem>
-        <ListItem button key="커뮤니티">
-          <ListItemIcon>
-            <KeyboardArrowRight />
-          </ListItemIcon>
-          <Link href="/community">
-            <a>
+          </ListItem>
+        </Link>
+        <Link href="/community">
+          <ListItem button key="커뮤니티">
+            <ListItemIcon>
+              <KeyboardArrowRight />
+            </ListItemIcon>
+            <a style={{ color: "black" }}>
               <ListItemText primary="커뮤니티" />
             </a>
-          </Link>
-        </ListItem>
+          </ListItem>
+        </Link>
         {/* <ListItem button key="로그아웃">
           <ListItemIcon>
             <KeyboardArrowRight />
