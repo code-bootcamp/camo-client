@@ -51,3 +51,9 @@ export const FETCH_BOARDS_NUMBER = gql`
     fetchBoardsNumber
   }
 `;
+
+export const SEARCH_BOARDS = gql`
+  query searchBoards($search_board: String) {
+    searchBoards(search_board: $search_board)
+  }
+`;

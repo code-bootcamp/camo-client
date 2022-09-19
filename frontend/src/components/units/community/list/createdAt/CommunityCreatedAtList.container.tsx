@@ -16,6 +16,7 @@ export default function CommunityCreatedAtList() {
   // const { data, refetch, fetchMore } = useQuery<Pick<IQuery, "fetchBoards">, IQueryFetchBoardsArgs>(
   //   FETCH_BOARDS
   // );
+
   const { data, fetchMore } = useQuery<
     Pick<IQuery, "fetchBoardsCreatedAt">,
     IQueryFetchBoardsCreatedAtArgs

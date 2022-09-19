@@ -1,31 +1,29 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
-import {
-  SyntheticEvent,
-  // useEffect,
-  useState,
-} from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
 import {
   IMutation,
   IMutationDeleteBoardArgs,
   IMutationToggleLikeFeedArgs,
   IQuery,
+  IQueryFetchFavoriteUserArgs,
 } from "../../../../commons/types/generated/types";
 import { FETCH_BOARDS_CREATED_AT } from "../list/CommunityList.queries";
 import CommunityDetailUI from "./CommunityDetail.presenter";
 import {
   DELETE_BOARD,
   FETCH_BOARD,
+  FETCH_FAVORITE_USER,
   FETCH_LOGINED_USER,
   TOGGLE_LIKE_FEED,
 } from "./CommunityDetail.queries";
+import _ from "lodash";
 
 export default function CommunityDetail() {
   const router = useRouter();
 
   const [like, setLike] = useState(false);
-  // console.log(like, setLike);
 
   const [deleteBoard] = useMutation<Pick<IMutation, "deleteBoard">, IMutationDeleteBoardArgs>(
     DELETE_BOARD
@@ -36,49 +34,49 @@ export default function CommunityDetail() {
     IMutationToggleLikeFeedArgs
   >(TOGGLE_LIKE_FEED);
 
-  const { data: UserData } = useQuery<Pick<IQuery, "fetchLoginedUser">>(FETCH_LOGINED_USER);
-
-  const { data: BoardData, refetch } = useQuery(FETCH_BOARD, {
-    variables: { boardId: router.query.communityId },
+  const { data: dataFavoriteUser } = useQuery<
+    Pick<IQuery, "fetchFavoriteUser">,
+    IQueryFetchFavoriteUserArgs
+  >(FETCH_FAVORITE_USER, {
+    variables: { boardId: String(router.query.communityId) },
   });
 
-  const onClickLike = async () => {
-    console.log("likeCount", BoardData?.fetchBoard.likeCount);
+  const { data: dataUser } = useQuery<Pick<IQuery, "fetchLoginedUser">>(FETCH_LOGINED_USER);
+
+  const { data: dataBoard, refetch } = useQuery(FETCH_BOARD, {
+    variables: { boardId: String(router.query.communityId) },
+  });
+
+  const getDebounce = _.debounce(async () => {
     try {
       const result = await toggleLikeFeed({
         variables: {
           boardId: String(router.query.communityId),
         },
-        // refetchQueries: [
-        //   {
-        //     query: FETCH_BOARD,
-        //     variables: {
-        //       boardId: String(router.query.communityId),
-        //     },
-        //   },
-        // ],
       });
       refetch();
-      console.log("toggleLikeFeed", result.data?.toggleLikeFeed);
-      setLike((prev) => !prev);
+      setLike(Boolean(result.data?.toggleLikeFeed));
+      result.data?.toggleLikeFeed
+        ? Modal.success({ content: "이 게시글 좋네요😊" })
+        : Modal.success({ content: "좋아요를 취소합니다🥲" });
     } catch (error) {
       if (error instanceof Error) {
         Modal.error({ content: error.message });
-        console.log(error.message);
       }
     }
+  }, 500);
+
+  const onClickLike = async () => {
+    getDebounce();
   };
 
-  const onClickLike2 = async () => {
-    // refetch();
-    await setLike((prev) => !prev);
-  };
-
-  // useEffect(() => {
-  //   BoardData?.fetchBoard.favoriteBoard.user.filter((el: IFetchBoardEl) => el.id === UserData?.fetchLoginedUser.id )
-  //     ? setLike(true)
-  //     : setLike(false);
-  // }, [BoardData?.fetchBoard.favoriteBoard.user]);
+  useEffect(() => {
+    dataFavoriteUser?.fetchFavoriteUser.user?.filter(
+      (el: any) => el.id === dataUser?.fetchLoginedUser.id
+    )
+      ? setLike(true)
+      : setLike(false);
+  }, [dataFavoriteUser?.fetchFavoriteUser.user]);
 
   const onClickUpdate = () => {
     router.push(`/community/${router.query.communityId}/edit`);
@@ -111,13 +109,13 @@ export default function CommunityDetail() {
   return (
     <CommunityDetailUI
       like={like}
-      BoardData={BoardData}
-      UserData={UserData}
+      dataBoard={dataBoard}
+      dataUser={dataUser}
       onClickDelete={onClickDelete}
       onErrorImg={onErrorImg}
       onClickUpdate={onClickUpdate}
       onClickLike={onClickLike}
-      onClickLike2={onClickLike2}
+      dataFavoriteUser={dataFavoriteUser}
     />
   );
 }

@@ -88,7 +88,7 @@ export default function CommunityWrite(props: ICommunityNewProps) {
   // }, [props.data]);
 
   const onClickCreate = async (data: any) => {
-    // console.log("fileUrls Check", fileUrls);
+    console.log("fileUrls Check", fileUrls);
 
     try {
       const result = await createBoard({

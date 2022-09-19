@@ -1,11 +1,11 @@
 import Link from "next/link";
 import * as S from "./CommunityList.styles";
-// import Paginations01 from "../../../commons/pagination/01/Paginations01.container";
-import Searchbars01UI from "../../../commons/searchbar/01/Searchbars01.presenter";
 import { IBoardListUIProps } from "./CommunityList.types";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 import CommunityCreatedAtList from "./createdAt/CommunityCreatedAtList.container";
 import CommunityLikeCountList from "./likeCount/CommunityLikeCountList.container";
+import SearchBar from "../../../commons/searchbar/01/SearchBar.container";
+// import CommunityPagination from "./pagination/Pagination.container";
 
 export default function CommunityListUI(props: IBoardListUIProps) {
   return (
@@ -29,15 +29,15 @@ export default function CommunityListUI(props: IBoardListUIProps) {
           </S.SortList>
 
           <S.InputWrapper>
-            <Searchbars01UI
+            <SearchBar
               placeholder="게시글을 검색해보세요"
               refetch={
-                props.alignment === "createdAt" ? props.CreatedAtRefetch : props.LikeCountRefetch
+                props.alignment === "createdAt" ? props.refetchCreatedAt : props.refetchLikeCount
               }
               refetchBoardsNumber={props.refetchBoardsNumber}
+              refetchSearch={props.refetchSearch}
               onChangeKeyword={props.onChangeKeyword}
             />
-            <S.SearchBtn>검색</S.SearchBtn>
           </S.InputWrapper>
         </S.NavWrapper>
         <Link href="/community/new">
@@ -46,9 +46,12 @@ export default function CommunityListUI(props: IBoardListUIProps) {
           </a>
         </Link>
         {props.alignment === "createdAt" ? <CommunityCreatedAtList /> : <CommunityLikeCountList />}
-        {/* <S.PaginationStyle>
-          <Paginations01 refetch={props.alignment === "createdAt" ? props.CreatedAtRefetch : props.LikeCountRefetch} boardsNumber={props.dataBoardsNumber} />
-        </S.PaginationStyle> */}
+        {/* <CommunityPagination
+          refetch={
+            props.alignment === "createdAt" ? props.refetchCreatedAt : props.refetchLikeCount
+          }
+          boardsNumber={props.dataBoardsNumber}
+        /> */}
       </S.BodyWrapper>
     </S.Wrapper>
   );

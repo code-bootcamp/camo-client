@@ -2,10 +2,10 @@ import { Modal } from "antd";
 import DaumPostcodeEmbed from "react-daum-postcode";
 import { v4 as uuidv4 } from "uuid";
 import * as S from "./CommunityWrite.styles";
-// import MapComponent from "../../../commons/map/01";
+import MapComponent from "../../../commons/map/01";
 import dynamic from "next/dynamic";
 import { ICommunityUIProps } from "./CommunityWrite.types";
-import KakaoMap02 from "../../../commons/map/02";
+// import KakaoMap02 from "../../../commons/map/02";
 import Upload from "../../../commons/upload/01/Upload.container";
 
 const ToastUI = dynamic(() => import("../../../commons/editor"), {
@@ -44,13 +44,13 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
         }
       >
         <S.BodyWrapper>
-          <S.Lable>제목</S.Lable>
+          <S.Label>제목</S.Label>
           <S.TitleInput
             type="text"
             placeholder="제목을 입력해주세요"
             {...props.register("title")}
           />
-          <S.Lable>내용</S.Lable>
+          <S.Label>내용</S.Label>
           <S.ContentWrapper>
             <ToastUI
               initialValue={props.data?.fetchBoard.contents}
@@ -59,7 +59,7 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
             />
             {/* <S.ContentsReactQuill onChange={props.onChangeContents} /> */}
           </S.ContentWrapper>
-          <S.Lable>이미지</S.Lable>
+          <S.Label>이미지</S.Label>
           <S.ImageWrap>
             {props.fileUrls.map((el: any, index: any) => (
               <Upload
@@ -70,18 +70,18 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
               />
             ))}
           </S.ImageWrap>
-          <S.Lable>태그</S.Lable>
+          <S.Label>태그</S.Label>
           <S.TagInput type="text" placeholder="태그를 입력해주세요" {...props.register("tags")} />
-          <S.Lable>주소</S.Lable>{" "}
+          <S.Label>주소</S.Label>{" "}
           <S.MapAddressWrapper>
             <S.MapWrapper>
-              {/* <MapComponent address={props.address} /> */}
-              <KakaoMap02
+              <MapComponent data={String(props.data?.fetchBoard.address)} address={props.address} />
+              {/* <KakaoMap02
                 data={props.data?.fetchBoard}
                 address={props.data?.fetchBoard?.address as string}
                 width="100%"
                 height="100%"
-              />
+              /> */}
             </S.MapWrapper>
             <S.AddressWrapper>
               <S.AddressInput

@@ -15,10 +15,6 @@ export const FETCH_BOARD = gql`
         id
         name
       }
-      favoriteBoard {
-        id
-        isLike
-      }
       user {
         id
         name
@@ -53,7 +49,23 @@ export const DELETE_BOARD = gql`
 `;
 
 export const TOGGLE_LIKE_FEED = gql`
-  mutation toggleLikeFeed($boardId: boardId) {
+  mutation toggleLikeFeed($boardId: String!) {
     toggleLikeFeed(boardId: $boardId)
+  }
+`;
+
+export const FETCH_FAVORITE_USER = gql`
+  query fetchFavoriteUser($boardId: String!) {
+    fetchFavoriteUser(boardId: $boardId) {
+      id
+      isLike
+      user {
+        id
+      }
+      board {
+        id
+        likeCount
+      }
+    }
   }
 `;

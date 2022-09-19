@@ -15,8 +15,8 @@ export interface IBoardListUIProps {
   // refetch: (
   //   variables?: Partial<IQueryFetchBoardsCreatedAtArgs> | null | undefined
   // ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoardsCreatedAt">>>;
-  CreatedAtRefetch: any;
-  LikeCountRefetch: any;
+  refetchCreatedAt: any;
+  refetchLikeCount: any;
   refetchBoardsNumber: (
     variables: Partial<OperationVariables>
   ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoardsNumber">>>;
@@ -27,6 +27,8 @@ export interface IBoardListUIProps {
   onClickPage: any;
   alignment: string;
   handleChange: any;
+  dataSearch: any;
+  refetchSearch: any;
 }
 
 export interface ICreatedAtListUIProps {
