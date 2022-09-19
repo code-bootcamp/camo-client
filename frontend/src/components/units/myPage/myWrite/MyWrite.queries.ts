@@ -15,3 +15,20 @@ export const FETCH_USER_BY_ID = gql`
     }
   }
 `;
+
+export const FETCH_USER_MY_BOARD_NUMBER = gql`
+  query fetchUsermyBoardNumber($userId: String!) {
+    fetchUsermyBoardNumber(userId: $userId)
+  }
+`;
+
+export const FETCH_USER_MY_BOARD = gql`
+  query fetchUserMyBoard1($userId: String!, $page: Float = 1) {
+    fetchUserMyBoard1(userId: $userId, page: $page) {
+      id
+      title
+      contents
+      createdAt
+    }
+  }
+`;

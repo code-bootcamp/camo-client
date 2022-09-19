@@ -34,3 +34,9 @@ export const FETCH_MY_CAFE_RESERVATION = gql`
     }
   }
 `;
+
+export const FETCH_CAFE_RESERVATION_NUMBER = gql`
+  query fetchCafeReservationNumber($userId: String!) {
+    fetchCafeReservationNumber(userId: $userId)
+  }
+`;

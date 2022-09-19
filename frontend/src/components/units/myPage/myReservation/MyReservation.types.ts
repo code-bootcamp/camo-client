@@ -6,4 +6,5 @@ export interface IMyReservationUIProps {
   onClickCancelButton: () => void;
   count: any;
   refetch: any;
+  data: any;
 }

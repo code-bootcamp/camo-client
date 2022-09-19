@@ -87,7 +87,7 @@ export const Button = styled.button`
   margin-left: 2rem;
   border-radius: 4px;
   cursor: pointer;
-  background-color: #33413e;
+  background-color: #1e3932;
   color: white;
   @media ${breakPoints.mobile} {
     width: 5rem;
@@ -108,7 +108,7 @@ export const Empty = styled.div`
 `;
 
 export const GreenButton = styled(Button)`
-  background-color: #33413e;
+  background-color: #1e3932;
   color: white;
 `;
 
@@ -122,6 +122,7 @@ export const FooterWrapper = styled.div`
   @media ${breakPoints.mobile} {
     width: 80vw;
     margin: auto;
+    padding-top: 10vw;
   }
 `;
 export const FooterText = styled.div`
@@ -201,6 +202,7 @@ export const TopMargin = styled.div`
   margin-top: 2rem;
   @media ${breakPoints.mobile} {
     display: none;
+    margin-top: -2rem;
   }
 `;
 export const CheckBox = styled.input``;

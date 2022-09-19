@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
 import { breakPoints } from "../../../commons/styles/media";
-import { Title } from "../../../commons/wrapper/LoginWrapper.styles";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -17,20 +16,28 @@ const MainWrapper = styled.main`
   text-align: center;
   padding-top: 5rem;
   padding-bottom: 15rem;
+  @media ${breakPoints.mobile} {
+    padding-top: 10rem;
+  }
 `;
 
-// const Title = styled.h1`
-//   margin-bottom: 50px;
-//   font-size: 28px;
-//   line-height: 35px;
-//   font-weight: 500;
-//   letter-spacing: -1px;
-//   color: rgb(51, 51, 51);
-// `;
+export const Title = styled.h1`
+  margin-bottom: 2rem;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 20px;
+  text-align: center;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
 
 const SubTitle = styled.h3`
   color: #858585;
   padding-bottom: 3rem;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 const RowWrapper = styled.div`
@@ -55,7 +62,7 @@ const Select = styled.a`
   /* background-color: pink; */
   cursor: pointer;
   :hover {
-    background-color: #33413e;
+    background-color: #1e3932;
   }
 
   :hover label {

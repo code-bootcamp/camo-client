@@ -140,4 +140,5 @@ export const CancelButton = styled.button`
 export const PaginationWrapper = styled.div`
   display: flex;
   justify-content: center;
+  padding-bottom: 80px;
 `;

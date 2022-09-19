@@ -7,7 +7,7 @@ export default function PaginationContainer(props: IPaginationToContainerProps) 
   const [currentPage, setCurrentPage] = useState(1);
   const [isActive, setIsActive] = useState(false);
 
-  const lastPage = props.count ? Math.ceil(props.count / 3) : 0;
+  const lastPage = props.count ? Math.ceil(props.count / 6) : 0;
 
   const onClickPage = (event: MouseEvent<HTMLButtonElement>) => {
     if (!(event.target instanceof HTMLButtonElement)) return;
@@ -20,17 +20,17 @@ export default function PaginationContainer(props: IPaginationToContainerProps) 
       setIsActive(true);
       return;
     }
-    setStartPage((prev) => prev - 3);
-    props.refetch({ page: startPage - 3 });
-    setCurrentPage(currentPage + 3);
+    setStartPage((prev) => prev - 6);
+    props.refetch({ page: startPage - 6 });
+    setCurrentPage(currentPage + 6);
     setIsActive(false);
   };
 
   const onClickNextPage = () => {
-    if (startPage + 3 <= lastPage) {
-      setStartPage((prev) => prev + 3);
-      props.refetch({ page: startPage + 3 });
-      setCurrentPage(currentPage - 3);
+    if (startPage + 6 <= lastPage) {
+      setStartPage((prev) => prev + 6);
+      props.refetch({ page: startPage + 6 });
+      setCurrentPage(currentPage - 6);
       setIsActive(false);
     } else {
       setIsActive(true);

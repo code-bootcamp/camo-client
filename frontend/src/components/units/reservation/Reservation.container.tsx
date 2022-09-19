@@ -151,9 +151,8 @@ export default function Reservation() {
         buyer_email: UserData?.fetchLoginedUser.email,
         buyer_name: UserData?.fetchLoginedUser.name,
         buyer_tel: UserData?.fetchLoginedUser.phoneNumber,
-        m_redirect_url: "http://localhost:3000/myPage/myReservation",
-        // 배포 시 리다이렉션 바꾸기
-        // "https://cafemoment.stie/myPage/myReservation"
+        // m_redirect_url: "http://localhost:3000/myPage/myReservation",
+        m_redirect_url: "https://cafemoment.stie/myPage/myReservation",
       },
       async (rsp: any) => {
         if (rsp.success) {

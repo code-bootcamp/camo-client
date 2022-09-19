@@ -9,7 +9,7 @@ export const Wrapper = styled.section`
   align-items: center;
   flex-direction: column;
   background-color: white;
-  padding-top: 3rem;
+  /* padding-top: 3rem; */
 
   @media ${breakPoints.mobile} {
     width: auto;
@@ -87,6 +87,8 @@ export const Button = styled.button`
   margin-left: 2rem;
   border-radius: 4px;
   cursor: pointer;
+  background-color: #1e3932;
+  color: white;
   @media ${breakPoints.mobile} {
     width: 5rem;
     height: 3rem;
@@ -119,6 +121,7 @@ export const FooterWrapper = styled.div`
   @media ${breakPoints.mobile} {
     width: 80vw;
     margin: auto;
+    padding-top: 10vw;
   }
 `;
 export const FooterText = styled.div`

@@ -11,6 +11,7 @@ export const Wrapper = styled.main`
 
   @media ${breakPoints.mobile} {
     display: 100vw;
+    /* margin-top: -1vh; */
   }
 `;
 export const Title = styled.h1`
