@@ -36,37 +36,45 @@ export const NavWrapper = styled.div`
     // 모바일
     width: 100%;
     height: 100px;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
+// export const SortList = styled.div`
+//   width: 200px;
+//   height: 40px;
+//   display: flex;
+//   justify-content: space-between;
+//   border-radius: 10px;
+// `;
+
 export const SortList = styled.div`
-  width: 200px;
-  height: 40px;
-  display: flex;
-  justify-content: space-between;
-  border-radius: 10px;
+  @media ${breakPoints.mobile} {
+    margin: 1rem 0;
+  }
 `;
 
-export const NewList = styled.div`
-  width: 50%;
-  padding: 10px 25px;
-  background-color: #ebebf0;
-  border-radius: 10px 0 0 10px;
-  text-align: center;
-  line-height: 25px;
-`;
+// export const NewList = styled.div`
+//   width: 50%;
+//   padding: 10px 25px;
+//   background-color: #ebebf0;
+//   border-radius: 10px 0 0 10px;
+//   text-align: center;
+//   line-height: 25px;
+// `;
 
-export const LikeList = styled.div`
-  width: 50%;
-  border: 1px solid #ebebf0;
-  padding: 10px 25px;
-  border-radius: 0 10px 10px 0;
-  background-color: #fff;
-  text-align: center;
-`;
+// export const LikeList = styled.div`
+//   width: 50%;
+//   border: 1px solid #ebebf0;
+//   padding: 10px 25px;
+//   border-radius: 0 10px 10px 0;
+//   background-color: #fff;
+//   text-align: center;
+// `;
 
 export const InputWrapper = styled.div`
-  width: 290px;
+  width: 230px;
   height: 40px;
   display: flex;
   justify-content: space-between;
@@ -77,15 +85,6 @@ export const Search = styled.input`
   width: 12rem;
   height: 2rem;
   padding-left: 0.7erem;
-`;
-
-export const SearchBtn = styled.button`
-  width: 4rem;
-  height: 2rem;
-  background-color: #3c565b;
-  border: none;
-  color: white;
-  cursor: pointer;
 `;
 
 export const WriteBtn = styled.button`

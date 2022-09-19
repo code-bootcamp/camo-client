@@ -36,7 +36,7 @@ export const BodyWrapper = styled.div`
   /* border: 1px solid red; */
 `;
 
-export const Lable = styled.div`
+export const Label = styled.div`
   color: #555;
   font-size: 1.5rem;
   padding: 2rem 0 1rem 0;
