@@ -5,7 +5,7 @@ import { message } from "antd";
 import { FETCH_CAFE_LISTS_CREATED_AT } from "../list/CafeList.queries";
 import CafeDetailUI from "./CafeDetail.presenter";
 import { DELETE_CAFE_LIST, FETCH_CAFE_LIST, TOGGLE_FAVORITE_CAFES } from "./CafeDetail.queries";
-import { MouseEvent, SyntheticEvent, useEffect, useState } from "react";
+import { MouseEvent, SyntheticEvent, useState } from "react";
 
 export default function CafeDetail(props: any) {
   const router = useRouter();

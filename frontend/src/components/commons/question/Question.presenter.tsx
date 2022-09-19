@@ -58,6 +58,7 @@ export default function QuestionUI(props: any) {
           <S.QuestionTableRow
             style={{
               backgroundColor: "#3c565b",
+              height: "4rem",
               borderRadius: "5px 5px 0px 0px",
             }}
           >

@@ -13,11 +13,11 @@ export default function Upload02(props: any) {
     const file = checkValidationImage(event.target.files?.[0]);
     if (!file) return;
     try {
-      console.log("업로드파일", file);
+      // console.log("업로드파일", file);
       // const result = await uploadFile({variables: { files:[file]},
 
       const result = await uploadFile({ variables: { files: [file] } });
-      console.log("업로드결과", result);
+      // console.log("업로드결과", result);
       // props.onChangeFileUrls(result.data.uploadFile, props.index);
 
       props.onChangeFileUrls(result.data.uploadFile[0], props.index);

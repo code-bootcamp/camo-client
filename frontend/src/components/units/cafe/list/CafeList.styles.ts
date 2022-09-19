@@ -29,14 +29,15 @@ export const TopWrapper = styled.div`
 
 export const LogoBody = styled.div`
   width: 30rem;
-  margin-top: 5rem;
+  margin-top: 7rem;
   color: white;
   display: flex;
+  font-size: 1.6rem;
   /* flex-direction: column; */
   align-items: center;
   text-align: center;
   div span {
-    font-size: 1.6rem;
+    font-size: 3rem;
   }
   @media ${breakPoints.mobile} {
     width: 100%;
@@ -52,7 +53,7 @@ export const LogoImage = styled.img`
 `;
 export const BigTitle = styled.div`
   color: white;
-  font-size: 6rem;
+  font-size: 5.5rem;
   font-weight: 800;
   margin: 3rem 0;
   text-align: center;
@@ -273,10 +274,22 @@ export const PostAllWrap = styled.div`
   background-color: #fff;
   padding: 0 10%;
   margin: 1rem 0;
-
   @media ${breakPoints.mobile} {
     padding: 0 5%;
     /* border: 1px solid gray; */
+  }
+`;
+
+export const PostWrapper2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 19rem;
+  width: 14.7rem;
+  margin: 1.1rem;
+  border: 1px solid #fff;
+  /* background-color: red; */
+  @media ${breakPoints.mobile} {
+    display: none;
   }
 `;
 
@@ -287,6 +300,8 @@ export const PostWrapper = styled.div`
   width: 14.7rem;
   margin: 1.1rem;
   border: 1px solid #ddd;
+  background-color: red;
+
   /* box-shadow: 0 100px 100px 10px #ddd; */
 
   background-color: white;

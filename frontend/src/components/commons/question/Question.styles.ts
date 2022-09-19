@@ -15,6 +15,8 @@ export const Wrapper = styled.div`
 export const QuestionTitleWrapper = styled.div`
   font-size: 1.5vw;
   padding-bottom: 20px;
+  font-weight: 600;
+  color: #333;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -35,12 +37,16 @@ export const QuestionTitle = styled.div`
 
 export const QuestionButton = styled.button`
   border: 0px solid;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  height: 2.6rem;
   font-weight: bold;
-  background-color: white;
-  :hover {
-    color: #3c565b;
-  }
+  /* background-color: white; */
+
+  background-color: #3c565b;
+  color: white;
+  width: 7rem;
+  border-radius: 10px;
+  cursor: pointer;
   @media (max-width: 575px) {
     font-size: 1.1rem;
   }
@@ -60,10 +66,9 @@ export const QuestionTableRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 1.3vw;
+  font-size: 1.5rem;
   text-align: center;
-  padding: 1vw 0px;
-
+  line-height: 4rem;
   :hover {
     background-color: #ccc;
   }
@@ -76,6 +81,7 @@ export const QuestionStatusColumn = styled.div`
 export const QuestionStatusColumnHeader = styled.div`
   width: 15%;
   color: #fff;
+  font-size: 1.5rem;
 `;
 
 interface ClickProps {
@@ -92,6 +98,8 @@ export const QuestionTitleColumn = styled.div`
   text-align: left;
 `;
 export const QuestionTitleColumnHeader = styled.div`
+  font-size: 1.5rem;
+
   width: 50%;
   text-overflow: ellipsis;
   white-space: ${(props: ClickProps) => (props.isClick === props.id ? "default" : "nowrap")};
@@ -101,9 +109,13 @@ export const QuestionTitleColumnHeader = styled.div`
   color: #fff;
 `;
 export const QuestionWriterColumn = styled.div`
+  font-size: 1.5rem;
+
   width: 15%;
 `;
 export const QuestionDateColumn = styled.div`
+  font-size: 1.5rem;
+
   width: 20%;
 `;
 export const QuestionWriterColumnHeader = styled.div`
@@ -117,7 +129,8 @@ export const QuestionDateColumnHeader = styled.div`
 
 export const AnswerWrapper = styled.div`
   width: 100%;
-  font-size: 1.3vw;
+  font-size: 3rem;
+  /* font-size: 1.3vw; */
   display: flex;
   flex-direction: column;
   align-items: flex-end;

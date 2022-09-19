@@ -74,10 +74,9 @@ export default function CafeWrite(props: any) {
   useEffect(() => {
     if (props.data !== undefined) {
       reset({
-        contents: props.data.fetchCafeList.contents,
-        tags: props.data.fetchCafeList.tags,
-
-        // tags: props.data.fetchCafeList.tags?.join(),
+        // contents: props.data.fetchCafeList.contents,
+        // tags: props.data.fetchCafeList.tags,
+        tags: props.data.fetchCafeList.tags?.join(),
       });
       // if (props.data.fetchCafeList.cafeListImage?.url) {
       //   setFileUrls([...props.data.fetchCafeList.cafeListImage.url]);
@@ -119,7 +118,7 @@ export default function CafeWrite(props: any) {
 
             images: [...fileUrls] || "",
             // tags: data.cafeListTag?.split(",") || "",
-            tags: data.cafeListTag || "",
+            tags: data.tags?.split(",") || "",
           },
         },
         refetchQueries: [
@@ -138,7 +137,9 @@ export default function CafeWrite(props: any) {
     }
   };
   console.log("파일url", fileUrls);
+
   const onClickUpdate = async (data: any) => {
+    console.log("업데이트 클릭");
     // const currentFiles = JSON.stringify(fileUrls);
     // const defaultFiles = JSON.stringify(props.data?.fetchCafeList.cafeListImage);
     // const isChangeFiles = currentFiles !== defaultFiles;
@@ -166,9 +167,10 @@ export default function CafeWrite(props: any) {
             deposit: Number(data.deposit) || "",
             remarks: data.remarks || "",
             contents: data.contents || "",
-            tags: data.cafeListTag,
+            tags: data.tags?.split(",") || "",
             // tags: data.cafeListTag?.split(",") || "",
             images: [...fileUrls] || "",
+            // fileURLs: data.fileURLs,
           },
         },
       });

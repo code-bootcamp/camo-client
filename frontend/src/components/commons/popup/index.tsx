@@ -50,7 +50,7 @@ export const Wrapper = styled.div`
   height: 550px;
   background-color: white;
   position: absolute;
-  top: 50%;
+  top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: "KOTRA_BOLD-Bold";
@@ -60,7 +60,8 @@ export const Wrapper = styled.div`
 export const Content = styled.img`
   width: 100%;
   height: 60%;
-  padding: 2rem;
+  padding: 3rem;
+  padding-top: 0;
   object-fit: contain;
   /* background-color: palegoldenrod; */
 `;
