@@ -22,7 +22,7 @@ export const SearchBarInput = styled.input`
 export const SearchBtn = styled.button`
   width: 4rem;
   height: 2rem;
-  background-color: #3c565b;
+  background-color: #1e3932;
   border: none;
   color: white;
   cursor: pointer;

@@ -134,7 +134,7 @@ export const AddressButton = styled.button`
   width: 5rem;
   height: 2.5rem;
   border: none;
-  background: #3c565b;
+  background: #1e3932;
   border-radius: 5px;
   font-size: 1rem;
   color: white;
@@ -167,7 +167,7 @@ export const BtnWrapper = styled.div`
 export const RegisterBtn = styled.button`
   width: 7.7rem;
   height: 2.5rem;
-  background: #3c565b;
+  background: #1e3932;
   font-size: 1.3rem;
   border-radius: 0.5rem;
   border: none;

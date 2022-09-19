@@ -87,7 +87,7 @@ export const MiddleText = styled.div`
   margin-top: 4rem;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 
-  animation: "middleText" 0.8s ease-in-out;
+  /* animation: "middleText" 0.8s ease-in-out;
   @keyframes middleText {
     from {
       transform: scale(0.9);
@@ -95,7 +95,7 @@ export const MiddleText = styled.div`
     to {
       transform: scale(1);
     }
-  }
+  } */
 
   @media ${breakPoints.mobile} {
     display: none;
@@ -215,7 +215,7 @@ export const SearchBarWrap = styled.div`
   justify-content: space-around;
   align-items: center;
   height: 4.4rem;
-  /* background-color: #3c565b; */
+  /* background-color: #1e3932; */
   @media ${breakPoints.mobile} {
     display: none;
   }

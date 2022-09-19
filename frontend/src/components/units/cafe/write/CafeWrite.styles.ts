@@ -216,7 +216,7 @@ export const RegisterBtn = styled.button`
   margin: 0.5rem;
   cursor: pointer;
 
-  background: #3c565b;
+  background: #1e3932;
   color: white;
 
   :hover {

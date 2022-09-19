@@ -90,7 +90,7 @@ export const Search = styled.input`
 export const WriteBtn = styled.button`
   width: 5rem;
   height: 5rem;
-  background-color: #3c565b;
+  background-color: #1e3932;
   border: none;
   border-radius: 50%;
   color: white;
@@ -115,7 +115,7 @@ export const WriteBtn = styled.button`
 // export const WriteBtn = styled(PlusCircleFilled)`
 //   width: 5rem;
 //   height: 5rem;
-//   background-color: #3c565b;
+//   background-color: #1e3932;
 //   border: none;
 //   border-radius: 50%;
 //   color: white;
@@ -203,7 +203,7 @@ export const TagsWrap = styled.div`
 export const ItemTextTag = styled.span`
   font-size: 0.9rem;
   margin-right: 0.3rem;
-  color: #3c565b;
+  color: #1e3932;
 `;
 
 export const ItemTextUserWrapper = styled.div`

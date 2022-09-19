@@ -16,7 +16,7 @@ export const WrapStar = styled.div`
 `;
 
 export const Rates = styled(Rate)`
-  color: #3c565b;
+  color: #1e3932;
   font-size: 3rem;
   @media ${breakPoints.mobile} {
     font-size: 2rem;
@@ -43,7 +43,7 @@ export const CommentTitle = styled.div`
 export const Star = styled.div`
   font-size: 2rem;
   line-height: 2rem;
-  color: #3c565b;
+  color: #1e3932;
   margin-left: 2rem;
   font-weight: 500;
   @media ${breakPoints.mobile} {

@@ -132,8 +132,9 @@ export default function CafeDetailUI(props: any) {
         </C.TopWrapper>
 
         <C.BottomWrapper>
-          <C.Label2>
-            {/* <C.Container>
+          <C.RowWrapper>
+            <C.Label2>
+              {/* <C.Container>
               <C.TestButton
                 style={{ overflow: "hidden" }}
                 onClick={handleClickButton}
@@ -149,25 +150,37 @@ export default function CafeDetailUI(props: any) {
 
               {content ? <C.Content>{selectComponent[content]}</C.Content> : <div>없음</div>}
             </C.Container> */}
-            <C.ReservationWrap></C.ReservationWrap>
-            ✨ &nbsp;카페 서비스 <br />
-            <div>
-              Wifi ㅣ &nbsp;무료주차 1시간 ㅣ &nbsp; 담요 대여
-              <br /> <br /> <br /> <br />
-            </div>
-            ☕️ &nbsp;카페 소개 <br />
-            <div>
-              포근한 인테리어로 언제든지 고객님이 편하게 올수 있는 환경을 만들었습니다.
-              <br />
-              기본적인 음료 부터 달콤 카페라는 이름에 맞게 달콤한 디저트 또한 준비 있습니다. <br />
-              카페에 방문하면 하루 달콤하고 기분좋은 기억을 가져가기 바랍니다.
-            </div>
-            <div
+              ✨ &nbsp;카페 서비스 <br />
+              <div>
+                Wifi ㅣ &nbsp;무료주차 1시간 ㅣ &nbsp; 담요 대여
+                <br /> <br /> <br /> <br />
+              </div>
+              ☕️ &nbsp;카페 소개 <br />
+              <div>
+                포근한 인테리어로 언제든지 고객님이 편하게 올수 있는 환경을 만들었습니다.
+                <br />
+                기본적인 음료 부터 달콤 카페라는 이름에 맞게 달콤한 디저트 또한 준비 있습니다.{" "}
+                <br />
+                카페에 방문하면 하루 달콤하고 기분좋은 기억을 가져가기 바랍니다.
+              </div>
+              {typeof window !== "undefined" ? (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: Dompurify.sanitize(String(props.data?.fetchCafeList?.contents)),
+                  }}
+                ></div>
+              ) : (
+                <div></div>
+              )}
+              {/* <div
               dangerouslySetInnerHTML={{
                 __html: Dompurify.sanitize(props.data?.fetchCafeList?.contents as string),
               }}
-            ></div>
-          </C.Label2>
+              ></div> */}
+            </C.Label2>
+            <Reservation />
+          </C.RowWrapper>
+
           <C.Label2>📌 &nbsp;카페 위치</C.Label2>
           <C.MapWrapper>
             <KakaoMap02
@@ -186,7 +199,7 @@ export default function CafeDetailUI(props: any) {
           <QuestionUI />
         </C.BottomWrapper>
         {/* <CafeDetailImagePage /> */}
-        <Reservation />
+        {/* <Reservation /> */}
       </C.Wrapper>
     </>
   );

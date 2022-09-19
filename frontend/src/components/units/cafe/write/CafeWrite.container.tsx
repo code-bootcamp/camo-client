@@ -48,7 +48,7 @@ export default function CafeWrite(props: any) {
   }, [props?.data]);
 
   console.log(props.data?.fetchCafeList.cafeListImage);
-
+  console.log(props.data?.fetchCafeList?.cafeListImage[0]?.url);
   const onClickAddressModal = (event: MouseEvent<HTMLButtonElement>) => {
     if (event.currentTarget instanceof HTMLButtonElement) {
       switch (event.currentTarget.id) {
