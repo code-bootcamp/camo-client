@@ -441,8 +441,7 @@ export type IQuery = {
   fetchReviews: Array<IReview>;
   fetchUserByEmail: IUser;
   fetchUserFavoriteCafe: Array<IFavoriteCafe>;
-  fetchUserMyBoard: IUser;
-  fetchUserMyBoard1: IBoard;
+  fetchUserMyBoard1: Array<IBoard>;
   fetchUserWithDeleted: Array<IUser>;
   fetchUserbyEmail: IUser;
   fetchUserbyId: IUser;
@@ -569,12 +568,6 @@ export type IQueryFetchUserByEmailArgs = {
 
 
 export type IQueryFetchUserFavoriteCafeArgs = {
-  page?: InputMaybe<Scalars['Float']>;
-  userId: Scalars['String'];
-};
-
-
-export type IQueryFetchUserMyBoardArgs = {
   page?: InputMaybe<Scalars['Float']>;
   userId: Scalars['String'];
 };
