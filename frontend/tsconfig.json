@@ -17,10 +17,20 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "/*.ts",
+    "/*.tsx",
     "pages/cafe/[boardId]/index.js",
-    "pages/test/calendar.tsx"
+    "pages/test/calendar.tsx",
+    "src/components/units/myPage/MyPage.styles.js",
+    "src/components/commons/mainPageQuestion/Q3.presenter.js",
+    "src/components/commons/mainPageQuestion/Q2.presenter.js",
+    "src/components/commons/mainPageQuestion/Q1.presenter.js",
+    "src/components/commons/mainPageQuestion/mainPageQuestion.types.js",
+    "src/components/commons/mainPageQuestion/mainPageQuestion.styles.js",
+    "src/components/commons/mainPageQuestion/mainPageQuestion.presenter.js",
+    "src/components/commons/mainPageQuestion/mainPageQuestion.container.js",
+    "src/components/commons/mainPageQuestion/Q4.presenter.js",
+    "src/commons/libraries/utils.js"
   ],
   "exclude": ["node_modules"]
 }
