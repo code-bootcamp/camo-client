@@ -7,14 +7,14 @@ export default function CommunityPaginationUI(props: CommunityPaginationUIProps)
       <Page onClick={props.onClickPrevPage}>{`<`}</Page>
       {new Array(10).fill(1).map(
         (_, index) =>
-          props.startPage + index <= props.lastPage && (
+          index + props.startPage <= props.lastPage && (
             <Page
-              key={props.startPage + index}
+              key={index + props.startPage}
               onClick={props.onClickPage}
-              id={String(props.startPage + index)}
-              isActive={props.startPage + Number(index) === props.activePage}
+              id={String(index + props.startPage)}
+              // isActive={props.startPage + Number(index) === props.activePage}
             >
-              {props.startPage + index}
+              {index + props.startPage}
             </Page>
           )
       )}

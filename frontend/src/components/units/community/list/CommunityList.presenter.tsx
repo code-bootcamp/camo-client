@@ -46,12 +46,6 @@ export default function CommunityListUI(props: IBoardListUIProps) {
           </a>
         </Link>
         {props.alignment === "createdAt" ? <CommunityCreatedAtList /> : <CommunityLikeCountList />}
-        {/* <CommunityPagination
-          refetch={
-            props.alignment === "createdAt" ? props.refetchCreatedAt : props.refetchLikeCount
-          }
-          boardsNumber={props.dataBoardsNumber}
-        /> */}
       </S.BodyWrapper>
     </S.Wrapper>
   );

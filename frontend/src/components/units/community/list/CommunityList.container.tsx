@@ -44,7 +44,7 @@ export default function CommunityList() {
     if (alignment === "createdAt") {
       refetchCreatedAt({ page: Number(event.target.id) });
     }
-    if (alignment === "createdAt") {
+    if (alignment !== "createdAt") {
       refetchLikeCount({ page: Number(event.target.id) });
     }
   };

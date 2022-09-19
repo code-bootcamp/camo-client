@@ -2,11 +2,13 @@ import * as S from "../CommunityList.styles";
 import { v4 as uuidv4 } from "uuid";
 // import Paginations01 from "../../../commons/pagination/01/Paginations01.container";
 import { ICreatedAtListUIProps, ITagsProps } from "../CommunityList.types";
-import InfiniteScroll from "react-infinite-scroller";
+// import InfiniteScroll from "react-infinite-scroller";
+import CommunityPagination from "../pagination/Pagination.container";
 
 export default function CommunityCreatedAtListUI(props: ICreatedAtListUIProps) {
   return (
-    <InfiniteScroll pageStart={0} loadMore={props.onFetchMore} hasMore={true}>
+    <>
+      {/* <InfiniteScroll pageStart={0} loadMore={props.onFetchMore} hasMore={true}> */}
       <S.ItemWrapper>
         {props.data?.fetchBoardsCreatedAt.map((el: any) => (
           <S.ItemContent key={uuidv4()} onClick={props.onClickMoveToDetail(el)}>
@@ -41,6 +43,8 @@ export default function CommunityCreatedAtListUI(props: ICreatedAtListUIProps) {
           </S.ItemContent>
         ))}
       </S.ItemWrapper>
-    </InfiniteScroll>
+      {/* </InfiniteScroll> */}
+      <CommunityPagination data={props.data} refetch={props.refetch} />
+    </>
   );
 }

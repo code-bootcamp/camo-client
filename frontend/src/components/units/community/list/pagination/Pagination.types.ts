@@ -16,4 +16,5 @@ export interface CommunityPaginationUIProps {
   onClickPage: (event: MouseEvent<HTMLSpanElement>) => void;
   onClickPrevPage: () => void;
   onClickNextPage: () => void;
+  isActive: boolean;
 }

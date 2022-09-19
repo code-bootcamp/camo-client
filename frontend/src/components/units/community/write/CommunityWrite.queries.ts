@@ -15,7 +15,7 @@ export const CREATE_BOARD = gql`
         name
       }
       user {
-        id
+        # id
         nickName
       }
       images {

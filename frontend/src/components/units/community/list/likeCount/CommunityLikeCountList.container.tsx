@@ -13,32 +13,32 @@ export default function CommunityLikeCountList() {
 
   const [keyword, setKeyword] = useState("");
 
-  const { data, fetchMore } = useQuery<
+  const { data, refetch } = useQuery<
     Pick<IQuery, "fetchBoardsLikeCount">,
     IQueryFetchBoardsLikeCountArgs
   >(FETCH_BOARDS_LIKE_COUNT, {
     fetchPolicy: "network-only",
   });
 
-  const onFetchMore = () => {
-    if (!data) return;
-    fetchMore({
-      variables: { page: Math.ceil(data.fetchBoardsLikeCount.length / 10) + 1 },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult.fetchBoardsLikeCount) {
-          return {
-            fetchBoardsLikeCount: [...prev.fetchBoardsLikeCount],
-          };
-        }
-        return {
-          fetchBoardsLikeCount: [
-            ...prev.fetchBoardsLikeCount,
-            ...fetchMoreResult.fetchBoardsLikeCount,
-          ],
-        };
-      },
-    });
-  };
+  // const onFetchMore = () => {
+  //   if (!data) return;
+  //   fetchMore({
+  //     variables: { page: Math.ceil(data.fetchBoardsLikeCount.length / 10) + 1 },
+  //     updateQuery: (prev, { fetchMoreResult }) => {
+  //       if (!fetchMoreResult.fetchBoardsLikeCount) {
+  //         return {
+  //           fetchBoardsLikeCount: [...prev.fetchBoardsLikeCount],
+  //         };
+  //       }
+  //       return {
+  //         fetchBoardsLikeCount: [
+  //           ...prev.fetchBoardsLikeCount,
+  //           ...fetchMoreResult.fetchBoardsLikeCount,
+  //         ],
+  //       };
+  //     },
+  //   });
+  // };
 
   const onClickMoveToDetail = (el: any) => (event: any) => {
     router.push(`/community/${el.id}`);
@@ -56,10 +56,11 @@ export default function CommunityLikeCountList() {
   return (
     <CommunityListUI
       data={data}
+      refetch={refetch}
       onClickMoveToDetail={onClickMoveToDetail}
       keyword={keyword}
       onChangeKeyword={onChangeKeyword}
-      onFetchMore={onFetchMore}
+      // onFetchMore={onFetchMore}
       onErrorImg={onErrorImg}
     />
   );
