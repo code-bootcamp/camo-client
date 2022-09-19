@@ -1,18 +1,10 @@
-import { ChangeEvent, MouseEvent } from "react";
+import { ChangeEvent } from "react";
 import _ from "lodash";
-import { ApolloQueryResult, gql } from "@apollo/client";
-import {
-  IQuery,
-  IQueryFetchBoardsArgs,
-  IQueryFetchBoardsCountArgs,
-} from "../../../commons/types/generated/types";
 
-// 검색에 props
+// 검색테스트
 export interface ISearchBarProps {
   refetch: any;
-  refetchBoardsCount: (
-    variables: Partial<IQueryFetchBoardsCountArgs>
-  ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoardsNumber">>>;
+  refetchBoardsCount: any;
   onChangeKeyword: (value: string) => void;
 }
 

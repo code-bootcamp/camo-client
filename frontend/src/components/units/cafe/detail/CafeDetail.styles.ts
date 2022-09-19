@@ -468,12 +468,13 @@ export const SubImage = styled.img`
 `;
 
 /**
- * 재인수정
+ * 재인추가
  * date: 0920 04:52AM -
  */
 
 export const RowWrapper = styled.div`
-  width: 1200px;
+  /* width: 1200px; */
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
