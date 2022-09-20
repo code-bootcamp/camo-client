@@ -208,11 +208,12 @@ export default function CafeWriteUI(props: any) {
             </C.CancelBtn>
             {/* <C.RegisterBtn onClick={props.onClickCreate}> */}
             <C.RegisterBtn
-              onSubmit={
-                props.isEdit
-                  ? props.handleSubmit(props.onClickUpdate)
-                  : props.handleSubmit(props.onClickCreate)
-              }
+              type="submit"
+              // onSubmit={
+              //   props.isEdit
+              //     ? props.handleSubmit(props.onClickUpdate)
+              //     : props.handleSubmit(props.onClickCreate)
+              // }
             >
               {props.isEdit ? "수정하기" : "등록하기"}
             </C.RegisterBtn>
