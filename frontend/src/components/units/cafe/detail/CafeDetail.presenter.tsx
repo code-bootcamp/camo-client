@@ -37,6 +37,14 @@ export default function CafeDetailUI(props: any) {
   // ]);
   // const imgSize = useRef(images.current.length);
 
+
+  console.log("데이타1", props.data);
+  console.log("이미지[0] url:", props.data?.fetchCafeList?.cafeListImage[0]?.url);
+  // const IMAGES = [
+  //   "https://images.unsplash.com/photo-1514481538271-cf9f99627ab4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+  //   "https://images.unsplash.com/photo-1564327367919-cb377ea6a88f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+  // ];
+  console.log(props.data?.fetchCafeList?.cafeListImage[0]?.url);
   return (
     <>
       <C.Wrapper>
