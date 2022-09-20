@@ -49,10 +49,10 @@ export default function Reservation() {
   const [disabled, setDisabled] = useState(false);
   // const [reserved, setReserved] = useRecoilState<any>(reservedState);
   const [reserved] = useRecoilState<any>(reservedState);
+  const [open, setOpen] = useState(false);
 
   const { data: UserData } = useQuery(FETCH_LOGINED_USER);
   const { data: CafeData } = useQuery(FETCH_CAFE_LIST, {
-    // variables: { cafeListId: "f5998e10-0bca-465e-a294-b6af0b717183" },
     variables: { cafeListId: String(router.query.cafeId) },
   });
 
@@ -63,6 +63,15 @@ export default function Reservation() {
   );
   const [createCafeReservation] =
     useMutation<Pick<IMutation, "createCafeReservation">>(CREATE_CAFE_RESERVATION);
+
+  // 모바일
+  useEffect(() => {
+    setOpen(true);
+  }, []);
+
+  const onDismiss = () => {
+    setOpen(false);
+  };
 
   const onClickSetTime = (event: MouseEvent<HTMLButtonElement>) => {
     const newClicked = [];
@@ -178,7 +187,7 @@ export default function Reservation() {
               },
             });
             console.log(paymentResult);
-            router.push("/myPage/myReservation");
+            // router.push("/myPage/myReservation");
           } catch (error) {
             console.log(error);
             alert(error);
@@ -193,14 +202,13 @@ export default function Reservation() {
                   reservationDate: date,
                   startTime,
                   endTime,
-                  // cafeListId: "01a152bc-a23a-4077-aafb-c4fa1fdae252",
                   cafeListId: String(router.query.cafeId),
                   userId: UserData?.fetchLoginedUser.id,
                 },
               },
             });
             console.log(ReservationResult);
-            // router.push("/myPage/myReservation")
+            router.push("/myPage/myReservation");
           } catch (error) {
             console.log(error);
           }
@@ -212,6 +220,7 @@ export default function Reservation() {
       }
     );
   };
+
   return (
     <>
       <div>
@@ -249,6 +258,10 @@ export default function Reservation() {
         disabled={disabled}
         onClickSetTime={onClickSetTime}
         CafeData={CafeData}
+        // 모바일
+        open={open}
+        setOpen={setOpen}
+        onDismiss={onDismiss}
       />
     </>
   );

@@ -17,6 +17,9 @@ export const MainWrapper = styled.main`
   box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
   /* margin-top: 300px; */
   color: black;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const Label = styled.label`
@@ -262,4 +265,46 @@ export const Text = styled.div`
   align-items: center;
   text-align: center;
   padding-bottom: 10px;
+`;
+
+// BottomSheet
+
+export const MobileWrapper = styled.div`
+  display: none;
+
+  @media ${breakPoints.mobile} {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 50px;
+  }
+`;
+export const BottomContentsWrapper = styled.div`
+  display: none;
+  @media ${breakPoints.mobile} {
+    display: block;
+    height: 100vh;
+    padding: 1rem;
+    width: 100vw;
+  }
+`;
+
+export const MobileReservationBtn = styled.button`
+  width: 100%;
+  height: 50px;
+`;
+
+export const MobilePaymentBtn = styled.button`
+  width: 100%;
+  height: 50px;
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  background-color: #1e3932;
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
 `;

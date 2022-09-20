@@ -6,12 +6,13 @@ export const Wrapper = styled.main`
   display: flex;
   margin: auto;
   margin-top: 5rem;
+  margin-bottom: 5rem;
   flex-direction: column;
-  /* height: 100vh; */
 
   @media ${breakPoints.mobile} {
-    display: 100vw;
     /* margin-top: -1vh; */
+    display: 100vw;
+    width: 100vw;
   }
 `;
 export const Title = styled.h1`
@@ -113,4 +114,7 @@ export const ButtonWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding-top: 3rem;
+  @media ${breakPoints.mobile} {
+    padding-top: -3rem;
+  }
 `;

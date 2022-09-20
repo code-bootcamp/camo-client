@@ -60,4 +60,7 @@ export const globalStyles = css`
     font-family: "PretendardVariable";
     src: url("/fonts/PretendardVariable.ttf");
   }
+  .MuiFormControl-root {
+    width: 100% !important;
+  }
 `;
