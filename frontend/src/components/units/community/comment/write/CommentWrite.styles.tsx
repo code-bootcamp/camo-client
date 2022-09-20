@@ -100,7 +100,7 @@ export const Length = styled.div`
   }
 `;
 
-export const CommentButton = styled.div`
+export const CommentButton = styled.button`
   border: none;
   width: 100px;
   background-color: #33413e;
@@ -113,7 +113,7 @@ export const CommentButton = styled.div`
   }
 `;
 
-export const CancelButton = styled.div`
+export const CancelButton = styled.button`
   border: 1px solid #33413e;
   width: 100px;
   background-color: #fff;

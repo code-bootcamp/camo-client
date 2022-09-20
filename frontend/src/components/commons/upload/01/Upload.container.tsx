@@ -11,8 +11,8 @@ import UploadNewUI from "./Upload.presenter";
 import { IUploadProps } from "./Upload.types";
 
 export default function Upload(props: IUploadProps) {
-  const fileRef = useRef<HTMLInputElement>(null);
   // const [files, setFiles] = useState([]);
+  const fileRef = useRef<HTMLInputElement>(null);
   const [uploadFile] = useMutation(UPLOAD_FILE);
 
   const onClickUpload = () => {
@@ -25,12 +25,13 @@ export default function Upload(props: IUploadProps) {
 
     try {
       // const result = await uploadFile({ variables: { files: [file] } });
-      const result = await uploadFile({ variables: { files: file } });
+      const result = await uploadFile({ variables: { files: [file] } });
       // props.onChangeFileUrls(result.data.uploadFile, props.index);
       props.onChangeFileUrls(result.data.uploadFile[0], props.index);
       console.log(result.data);
     } catch (error: any) {
-      Modal.error({ content: error.message });
+      if (error instanceof Error) Modal.error({ content: error.message });
+      console.log("실패");
     }
   };
 

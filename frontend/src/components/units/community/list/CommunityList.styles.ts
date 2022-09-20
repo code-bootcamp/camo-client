@@ -13,8 +13,10 @@ export const Wrapper = styled.div`
 export const Banner = styled.div`
   width: 100%;
   height: 55vh;
-  background-image: url("https://images.unsplash.com/photo-1615322958568-7928d3291f7a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80");
+  background-image: url("https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80");
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
 export const BodyWrapper = styled.div`
@@ -26,52 +28,24 @@ export const BodyWrapper = styled.div`
 `;
 
 export const NavWrapper = styled.div`
+  margin: 1rem;
   width: 100%;
-  height: 100px;
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
   @media ${breakPoints.mobile} {
     // 모바일
     width: 100%;
-    height: 100px;
     display: flex;
     flex-direction: column;
   }
 `;
-
-// export const SortList = styled.div`
-//   width: 200px;
-//   height: 40px;
-//   display: flex;
-//   justify-content: space-between;
-//   border-radius: 10px;
-// `;
 
 export const SortList = styled.div`
   @media ${breakPoints.mobile} {
     margin: 1rem 0;
   }
 `;
-
-// export const NewList = styled.div`
-//   width: 50%;
-//   padding: 10px 25px;
-//   background-color: #ebebf0;
-//   border-radius: 10px 0 0 10px;
-//   text-align: center;
-//   line-height: 25px;
-// `;
-
-// export const LikeList = styled.div`
-//   width: 50%;
-//   border: 1px solid #ebebf0;
-//   padding: 10px 25px;
-//   border-radius: 0 10px 10px 0;
-//   background-color: #fff;
-//   text-align: center;
-// `;
 
 export const InputWrapper = styled.div`
   width: 230px;
@@ -111,31 +85,6 @@ export const WriteBtn = styled.button`
     line-height: 1.3rem;
   }
 `;
-
-// export const WriteBtn = styled(PlusCircleFilled)`
-//   width: 5rem;
-//   height: 5rem;
-//   background-color: #1e3932;
-//   border: none;
-//   border-radius: 50%;
-//   color: white;
-//   cursor: pointer;
-//   position: fixed;
-//   color: #fff;
-//   right: 3%;
-//   bottom: 5%;
-
-//   ::before {
-//     content: "+";
-//     font-size: 3rem;
-//     line-height: 2rem;
-//   }
-//   :hover::before {
-//     content: "글쓰기";
-//     font-size: 1.2rem;
-//     line-height: 1.3rem;
-//   }
-// `;
 
 export const ItemWrapper = styled.div`
   width: 100%;
@@ -232,11 +181,8 @@ export const ItemTextUser = styled.div`
   padding: 5px 0;
 `;
 
-export const PaginationStyle = styled.div`
-  cursor: pointer;
-  width: 33rem;
-  height: 3rem;
-  line-height: 3rem;
+export const PagesWrapper = styled.div`
   display: flex;
-  background: green;
+  justify-content: center;
+  width: 100%;
 `;

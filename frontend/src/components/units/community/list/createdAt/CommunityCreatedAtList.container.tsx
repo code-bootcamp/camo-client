@@ -13,36 +13,12 @@ export default function CommunityCreatedAtList() {
 
   const [keyword, setKeyword] = useState("");
 
-  // const { data, refetch, fetchMore } = useQuery<Pick<IQuery, "fetchBoards">, IQueryFetchBoardsArgs>(
-  //   FETCH_BOARDS
-  // );
-
   const { data, refetch } = useQuery<
     Pick<IQuery, "fetchBoardsCreatedAt">,
     IQueryFetchBoardsCreatedAtArgs
   >(FETCH_BOARDS_CREATED_AT, {
     fetchPolicy: "network-only",
   });
-  console.log("asd", data?.fetchBoardsCreatedAt);
-  // const onFetchMore = () => {
-  //   if (!data) return;
-  //   fetchMore({
-  //     variables: { page: Math.ceil(data.fetchBoardsCreatedAt.length / 10) + 1 },
-  //     updateQuery: (prev, { fetchMoreResult }) => {
-  //       if (!fetchMoreResult.fetchBoardsCreatedAt) {
-  //         return {
-  //           fetchBoardsCreatedAt: [...prev.fetchBoardsCreatedAt],
-  //         };
-  //       }
-  //       return {
-  //         fetchBoardsCreatedAt: [
-  //           ...prev.fetchBoardsCreatedAt,
-  //           ...fetchMoreResult.fetchBoardsCreatedAt,
-  //         ],
-  //       };
-  //     },
-  //   });
-  // };
 
   const onClickMoveToDetail = (el: any) => (event: any) => {
     router.push(`/community/${el.id}`);
