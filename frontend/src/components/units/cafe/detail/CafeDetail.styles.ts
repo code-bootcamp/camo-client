@@ -539,8 +539,6 @@ export const SubImage = styled.img`
 export const RowWrapper = styled.div`
   /* width: 1200px; */
   width: 100%;
-  height: 40rem;
-  min-height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
