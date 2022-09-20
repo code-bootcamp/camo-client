@@ -40,6 +40,8 @@ export const QuestionButton = styled.button`
   font-size: 1.3rem;
   height: 2.6rem;
   font-weight: bold;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+
   /* background-color: white; */
 
   background-color: #1e3932;
@@ -53,6 +55,7 @@ export const QuestionButton = styled.button`
 `;
 
 export const QuestionTableWrapper = styled.div`
+  /* background: red; */
   width: 100%;
 `;
 
@@ -68,9 +71,10 @@ export const QuestionTableRow = styled.div`
   justify-content: space-between;
   font-size: 1.5rem;
   text-align: center;
-  line-height: 4rem;
+  line-height: 3rem;
   :hover {
-    background-color: #ccc;
+    background-color: #eee;
+    cursor: pointer;
   }
 `;
 
@@ -90,6 +94,7 @@ interface ClickProps {
 }
 export const QuestionTitleColumn = styled.div`
   width: 50%;
+  /* background-color: yellow; */
   padding-bottom: 5px;
   text-overflow: ellipsis;
   white-space: ${(props: ClickProps) => (props.isClick === props.id ? "default" : "nowrap")};
@@ -109,12 +114,12 @@ export const QuestionTitleColumnHeader = styled.div`
   color: #fff;
 `;
 export const QuestionWriterColumn = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 
   width: 15%;
 `;
 export const QuestionDateColumn = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 
   width: 20%;
 `;
@@ -160,7 +165,9 @@ export const AnswerContents = styled.div`
 `;
 
 export const QText = styled.span`
-  color: #f6651e;
+  font-size: 1.4rem;
+  /* background-color: rebeccapurple; */
+  /* color: #f6651e; */
 `;
 
 export const EditImage = styled.img`
@@ -183,7 +190,7 @@ export const AnswerButton = styled.button`
   margin-bottom: 10px;
   cursor: pointer;
   :hover {
-    color: #f6651e;
+    color: #eee;
   }
 
   @media (max-width: 575px) {
@@ -259,6 +266,7 @@ export const RegistrationEditButton = styled.button`
   color: white;
   background-color: #1e3932;
   border: 0px solid;
+  border-radius: 5px;
   cursor: pointer;
 `;
 

@@ -437,17 +437,16 @@ export type IQuery = {
   fetchCafeReservationNumber: Scalars['Float'];
   fetchComments: Array<IComment>;
   fetchFavoriteCafeNumber: Scalars['Float'];
-  fetchFavoriteCafeUser: Scalars['Float'];
+  fetchFavoriteCafeUser: Array<IFavoriteCafe>;
   fetchFavoriteUser: Array<IFavoriteBoard>;
   fetchLoginedUser: IUser;
   fetchLogs: Array<IChatMessage>;
   fetchMyCafeReservation: Array<ICafeReservation>;
-  fetchReservation: IUser;
   fetchReview: IReview;
   fetchReviews: Array<IReview>;
   fetchUserByEmail: IUser;
   fetchUserFavoriteCafe: Array<IFavoriteCafe>;
-  fetchUserMyBoard1: Array<IBoard>;
+  fetchUserMyBoard: Array<IBoard>;
   fetchUserWithDeleted: Array<IUser>;
   fetchUserbyEmail: IUser;
   fetchUserbyId: IUser;
@@ -555,11 +554,6 @@ export type IQueryFetchMyCafeReservationArgs = {
 };
 
 
-export type IQueryFetchReservationArgs = {
-  userId: Scalars['String'];
-};
-
-
 export type IQueryFetchReviewArgs = {
   reviewId: Scalars['String'];
 };
@@ -576,7 +570,7 @@ export type IQueryFetchUserFavoriteCafeArgs = {
 };
 
 
-export type IQueryFetchUserMyBoard1Args = {
+export type IQueryFetchUserMyBoardArgs = {
   page?: InputMaybe<Scalars['Float']>;
   userId: Scalars['String'];
 };

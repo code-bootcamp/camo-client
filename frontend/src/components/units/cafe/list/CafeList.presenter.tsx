@@ -10,6 +10,7 @@ import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
 import PopUp from "../../../commons/popup";
+import { WriteBtn } from "../../community/list/CommunityList.styles";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -38,12 +39,9 @@ export default function CafeListUI(props: any) {
 
           <C.CafeRegisterBox>
             <Link href="./cafe/new">
-              <C.CafeRegister>
-                <a>
-                  <div>+</div>
-                  {/* <span>카페 등록하기</span> */}
-                </a>
-              </C.CafeRegister>
+              <a>
+                <WriteBtn />
+              </a>
             </Link>
           </C.CafeRegisterBox>
 

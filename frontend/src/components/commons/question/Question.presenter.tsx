@@ -72,30 +72,18 @@ export default function QuestionUI(props: any) {
 
           <S.QuestionTableRow onClick={onClickQuestion}> </S.QuestionTableRow>
 
-          {/* <S.QuestionAnswerWrapper >
-                  <S.QuestionTableRow
-                  
-                  >
-                    <S.QuestionStatusColumn>
-              
-                    </S.QuestionStatusColumn>
-                    <S.QuestionTitleColumn >
-                      <S.QText>Q. </S.QText>
-                     
-                        <S.EditImage
-                          src="/icons/edit.svg"
-                        ></S.EditImage>
-                    
-                    </S.QuestionTitleColumn>
-                    <S.QuestionWriterColumn>
-            이름
-                    </S.QuestionWriterColumn>
-                    <S.QuestionDateColumn>
-                   날짜
-                    </S.QuestionDateColumn>
-                  </S.QuestionTableRow>
+          <S.QuestionAnswerWrapper>
+            <S.QuestionTableRow>
+              <S.QuestionStatusColumn>No</S.QuestionStatusColumn>
+              <S.QuestionTitleColumn>
+                <S.QText> Q. 카페 예약 취소는 언제까지 해야하나요? </S.QText>
+                {/* <S.EditImage src="/icons/edit.svg"></S.EditImage> */}
+              </S.QuestionTitleColumn>
+              <S.QuestionWriterColumn> 이름</S.QuestionWriterColumn>
+              <S.QuestionDateColumn> 날짜</S.QuestionDateColumn>
+            </S.QuestionTableRow>
 
-                  {el.id === props.isClick ? (
+            {/* {el.id === props.isClick ? (
                     <S.AnswerWrapper>
                       <S.QuestionContents title={el.answer}>
                         {el.question}
@@ -121,10 +109,8 @@ export default function QuestionUI(props: any) {
                     </S.AnswerWrapper>
                   ) : (
                     <></>
-                  )}
-                </S.QuestionAnswerWrapper>
-              );
-            })} */}
+                  )} */}
+          </S.QuestionAnswerWrapper>
         </S.QuestionTableWrapper>
       </S.Wrapper>
 

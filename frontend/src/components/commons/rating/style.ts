@@ -41,10 +41,11 @@ export const CommentTitle = styled.div`
 `;
 
 export const Star = styled.div`
-  font-size: 2rem;
-  line-height: 2rem;
+  font-size: 1.7rem;
+  height: 3.4rem;
+  /* background-color: pink; */
   color: #1e3932;
-  margin-left: 2rem;
+  margin-left: 1rem;
   font-weight: 500;
   @media ${breakPoints.mobile} {
   }

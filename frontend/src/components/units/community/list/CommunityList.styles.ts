@@ -203,7 +203,7 @@ export const TagsWrap = styled.div`
 export const ItemTextTag = styled.span`
   font-size: 0.9rem;
   margin-right: 0.3rem;
-  color: #1e3932;
+  color: steelblue;
 `;
 
 export const ItemTextUserWrapper = styled.div`

@@ -79,7 +79,7 @@ export default function CommunityDetail() {
   // }, [dataFavoriteUser?.fetchFavoriteUser.user]);
 
   useEffect(() => {
-    if (dataFavoriteUser?.fetchFavoriteUser[0]?.user.id === dataUser?.fetchLoginedUser.id)
+    if (dataFavoriteUser?.fetchFavoriteUser[0]?.user?.id === dataUser?.fetchLoginedUser.id)
       setLike(true);
   }, [dataFavoriteUser]);
   // useEffect(() => {

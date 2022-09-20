@@ -8,8 +8,8 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 1500px;
-  padding: 10%;
-  /* font-family: "Cafe24Ohsquare"; */
+  padding-top: 5%;
+  /* background-color: yellow; */
   @media ${breakPoints.mobile} {
     width: 100%;
     /* border: 1px solid black; */
@@ -21,7 +21,8 @@ export const TopWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding-bottom: 7.7rem;
-  width: 1200px;
+  width: 100%;
+  /* background-color: pink; */
   @media ${breakPoints.mobile} {
     /* border: 1px solid red; */
     width: 100%;
@@ -32,10 +33,13 @@ export const Title = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* background-color: red; */
+  height: 5rem;
+  padding-left: 1rem;
+  /* background-color: black; */
+  width: 100%;
   font-size: 2.2rem;
   font-weight: 900;
-  color: #33413e;
+  color: #1e3932;
   /* font-family: "KOTRA_BOLD-Bold"; */
 
   span {
@@ -102,7 +106,7 @@ export const ImgSmallBox = styled.div`
   flex-direction: row;
   cursor: pointer;
   height: 6em;
-
+  padding-left: 2.2rem;
   /* background-color: yellow; */
   img {
     width: 7rem;
@@ -122,7 +126,7 @@ export const ContentsWrap = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 1200px;
+  /* width: 1200px; */
   /* background-color: green; */
   @media ${breakPoints.mobile} {
     width: 100%;
@@ -133,8 +137,10 @@ export const CafeDetailBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 33rem;
+  width: 50%;
   padding: 0 2rem;
+  /* background-color: red; */
+
   /* border: 0.06rem solid #555; */
   @media ${breakPoints.mobile} {
     /* background-color: pink; */
@@ -176,8 +182,7 @@ export const LabelBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 19rem;
-
+  height: 22rem;
   /* background-color: aliceblue; */
   /* border: 0.06rem solid #555; */
   @media ${breakPoints.mobile} {
@@ -189,18 +194,21 @@ export const LabelBox = styled.div`
 export const Label = styled.div`
   display: flex;
   flex-direction: row;
-  width: 40rem;
+  width: 100%;
   margin-bottom: 0.7rem;
   font-size: 1.2rem;
   font-weight: 400;
   margin-left: 1rem;
   color: #333;
+  /* background-color: yellow; */
+
   .title {
     font-size: 1.4rem;
     line-height: 1.4rem;
     font-weight: 700;
-    width: 10rem;
-    /* background-color: yellow; */
+    width: 9rem;
+    line-height: 2rem;
+    /* background-color: green; */
     @media ${breakPoints.mobile} {
       width: 40%;
       font-size: 0.9rem;
@@ -220,16 +228,25 @@ export const Label = styled.div`
 export const Label2 = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  width: 60rem;
+  /* background-color: yellow; */
+  /* border-right: 1px solid grey; */
+  align-items: center;
   font-size: 1.8rem;
   font-weight: 700;
   color: #333;
+
+  .map {
+  }
   /* margin: 4rem 0; */
   /* text-align: center; */
+
   div {
     font-size: 1.1rem;
     font-weight: 500;
     padding: 1.5rem;
+    /* background-color: pink; */
+    text-align: center;
     @media ${breakPoints.mobile} {
       font-size: 0.8rem;
       font-weight: 400;
@@ -243,11 +260,27 @@ export const Label2 = styled.div`
   }
 `;
 
+export const MapTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 55rem;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  padding: 1.5rem;
+
+  @media ${breakPoints.mobile} {
+  }
+`;
+
 export const BottomWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  width: 1200px;
+  align-items: center;
+  width: 1500px;
+  /* background-color: grey; */
+
   /* border: 1px solid grady; */
   @media ${breakPoints.mobile} {
     width: 100%;
@@ -259,6 +292,7 @@ export const ReservationWrap = styled.div`
   display: flex;
   flex-direction: row;
   width: 180%;
+
   /* border: 1px solid red; */
   div {
     width: 50%;
@@ -277,9 +311,9 @@ export const ReservationWrap = styled.div`
 export const MapWrapper = styled.div`
   background-color: #eee;
   border: 1px solid gray;
-  width: 100%;
+  width: 50%;
   height: 33rem;
-  margin-top: 3rem;
+  /* background-color: yellow; */
   @media ${breakPoints.mobile} {
     /* background-color: blue; */
     border: none;
@@ -291,6 +325,7 @@ export const MapWrapper = styled.div`
 export const ButtonWrap = styled.div`
   display: flex;
   flex-direction: row;
+
   /* justify-content: center; */
   align-items: flex-end;
   height: 6rem;
@@ -309,7 +344,35 @@ export const ReserveBtn = styled.div`
   color: white;
   line-height: 3rem;
   text-align: center;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+
   cursor: pointer;
+  :hover {
+    color: gold;
+  }
+  @media ${breakPoints.mobile} {
+    /* background-color: bisque; */
+    display: none;
+  }
+`;
+
+export const ZzimBtn = styled.div`
+  width: 8rem;
+  border-radius: 0.5rem;
+  height: 3rem;
+  background: #1e3932;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
+  line-height: 3rem;
+  text-align: center;
+  margin: 0 1rem;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+
+  cursor: pointer;
+  :hover {
+    color: gold;
+  }
   @media ${breakPoints.mobile} {
     /* background-color: bisque; */
     display: none;
@@ -352,6 +415,7 @@ export const MiddleText = styled.div`
   font-weight: 400;
   text-align: center;
   margin-top: 10rem;
+
   @media ${breakPoints.mobile} {
     width: 100%;
     font-size: 0.8rem;
@@ -468,16 +532,31 @@ export const SubImage = styled.img`
 `;
 
 /**
- * 재인수정
+ * 재인추가
  * date: 0920 04:52AM -
  */
 
 export const RowWrapper = styled.div`
-  width: 1200px;
+  /* width: 1200px; */
+  width: 100%;
+  height: 40rem;
+  min-height: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   padding-bottom: 4rem;
+  position: relative;
+  /* background-color: pink; */
 `;
 
-export const ContentsTitle = styled.h3``;
+export const ReservationBox = styled.div`
+  min-height: 100%;
+  top: 0;
+  bottom: 0;
+  position: fixed;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  right: 5%;
+  z-index: 99;
+  top: 50%;
+`;

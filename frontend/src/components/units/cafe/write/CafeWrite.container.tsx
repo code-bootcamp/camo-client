@@ -8,13 +8,13 @@ import { FETCH_CAFE_LISTS_CREATED_AT } from "../list/CafeList.queries";
 import CafeWriteUI from "./CafeWrite.presenter";
 import { CREATE_CAFE_LIST, UPDATE_CAFE_LIST } from "./CafeWrite.queries";
 import { Editor } from "@toast-ui/react-editor";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
+// import * as yup from "yup";
+// import { yupResolver } from "@hookform/resolvers/yup";
 
-const schema = yup.object({
-  title: yup.string().required("카페 이름을 입력해주세요."),
-  contents: yup.string().required("내용을 입력해주세요."),
-});
+// const schema = yup.object({
+//    title: yup.string().required("카페 이름을 입력해주세요."),
+//    contents: yup.string().required("내용을 입력해주세요."),
+// });
 
 export default function CafeWrite(props: any) {
   useAuth();
@@ -27,7 +27,7 @@ export default function CafeWrite(props: any) {
   const [updateCafeList] = useMutation(UPDATE_CAFE_LIST);
 
   const { register, handleSubmit, setValue, trigger, reset, formState } = useForm({
-    resolver: yupResolver(schema),
+    // resolver: yupResolver(schema),
     mode: "onChange",
   });
 
@@ -37,8 +37,6 @@ export default function CafeWrite(props: any) {
     const htmlData = editorRef.current?.getInstance()?.getHTML();
     setValue("contents", htmlData);
     trigger("contents");
-    // const cleaned = DOMPurify.sanitize(editor.getHTML());
-    // console.log("Cleaned Html: ", cleaned);
   };
 
   // toastUI edit
@@ -47,8 +45,8 @@ export default function CafeWrite(props: any) {
     editorRef.current?.getInstance().setHTML(htmlString);
   }, [props?.data]);
 
-  console.log(props.data?.fetchCafeList.cafeListImage);
-  console.log(props.data?.fetchCafeList?.cafeListImage[0]?.url);
+  // console.log(props.data?.fetchCafeList.cafeListImage);
+  // console.log(props.data?.fetchCafeList?.cafeListImage[0]?.url);
   const onClickAddressModal = (event: MouseEvent<HTMLButtonElement>) => {
     if (event.currentTarget instanceof HTMLButtonElement) {
       switch (event.currentTarget.id) {
@@ -174,7 +172,7 @@ export default function CafeWrite(props: any) {
           },
         },
       });
-      router.push(`/cafe/${result.data?.updateCafeList.cafeListId}`);
+      router.push(`/cafe/${result.data?.updateCafeList.id}`);
       // router.push(`/cafe/`);
       message.success("수정 성공!");
       console.log(result);
