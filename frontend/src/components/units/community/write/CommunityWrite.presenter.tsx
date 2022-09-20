@@ -72,22 +72,27 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
             ))}
           </S.ImageWrap>
           <S.Label>태그</S.Label>
-          <S.TagInput
-            type="text"
-            placeholder="태그1,태그2"
-            defaultValue={props.data?.fetchBoard.tags?.map((el) => el.name)}
-            {...props.register("tags")}
-          />
+          {props.isEdit ? (
+            <S.TagInput
+              type="text"
+              readOnly
+              defaultValue={props.data?.fetchBoard.tags?.map((el) => el.name)}
+              {...props.register("tags")}
+            />
+          ) : (
+            <S.TagInput
+              type="text"
+              placeholder="태그1 태그2"
+              defaultValue={props.data?.fetchBoard.tags?.map((el) => el.name)}
+              {...props.register("tags")}
+            />
+          )}
           <S.Label>주소</S.Label>{" "}
           <S.MapAddressWrapper>
             <S.MapWrapper>
-              <MapComponent data={String(props.data?.fetchBoard.address)} address={props.address} />
-              {/* <KakaoMap02
-                data={props.data?.fetchBoard}
-                address={props.data?.fetchBoard?.address as string}
-                width="100%"
-                height="100%"
-              /> */}
+              <MapComponent
+                address={props.isEdit ? props.data?.fetchBoard?.address || "" : props.address}
+              />
             </S.MapWrapper>
             <S.AddressWrapper>
               <S.AddressInput

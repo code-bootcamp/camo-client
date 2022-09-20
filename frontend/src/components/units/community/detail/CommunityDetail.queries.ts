@@ -24,11 +24,6 @@ export const FETCH_BOARD = gql`
         id
         url
       }
-      comment {
-        id
-        comment
-        createdAt
-      }
     }
   }
 `;

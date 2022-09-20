@@ -28,7 +28,7 @@ export default function CommunityWrite(props: ICommunityNewProps) {
   const [createBoard] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
 
-  const { register, handleSubmit, setValue, trigger, formState, getValues, reset } = useForm({
+  const { register, handleSubmit, setValue, trigger, formState, getValues } = useForm({
     resolver: yupResolver(schema),
     mode: "onSubmit",
   });
@@ -111,14 +111,14 @@ export default function CommunityWrite(props: ICommunityNewProps) {
               address: data.address || "",
               addressDetail: data.addressDetail || "",
               tags: data.tags?.split(" ") || "",
-              image: [...fileUrls],
+              image: [...fileUrls] || "",
             },
           },
-          refetchQueries: [
-            {
-              query: FETCH_BOARD,
-            },
-          ],
+          // refetchQueries: [
+          //   {
+          //     query: FETCH_BOARD,
+          //   },
+          // ],
         });
         router.push(`/community/${result.data?.createBoard.id}`);
       }
@@ -146,22 +146,22 @@ export default function CommunityWrite(props: ICommunityNewProps) {
         variables: {
           boardId: String(router.query.communityId),
           nickName: props.data?.fetchBoard.user.nickName,
-          updateCafeListInput: {
-            title: data.title || "",
-            zipcode: data.zipcode || "",
-            address: data.address || "",
-            addressDetail: data.addressDetail || "",
-            contents: data.contents || "",
-            tags: data.tags?.split(",") || "",
-            images: [...fileUrls] || "",
+          updateBoardInput: {
+            title: data.title,
+            zipcode: data.zipcode,
+            address: data.address,
+            addressDetail: data.addressDetail,
+            contents: data.contents,
+            // tags: data.tags?.split(" ") || "",
+            image: [...fileUrls],
           },
         },
       });
-      router.push(`/community/${result.data?.updateBoard.id}`);
+      router.push(`/community/${result.data?.createBoard.id}`);
       location.reload();
     } catch (error: any) {
       console.log("수정실패", error);
-      console.log(error.message);
+      console.log(error instanceof Error);
       if (error instanceof Error) {
         Modal.error({ content: "수정되지 않았습니다😭" });
       }

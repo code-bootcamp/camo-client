@@ -26,7 +26,11 @@ export default function CommunityCreatedAtListUI(props: ICreatedAtListUIProps) {
               <S.ItemTextTitleWrapper>
                 <S.ItemTextTitle>{el.title}</S.ItemTextTitle>
                 {el.tags?.map(({ name }: ITagsProps) => {
-                  return <S.ItemTextTag key={uuidv4()}>{`#${name}`}</S.ItemTextTag>;
+                  return name === "" ? (
+                    <></>
+                  ) : (
+                    <S.ItemTextTag key={uuidv4()}>{`#${name}`}</S.ItemTextTag>
+                  );
                 })}
               </S.ItemTextTitleWrapper>
 

@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 
 export const BodyWrapper = styled.div`
   width: 80%;
-  padding: 5% 0 0 0;
+  padding: 1rem 0 0 0;
   @media ${breakPoints.mobile} {
   }
 `;

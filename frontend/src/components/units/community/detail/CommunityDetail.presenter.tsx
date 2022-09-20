@@ -2,8 +2,8 @@ import Link from "next/link";
 import { getDate } from "../../../../commons/libraries/utils";
 import { v4 as uuidv4 } from "uuid";
 import Dompurify from "dompurify";
-
 import * as S from "./CommunityDetail.styles";
+import MapComponent from "../../../commons/map/01";
 
 export default function CommunityDetailUI(props: any) {
   return (
@@ -43,8 +43,6 @@ export default function CommunityDetailUI(props: any) {
         </S.UserInfoWrapper>
         <S.PostWrapper>
           <S.PostDetail>{getDate(props.dataBoard?.fetchBoard?.createdAt)}</S.PostDetail>
-          {/* <S.PostDetail>조회수</S.PostDetail>
-              <S.PostDetail>댓글</S.PostDetail> */}
         </S.PostWrapper>
       </S.TitleWrapper>
 
@@ -59,11 +57,13 @@ export default function CommunityDetailUI(props: any) {
               />
             </S.MainImgWrapper>
           ) : (
-            <S.MainImg
-              src={`https://storage.googleapis.com/team04-storage/${props.dataBoard?.fetchBoard.images[1]?.url}`}
-              alt="이미지"
-              onError={props.onErrorImg}
-            />
+            <S.MainImgWrapper>
+              <S.MainImg
+                src={`https://storage.googleapis.com/team04-storage/${props.dataBoard?.fetchBoard.images[1]?.url}`}
+                alt="이미지"
+                onError={props.onErrorImg}
+              />
+            </S.MainImgWrapper>
           )}
 
           <S.SubImgWrapper>
@@ -90,24 +90,34 @@ export default function CommunityDetailUI(props: any) {
             ></S.Contents>
           )}
           <S.AddressWrapper>
-            📍위치 | {props.dataBoard?.fetchBoard.zipcode} {props.dataBoard?.fetchBoard?.address}
+            <S.AddressTitle>📍위치 |</S.AddressTitle>
+            <S.Address>
+              {props.dataBoard?.fetchBoard.zipcode} {props.dataBoard?.fetchBoard?.address}
+            </S.Address>
             {props.dataBoard?.fetchBoard.addressDetail}
           </S.AddressWrapper>
-          <S.MapWrapper style={{ overflow: "hidden" }}></S.MapWrapper>
-          <S.TagsWrapper>
-            {props.dataBoard?.fetchBoard.tags?.map((el: any) => (
-              <S.Tags key={uuidv4()}>{`#${el.name}`}</S.Tags>
-            ))}
-          </S.TagsWrapper>
+          <S.MapWrapper>
+            <MapComponent
+              data={props.dataBoard?.fetchBoard}
+              address={(props.dataBoard?.fetchBoard?.address as string) || ""}
+            />
+          </S.MapWrapper>
+          <S.FooterWrapper>
+            <S.TagsWrapper>
+              {props.dataBoard?.fetchBoard.tags?.map((el: any) =>
+                el.name === "" ? <></> : <S.Tags key={uuidv4()}>{`#${el.name}`}</S.Tags>
+              )}
+            </S.TagsWrapper>
+            <S.BtnWrapper>
+              <Link href="/community/">
+                <a>
+                  <S.ListBtn>목록으로</S.ListBtn>
+                </a>
+              </Link>
+            </S.BtnWrapper>
+          </S.FooterWrapper>
           {/* <S.CommentIcon /> */}
         </S.ContentsWrapper>
-        <S.BtnWrapper>
-          <Link href="/community/">
-            <a>
-              <S.ListBtn>목록으로</S.ListBtn>
-            </a>
-          </Link>
-        </S.BtnWrapper>
       </S.BodyWrapper>
     </S.Wrapper>
   );
