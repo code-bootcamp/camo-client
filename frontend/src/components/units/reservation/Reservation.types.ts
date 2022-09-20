@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+import { Dispatch, MouseEvent, SetStateAction } from "react";
 
 export interface IReservationUIProps {
   hour: { start_time: string; end_time: string; reserved: boolean }[];
@@ -21,4 +21,7 @@ export interface IReservationUIProps {
   disabled: boolean;
   onClickSetTime: (event: MouseEvent<HTMLButtonElement>) => void;
   CafeData: any;
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+  onDismiss: () => void;
 }
