@@ -49,6 +49,7 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
             type="text"
             placeholder="제목을 입력해주세요"
             {...props.register("title")}
+            defaultValue={props.data?.fetchBoard.title}
           />
           <S.Label>내용</S.Label>
           <S.ContentWrapper>
@@ -71,7 +72,12 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
             ))}
           </S.ImageWrap>
           <S.Label>태그</S.Label>
-          <S.TagInput type="text" placeholder="태그를 입력해주세요" {...props.register("tags")} />
+          <S.TagInput
+            type="text"
+            placeholder="태그1,태그2"
+            defaultValue={props.data?.fetchBoard.tags?.map((el) => el.name)}
+            {...props.register("tags")}
+          />
           <S.Label>주소</S.Label>{" "}
           <S.MapAddressWrapper>
             <S.MapWrapper>
@@ -87,6 +93,7 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
               <S.AddressInput
                 type="text"
                 placeholder="000000"
+                defaultValue={props.data?.fetchBoard.zipcode}
                 readOnly
                 {...props.register("zipcode")}
               />
@@ -94,16 +101,21 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
                 주소입력
               </S.AddressButton>
               <S.AddressDetailWrapper>
-                <S.AddressDetailInput readOnly {...props.register("address")} />
-                <S.AddressDetailInput {...props.register("addressDetail")} />
+                <S.AddressDetailInput
+                  defaultValue={props.data?.fetchBoard.address}
+                  readOnly
+                  {...props.register("address")}
+                />
+                <S.AddressDetailInput
+                  defaultValue={props.data?.fetchBoard.addressDetail}
+                  readOnly
+                  {...props.register("addressDetail")}
+                />
               </S.AddressDetailWrapper>
-              <div></div>
-              <div></div>
             </S.AddressWrapper>
           </S.MapAddressWrapper>
           <S.BtnWrapper>
-            <S.RegisterBtn type="submit">등록</S.RegisterBtn>
-
+            <S.RegisterBtn type="submit">{props.isEdit ? "수정" : "등록"}</S.RegisterBtn>
             <S.CancelBtn type="button" onClick={props.onClickCancel}>
               취소
             </S.CancelBtn>

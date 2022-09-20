@@ -1,11 +1,11 @@
 import Link from "next/link";
 import * as S from "./CommunityList.styles";
 import { IBoardListUIProps } from "./CommunityList.types";
-import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 import CommunityCreatedAtList from "./createdAt/CommunityCreatedAtList.container";
 import CommunityLikeCountList from "./likeCount/CommunityLikeCountList.container";
 import SearchBar from "../../../commons/searchbar/01/SearchBar.container";
-// import CommunityPagination from "./pagination/Pagination.container";
+import { ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { StyledEngineProvider } from "@mui/material/styles";
 
 export default function CommunityListUI(props: IBoardListUIProps) {
   return (
@@ -13,9 +13,8 @@ export default function CommunityListUI(props: IBoardListUIProps) {
       <S.Banner></S.Banner>
       <S.BodyWrapper>
         <S.NavWrapper>
-          <S.SortList>
-            {/* <S.NewList>최신순</S.NewList>
-            <S.LikeList>인기순</S.LikeList> */}
+          {/* <S.SortList> */}
+          <StyledEngineProvider injectFirst>
             <ToggleButtonGroup
               color="standard"
               value={props.alignment}
@@ -26,7 +25,8 @@ export default function CommunityListUI(props: IBoardListUIProps) {
               <ToggleButton value="createdAt">최신순</ToggleButton>
               <ToggleButton value="likeCount">인기순</ToggleButton>
             </ToggleButtonGroup>
-          </S.SortList>
+          </StyledEngineProvider>
+          {/* </S.SortList> */}
 
           <S.InputWrapper>
             <SearchBar

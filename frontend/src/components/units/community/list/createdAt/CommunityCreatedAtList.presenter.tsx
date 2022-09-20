@@ -16,7 +16,7 @@ export default function CommunityCreatedAtListUI(props: ICreatedAtListUIProps) {
               <S.ItemImg
                 src={
                   el.images
-                    ? `https://storage.googleapis.com/${el.images[0]?.url}`
+                    ? `https://storage.googleapis.com/team04-storage/${el.images[0]?.url}`
                     : "https://images.unsplash.com/photo-1458819714733-e5ab3d536722?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTYwfHxjYWZlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
                 }
                 onError={props.onErrorImg}
@@ -44,7 +44,9 @@ export default function CommunityCreatedAtListUI(props: ICreatedAtListUIProps) {
         ))}
       </S.ItemWrapper>
       {/* </InfiniteScroll> */}
-      <CommunityPagination data={props.data} refetch={props.refetch} />
+      <S.PagesWrapper>
+        <CommunityPagination data={props.data} refetch={props.refetch} />
+      </S.PagesWrapper>
     </>
   );
 }

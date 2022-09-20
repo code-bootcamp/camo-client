@@ -136,31 +136,32 @@ export const BodyWrapper = styled.div`
 export const ImgWrapper = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
 `;
 
 export const MainImgWrapper = styled.div`
-  width: 100%;
-  height: auto;
+  width: 70%;
+  height: 10%;
+  background-color: aliceblue;
 `;
 
 export const MainImg = styled.img`
-  height: auto;
   width: 100%;
-  object-fit: scale-down;
+  height: 400px;
+  object-fit: cover;
+  background-color: aliceblue;
 `;
 
 export const SubImgWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 3fr);
-  width: 100%;
+  grid-template-rows: repeat(3, 3fr);
+  width: 20%;
   place-content: start space-between;
   align-items: center;
   gap: 0 1%;
   padding-top: 1%;
   @media ${breakPoints.mobile} {
-    grid-template-columns: repeat(3, 3fr);
+    grid-template-rows: repeat(3, 3fr);
   }
 `;
 

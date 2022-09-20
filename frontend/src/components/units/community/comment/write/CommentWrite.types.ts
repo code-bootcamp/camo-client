@@ -11,11 +11,11 @@ export interface ICommentWriteProps {
 
 export interface ICommentWriteUIProps {
   handleSubmit(
-    onClickUpdateComment: MouseEventHandler<HTMLDivElement> | undefined
+    onClickUpdateComment: MouseEventHandler<HTMLButtonElement> | undefined
   ): import("react").FormEventHandler<HTMLFormElement> | undefined;
-  onClickComment: MouseEventHandler<HTMLDivElement> | undefined;
-  onClickUpdateComment: MouseEventHandler<HTMLDivElement> | undefined;
-  onClickCancel: MouseEventHandler<HTMLDivElement> | undefined;
+  onClickComment: MouseEventHandler<HTMLButtonElement> | undefined;
+  onClickUpdateComment: MouseEventHandler<HTMLButtonElement> | undefined;
+  onClickCancel: MouseEventHandler<HTMLButtonElement> | undefined;
   comment: any;
   el: any;
   onChangeContents: ChangeEventHandler<HTMLInputElement> | undefined;

@@ -64,7 +64,6 @@ export default function CommunityList() {
 
   const handleChange = async (event: MouseEvent<HTMLElement>, newAlignment: string) => {
     setAlignment(newAlignment);
-    // console.log(typeof newAlignment);
   };
 
   return (
