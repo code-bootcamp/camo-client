@@ -8,7 +8,7 @@ export default function CommentList() {
   const router = useRouter();
   const { data: UserData } = useQuery(FETCH_LOGINED_USER);
   const { data: CommentData } = useQuery(FETCH_COMMENTS, {
-    variables: { boardId: router.query.communityId },
+    variables: { boardId: String(router.query.communityId) },
   });
 
   return (

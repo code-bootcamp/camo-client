@@ -35,17 +35,13 @@ export const UPDATE_BOARD = gql`
       id
       title
       contents
-      likeCount
       zipcode
       address
       addressDetail
-      tags {
-        id
-        name
-      }
-      user {
-        nickName
-      }
+      # tags {
+      #   id
+      #   name
+      # }
       images {
         id
         url
