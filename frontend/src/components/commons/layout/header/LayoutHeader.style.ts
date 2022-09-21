@@ -75,7 +75,7 @@ export const MenuFonts = styled.div`
 `;
 
 export const LoginWrapper = styled.div`
-  width: 9rem;
+  width: 10rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -90,12 +90,12 @@ export const LoginWrapper = styled.div`
 export const LoginButton = styled.button`
   font-style: normal;
   font-weight: 600;
-  font-size: 0.66rem;
+  font-size: 0.8rem;
   background-color: #1e3932;
   color: white;
   cursor: pointer;
   border: none;
-  width: 3.5rem;
+  width: 5rem;
   height: 1.3rem;
   border-radius: 5px;
   :hover {
@@ -110,8 +110,9 @@ export const LoginButton = styled.button`
 
 export const LoginUser = styled.h3`
   color: white;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 500;
+  width: 8rem;
   @media ${breakPoints.mobile} {
     display: none;
   }

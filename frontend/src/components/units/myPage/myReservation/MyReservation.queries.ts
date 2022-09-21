@@ -31,6 +31,12 @@ export const FETCH_MY_CAFE_RESERVATION = gql`
       startTime
       endTime
       deposit
+      cafeList {
+        cafeListImage {
+          id
+          url
+        }
+      }
     }
   }
 `;

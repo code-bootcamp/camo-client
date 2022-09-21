@@ -8,7 +8,11 @@ import clsx from "clsx";
 
 import { ILayoutHeaderUIProps } from "./LayoutHeader.types";
 import { ListItem, ListItemText, ListItemIcon, List, Button, Drawer } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
+
+// import { CSSTransition } from "react-transition-group"
+// const [showbutton, setShowButton] = useState();
+// const [show]
 
 const useStyles = makeStyles({
   list: {
@@ -101,16 +105,6 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
             </a>
           </ListItem>
         </Link>
-        {/* <ListItem button key="로그아웃">
-          <ListItemIcon>
-            <KeyboardArrowRight />
-          </ListItemIcon>
-          <Link href="/community">
-            <a>
-              <ListItemText primary="커뮤니티" />
-            </a>
-          </Link>
-        </ListItem> */}
       </List>
     </div>
   );
@@ -195,6 +189,7 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
                 </a>
               </Link>
               <C.MenuTab />
+              {/* 이거 콘솔에 에러나요 .. */}
               <C.MenuButton id="none" style={{ opacity: "0" }}>
                 {(["right"] as Anchor[]).map((anchor) => (
                   <React.Fragment key={anchor}>

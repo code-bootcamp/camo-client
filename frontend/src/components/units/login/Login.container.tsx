@@ -9,6 +9,7 @@ import { accessTokenState } from "../../../commons/store";
 import { useRecoilState } from "recoil";
 // import { IMutation, IMutationLoginUserArgs } from "../../../commons/types/generated/types";
 import { useRouter } from "next/router";
+import { Modal } from "antd";
 
 const schema = yup.object({
   email: yup
@@ -48,7 +49,8 @@ export default function Login() {
 
       router.push("/");
     } catch (error) {
-      // console.log(error);
+      Modal.error({ content: error });
+      console.log(error);
     }
   };
   return (

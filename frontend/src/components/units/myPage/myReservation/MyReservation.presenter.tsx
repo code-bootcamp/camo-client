@@ -19,6 +19,8 @@ export default function MyReservationUI(props: IMyReservationUIProps) {
             <div key={uuidv4()}>
               <S.MainWrapper>
                 <S.RowWrapper>
+                  {/*   src={`https://storage.googleapis.com/${props.cafeListImage?.url[0]}`} */}
+                  {/* {el.cafeList?.cafeListImage?.url[0]} */}
                   <S.Image src="/images/sample/cafe_sample4.jpeg" />
                   <S.ContentBackGround>
                     <S.ContentWrapper>

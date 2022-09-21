@@ -70,7 +70,8 @@ export default function CafeOwnerSignUp() {
         variables: { phoneNumber, SMSToken },
       });
       const checkPhoneToken = result?.data?.checkSMSTokenValid;
-      if (checkPhoneToken) Modal.success({ content: "인증번호가 전송되었습니다." });
+      if (checkPhoneToken) alert("인증이 완료되었습니다.");
+      console.log(checkPhoneToken);
       setCheckSMSToken(true);
       console.log(result);
       console.log(checkPhoneToken);
@@ -98,7 +99,7 @@ export default function CafeOwnerSignUp() {
   const onClickSubmit = async (data: any) => {
     // console.log({ ...data });
     const { passwordConfirm, phoneNumberCheck, ...dataCheck } = data;
-    if (!checkSMSToken) return Modal.error({ content: "휴대폰 인증을 해야합니다" });
+    if (!checkSMSToken) return alert("휴대폰 인증을 해야합니다");
     try {
       await createCafeOwner({
         variables: { CreateCafeOwnerInput: { ...dataCheck } },

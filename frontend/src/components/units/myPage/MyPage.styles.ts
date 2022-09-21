@@ -36,7 +36,7 @@ export const Body = styled.main`
   padding-bottom: 30px;
   @media ${breakPoints.mobile} {
     width: 100vw;
-    margin: auto;
+    /* margin: auto; */
   }
 `;
 

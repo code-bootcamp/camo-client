@@ -15,6 +15,7 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "react/display-name": "off",
+    "@typescript-eslint/no-shadow": "off",
   },
   root: true,
   settings: {
