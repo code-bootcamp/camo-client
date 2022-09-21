@@ -33,7 +33,7 @@ export const NavWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  @media ${breakPoints.mobile} {
+  @media (max-width: 1100px) {
     // 모바일
     width: 100%;
     display: flex;
@@ -42,7 +42,7 @@ export const NavWrapper = styled.div`
 `;
 
 export const SortList = styled.div`
-  @media ${breakPoints.mobile} {
+  @media (max-width: 1100px) {
     margin: 1rem 0;
   }
 `;
@@ -91,7 +91,7 @@ export const ItemWrapper = styled.div`
   display: grid;
   place-items: center;
   grid-template-columns: repeat(2, 600px);
-  @media ${breakPoints.mobile} {
+  @media (max-width: 1100px) {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     padding: 0 3%;
@@ -108,7 +108,7 @@ export const ItemContent = styled.div`
   border-radius: 5px;
   cursor: pointer;
   background-color: #fff;
-  @media ${breakPoints.mobile} {
+  @media (max-width: 1100px) {
     width: 95%;
     height: 200px;
   }

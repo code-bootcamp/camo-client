@@ -87,6 +87,7 @@ export const WrapLength = styled.div`
   background-color: #fff;
   height: 55px;
   border-radius: 0px 0px 8px 8px;
+  justify-content: space-between;
 `;
 
 export const Length = styled.div`

@@ -256,13 +256,16 @@ export const Tags = styled.div`
 // export const CommentIcon = styled(MessageOutlined)``;
 
 export const BtnWrapper = styled.div`
-  width: 25%;
-  /* height: 300px; */
+  width: 30%;
   display: flex;
   justify-content: end;
+  @media ${breakPoints.mobile} {
+    justify-content: start;
+  }
 `;
 
 export const ListBtn = styled.button`
+  width: 80px;
   border: none;
   border-radius: 5px;
   text-align: center;

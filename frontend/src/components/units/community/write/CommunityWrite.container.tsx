@@ -6,7 +6,11 @@ import { MouseEvent, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../commons/hooks";
 import CommunityWriteUI from "./CommunityWrite.presenter";
-import { CREATE_BOARD, FETCH_BOARD, UPDATE_BOARD } from "./CommunityWrite.queries";
+import {
+  CREATE_BOARD,
+  // FETCH_BOARD,
+  UPDATE_BOARD,
+} from "./CommunityWrite.queries";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Editor } from "@toast-ui/react-editor";
 import { ICommunityNewProps } from "./CommunityWrite.types";
@@ -43,8 +47,10 @@ export default function CommunityWrite(props: ICommunityNewProps) {
 
   // toastUI edit
   useEffect(() => {
-    const htmlString = props.data?.fetchBoard.contents;
-    editorRef.current?.getInstance().setHTML(String(htmlString));
+    if (props.data?.fetchBoard.contents) {
+      const htmlString = props.data?.fetchBoard.contents;
+      editorRef.current?.getInstance().setHTML(String(htmlString));
+    }
   }, [props?.data]);
 
   const onCompleteAddressSearch = (data: any) => {
@@ -78,12 +84,12 @@ export default function CommunityWrite(props: ICommunityNewProps) {
   };
 
   useEffect(() => {
-    if (props.data !== undefined) {
+    if (props.data !== undefined || null) {
       // if (props.data.fetchBoard.tags?.length) {
       //   setTagList(props.data.fetchBoard.tags?.map((el: any) => el.name));
       // }
-      if (props.data.fetchBoard.images?.length) {
-        setFileUrls([...props.data.fetchBoard.images.map((el: any) => el.url)]);
+      if (props.data?.fetchBoard.images?.length) {
+        setFileUrls([...props.data?.fetchBoard.images.map((el: any) => el.url)]);
       }
     }
   }, [props.data]);
@@ -136,6 +142,7 @@ export default function CommunityWrite(props: ICommunityNewProps) {
   };
 
   const onClickEdit = async (data: any) => {
+    console.log(String(router.query.communityId));
     const updateBoardInput: IUpdateBoardInput = {};
     if (data.title) updateBoardInput.title = data.title;
     if (data.content) updateBoardInput.contents = data.content;
@@ -144,7 +151,7 @@ export default function CommunityWrite(props: ICommunityNewProps) {
     try {
       const result = await updateBoard({
         variables: {
-          boardId: String(router.query.communityId),
+          boardId: router.query.communityId,
           nickName: props.data?.fetchBoard.user.nickName,
           updateBoardInput: {
             title: data.title,
@@ -157,8 +164,7 @@ export default function CommunityWrite(props: ICommunityNewProps) {
           },
         },
       });
-      router.push(`/community/${result.data?.createBoard.id}`);
-      location.reload();
+      router.push(`/community/${result.data?.updateBoard.id}`);
     } catch (error: any) {
       console.log("수정실패", error);
       console.log(error instanceof Error);
