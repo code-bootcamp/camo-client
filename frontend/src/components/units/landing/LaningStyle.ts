@@ -11,6 +11,9 @@ export const MainWrapper = styled.div`
   width: 100%;
   height: 66rem;
   position: relative;
+  @media ${breakPoints.mobile} {
+    height: 55rem;
+  }
 `;
 
 export const Logo = styled.h1`
@@ -53,6 +56,9 @@ export const ImageWrapper = styled.div`
   width: 100%;
   height: 100%;
   background-color: black;
+  @media ${breakPoints.mobile} {
+    /* height: 90%; */
+  }
   /* .logo {
     margin: 3rem;
     width: 6.6rem;
@@ -69,6 +75,7 @@ export const MainImage = styled.img`
   top: 0rem;
   opacity: 0.6;
   @media ${breakPoints.mobile} {
+    /* height: 90%; */
   }
 `;
 
@@ -92,7 +99,7 @@ export const MainTitle = styled.div`
     font-weight: 700;
   }
 
-  @media screen and (max-width: 767px) {
+  @media ${breakPoints.mobile} {
     font-size: 2.5rem;
   }
 `;
@@ -107,8 +114,8 @@ export const MainSmallText = styled.div`
   width: 100%;
   text-align: center;
   font-family: "Cafe24Ohsquare";
-  @media screen and (max-width: 767px) {
-    font-size: 1.5rem;
+  @media ${breakPoints.mobile} {
+    font-size: 1.6rem;
   }
   /* font-family: "KOTRA_BOLD-Bold"; */
 `;
@@ -126,18 +133,6 @@ export const MiddleWrapper = styled.div`
     margin: 0 0.5rem;
     animation: pulse; /* referring directly to the animation's @keyframe declaration */
     animation-duration: 1s; /* don't forget to set a duration! */
-    /*     
-    animation: "SliderIsActive" 2s ease-in-out;
-    @keyframes SliderIsActive {
-      from {
-        opacity: 0.1;
-        transform: scale(85%);
-      }
-      to {
-        opacity: 1;
-        transform: scale(100%);
-      }
-    } */
   }
   @media ${breakPoints.mobile} {
     flex-direction: column;
@@ -174,7 +169,6 @@ export const SliderZoom = styled.div`
   display: flex;
   margin: 20px;
   align-items: center;
-
   animation: "SliderZoom" 2s ease-in-out infinite alternate;
   @keyframes SliderZoom {
     from {

@@ -79,10 +79,28 @@ export default function QuestionUI(props: any) {
                 <S.QText> Q. 카페 예약 취소는 언제까지 해야하나요? </S.QText>
                 {/* <S.EditImage src="/icons/edit.svg"></S.EditImage> */}
               </S.QuestionTitleColumn>
-              <S.QuestionWriterColumn> 이름</S.QuestionWriterColumn>
-              <S.QuestionDateColumn> 날짜</S.QuestionDateColumn>
+              <S.QuestionWriterColumn> 홍길동</S.QuestionWriterColumn>
+              <S.QuestionDateColumn> 9/23</S.QuestionDateColumn>
+            </S.QuestionTableRow>
+            <S.QuestionTableRow>
+              <S.QuestionStatusColumn>Yes</S.QuestionStatusColumn>
+              <S.QuestionTitleColumn>
+                <S.QText>Q. 예약 인원수는 제한 있나요? </S.QText>
+                {/* <S.EditImage src="/icons/edit.svg"></S.EditImage> */}
+              </S.QuestionTitleColumn>
+              <S.QuestionWriterColumn> 김철수</S.QuestionWriterColumn>
+              <S.QuestionDateColumn> 9/22</S.QuestionDateColumn>
             </S.QuestionTableRow>
 
+            <S.QuestionTableRow>
+              <S.QuestionStatusColumn>Yes</S.QuestionStatusColumn>
+              <S.QuestionTitleColumn>
+                <S.QText> Q. 예약금보다 적은 금액을 주문하면 차액 환불 되나요? </S.QText>
+                {/* <S.EditImage src="/icons/edit.svg"></S.EditImage> */}
+              </S.QuestionTitleColumn>
+              <S.QuestionWriterColumn> 이영희</S.QuestionWriterColumn>
+              <S.QuestionDateColumn> 9/21</S.QuestionDateColumn>
+            </S.QuestionTableRow>
             {/* {el.id === props.isClick ? (
                     <S.AnswerWrapper>
                       <S.QuestionContents title={el.answer}>

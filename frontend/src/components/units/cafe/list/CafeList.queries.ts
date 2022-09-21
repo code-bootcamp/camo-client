@@ -32,6 +32,17 @@ export const FETCH_CAFE_LISTS_CREATED_AT = gql`
   }
 `;
 
+export const FETCH_CAFE_LISTS_FAVORITE_CAFE = gql`
+  query fetchCafeListsFavoriteCafe($page: Float = 1, $sortBy: String = "DESC") {
+    fetchCafeListsFavoriteCafe(page: $page, sortBy: $sortBy) {
+      id
+      title
+      address
+      contents
+    }
+  }
+`;
+
 // export const FETCH_CAFE_LISTS = gql`
 //   query fetchCafeLists($page: Float = 1) {
 //     fetchCafeLists(page: $page) {
@@ -69,23 +80,23 @@ export const FETCH_CAFE_LIST_NUMBER = gql`
 export const SEARCH_CAFE_LIST = gql`
   query searchCafeList($search_cafelist: String) {
     searchCafeList(search_cafelist: $search_cafelist) {
-      id
+      # id
       title
-      zipcode
+      # zipcode
       address
-      addressDetail
-      phone
-      startTime
-      endTime
-      homepage
-      deposit
       contents
-      remarks
-      createdAt
-      cafeListTag {
-        id
-        name
-      }
+      # phone
+      # startTime
+      # endTime
+      # homepage
+      # deposit
+      # contents
+      # remarks
+      # createdAt
+      # cafeListTag {
+      #   id
+      #   name
+      # }
     }
   }
 `;
