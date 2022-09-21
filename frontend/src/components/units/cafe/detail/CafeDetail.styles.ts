@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   /* background-color: yellow; */
   @media ${breakPoints.mobile} {
     width: 100%;
+    padding: 5%;
     /* border: 1px solid black; */
   }
 `;
@@ -62,39 +63,35 @@ export const Title = styled.div`
   }
 `;
 
+// C1
 export const ImageBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: space-between;
-  overflow: hidden;
+  /* overflow: hidden; */
   width: 50%;
-  height: 35rem;
-  /* background-color: blue; */
+  height: 33rem;
+  /* background-color: red; */
   /* background-image: url("https://images.unsplash.com/photo-1570806879179-3582cdacfb60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"); */
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 
   .BigImage {
-    width: 96%;
-    height: 28rem;
+    /* width: 100%; */
+    /* height: 20rem; */
     border: 1px solid #eee;
-    box-shadow: 9px 9px 9px 1px rgba(0, 0, 0, 0.1);
-    @media ${breakPoints.mobile} {
-      /* width: 100%; */
-      display: none;
-    }
+    background-size: cover;
+    /* background-color: blue; */
   }
 
   img {
-    height: 93%;
+    /* height: 30rem; */
+    /* width: 100%; */
     background-color: #eee;
     object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.1);
-    @media ${breakPoints.mobile} {
-      width: 100%;
-    }
+    border-radius: 1rem;
+    /* box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.1); */
   }
   @media ${breakPoints.mobile} {
     /* width: 100%; */
@@ -102,25 +99,91 @@ export const ImageBox = styled.div`
   }
 `;
 
+// C2
+export const SubImageWrapper = styled.div`
+  /* width: 30vw;
+  height: 50vh; */
+  /* width: 36rem; */
+  width: 100%;
+  height: 25rem;
+  /* background-color: red; */
+  border-radius: 1rem;
+  /* background-color: green; */
+  border: 10px;
+  @media (max-width: 575px) {
+    width: 60vw;
+  }
+`;
+
+// C3
+export const StyledSlider = styled(Slider)`
+  /* background-color: pink; */
+  width: 36rem;
+  height: 25rem;
+  /* width: 100%; */
+  /* width: 33rem;
+  height: 25rem; */
+  /* border-radius: 1rem; */
+
+  .slick-slide slick-active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+  }
+
+  .slick-prev:before {
+    font-size: 1.3rem;
+    color: #aaa;
+  }
+
+  .slick-next:before {
+    font-size: 1.3rem;
+    color: #aaa;
+  }
+`;
+
+// C4
+export const SubImage = styled.img`
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; */
+  /* width: 33rme; */
+  box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.1);
+  width: 36rem;
+  height: 25rem;
+  object-fit: cover;
+  /* width: 30vw;
+  height: 50vh; */
+
+  /* min-width: 5vw; */
+  border: 10px;
+
+  @media (max-width: 575px) {
+    width: 10vw;
+    height: 10vw;
+  }
+
+  /* background-color: blue; */
+`;
+// 작은 이미지
 export const ImgSmallBox = styled.div`
   display: flex;
   flex-direction: row;
   cursor: pointer;
-  justify-content: space-evenly;
-  /* height: 6em; */
-  /* padding-left: 2.2rem; */
-  /* background-color: yellow; */
+
   img {
-    width: 7rem;
+    width: 7.7rem;
     height: 6rem;
     object-fit: cover;
-    margin-right: 2.2rem;
-    border: 1px solid #eee;
-    background-color: white;
+    margin-right: 1rem;
+    background-color: #eee;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
   }
   @media ${breakPoints.mobile} {
     width: 100%;
-    /* background-color: red; */
+    /* background-color: pink; */
   }
 `;
 export const ContentsWrap = styled.div`
@@ -139,7 +202,7 @@ export const CafeDetailBox = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 50%;
-  padding: 0 2rem;
+  padding: 0 4rem;
   /* background-color: red; */
 
   /* border: 0.06rem solid #555; */
@@ -196,6 +259,7 @@ export const Label = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
+  height: 100%;
   margin-bottom: 0.7rem;
   font-size: 1.2rem;
   font-weight: 400;
@@ -212,7 +276,7 @@ export const Label = styled.div`
     /* line-height: 2rem; */
     /* background-color: green; */
     @media ${breakPoints.mobile} {
-      width: 40%;
+      width: 33%;
       font-size: 1rem;
       font-weight: 600;
       /* background-color: purple; */
@@ -248,9 +312,9 @@ export const Label2 = styled.div`
     /* background-color: pink; */
     /* text-align: center; */
     @media ${breakPoints.mobile} {
-      /* font-size: 0.8rem; */
+      font-size: 0.9rem;
       /* font-weight: 400; */
-      /* padding: 0; */
+      padding: 0.8rem;
       text-align: center;
     }
   }
@@ -316,16 +380,15 @@ export const ReservationWrap = styled.div`
   }
 `;
 export const MapWrapper = styled.div`
-  background-color: #eee;
   border: 1px solid gray;
+  /* background-color: #eee; */
   width: 50%;
   height: 33rem;
 
-  /* background-color: yellow; */
   @media ${breakPoints.mobile} {
-    /* background-color: blue; */
     border: none;
     width: 100%;
+    height: 18rem;
     padding: 10%;
   }
 `;
@@ -456,16 +519,14 @@ export const Content = styled.div`
   /* height: 100%; */
   height: 5rem;
   width: 5rem;
-  background-color: blue;
+  /* background-color: blue; */
   color: yellow;
 `;
 
 //
-//
 // 이미지
 
 export const ImageWrapper = styled.div`
-  width: 30rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -478,66 +539,13 @@ export const ImageWrapper = styled.div`
 `;
 
 export const MainImage = styled(Image)`
-  width: 30rem;
   /* height: 30vw; */
-  object-fit: contain;
+  object-fit: cover;
   border: 1px solid blue;
 
   @media (max-width: 575px) {
     width: 60vw;
     height: 60vw;
-  }
-`;
-
-export const SubImageWrapper = styled.div`
-  width: 30vw;
-  height: 50vh;
-  border: 10px;
-  box-shadow: rgb(0 0 0 / 12%) 10px 5px 10px;
-  /* box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3); */
-  @media (max-width: 575px) {
-    width: 60vw;
-  }
-`;
-export const SubImage = styled.img`
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center; */
-  object-fit: cover;
-  width: 30vw;
-  height: 50vh;
-  min-width: 5vw;
-  border: 10px;
-
-  @media (max-width: 575px) {
-    width: 10vw;
-    height: 10vw;
-  }
-
-  /* background-color: blue; */
-`;
-
-export const StyledSlider = styled(Slider)`
-  /* background-color: blue; */
-  /* width: 100%; */
-  /* height: 100px; */
-
-  .slick-slide slick-active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-  }
-
-  .slick-prev:before {
-    font-size: 1.3rem;
-    color: #aaa;
-  }
-
-  .slick-next:before {
-    font-size: 1.3rem;
-    color: #aaa;
   }
 `;
 
@@ -552,6 +560,7 @@ export const RowWrapper = styled.div`
   /* background-color: pink; */
   @media ${breakPoints.mobile} {
     flex-direction: column;
+    padding: 0;
   }
 `;
 

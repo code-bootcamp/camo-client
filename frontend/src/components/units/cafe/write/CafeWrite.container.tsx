@@ -71,16 +71,15 @@ export default function CafeWrite(props: any) {
 
   useEffect(() => {
     if (props.data !== undefined) {
-      reset({
-        // contents: props.data.fetchCafeList.contents,
-        // tags: props.data.fetchCafeList.tags,
-        tags: props.data.fetchCafeList.tags?.join(),
-      });
+      // reset({
+      // contents: props.data.fetchCafeList.contents,
+      // tags: props.data.fetchCafeList.tags?.join(),
+      // });
       // if (props.data.fetchCafeList.cafeListImage?.url) {
       //   setFileUrls([...props.data.fetchCafeList.cafeListImage.url]);
       // }
       if (props.data.fetchCafeList.cafeListImage?.length) {
-        setFileUrls([...props.data.fetchCafeList.cafeListImage.map((el: any) => el.url)]);
+        setFileUrls([...props.data?.fetchCafeList.cafeListImage.map((el: any) => el.url)]);
       }
     }
   }, [props.data]);
@@ -113,10 +112,9 @@ export default function CafeWrite(props: any) {
             deposit: Number(data.deposit || ""),
             contents: data.contents || "",
             // fileURLs: data.fileURLs,
-
             images: [...fileUrls] || "",
             // tags: data.cafeListTag?.split(",") || "",
-            tags: data.tags?.split(",") || "",
+            tags: data.tags?.split(" ") || "",
           },
         },
         refetchQueries: [
@@ -165,7 +163,7 @@ export default function CafeWrite(props: any) {
             deposit: Number(data.deposit) || "",
             remarks: data.remarks || "",
             contents: data.contents || "",
-            tags: data.tags?.split(",") || "",
+            tags: data.tags?.split(" ") || "",
             // tags: data.cafeListTag?.split(",") || "",
             images: [...fileUrls] || "",
             // fileURLs: data.fileURLs,

@@ -32,32 +32,15 @@ export default function CafeDetailUI(props: any) {
   };
   // console.log("데이타1", props.data);
   // console.log("이미지[0] url:", props.data?.fetchCafeList?.cafeListImage[0]?.url);
-  // console.log(props.data?.fetchCafeList?.cafeListImage[0]?.url);
 
   // const images = useRef([
   //   {
   //     src: `https://storage.googleapis.com/team04-storage/${props.data?.fetchCafeList?.cafeListImage[0]?.url}`,
   //     // src: "/1.png",
   //   },
-  //   {
-  //     src: `https://storage.googleapis.com/team04-storage/${props.data?.fetchCafeList?.cafeListImage[1]?.url}`,
-  //     // src: "/2.png",
-  //   },
-  //   {
-  //     src: `https://storage.googleapis.com/team04-storage/${props.data?.fetchCafeList?.cafeListImage[2]?.url}`,
-  //     // src: "/3.png",
-  //   },
-  //   // { src: "/1.png" },
   // ]);
   // const imgSize = useRef(images.current.length);
 
-  console.log("데이타1", props.data);
-  console.log("이미지[0] url:", props.data?.fetchCafeList?.cafeListImage[0]?.url);
-  // const IMAGES = [
-  //   "https://images.unsplash.com/photo-1514481538271-cf9f99627ab4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-  //   "https://images.unsplash.com/photo-1564327367919-cb377ea6a88f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-  // ];
-  console.log(props.data?.fetchCafeList?.cafeListImage[0]?.url);
   return (
     <>
       <C.Wrapper>
@@ -115,7 +98,7 @@ export default function CafeDetailUI(props: any) {
                 {/* 카페 작성자 아이디 === 로그인한 아이디 */}
                 {props.data?.fetchCafeList.user?.id === props.userData?.fetchLoginedUser?.id ? (
                   <span>
-                    <EditOutlined onClick={props.onClickUpdate} /> &nbsp;
+                    <EditOutlined onClick={props.onClickUpdate} /> &nbsp; &nbsp;
                     <CloseOutlined onClick={props.onClickDelete} />
                   </span>
                 ) : (
@@ -168,6 +151,7 @@ export default function CafeDetailUI(props: any) {
                 <C.ZzimBtn id={props.data?.fetchCafeList?.id} onClick={props.onClickFavorite}>
                   찜하기{" "}
                   <Checkbox
+                    style={{ paddingBottom: ".2rem" }}
                     className="zzim"
                     {...label}
                     icon={<FavoriteBorder />}

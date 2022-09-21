@@ -3,6 +3,7 @@ import "antd/dist/antd.css";
 import { StarFilled } from "@ant-design/icons";
 import { breakPoints } from "../../../../../styles/media";
 import "animate.css";
+import { Favorite } from "../detail/CafeDetail.styles";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -23,7 +24,7 @@ export const TopWrapper = styled.div`
   background-size: cover;
   margin-bottom: 2rem;
   @media ${breakPoints.mobile} {
-    height: 33rem;
+    height: 30rem;
   }
 `;
 
@@ -38,10 +39,14 @@ export const LogoBody = styled.div`
   text-align: center;
   div span {
     font-size: 3rem;
+    @media ${breakPoints.mobile} {
+      font-size: 2rem;
+    }
   }
   @media ${breakPoints.mobile} {
     width: 100%;
     flex-direction: column;
+    font-size: 1rem;
   }
 `;
 export const LogoImage = styled.img`
@@ -58,25 +63,9 @@ export const BigTitle = styled.div`
   margin: 3rem 0;
   text-align: center;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
-  /* animation: "titleText" 1s ease-in-out infinite alternate;
-  @keyframes titleText {
-    0% {
-      transform: translateY(100px);
-      opacity: 0;
-      scale: 0.5;
-    }
-    92% {
-      transform: translateY(-10);
-    }
-    100% {
-      scale: 1;
-      transform: translateY(0);
-      opacity: 1;
-    }
-  } */
 
   @media ${breakPoints.mobile} {
-    font-size: 3rem;
+    font-size: 3.3rem;
   }
 `;
 export const MiddleText = styled.div`
@@ -86,16 +75,6 @@ export const MiddleText = styled.div`
   text-align: center;
   margin-top: 4rem;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
-
-  /* animation: "middleText" 0.8s ease-in-out;
-  @keyframes middleText {
-    from {
-      transform: scale(0.9);
-    }
-    to {
-      transform: scale(1);
-    }
-  } */
 
   @media ${breakPoints.mobile} {
     display: none;
@@ -115,20 +94,7 @@ export const CafeRegisterBox = styled.div`
   z-index: 99;
   line-height: 5.5rem;
   cursor: pointer;
-  /* 
-  div {
-    :hover {
-      animation: "middleText" 0.8s ease-in-out;
-      @keyframes middleText {
-        from {
-          transform: scale(0.5);
-        }
-        to {
-          transform: scale(1);
-        }
-      }
-    }
-  } */
+
   @media ${breakPoints.mobile} {
     display: none;
   }
@@ -154,53 +120,10 @@ export const CafeRegister = styled.div`
     font-size: 3.3rem;
     line-height: 5.5rem;
   }
-  /* div { */
-  /* :hover { */
-  /* color: white; */
-  /* font-size: 3rem; */
-  /* display: none; */
-  /* animation: "middleText" 0.8s ease-in-out;
-      @keyframes middleText {
-        from {
-          transform: scale(0.8);
-        }
-        to {
-          transform: scale(1);
-        }
-      } */
-  /* } */
-  /* } */
-  /* :hover::after {
-    content: "예약하기";
-    height: 60%;
-  } */
+
   @media ${breakPoints.mobile} {
     display: none;
   }
-
-  /* :hover {
-    cursor: pointer;
-    animation: jello;
-    animation-duration: 1s;
-  } */
-
-  /* animation: "MoveCircle" 1s ease-in-out infinite alternate;
-  @keyframes MoveCircle {
-    from {
-      border-radius: 0;
-      top: 0;
-      background-color: beige;
-      color: #33413e;
-      transform: scale(0.5);
-    }
-    to {
-      border-radius: 50%;
-      top: calc(100% - 10rem);
-      background-color: #33413e;
-      transform: scale(1);
-      font-weight: 800;
-    }
-  } */
 
   @media ${breakPoints.mobile} {
     display: none;
@@ -220,6 +143,31 @@ export const SearchBarWrap = styled.div`
     display: none;
   }
 `;
+export const BarWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 70%;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid #eee;
+  /* background-color: pink; */
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
+
+export const WriteBtn = styled.div`
+  background-color: #1e3932;
+  color: white;
+  width: 6rem;
+  height: 2.2rem;
+  line-height: 2.2rem;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+
 export const SearchText = styled.div`
   font-size: 1rem;
   width: 14%;
@@ -428,4 +376,12 @@ export const CafeAddress = styled.div`
   font-size: 0.7rem;
   font-weight: 400;
   margin-top: 0.2rem;
+`;
+
+export const Heart = styled(Favorite)`
+  /* background: "green";
+  color: red;
+  :hover {
+    background: "none";
+  } */
 `;

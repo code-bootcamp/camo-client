@@ -127,7 +127,8 @@ export default function CafeWriteUI(props: any) {
               <C.InputBox
                 type="text"
                 placeholder="태그를 적어주세요. ex) 분위기 좋은, 예쁜, 조용한"
-                defaultValue={props.data?.fetchCafeList.tags || ""}
+                defaultValue={props.data?.fetchCafeList.cafeListTag?.map((el: any) => el.name)}
+                // defaultValue={props.data?.fetchCafeList.tags || ""}
                 {...props.register("tags")}
                 // defaultValue={props.data?.createCafeList.cafeListTag}
               />

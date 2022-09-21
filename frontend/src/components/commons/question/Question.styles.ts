@@ -13,15 +13,17 @@ export const Wrapper = styled.div`
 `;
 
 export const QuestionTitleWrapper = styled.div`
-  font-size: 1.5vw;
+  padding: 0 10%;
+  font-size: 2rem;
   padding-bottom: 20px;
   font-weight: 600;
   color: #333;
+  /* background-color: pink; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
-  border-bottom: 1px solid #1e3932;
+  /* border-bottom: 1px solid #1e3932; */
   margin-bottom: 20px;
   @media ${breakPoints.mobile} {
   }
@@ -37,8 +39,8 @@ export const QuestionTitle = styled.div`
 
 export const QuestionButton = styled.button`
   border: 0px solid;
-  font-size: 1.3rem;
-  height: 2.6rem;
+  font-size: 1.2rem;
+  height: 2.4rem;
   font-weight: bold;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
 
@@ -57,12 +59,16 @@ export const QuestionButton = styled.button`
 export const QuestionTableWrapper = styled.div`
   /* background: red; */
   width: 100%;
+  padding: 0 10%;
+  /* background-color: pink; */
+  margin-bottom: 5rem;
 `;
 
 export const QuestionAnswerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #bdbdbd;
+  /* background-color: pink; */
 `;
 
 export const QuestionTableRow = styled.div`
@@ -85,7 +91,9 @@ export const QuestionStatusColumn = styled.div`
 export const QuestionStatusColumnHeader = styled.div`
   width: 15%;
   color: #fff;
+  /* background-color: pink; */
   font-size: 1.5rem;
+  line-height: 4rem;
 `;
 
 interface ClickProps {
@@ -104,7 +112,7 @@ export const QuestionTitleColumn = styled.div`
 `;
 export const QuestionTitleColumnHeader = styled.div`
   font-size: 1.5rem;
-
+  line-height: 4rem;
   width: 50%;
   text-overflow: ellipsis;
   white-space: ${(props: ClickProps) => (props.isClick === props.id ? "default" : "nowrap")};
@@ -115,21 +123,21 @@ export const QuestionTitleColumnHeader = styled.div`
 `;
 export const QuestionWriterColumn = styled.div`
   font-size: 1.3rem;
-
   width: 15%;
 `;
 export const QuestionDateColumn = styled.div`
   font-size: 1.3rem;
-
   width: 20%;
 `;
 export const QuestionWriterColumnHeader = styled.div`
   width: 15%;
+  line-height: 4rem;
   color: #fff;
 `;
 export const QuestionDateColumnHeader = styled.div`
   width: 20%;
   color: #fff;
+  line-height: 4rem;
 `;
 
 export const AnswerWrapper = styled.div`

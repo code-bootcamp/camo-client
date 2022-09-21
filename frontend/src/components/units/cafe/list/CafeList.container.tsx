@@ -1,11 +1,20 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { MouseEvent } from "react";
+import { MouseEvent, useState } from "react";
 import useSearch from "../../../commons/hooks/useSearch";
 import { TOGGLE_FAVORITE_CAFES } from "../detail/CafeDetail.queries";
 import CafeListUI from "./CafeList.presenter";
-import { FETCH_CAFE_LISTS_CREATED_AT, FETCH_CAFE_LIST_NUMBER } from "./CafeList.queries";
+import {
+  FETCH_CAFE_LISTS_CREATED_AT,
+  FETCH_CAFE_LISTS_FAVORITE_CAFE,
+  FETCH_CAFE_LIST_NUMBER,
+} from "./CafeList.queries";
 import { message } from "antd";
+import {
+  IQuery,
+  IQueryFetchCafeListsCreatedAtArgs,
+  IQueryFetchCafeListsFavoriteCafeArgs,
+} from "../../../../commons/types/generated/types";
 
 export default function CafeList() {
   const router = useRouter();
@@ -15,6 +24,34 @@ export default function CafeList() {
 
   const { data: dataCafeListNumber, refetch: refetchCafeListNumber } =
     useQuery(FETCH_CAFE_LIST_NUMBER);
+
+  const [alignment, setAlignment] = useState("createdAt");
+
+  const { refetch: refetchCreatedAt } = useQuery<
+    Pick<IQuery, "fetchBoardsCreatedAt">,
+    IQueryFetchCafeListsCreatedAtArgs
+  >(FETCH_CAFE_LISTS_CREATED_AT, {
+    fetchPolicy: "network-only",
+  });
+
+  const { refetch: refetchLikeCount } = useQuery<
+    Pick<IQuery, "fetchBoardsLikeCount">,
+    IQueryFetchCafeListsFavoriteCafeArgs
+  >(FETCH_CAFE_LISTS_FAVORITE_CAFE, {
+    fetchPolicy: "network-only",
+  });
+  const handleChange = async (event: MouseEvent<HTMLElement>, newAlignment: string) => {
+    setAlignment(newAlignment);
+  };
+
+  const onClickPage = (event: any) => {
+    if (alignment === "createdAt") {
+      refetchCreatedAt({ page: Number(event.target.id) });
+    }
+    if (alignment !== "createdAt") {
+      refetchLikeCount({ page: Number(event.target.id) });
+    }
+  };
 
   const onClickFavorite = async (event: MouseEvent<HTMLElement>) => {
     try {
@@ -71,6 +108,12 @@ export default function CafeList() {
       refetchCafeListNumber={refetchCafeListNumber}
       count={dataCafeListNumber?.fetchCafeListNumber}
       onClickFavorite={onClickFavorite}
+      //
+      refetchCreatedAt={refetchCreatedAt}
+      refetchLikeCount={refetchLikeCount}
+      onClickPage={onClickPage}
+      alignment={alignment}
+      handleChange={handleChange}
     />
   );
 }
