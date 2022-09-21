@@ -95,7 +95,6 @@ export default function CafeDetail(props: any) {
       });
 
       router.push("/cafe");
-      alert("삭제 완료");
     } catch (error) {
       message.error("삭제에 실패했습니다!");
     }

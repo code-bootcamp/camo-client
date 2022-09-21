@@ -1,4 +1,5 @@
 import { gql, useMutation, useQuery } from "@apollo/client";
+import { Modal } from "antd";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
@@ -79,14 +80,13 @@ export default function Payment(props: any) {
             // router.push("/myPage/myReservation");
           } catch (error) {
             console.log(error);
-            alert(error);
             // location.reload();
           }
           // router.push("/myPage/myReservation");
           console.log(rsp);
         } else {
           // 결제 실패 시 로직
-          alert("결제에 실패했습니다. 다시 시도해주세요.");
+          Modal.error({ content: "결제에 실패했습니다. 다시 시도해주세요." });
         }
       }
     );

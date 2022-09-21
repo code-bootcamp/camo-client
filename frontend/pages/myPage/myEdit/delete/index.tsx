@@ -1,5 +1,6 @@
 import { useMutation } from "@apollo/client";
 import styled from "@emotion/styled";
+import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
 import { useRecoilState } from "recoil";
@@ -135,11 +136,11 @@ export default function MyDeletePage() {
         variables: { password },
       });
       if (!password) {
-        alert("비밀번호가 다릅니다. 다시 입력해주세요.");
+        Modal.error({ content: "비밀번호가 다릅니다. 다시 입력해주세요." });
         return;
       }
       router.push("/");
-      alert("탈퇴되었습니다. 다음에 또 이용해주세요.");
+      Modal.success({ content: "탈퇴되었습니다. 다음에 또 이용해주세요." });
       setAccessToken("");
     } catch (error) {
       console.log(error);

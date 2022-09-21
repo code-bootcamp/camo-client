@@ -1,3 +1,4 @@
+import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useRecoilState, useRecoilValueLoadable } from "recoil";
@@ -13,7 +14,7 @@ export function useAuth() {
         // console.log(newAccessToken);
         if (!newAccessToken) {
           router.push("/login");
-          alert("로그인을 먼저 해주세요.");
+          Modal.error({ content: "로그인을 먼저 해주세요." });
         }
       });
     }
