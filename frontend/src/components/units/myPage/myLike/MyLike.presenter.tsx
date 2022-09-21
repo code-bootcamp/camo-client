@@ -28,10 +28,12 @@ export default function MyLikeUI(props: IMyLikeUIProps) {
             ))}
           </S.LikeWrapper>
           <S.PaginationWrapper>
-            <PaginationContainer
-              refetch={props.refetch}
-              count={props.count?.fetchFavoriteCafeNumber}
-            />
+            {props.count?.fetchFavoriteCafeNumber > 0 && (
+              <PaginationContainer
+                refetch={props.refetch}
+                count={props.count?.fetchFavoriteCafeNumber}
+              />
+            )}
           </S.PaginationWrapper>
         </B.Body>
       </B.Wrapper>

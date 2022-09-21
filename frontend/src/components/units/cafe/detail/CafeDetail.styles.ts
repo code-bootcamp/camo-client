@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import "antd/dist/antd.css";
 import { breakPoints } from "../../../../../styles/media";
-import { Image, Slider } from "antd";
+import { Image } from "antd";
+import Slider from "react-slick";
 
 export const Wrapper = styled.div`
   margin: 0 auto;
@@ -105,14 +106,15 @@ export const ImgSmallBox = styled.div`
   display: flex;
   flex-direction: row;
   cursor: pointer;
-  height: 6em;
-  padding-left: 2.2rem;
+  justify-content: space-evenly;
+  /* height: 6em; */
+  /* padding-left: 2.2rem; */
   /* background-color: yellow; */
   img {
     width: 7rem;
-    /* height: 6rem; */
+    height: 6rem;
     object-fit: cover;
-    margin-right: 1rem;
+    margin-right: 2.2rem;
     border: 1px solid #eee;
     background-color: white;
   }
@@ -121,7 +123,6 @@ export const ImgSmallBox = styled.div`
     /* background-color: red; */
   }
 `;
-
 export const ContentsWrap = styled.div`
   display: flex;
   flex-direction: row;
@@ -200,6 +201,7 @@ export const Label = styled.div`
   font-weight: 400;
   margin-left: 1rem;
   color: #333;
+  padding-bottom: 0.5rem;
   /* background-color: yellow; */
 
   .title {
@@ -207,11 +209,11 @@ export const Label = styled.div`
     line-height: 1.4rem;
     font-weight: 700;
     width: 9rem;
-    line-height: 2rem;
+    /* line-height: 2rem; */
     /* background-color: green; */
     @media ${breakPoints.mobile} {
       width: 40%;
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 600;
       /* background-color: purple; */
     }
@@ -220,24 +222,22 @@ export const Label = styled.div`
   @media ${breakPoints.mobile} {
     /* background-color: bisque; */
     width: 90%;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     margin-bottom: 0;
+    line-height: -1.2rem;
   }
 `;
 
 export const Label2 = styled.div`
   display: flex;
   flex-direction: column;
-  width: 60rem;
+  /* width: 60rem; */
   /* background-color: yellow; */
   /* border-right: 1px solid grey; */
-  align-items: center;
+  /* align-items: center; */
   font-size: 1.8rem;
   font-weight: 700;
   color: #333;
-
-  .map {
-  }
   /* margin: 4rem 0; */
   /* text-align: center; */
 
@@ -246,31 +246,38 @@ export const Label2 = styled.div`
     font-weight: 500;
     padding: 1.5rem;
     /* background-color: pink; */
-    text-align: center;
+    /* text-align: center; */
     @media ${breakPoints.mobile} {
-      font-size: 0.8rem;
-      font-weight: 400;
-      padding: 0;
+      /* font-size: 0.8rem; */
+      /* font-weight: 400; */
+      /* padding: 0; */
+      text-align: center;
     }
   }
   @media ${breakPoints.mobile} {
     width: 100%;
     font-size: 1.1rem;
     margin: 0;
+    text-align: center;
   }
 `;
 
 export const MapTitle = styled.div`
   display: flex;
   flex-direction: column;
-  width: 55rem;
-  align-items: center;
+  /* width: 55rem; */
+  width: 76rem;
+  /* align-items: center; */
   font-size: 1.8rem;
   font-weight: 700;
   color: #333;
   padding: 1.5rem;
 
   @media ${breakPoints.mobile} {
+    width: 100vw;
+    font-size: 1.1rem;
+    margin: 0;
+    text-align: center;
   }
 `;
 
@@ -313,6 +320,7 @@ export const MapWrapper = styled.div`
   border: 1px solid gray;
   width: 50%;
   height: 33rem;
+
   /* background-color: yellow; */
   @media ${breakPoints.mobile} {
     /* background-color: blue; */
@@ -482,12 +490,32 @@ export const MainImage = styled(Image)`
 `;
 
 export const SubImageWrapper = styled.div`
-  width: 20rem;
-  border: 1px solid green;
-
+  width: 30vw;
+  height: 50vh;
+  border: 10px;
+  box-shadow: rgb(0 0 0 / 12%) 10px 5px 10px;
+  /* box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3); */
   @media (max-width: 575px) {
     width: 60vw;
   }
+`;
+export const SubImage = styled.img`
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; */
+  object-fit: cover;
+  width: 30vw;
+  height: 50vh;
+  min-width: 5vw;
+  border: 10px;
+
+  @media (max-width: 575px) {
+    width: 10vw;
+    height: 10vw;
+  }
+
+  /* background-color: blue; */
 `;
 
 export const StyledSlider = styled(Slider)`
@@ -513,31 +541,8 @@ export const StyledSlider = styled(Slider)`
   }
 `;
 
-export const SubImage = styled.img`
-  object-fit: contain;
-  width: 5rem;
-  min-width: 5rem;
-  height: 5rem;
-  margin: 10px 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  @media (max-width: 575px) {
-    width: 10vw;
-    height: 10vw;
-  }
-
-  /* background-color: blue; */
-`;
-
-/**
- * 재인추가
- * date: 0920 04:52AM -
- */
-
 export const RowWrapper = styled.div`
-  /* width: 1200px; */
+  /* width: 60rem; */
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -545,15 +550,18 @@ export const RowWrapper = styled.div`
   padding-bottom: 4rem;
   position: relative;
   /* background-color: pink; */
+  @media ${breakPoints.mobile} {
+    flex-direction: column;
+  }
 `;
 
 export const ReservationBox = styled.div`
   min-height: 100%;
   top: 0;
   bottom: 0;
-  position: fixed;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  /* position: fixed; */
+  /* overflow-y: scroll; */
+  /* overflow-x: hidden; */
   right: 5%;
   z-index: 99;
   top: 50%;

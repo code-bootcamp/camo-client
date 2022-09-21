@@ -3,16 +3,17 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState, MouseEvent } from "react";
 import { useRecoilState } from "recoil";
-import { reservedState } from "../../../commons/store";
-import { IMutation, IMutationCreatePaymentArgs } from "../../../commons/types/generated/types";
-import { getTime } from "../../commons/getDate";
-import ReservationUI from "./Reservation.presenter";
+import { reservedState } from "../../../../commons/store";
+import { IMutation, IMutationCreatePaymentArgs } from "../../../../commons/types/generated/types";
+import { getTime } from "../../../commons/getDate";
+// import useWindowSize from "../../../commons/hooks/useWindowSize";
+import ReservationUI from "./ReservationMobile.presenter";
 import {
   CREATE_CAFE_RESERVATION,
   CREATE_PAYMENT,
   FETCH_CAFE_LIST,
   FETCH_LOGINED_USER,
-} from "./Reservation.queries";
+} from "./ReservationMobile.queries";
 
 declare const window: typeof globalThis & {
   IMP: any;
@@ -36,7 +37,7 @@ const hour: Array<timeTable> = [
   { start_time: "20:00", end_time: "21:00", reserved: false },
 ];
 
-export default function Reservation() {
+export default function ReservationMobile() {
   const router = useRouter();
   // 날짜, 시간, 인원, 가격
   const [price, setPrice] = useState(0);
@@ -47,10 +48,8 @@ export default function Reservation() {
   const [endTime, setEndTime] = useState("");
   const [timeTable, setTimeTable] = useState(false);
   const [disabled, setDisabled] = useState(false);
-  // const [reserved, setReserved] = useRecoilState<any>(reservedState);
   const [reserved] = useRecoilState<any>(reservedState);
   const [open, setOpen] = useState(false);
-  // const size = useWindowSize();
 
   const { data: UserData } = useQuery(FETCH_LOGINED_USER);
   const { data: CafeData } = useQuery(FETCH_CAFE_LIST, {
@@ -134,18 +133,34 @@ export default function Reservation() {
     console.log("onChangeDate", date);
     setDisabled(false);
     setDate(date);
+
+    // 카페에 있는 예약 항목 불러와야함
+    // 예약된 시간 불러오기
+    // const reserved = await client.query({
+    //   query: FETCH_CAFE_LIST,
+    //   variables: {
+    //     cafeListId: "c6e87014-b5d9-4be1-a5f1-6dfc73af938d",
+    //   },
+    // });
+
+    // console.log("onChangeDate", reserved);
+
+    // const reservedTime = reserved.data.fetchCafeList.cafeReservation.startTime;
+    // setReserved(reservedTime);
+
+    // console.log(reservedTime);
   };
 
   const onClickPayment = async () => {
-    if (!date) {
-      alert("예약일을 선택해주세요");
-      return;
-    } else if (!startTime) {
-      alert("시간을 선택해주세요");
-    } else if (!guest) {
-      alert("인원을 선택해주세요");
-      return;
-    }
+    // if (!date) {
+    //   alert("예약일을 선택해주세요");
+    //   return;
+    // } else if (!startTime) {
+    //   alert("시간을 선택해주세요");
+    // } else if (!guest) {
+    //   alert("인원을 선택해주세요");
+    //   return;
+    // }
     const IMP = window.IMP;
     IMP.init("imp27128482");
     IMP.request_pay(
@@ -226,61 +241,7 @@ export default function Reservation() {
           ></script>
         </Head>
       </div>
-      {/* {size.width > 767 ? (
-        <ReservationUI
-          hour={hour}
-          price={price}
-          date={date}
-          NextDay={NextDay}
-          MaxDay={MaxDay}
-          onChangeDate={onChangeDate}
-          guest={guest}
-          onIncrease={onIncrease}
-          onDecrease={onDecrease}
-          onClickTime={onClickTime}
-          timeTable={timeTable}
-          startTime={startTime}
-          endTime={endTime}
-          onClickPayment={onClickPayment}
-          onClickCancel={onClickCancel}
-          clicked={clicked}
-          reserved={reserved}
-          disabled={disabled}
-          onClickSetTime={onClickSetTime}
-          CafeData={CafeData}
-          // 모바일
-          open={open}
-          setOpen={setOpen}
-          onDismiss={onDismiss}
-        />
-      ) : (
-        <ReservationMobileUI
-          hour={hour}
-          price={price}
-          date={date}
-          NextDay={NextDay}
-          MaxDay={MaxDay}
-          onChangeDate={onChangeDate}
-          guest={guest}
-          onIncrease={onIncrease}
-          onDecrease={onDecrease}
-          onClickTime={onClickTime}
-          timeTable={timeTable}
-          startTime={startTime}
-          endTime={endTime}
-          onClickPayment={onClickPayment}
-          onClickCancel={onClickCancel}
-          clicked={clicked}
-          reserved={reserved}
-          disabled={disabled}
-          onClickSetTime={onClickSetTime}
-          CafeData={CafeData}
-          // 모바일
-          open={open}
-          setOpen={setOpen}
-          onDismiss={onDismiss}
-        />
-      )} */}
+
       <ReservationUI
         hour={hour}
         price={price}

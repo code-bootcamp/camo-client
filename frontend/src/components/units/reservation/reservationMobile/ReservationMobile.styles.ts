@@ -1,37 +1,27 @@
 import styled from "@emotion/styled";
-import { breakPoints } from "../../commons/styles/media";
+import { breakPoints } from "../../../commons/styles/media";
 
 export const MainWrapper = styled.main`
-  width: 18.75rem;
-  height: 400px;
-  /* position: sticky;
-  left: 90%;
-  bottom: 30%; */
+  width: 80vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
+  margin: auto;
   background-color: white;
-  border: 1px solid rgb(221, 221, 221);
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-  /* margin-top: 300px; */
+  padding: 10px;
+  padding-top: 2rem;
   color: black;
-  @media ${breakPoints.mobile} {
-    /* display: none; */
-    box-shadow: none;
-    border: none;
-    width: 90vw;
-    margin: auto;
-  }
 `;
 
 export const Label = styled.label`
-  width: 50%;
-  font-weight: 700;
-  /* font-size: 18px; */
-  font-size: 1.6rem;
-  text-align: center;
+  width: 95%;
+  font-weight: 800;
+  font-size: 24px;
+  /* text-align: center; */
+  color: #5a5a5a;
+  padding-bottom: 10px;
+  border-bottom: 0.5px solid #5a5a5a;
 `;
 
 export const TextWrapper = styled.div`
@@ -66,16 +56,18 @@ export const SelectTime = styled.select`
   border-radius: 4px;
 `;
 
-export const MoneyLabel = styled.h3`
+export const MoneyLabel = styled.h2`
   width: 50%;
+  color: #5a5a5a;
 `;
-export const Money = styled.h3`
+export const Money = styled.h2`
   width: 50%;
   text-align: end;
+  color: #5a5a5a;
 `;
 
 export const MoneyWrapper = styled.div`
-  margin-top: 15px;
+  margin-top: 3rem;
   display: flex;
   flex-direction: row;
 `;
@@ -110,9 +102,14 @@ export const TimeRange = styled.div`
 `;
 
 export const ViewSetTime = styled.input`
-  width: 30%;
+  width: 100%;
   border: none;
-  text-align: center;
+  /* text-align: center; */
+`;
+
+export const ViewSetTimeLine = styled.div`
+  width: 1rem;
+  padding-right: 2.5rem;
 `;
 
 // 체크인
@@ -227,11 +224,9 @@ export const TimeToggleCancel = styled.div`
 
 export const CheckGuest = styled.div`
   width: 100%;
-  height: 42px;
-  /* border-top: 1px solid #d9dbe3;
-  border-bottom: 1px solid #d9dbe3; */
-  /* border: 1px solid #d9dbe3; */
-  /* border-radius: 20px; */
+  height: 40px;
+  border: 1px solid #d9dbe3;
+  border-radius: 4px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -263,20 +258,19 @@ export const GuestBtn = styled.button`
 export const RowWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
 `;
 
-export const Text = styled.div`
-  width: 40%;
+export const Text = styled.h3`
+  width: 20%;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
-  /* text-align: center; */
-  padding-bottom: 5px;
-  font-size: 1rem;
+  text-align: center;
+  padding-bottom: 10px;
+  color: #5a5a5a;
 `;
 
 // BottomSheet
-
 export const MobileWrapper = styled.div`
   display: none;
 
@@ -325,6 +319,38 @@ export const MobilePaymentBtn = styled.button`
   cursor: pointer;
   display: flex;
 `;
+
+// 0921
+export const Line = styled.div``;
+export const ContentsLabel = styled.label`
+  font-size: 18px;
+  font-weight: 500;
+  /* padding-left: 1rem; */
+  color: #5a5a5a;
+  padding-top: 5px;
+`;
+
+export const ContentsAddress = styled.label`
+  font-size: 12px;
+  font-weight: 350;
+  /* padding: 1rem; */
+  padding-top: 1rem;
+  color: #5a5a5a;
+  padding-bottom: 3px;
+`;
+
+export const ContentsWrapper = styled.div`
+  height: auto;
+  /* padding-top: 1rem; */
+  box-shadow: rgb(0 0 0 / 12%) 0px 5px 4px;
+  padding: 1rem;
+  /* border: 0.1px solid #5a5a5a; */
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ContentsName = styled.div``;
+
 export const PlusMinusBtn = styled.div`
   font-size: 1.5rem;
   color: #5a5a5a;

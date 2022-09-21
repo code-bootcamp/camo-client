@@ -63,4 +63,19 @@ export const globalStyles = css`
   .MuiFormControl-root {
     width: 100% !important;
   }
+
+  // 햄버거
+  .MuiButton-root {
+    padding: 0px;
+    min-width: 0px;
+    text-transform: none;
+  }
+
+  .MuiButton-text {
+    padding: 0px;
+  }
+  .ant-btn {
+    padding: none;
+    position: fixed;
+  }
 `;

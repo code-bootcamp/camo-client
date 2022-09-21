@@ -30,10 +30,12 @@ export default function MyWriteUI(props: IMyWriteUIProps) {
             </S.MainWrapper>
           ))}
           <PaginationWrapper>
-            <PaginationContainer
-              refetch={props.refetch}
-              count={props.count?.fetchUsermyBoardNumber}
-            />
+            {props.count?.fetchUsermyBoardNumber > 0 && (
+              <PaginationContainer
+                refetch={props.refetch}
+                count={props.count?.fetchUsermyBoardNumber}
+              />
+            )}
           </PaginationWrapper>
         </B.Body>
       </B.Wrapper>
