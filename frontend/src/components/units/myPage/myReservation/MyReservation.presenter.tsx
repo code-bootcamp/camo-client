@@ -47,10 +47,12 @@ export default function MyReservationUI(props: IMyReservationUIProps) {
             </div>
           ))}
           <S.PaginationWrapper>
-            <PaginationContainer
-              refetch={props.refetch}
-              count={props.count?.fetchCafeReservationNumber}
-            />
+            {props.count?.fetchCafeReservationNumber > 0 && (
+              <PaginationContainer
+                refetch={props.refetch}
+                count={props.count?.fetchCafeReservationNumber}
+              />
+            )}
           </S.PaginationWrapper>
         </B.Body>
       </B.Wrapper>

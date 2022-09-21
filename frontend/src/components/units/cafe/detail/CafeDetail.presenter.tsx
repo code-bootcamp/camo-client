@@ -11,11 +11,25 @@ import QuestionUI from "../../../commons/question/Question.presenter";
 import RatingPage from "../../../commons/rating";
 import Reservation from "../../reservation/Reservation.container";
 // import { useRef } from "react";
-import CarouselPage from "./Carousel";
+// import CarouselPage from "./Carousel";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 export default function CafeDetailUI(props: any) {
+  // 캐러셀 설정
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 2000,
+    // fade: true,
+    // cssEase: "linear",
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1500, // 초
+  };
   // console.log("데이타1", props.data);
   // console.log("이미지[0] url:", props.data?.fetchCafeList?.cafeListImage[0]?.url);
   // console.log(props.data?.fetchCafeList?.cafeListImage[0]?.url);
@@ -37,7 +51,6 @@ export default function CafeDetailUI(props: any) {
   // ]);
   // const imgSize = useRef(images.current.length);
 
-
   console.log("데이타1", props.data);
   console.log("이미지[0] url:", props.data?.fetchCafeList?.cafeListImage[0]?.url);
   // const IMAGES = [
@@ -51,10 +64,26 @@ export default function CafeDetailUI(props: any) {
         <C.TopWrapper>
           <C.ContentsWrap>
             <C.ImageBox>
-              <CarouselPage />
-
+              {/* <CarouselPage /> */}
+              {/* 재인 작업중 0921 06:30 */}
+              <C.SubImageWrapper>
+                <C.StyledSlider {...settings}>
+                  {props.data?.fetchCafeList?.cafeListImage?.map((el: any) => (
+                    <div key={uuidv4()}>
+                      {el.url ? (
+                        <C.SubImage
+                          src={`https://storage.googleapis.com/team04-storage/${el?.url}`}
+                        />
+                      ) : (
+                        <img src="/noimage.png" alt="이미지없음" />
+                      )}
+                    </div>
+                  ))}
+                </C.StyledSlider>
+              </C.SubImageWrapper>
               {/* <CarouselPage imgSize={imgSize} images={images} /> */}
-
+              {/* ============== */}
+              {/* ============== */}
               <C.ImgSmallBox>
                 {props.data?.fetchCafeList?.cafeListImage?.map((el: any) => (
                   <div key={uuidv4()}>
@@ -82,11 +111,16 @@ export default function CafeDetailUI(props: any) {
 
             <C.CafeDetailBox>
               <C.Title>
-                {props.data?.fetchCafeList?.title}{" "}
-                <span>
-                  <EditOutlined onClick={props.onClickUpdate} /> &nbsp;
-                  <CloseOutlined onClick={props.onClickDelete} />
-                </span>
+                {props.data?.fetchCafeList?.title}
+                {/* 카페 작성자 아이디 === 로그인한 아이디 */}
+                {props.data?.fetchCafeList.user?.id === props.userData?.fetchLoginedUser?.id ? (
+                  <span>
+                    <EditOutlined onClick={props.onClickUpdate} /> &nbsp;
+                    <CloseOutlined onClick={props.onClickDelete} />
+                  </span>
+                ) : (
+                  <></>
+                )}
               </C.Title>
 
               <C.LabelBox>
@@ -108,7 +142,6 @@ export default function CafeDetailUI(props: any) {
                 <C.Label>
                   <span className="title">📌&nbsp; 영업시간 </span>
                   <span>
-                    {" "}
                     (Open) {props.data?.fetchCafeList?.startTime} ~ (Close){" "}
                     {props.data?.fetchCafeList?.endTime}{" "}
                   </span>

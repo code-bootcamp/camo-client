@@ -116,6 +116,8 @@ export default function CarouselPage(props) {
       src: `https://storage.googleapis.com/team04-storage/${data?.fetchCafeList?.cafeListImage[2]?.url}`,
     },
   ]);
+
+  console.log(images);
   const imgSize = useRef(images.current.length);
   //
 

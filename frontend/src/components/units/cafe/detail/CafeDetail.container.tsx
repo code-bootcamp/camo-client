@@ -4,8 +4,14 @@ import { message } from "antd";
 
 import { FETCH_CAFE_LISTS_CREATED_AT } from "../list/CafeList.queries";
 import CafeDetailUI from "./CafeDetail.presenter";
-import { DELETE_CAFE_LIST, FETCH_CAFE_LIST, TOGGLE_FAVORITE_CAFES } from "./CafeDetail.queries";
+import {
+  DELETE_CAFE_LIST,
+  FETCH_CAFE_LIST,
+  FETCH_LOGINED_USER,
+  TOGGLE_FAVORITE_CAFES,
+} from "./CafeDetail.queries";
 import { MouseEvent, SyntheticEvent, useState } from "react";
+import { IQuery } from "../../../../commons/types/generated/types";
 
 export default function CafeDetail(props: any) {
   const router = useRouter();
@@ -14,6 +20,7 @@ export default function CafeDetail(props: any) {
 
   const [deleteCafeList] = useMutation(DELETE_CAFE_LIST);
   const [toggleFavoriteCafes] = useMutation(TOGGLE_FAVORITE_CAFES);
+  const { data: userData } = useQuery<Pick<IQuery, "fetchLoginedUser">>(FETCH_LOGINED_USER);
 
   const onClickUpdate = () => {
     router.push(`/cafe/${router.query.cafeId}/edit`);
@@ -98,9 +105,11 @@ export default function CafeDetail(props: any) {
     (e.target as HTMLImageElement).src =
       "https://images.unsplash.com/photo-1481833761820-0509d3217039?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
   };
+
   return (
     <CafeDetailUI
       data={data}
+      userData={userData}
       isActive={isActive}
       onClickFavorite={onClickFavorite}
       onClickDelete={onClickDelete}

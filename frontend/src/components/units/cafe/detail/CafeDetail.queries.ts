@@ -52,3 +52,11 @@ export const FETCH_USER_FAVORITE_CAFE = gql`
     cafeList
   }
 `;
+
+export const FETCH_LOGINED_USER = gql`
+  query fetchLoginedUser {
+    fetchLoginedUser {
+      id
+    }
+  }
+`;
