@@ -11,7 +11,7 @@ export default function CommunityCreatedAtListUI(props: ICreatedAtListUIProps) {
       {/* <InfiniteScroll pageStart={0} loadMore={props.onFetchMore} hasMore={true}> */}
       <S.ItemWrapper>
         {props.data?.fetchBoardsCreatedAt.map((el: any) => (
-          <S.ItemContent key={uuidv4()} onClick={props.onClickMoveToDetail(el)}>
+          <S.ItemContent key={el.id} onClick={props.onClickMoveToDetail(el)}>
             <S.ItemImgWrapper>
               <S.ItemImg
                 src={

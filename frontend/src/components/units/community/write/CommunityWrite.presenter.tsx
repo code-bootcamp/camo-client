@@ -113,7 +113,6 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
                 />
                 <S.AddressDetailInput
                   defaultValue={props.data?.fetchBoard.addressDetail}
-                  readOnly
                   {...props.register("addressDetail")}
                 />
               </S.AddressDetailWrapper>

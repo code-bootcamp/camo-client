@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
+import { breakPoints } from "../../../commons/styles/media";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -17,10 +18,10 @@ export const TopTitleWrap = styled.span`
   flex-direction: row;
   width: 100%;
 `;
+
 export const TopTitle = styled.span`
   font-size: 2.2em;
   font-weight: 800;
-
   span {
     font-size: 1.5rem;
     font-weight: 400;
@@ -30,10 +31,10 @@ export const TopTitle = styled.span`
 export const Form = styled.form`
   width: 100%;
 `;
+
 export const BodyWrapper = styled.div`
   width: 100%;
   padding: 5%;
-  /* border: 1px solid red; */
 `;
 
 export const Label = styled.div`
@@ -57,8 +58,13 @@ export const TitleInput = styled.input`
 `;
 
 export const ImageWrap = styled.div`
-  display: flex;
-  flex-direction: row;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 120px);
+  @media ${breakPoints.mobile} {
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: 120px;
+  }
 `;
 
 export const TagInput = styled.input`
@@ -76,7 +82,6 @@ export const TagInput = styled.input`
 export const ContentWrapper = styled.div`
   width: 100%;
   padding: 2rem;
-  /* border: 1px solid red; */
 `;
 
 export const Content = styled.textarea`
@@ -103,22 +108,30 @@ export const MapAddressWrapper = styled.div`
   justify-content: space-between;
   height: 15rem;
   margin-bottom: 3rem;
-  /* border: 1px solid red; */
+  @media ${breakPoints.mobile} {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 400px;
+  }
 `;
 
 export const MapWrapper = styled.div`
   width: 40%;
+  height: 100%;
   padding: 1%;
-  border: 1px solid #ccc;
-
-  /* border: 1px solid blue; */
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    height: 50%;
+  }
 `;
 
 export const AddressWrapper = styled.div`
   width: 55%;
   padding: 2%;
-
-  /* border: 1px solid red; */
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 
 export const AddressInput = styled.input`
@@ -126,7 +139,6 @@ export const AddressInput = styled.input`
   height: 2.5rem;
   border: 1px solid #ccc;
   padding-left: 1rem;
-
   border-radius: 5px;
 `;
 
@@ -164,6 +176,7 @@ export const BtnWrapper = styled.div`
   flex-direction: row;
   justify-content: center;
 `;
+
 export const RegisterBtn = styled.button`
   width: 7.7rem;
   height: 2.5rem;
@@ -187,7 +200,6 @@ export const CancelBtn = styled.button`
   color: #fff;
   text-align: center;
   margin: 0.5rem;
-
   cursor: pointer;
 `;
 
