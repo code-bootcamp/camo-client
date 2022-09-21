@@ -79,11 +79,7 @@ export default function MyEdit() {
       await deleteLoginUser({
         variables: { password },
       });
-    } catch (error) {
-      // 확인용
-      console.log(error);
-      alert(error);
-    }
+    } catch (error) {}
   };
   return (
     <MyEditUI

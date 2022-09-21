@@ -7,6 +7,7 @@ import { useApolloClient, useMutation } from "@apollo/client";
 import { CHECK_SMS, CHECK_USER_EMAIL, CREATE_USER, SEND_SMS } from "./SignUp.queries";
 import { useState } from "react";
 import { IMutation, IMutationCreateUserArgs } from "../../../../commons/types/generated/types";
+import { Modal } from "antd";
 
 const schema = yup.object({
   name: yup.string().required("이름을 입력해 주세요."),
@@ -54,9 +55,9 @@ export default function SignUp() {
         variables: { phoneNumber },
       });
       if (!phoneNumber) return;
-      alert("인증번호가 전송되었습니다.");
+      Modal.success({ content: "인증번호가 전송되었습니다." });
     } catch (error) {
-      alert("휴대폰 번호를 입력해주세요");
+      Modal.error({ content: "휴대폰 번호를 입력해주세요." });
     }
   };
 
@@ -66,7 +67,7 @@ export default function SignUp() {
         variables: { phoneNumber, SMSToken },
       });
       const checkPhoneToken = result?.data?.checkSMSTokenValid;
-      if (checkPhoneToken) alert("인증이 완료되었습니다.");
+      if (checkPhoneToken) Modal.success({ content: "인증이 완료되었습니다." });
       setCheckSMSToken(true);
       console.log(result);
       console.log(checkPhoneToken);
@@ -78,33 +79,27 @@ export default function SignUp() {
   const client = useApolloClient();
   const onClickEmailCheck = async () => {
     try {
-      const result2 = await client.query({
+      await client.query({
         query: CHECK_USER_EMAIL,
         variables: { email },
       });
-      alert("사용가능한 아이디 입니다.");
-      console.log(result2);
+      Modal.success({ content: "사용가능한 아이디 입니다." });
     } catch (error) {
-      alert("이미 사용되고 있는 아이디입니다.");
+      Modal.error({ content: "이미 사용되고 있는 아이디입니다." });
       console.log(error);
     }
   };
 
   // const onClickSubmit = async (data: IFormSignUp) => {
   const onClickSubmit = async (data: any) => {
-    // console.log({ ...data });
     const { passwordConfirm, phoneNumberCheck, ...dataCheck } = data;
-    if (!checkSMSToken) return alert("휴대폰 인증을 해야합니다"); // 0908
+    if (!checkSMSToken) return Modal.error({ content: "휴대폰 인증을 해야합니다." }); // 0908
     try {
-      const result = await createUser({
+      await createUser({
         variables: { CreateUserInput: { ...dataCheck } },
       });
-      // 콘솔로그 지우기
-      console.log(result);
       router.push("/");
-    } catch (error) {
-      alert(error);
-    }
+    } catch (error) {}
   };
 
   const onClickCancel = () => {

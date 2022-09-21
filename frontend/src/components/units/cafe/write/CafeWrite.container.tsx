@@ -174,11 +174,12 @@ export default function CafeWrite(props: any) {
       });
       router.push(`/cafe/${result.data?.updateCafeList.id}`);
       // router.push(`/cafe/`);
-      message.success("수정 성공!");
-      console.log(result);
+      // message.success("수정 성공!");
+      // console.log(result);
     } catch (error) {
-      console.log("수정 실패", error);
-      alert("수정 실패");
+      // console.log("수정 실패", error);
+      Modal.error({ content: "수정 실패" });
+      // alert("수정 실패");
     }
   };
 

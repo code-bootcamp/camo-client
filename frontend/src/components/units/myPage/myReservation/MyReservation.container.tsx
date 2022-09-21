@@ -1,4 +1,5 @@
 import { useQuery } from "@apollo/client";
+import { Modal } from "antd";
 import { IQuery, IQueryFetchUserbyIdArgs } from "../../../../commons/types/generated/types";
 import useAuth from "../../../commons/hooks";
 import { FETCH_LOGINED_USER } from "../MyPage.queries";
@@ -34,7 +35,7 @@ export default function MyReservation() {
   });
 
   const onClickCancelButton = () => {
-    alert("예약 취소는 카페 사장님과 문의하세요.");
+    Modal.info({ content: "예약 취소는 카페 사장님과 문의해주시길 바랍니다." });
   };
   return (
     <MyReservationUI

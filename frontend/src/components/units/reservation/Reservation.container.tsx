@@ -1,4 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
+import { Modal } from "antd";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState, MouseEvent } from "react";
@@ -116,7 +117,7 @@ export default function Reservation() {
 
   const onClickTime = () => {
     if (!date) {
-      alert("날짜를 선택해주세요.");
+      Modal.error({ content: "날짜를 선택해주세요." });
       return;
     }
     setTimeTable((prev) => !prev);
@@ -138,12 +139,12 @@ export default function Reservation() {
 
   const onClickPayment = async () => {
     if (!date) {
-      alert("예약일을 선택해주세요");
+      Modal.error({ content: "예약일을 선택해주세요." });
       return;
     } else if (!startTime) {
-      alert("시간을 선택해주세요");
+      Modal.error({ content: "시간을 선택해주세요." });
     } else if (!guest) {
-      alert("인원을 선택해주세요");
+      Modal.error({ content: "인원을 선택해주세요." });
       return;
     }
     const IMP = window.IMP;
@@ -176,11 +177,9 @@ export default function Reservation() {
             // router.push("/myPage/myReservation");
           } catch (error) {
             console.log(error);
-            alert(error);
-            // location.reload();
           }
           try {
-            const ReservationResult = await createCafeReservation({
+            await createCafeReservation({
               variables: {
                 createReservationInput: {
                   orderRequest: "",
@@ -193,12 +192,12 @@ export default function Reservation() {
                 },
               },
             });
-            console.log(ReservationResult);
+            // console.log(ReservationResult);
             router.push("/myPage/myReservation");
           } catch (error) {
-            console.log(error);
+            // console.log(error);
           }
-          console.log(rsp);
+          // console.log(rsp);
         } else {
           // 결제 실패 시 로직
           alert("결제에 실패했습니다. 다시 시도해주세요.");

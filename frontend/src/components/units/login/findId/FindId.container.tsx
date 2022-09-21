@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { IFormEmailCheck } from "./FindId.types";
 import { useRouter } from "next/router";
+import { Modal } from "antd";
 
 const schema = yup.object({
   phoneNumber: yup
@@ -41,9 +42,9 @@ export default function FindId() {
         variables: { phoneNumber },
       });
       if (!phoneNumber) return;
-      alert("인증번호가 전송되었습니다.");
+      Modal.success({ content: "인증번호가 전송되었습니다." });
     } catch (error) {
-      alert(error);
+      Modal.error({ content: "인증번호가 전송되지 않았습니다." });
     }
   };
 
@@ -53,7 +54,7 @@ export default function FindId() {
         variables: { phoneNumber, SMSToken },
       });
       const checkPhoneToken = result?.data?.checkSMSTokenValid;
-      if (checkPhoneToken) alert("인증이 완료되었습니다.");
+      if (checkPhoneToken) Modal.success({ content: "인증이 완료되었습니다." });
       setCheckSMSToken(true);
       console.log(result);
       console.log(checkPhoneToken);
@@ -64,7 +65,8 @@ export default function FindId() {
 
   const onClickSubmit = async (data: IFormEmailCheck) => {
     const { phoneNumberCheck, ...dataCheck } = data;
-    if (!checkSMSToken) return alert("휴대폰 인증을 해야합니다");
+    if (!checkSMSToken) return;
+    Modal.error({ content: "휴대폰 인증을 해야합니다" });
     try {
       const result = await client.query({
         query: FETCH_USER_BY_EMAIL,
@@ -76,8 +78,7 @@ export default function FindId() {
       console.log(result);
       console.log(userEmailData?.fetchUserByEmail);
       console.log(result.data.fetchUserByEmail.email);
-      // alert(`고객님의 아이디는 ${userEmailData?.fetchUserByEmail.email} 입니다.`);
-      alert(`고객님의 아이디는 ${result.data.fetchUserByEmail.email} 입니다.`);
+      Modal.info({ content: `고객님의 아이디는 ${result.data.fetchUserByEmail.email} 입니다.` });
       router.push("/login");
     } catch (error) {
       console.log(error);

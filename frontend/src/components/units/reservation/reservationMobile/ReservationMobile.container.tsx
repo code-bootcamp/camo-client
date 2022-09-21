@@ -1,4 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
+import { Modal } from "antd";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState, MouseEvent } from "react";
@@ -115,7 +116,8 @@ export default function ReservationMobile() {
 
   const onClickTime = () => {
     if (!date) {
-      alert("날짜를 선택해주세요.");
+      Modal.error({ content: "날짜를 선택해주세요." });
+
       return;
     }
     setTimeTable((prev) => !prev);
@@ -191,7 +193,6 @@ export default function ReservationMobile() {
             // router.push("/myPage/myReservation");
           } catch (error) {
             console.log(error);
-            alert(error);
             // location.reload();
           }
           try {
@@ -216,7 +217,7 @@ export default function ReservationMobile() {
           console.log(rsp);
         } else {
           // 결제 실패 시 로직
-          alert("결제에 실패했습니다. 다시 시도해주세요.");
+          Modal.error({ content: "결제에 실패했습니다. 다시 시도해주세요." });
         }
       }
     );

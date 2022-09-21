@@ -32,6 +32,12 @@ export const Label = styled.label`
   /* font-size: 18px; */
   font-size: 1.6rem;
   text-align: center;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    font-size: 1.1rem;
+    margin: 0;
+    text-align: center;
+  }
 `;
 
 export const TextWrapper = styled.div`

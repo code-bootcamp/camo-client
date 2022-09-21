@@ -12,6 +12,7 @@ import {
 } from "../../../../commons/types/generated/types";
 import { IFormPasswordUpdate } from "./FindPassword.types";
 import { useState } from "react";
+import { Modal } from "antd";
 
 const schema = yup.object({
   email: yup
@@ -57,10 +58,8 @@ export default function FindPassword() {
         variables: { phoneNumber },
       });
       if (!phoneNumber) return;
-      alert("인증번호가 전송되었습니다.");
-    } catch (error) {
-      alert(error);
-    }
+      Modal.success({ content: "인증번호가 전송되었습니다." });
+    } catch (error) {}
   };
 
   const onClickNumberConfirm = async () => {
@@ -69,7 +68,7 @@ export default function FindPassword() {
         variables: { phoneNumber, SMSToken },
       });
       const checkPhoneToken = result?.data?.checkSMSTokenValid;
-      if (checkPhoneToken) alert("인증이 완료되었습니다.");
+      if (checkPhoneToken) Modal.success({ content: "인증이 완료되었습니다." });
       setCheckSMSToken(true);
       console.log(result);
       console.log(checkPhoneToken);
@@ -79,13 +78,15 @@ export default function FindPassword() {
   };
   const onClickSubmit = async (data: IFormPasswordUpdate) => {
     const { passwordConfirm, phoneNumberCheck, ...dataCheck } = data;
-    if (!checkSMSToken) return alert("휴대폰 인증을 해야합니다");
+    if (!checkSMSToken) {
+      Modal.error({ content: "휴대폰 인증을 해야합니다." });
+      return;
+    }
     try {
-      const result = await updateUserPassword({
+      await updateUserPassword({
         variables: { ...dataCheck },
       });
-      console.log(result);
-      alert("비밀번호가 변경되었습니다.");
+      Modal.success({ content: "비밀번호가 변경되었습니다." });
       router.push("/");
     } catch (error) {
       console.log(error);

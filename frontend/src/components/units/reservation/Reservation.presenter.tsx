@@ -5,8 +5,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import TextField from "@mui/material/TextField";
 import { IReservationUIProps } from "./Reservation.types";
 import { v4 as uuidv4 } from "uuid";
-import { BottomSheet } from "react-spring-bottom-sheet";
-import "react-spring-bottom-sheet/dist/style.css";
+
 export default function ReservationUI(props: IReservationUIProps) {
   return (
     <>
@@ -86,7 +85,7 @@ export default function ReservationUI(props: IReservationUIProps) {
         {size.width}px / {size.height}px
       </div>
     {size.width < 767} */}
-      <S.MobileWrapper>
+      {/* <S.MobileWrapper>
         <S.MobileReservationBtn onClick={() => props.setOpen(true)}></S.MobileReservationBtn>
         <BottomSheet
           open={props.open}
@@ -158,7 +157,7 @@ export default function ReservationUI(props: IReservationUIProps) {
             </S.MoneyWrapper>
           </S.BottomContentsWrapper>
         </BottomSheet>
-      </S.MobileWrapper>
+      </S.MobileWrapper> */}
     </>
   );
 }
