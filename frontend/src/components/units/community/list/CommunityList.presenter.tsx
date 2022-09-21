@@ -22,8 +22,12 @@ export default function CommunityListUI(props: IBoardListUIProps) {
               onChange={props.handleChange}
               aria-label="Platform"
             >
-              <ToggleButton value="createdAt">최신순</ToggleButton>
-              <ToggleButton value="likeCount">인기순</ToggleButton>
+              <ToggleButton style={{ padding: "10px" }} value="createdAt">
+                최신순
+              </ToggleButton>
+              <ToggleButton style={{ padding: "10px" }} value="likeCount">
+                인기순
+              </ToggleButton>
             </ToggleButtonGroup>
           </StyledEngineProvider>
           {/* </S.SortList> */}
