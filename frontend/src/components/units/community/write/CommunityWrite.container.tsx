@@ -8,6 +8,7 @@ import useAuth from "../../../commons/hooks";
 import CommunityWriteUI from "./CommunityWrite.presenter";
 import {
   CREATE_BOARD,
+  FETCH_BOARD,
   // FETCH_BOARD,
   UPDATE_BOARD,
 } from "./CommunityWrite.queries";
@@ -120,11 +121,6 @@ export default function CommunityWrite(props: ICommunityNewProps) {
               image: [...fileUrls] || "",
             },
           },
-          // refetchQueries: [
-          //   {
-          //     query: FETCH_BOARD,
-          //   },
-          // ],
         });
         router.push(`/community/${result.data?.createBoard.id}`);
       }
@@ -163,6 +159,14 @@ export default function CommunityWrite(props: ICommunityNewProps) {
             image: [...fileUrls],
           },
         },
+        refetchQueries: [
+          {
+            query: FETCH_BOARD,
+            variables: {
+              boardId: String(router.query.communityId),
+            },
+          },
+        ],
       });
       router.push(`/community/${result.data?.updateBoard.id}`);
     } catch (error: any) {
