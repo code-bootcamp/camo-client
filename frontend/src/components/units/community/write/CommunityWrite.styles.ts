@@ -13,20 +13,21 @@ export const Wrapper = styled.div`
   padding: 5% 15%;
 `;
 
-export const TopTitleWrap = styled.span`
+export const TopTitleWrap = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
 `;
 
-export const TopTitle = styled.span`
+export const TopTitle = styled.div`
   font-size: 2.2em;
   font-weight: 800;
-  span {
+  div {
     font-size: 1.5rem;
     font-weight: 400;
   }
 `;
+export const SubTitle = styled.div``;
 
 export const Form = styled.form`
   width: 100%;
@@ -81,7 +82,6 @@ export const TagInput = styled.input`
 
 export const ContentWrapper = styled.div`
   width: 100%;
-  padding: 2rem;
 `;
 
 export const Content = styled.textarea`

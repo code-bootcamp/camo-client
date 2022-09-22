@@ -101,7 +101,7 @@ export default function CommunityWrite(props: ICommunityNewProps) {
   //     setFileUrls([...props.data?.fetchBoard.images]);
   //   }
   // }, [props.data]);
-
+  console.log(fileUrls);
   const onClickCreate = async (data: any) => {
     console.log("fileUrls Check", fileUrls);
 
