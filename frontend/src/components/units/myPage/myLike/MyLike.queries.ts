@@ -9,6 +9,10 @@ export const FETCH_USER_FAVORITE_CAFE = gql`
         id
         title
         address
+        cafeListImage {
+          id
+          url
+        }
       }
     }
   }

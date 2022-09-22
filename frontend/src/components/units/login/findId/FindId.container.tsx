@@ -65,8 +65,8 @@ export default function FindId() {
 
   const onClickSubmit = async (data: IFormEmailCheck) => {
     const { phoneNumberCheck, ...dataCheck } = data;
-    if (!checkSMSToken) return;
-    Modal.error({ content: "휴대폰 인증을 해야합니다" });
+    // if (!checkSMSToken) return;
+    // Modal.error({ content: "휴대폰 인증을 해야합니다" });
     try {
       const result = await client.query({
         query: FETCH_USER_BY_EMAIL,

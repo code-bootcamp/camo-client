@@ -98,14 +98,14 @@ export default function SelectSignUp() {
             <Link href="/login/cafeOwnerSignUp">
               <Select>
                 <Label>카페 사장님</Label>
-                <CafeIcon src="/images/signUp/Cafe_Black.svg" />
+                <CafeIcon src="/images/SignUp/Cafe_Black.svg" />
                 {/* <CafeIcon src="/images/SignUp/Cafe_White.svg" /> */}
               </Select>
             </Link>
             <Link href="/login/signUp">
               <Select>
                 <Label>일반 회원</Label>
-                <UserIcon src="/images/signUp/User_Black.svg" />
+                <UserIcon src="/images/SignUp/User_Black.svg" />
                 {/* <UserIcon src="/images/SignUp/User_White.svg" /> */}
               </Select>
             </Link>

@@ -177,6 +177,7 @@ export default function MyDeletePage() {
               </ButtonWrapper>
             </MainWrapper>
           </Wrapper>
+          <br /> <br /> <br /> <br />
         </Body>
       </BigWrapper>
     </>

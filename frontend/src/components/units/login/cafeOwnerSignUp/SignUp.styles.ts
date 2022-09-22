@@ -165,7 +165,7 @@ export const SubmitButton = styled.button`
 
 export const Form = styled.form`
   width: 100%;
-  /* height: 100vh; */
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

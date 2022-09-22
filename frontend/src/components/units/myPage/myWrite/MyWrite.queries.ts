@@ -23,8 +23,8 @@ export const FETCH_USER_MY_BOARD_NUMBER = gql`
 `;
 
 export const FETCH_USER_MY_BOARD = gql`
-  query fetchUserMyBoard1($userId: String!, $page: Float = 1) {
-    fetchUserMyBoard1(userId: $userId, page: $page) {
+  query fetchUserMyBoard($userId: String!, $page: Float = 1) {
+    fetchUserMyBoard(userId: $userId, page: $page) {
       id
       title
       contents

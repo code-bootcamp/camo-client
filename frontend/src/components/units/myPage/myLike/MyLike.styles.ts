@@ -16,7 +16,7 @@ export const LikeWrapper = styled.main`
   justify-content: center; */
   width: 60%;
   flex-wrap: wrap;
-  padding-right: 10px;
+  /* padding-right: 10px; */
 
   @media ${breakPoints.mobile} {
     width: 100%;
@@ -69,4 +69,17 @@ export const PaginationWrapper = styled.div`
   margin: 0 auto;
   padding-top: 30px;
   padding-bottom: 30px;
+`;
+
+export const Body = styled.main`
+  width: 60vw;
+  /* height: 100vh; */
+  background-color: white;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  @media ${breakPoints.mobile} {
+    width: 100vw;
+    height: 200vh;
+    /* margin: auto; */
+  }
 `;

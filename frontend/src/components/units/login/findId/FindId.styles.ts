@@ -10,6 +10,7 @@ export const Wrapper = styled.main`
 
   @media ${breakPoints.mobile} {
     display: 100vw;
+    margin: 0;
   }
 `;
 export const RowWrapper = styled.div`

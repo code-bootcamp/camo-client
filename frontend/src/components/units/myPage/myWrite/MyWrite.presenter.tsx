@@ -6,8 +6,10 @@ import { IBoard } from "../../../../commons/types/generated/types";
 import { IMyWriteUIProps } from "./MyWrite.types";
 import PaginationContainer from "../myReservation/pagination/Pagination.container";
 import { PaginationWrapper } from "../myReservation/MyReservation.styles";
+import Dompurify from "dompurify";
 
 export default function MyWriteUI(props: IMyWriteUIProps) {
+  console.log(props.WriteData?.fetchUserMyBoard);
   return (
     <>
       <B.Wrapper>
@@ -15,14 +17,22 @@ export default function MyWriteUI(props: IMyWriteUIProps) {
         <B.Body>
           <B.StayMenu>내가 쓴 글</B.StayMenu>
           <B.Line />
-          {props.WriteData?.fetchUserMyBoard1?.map((el: IBoard) => (
+          {props.WriteData?.fetchUserMyBoard?.map((el: IBoard) => (
             <S.MainWrapper key={uuidv4()}>
               <S.RowWrapper>
                 <S.ContentBackGround>
                   <S.ContentWrapper>
                     <S.Title>{el.title}</S.Title>
                     <S.RowWrapper>
-                      <S.RightContent>{el.contents}</S.RightContent>
+                      {typeof window !== "undefined" ? (
+                        <S.RightContent
+                          dangerouslySetInnerHTML={{
+                            __html: Dompurify.sanitize(String(el.contents)),
+                          }}
+                        ></S.RightContent>
+                      ) : (
+                        <div></div>
+                      )}
                     </S.RowWrapper>
                   </S.ContentWrapper>
                 </S.ContentBackGround>

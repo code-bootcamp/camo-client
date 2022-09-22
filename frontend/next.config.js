@@ -4,6 +4,9 @@ const nextConfig = {
   swcMinify: true,
   trailingSlash: true,
   generateBuildId: () => "cafemoment",
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 module.exports = nextConfig;
