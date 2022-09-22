@@ -45,7 +45,7 @@ export default function ReservationUI(props: IReservationUIProps) {
                   onClick={props.onClickSetTime}
                   key={uuidv4()}
                 >
-                  {props.hour.indexOf(el) + 1} | {el.start_time} - {el.end_time}
+                  {el.start_time} - {el.end_time}
                 </S.TimeBox>
               ))}
               <S.TimeToggleCancel onClick={props.onClickCancel} style={{ width: "100%" }}>

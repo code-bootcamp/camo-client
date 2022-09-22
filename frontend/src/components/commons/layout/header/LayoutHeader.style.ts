@@ -141,3 +141,23 @@ export const MenuButton = styled(Button)`
     display: block !important;
   }
 `;
+
+export const HamburgerMenu = styled.div`
+  font-size: 20px;
+  margin-right: 40px;
+  display: none;
+  @media (max-width: 637px) {
+    display: inline;
+  }
+`;
+
+export const Item = styled.div`
+  cursor: pointer;
+  font-size: 1.4rem;
+  padding: 10px 20px;
+  width: 100%;
+  color: #b8b7ad;
+  :hover {
+    color: #c84e50;
+  }
+`;

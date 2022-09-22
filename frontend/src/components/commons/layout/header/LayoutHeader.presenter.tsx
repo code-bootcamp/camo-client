@@ -5,7 +5,7 @@ import "animate.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { KeyboardArrowRight } from "@material-ui/icons";
 import clsx from "clsx";
-
+import { slide as Menu } from "react-burger-menu";
 import { ILayoutHeaderUIProps } from "./LayoutHeader.types";
 import { ListItem, ListItemText, ListItemIcon, List, Button, Drawer } from "@material-ui/core";
 import React, { useState } from "react";
@@ -65,6 +65,7 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
             </a>
           </ListItem>
         </Link>
+
         <Link href="/login/selectSignUp">
           <ListItem button key="회원가입">
             <ListItemIcon>
@@ -106,7 +107,7 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
           </ListItem>
         </Link>
         {props.accessToken ? (
-          <Link href="/myPage/myLike">
+          <Link href="/myPage/myWrite">
             <ListItem button key="마이페이지">
               <ListItemIcon>
                 <KeyboardArrowRight />
@@ -122,9 +123,31 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
       </List>
     </div>
   );
-
+  var styles = {
+    bmBurgerButton: {
+      position: "fixed",
+      width: "36px",
+      height: "30px",
+      right: "36px",
+      top: "36px",
+    },
+    bmBurgerBars: {
+      background: "white",
+    },
+    //     bmCrossButton {
+    //       height: "24px",
+    //       width: "24px",
+    // }
+  };
   return (
     <>
+      {/* <C.HamburgerMenu>
+        <Menu styles={props.styles} right>
+          <C.Item>{props.data?.fetchLoginedUser.name}님</C.Item>
+          <C.Item onClick={props.onClickLogout}>로그아웃</C.Item>
+        </Menu>
+      </C.HamburgerMenu> */}
+
       <C.Wrapper>
         <C.HeaderWrapper>
           <C.LogoMenuWrapper>
