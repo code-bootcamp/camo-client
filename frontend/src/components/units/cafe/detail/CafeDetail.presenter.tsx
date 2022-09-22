@@ -44,6 +44,10 @@ export default function CafeDetailUI(props: any) {
   return (
     <>
       <C.Wrapper>
+        <C.MobileImgBox>
+          {/* <C.MobileImg src={props.data?.fetchCafeList?.cafeListImage[0]?.url} /> */}
+          <C.MobileImg src="https://images.unsplash.com/photo-1514066558159-fc8c737ef259?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" />
+        </C.MobileImgBox>
         <C.TopWrapper>
           <C.ContentsWrap>
             <C.ImageBox>
@@ -111,7 +115,10 @@ export default function CafeDetailUI(props: any) {
                   🎈 작성자 : <span> {props.data?.fetchCafeList?.user.name}</span>
                 </C.Label> */}
                 <C.Label>
-                  <span className="title">📌&nbsp; 카페주소 </span>
+                  <span className="title">
+                    {" "}
+                    <span className="pin">📌&nbsp;</span> 카페주소{" "}
+                  </span>
                   <span>
                     ( {props.data?.fetchCafeList?.zipcode} )&nbsp;
                     {props.data?.fetchCafeList?.address} &nbsp;
@@ -119,22 +126,30 @@ export default function CafeDetailUI(props: any) {
                   </span>
                 </C.Label>
                 <C.Label>
-                  <span className="title">📌&nbsp; 연락처 </span>
+                  <span className="title">
+                    <span className="pin">📌&nbsp;</span> 연락처{" "}
+                  </span>
                   <span> {props.data?.fetchCafeList?.phone}</span>
                 </C.Label>
                 <C.Label>
-                  <span className="title">📌&nbsp; 영업시간 </span>
+                  <span className="title">
+                    <span className="pin">📌&nbsp;</span> 영업시간{" "}
+                  </span>
                   <span>
                     (Open) {props.data?.fetchCafeList?.startTime} ~ (Close){" "}
                     {props.data?.fetchCafeList?.endTime}{" "}
                   </span>
                 </C.Label>
                 <C.Label>
-                  <span className="title">📌&nbsp; 홈페이지 </span>
+                  <span className="title">
+                    <span className="pin">📌&nbsp;</span> 홈페이지{" "}
+                  </span>
                   <span> {props.data?.fetchCafeList?.homepage} </span>
                 </C.Label>
                 <C.Label>
-                  <span className="title">📌&nbsp; 매장소개 </span>
+                  <span className="title">
+                    <span className="pin">📌&nbsp;</span> 매장소개{" "}
+                  </span>
                   <span>{props.data?.fetchCafeList?.remarks}</span>
                 </C.Label>
                 {/* <C.Label>
@@ -142,14 +157,16 @@ export default function CafeDetailUI(props: any) {
                   <span>{props.data?.fetchCafeList?.tags}</span>
                 </C.Label> */}
                 <C.Label>
-                  <span className="title">📌&nbsp; 예약금 </span>{" "}
+                  <span className="title">
+                    <span className="pin">📌&nbsp;</span> 예약금{" "}
+                  </span>{" "}
                   <span>{props.data?.fetchCafeList?.deposit} 원</span>
                 </C.Label>
               </C.LabelBox>
 
               <C.ButtonWrap>
                 <C.ZzimBtn id={props.data?.fetchCafeList?.id} onClick={props.onClickFavorite}>
-                  찜하기{" "}
+                  <span className="text">찜하기</span> &nbsp;
                   <Checkbox
                     style={{ paddingBottom: ".2rem" }}
                     className="zzim"
@@ -200,7 +217,9 @@ export default function CafeDetailUI(props: any) {
             </C.ReservationBox>
           </C.RowWrapper>
 
-          <C.MapTitle className="map">📌 &nbsp;카페 위치</C.MapTitle>
+          <C.MapTitle className="map">
+            <span className="pin">📌&nbsp;</span>카페 위치
+          </C.MapTitle>
           <C.MapWrapper>
             <KakaoMap02
               data={props.data?.fetchCafeList}

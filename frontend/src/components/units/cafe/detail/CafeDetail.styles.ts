@@ -13,8 +13,36 @@ export const Wrapper = styled.div`
   /* background-color: yellow; */
   @media ${breakPoints.mobile} {
     width: 100%;
-    padding: 5%;
+    padding: 6%;
     /* border: 1px solid black; */
+  }
+`;
+
+export const MobileImgBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 7.7rem;
+  width: 100%;
+  /* background-color: pink; */
+  @media ${breakPoints.mobile} {
+    /* border: 1px solid red; */
+    display: flex;
+    padding: 1rem;
+    width: 100%;
+    overflow: hidden;
+  }
+`;
+
+export const MobileImg = styled.img`
+  display: none;
+  @media ${breakPoints.mobile} {
+    display: flex;
+    /* border: 1px solid red; */
+    background-color: #eee;
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
   }
 `;
 
@@ -31,6 +59,7 @@ export const TopWrapper = styled.div`
     padding: 0;
   }
 `;
+
 export const Title = styled.div`
   display: flex;
   flex-direction: row;
@@ -253,6 +282,9 @@ export const LabelBox = styled.div`
     width: 100%;
     font-size: 1rem;
     height: 90%;
+    .pin {
+      display: none;
+    }
   }
 `;
 export const Label = styled.div`
@@ -276,19 +308,21 @@ export const Label = styled.div`
     /* line-height: 2rem; */
     /* background-color: green; */
     @media ${breakPoints.mobile} {
-      width: 33%;
+      width: 5rem;
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 500;
+      line-height: 3rem;
       /* background-color: purple; */
     }
   }
 
   @media ${breakPoints.mobile} {
-    /* background-color: bisque; */
-    width: 90%;
     font-size: 0.8rem;
     margin-bottom: 0;
-    line-height: -1.2rem;
+    line-height: 3rem;
+    border-bottom: 1px solid grey;
+
+    /* background-color: yellow; */
   }
 `;
 
@@ -313,9 +347,15 @@ export const Label2 = styled.div`
     /* text-align: center; */
     @media ${breakPoints.mobile} {
       font-size: 0.9rem;
+      justify-content: center;
+      align-items: center;
       /* font-weight: 400; */
-      padding: 0.8rem;
+      /* width: 12rem; */
+      width: 100%;
+      /* background-color: beige; */
+      padding: 1rem;
       text-align: center;
+      /* border: 1px solid grey; */
     }
   }
   @media ${breakPoints.mobile} {
@@ -342,6 +382,9 @@ export const MapTitle = styled.div`
     font-size: 1.1rem;
     margin: 0;
     text-align: center;
+    .pin {
+      display: none;
+    }
   }
 `;
 
@@ -388,8 +431,8 @@ export const MapWrapper = styled.div`
   @media ${breakPoints.mobile} {
     border: none;
     width: 100%;
-    height: 18rem;
-    padding: 10%;
+    height: 15rem;
+    padding: 0 5%;
   }
 `;
 
@@ -445,8 +488,19 @@ export const ZzimBtn = styled.div`
     color: gold;
   }
   @media ${breakPoints.mobile} {
-    /* background-color: bisque; */
-    display: none;
+    /* display: none; */
+    width: 3rem;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    font-weight: 400;
+    font-size: 1rem;
+    box-shadow: none;
+    margin-top: 1rem;
+    /* background: none; */
+    /* color: #1e3932; */
+    .text {
+      display: none;
+    }
   }
 `;
 
@@ -509,7 +563,7 @@ export const Container = styled.div`
   height: 20rem;
   width: 20rem;
   @media ${breakPoints.mobile} {
-    background-color: red;
+    background-color: #eee;
     width: 100%;
   }
 `;

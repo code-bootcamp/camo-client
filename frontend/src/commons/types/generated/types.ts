@@ -136,7 +136,7 @@ export type ICreateCafeListInput = {
   deposit?: InputMaybe<Scalars['Int']>;
   endTime?: InputMaybe<Scalars['String']>;
   homepage?: InputMaybe<Scalars['String']>;
-  images?: InputMaybe<Array<Scalars['String']>>;
+  image?: InputMaybe<Array<Scalars['String']>>;
   phone?: InputMaybe<Scalars['String']>;
   remarks?: InputMaybe<Scalars['String']>;
   startTime?: InputMaybe<Scalars['String']>;
@@ -648,7 +648,7 @@ export type IUpdateCafeListInput = {
   deposit?: InputMaybe<Scalars['Int']>;
   endTime?: InputMaybe<Scalars['String']>;
   homepage?: InputMaybe<Scalars['String']>;
-  images?: InputMaybe<Array<Scalars['String']>>;
+  image?: InputMaybe<Array<Scalars['String']>>;
   phone?: InputMaybe<Scalars['String']>;
   remarks?: InputMaybe<Scalars['String']>;
   startTime?: InputMaybe<Scalars['String']>;

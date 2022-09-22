@@ -152,7 +152,11 @@ export const BarWrapper = styled.div`
   border-bottom: 1px solid #eee;
   /* background-color: pink; */
   @media ${breakPoints.mobile} {
-    display: none;
+    flex-direction: column;
+    align-items: center;
+    .toggle {
+      display: none;
+    }
   }
 `;
 
@@ -166,6 +170,10 @@ export const WriteBtn = styled.div`
   text-align: center;
   border-radius: 5px;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 export const SearchText = styled.div`
