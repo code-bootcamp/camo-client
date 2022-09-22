@@ -54,6 +54,7 @@ export default function CafeListUI(props: any) {
         <C.BarWrapper>
           <StyledEngineProvider injectFirst>
             <ToggleButtonGroup
+              className="toggle"
               style={{ width: "10rem", border: "1px solid #eee" }}
               color="standard"
               value={props.alignment}
@@ -61,7 +62,7 @@ export default function CafeListUI(props: any) {
               onChange={props.handleChange}
               aria-label="Platform"
             >
-              <ToggleButton style={{ width: "5rem", backgroundColor: "#eee" }} value="createdAt">
+              <ToggleButton style={{ width: "5rem" }} value="createdAt">
                 최신순
               </ToggleButton>
               <ToggleButton style={{ width: "5rem" }} value="likeCount">

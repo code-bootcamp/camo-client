@@ -89,7 +89,7 @@ export default function LandingPage() {
             </a>
           </Link>
         </ListItem>
-        <ListItem button key="카페등록">
+        {/* <ListItem button key="카페등록">
           <ListItemIcon>
             <KeyboardArrowRight />
           </ListItemIcon>
@@ -98,7 +98,7 @@ export default function LandingPage() {
               <ListItemText primary="카페등록" />
             </a>
           </Link>
-        </ListItem>
+        </ListItem> */}
         <ListItem button key="커뮤니티">
           <ListItemIcon>
             <KeyboardArrowRight />
@@ -157,7 +157,7 @@ export default function LandingPage() {
       </C.MainWrapper>
 
       <C.MiddleWrapper className={inView ? "isActive" : ""} ref={ref}>
-        <Link href="/cafe/list">
+        <Link href="/community/">
           <C.ReservationImg
             className={inView ? "isActive" : ""}
             src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
@@ -176,7 +176,7 @@ export default function LandingPage() {
 
       <C.MiddleWrapper className={inView2 ? "isActive" : ""} ref={ref2}>
         <C.ReservationWrap className={inView2 ? "isActive" : ""}>
-          <Link href="/cafe">
+          <Link href="/cafe/">
             <C.SliderTitle>Reservation </C.SliderTitle>
           </Link>
           {/* <C.Bar /> */}
@@ -184,7 +184,7 @@ export default function LandingPage() {
             마음에 드는 카페를 찾아서 <br /> 예약하고 편하게 방문하세요.
           </C.Subtitle>
         </C.ReservationWrap>
-        <Link href="/cafe/community">
+        <Link href="/cafe/">
           <C.ReservationImg
             className={inView2 ? "isActive" : ""}
             src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
