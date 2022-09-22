@@ -87,7 +87,7 @@ export default function FindPassword() {
         variables: { ...dataCheck },
       });
       Modal.success({ content: "비밀번호가 변경되었습니다." });
-      router.push("/");
+      router.push("/login");
     } catch (error) {
       console.log(error);
     }

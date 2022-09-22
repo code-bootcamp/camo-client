@@ -68,7 +68,7 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
               <LoginUser>
                 <UserOutlined />
                 &nbsp;
-                {props.data?.fetchLoginedUser.name}님
+                {props.data?.fetchLoginedUser.nickName}님
               </LoginUser>
 
               <LoginButton onClick={props.onClickLogout}>로그아웃</LoginButton>

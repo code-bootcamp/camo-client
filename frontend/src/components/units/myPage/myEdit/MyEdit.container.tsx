@@ -56,7 +56,8 @@ export default function MyEdit() {
         variables: { updateUserInput: { ...dataCheck } },
       });
       console.log(result2);
-      router.push("/");
+      location.reload();
+      // router.push("/");
     } catch (error) {
       console.log(error);
     }

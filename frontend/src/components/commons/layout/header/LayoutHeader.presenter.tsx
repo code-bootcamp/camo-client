@@ -105,6 +105,20 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
             </a>
           </ListItem>
         </Link>
+        {props.accessToken ? (
+          <Link href="/myPage/myLike">
+            <ListItem button key="마이페이지">
+              <ListItemIcon>
+                <KeyboardArrowRight />
+              </ListItemIcon>
+              <a style={{ color: "black" }}>
+                <ListItemText primary="마이페이지" />
+              </a>
+            </ListItem>
+          </Link>
+        ) : (
+          <a></a>
+        )}
       </List>
     </div>
   );
@@ -157,7 +171,7 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
               <C.LoginUser>
                 <UserOutlined />
                 &nbsp;
-                {props.data?.fetchLoginedUser.name}님
+                {props.data?.fetchLoginedUser.nickName}님
               </C.LoginUser>
               <C.LoginButton onClick={props.onClickLogout}>로그아웃</C.LoginButton>
               <C.MenuTab />
@@ -189,7 +203,6 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
                 </a>
               </Link>
               <C.MenuTab />
-              {/* 이거 콘솔에 에러나요 .. */}
               <C.MenuButton id="none" style={{ opacity: "0" }}>
                 {(["right"] as Anchor[]).map((anchor) => (
                   <React.Fragment key={anchor}>

@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { IQuery, IQueryFetchUserMyBoard1Args } from "../../../../commons/types/generated/types";
+import { IQuery, IQueryFetchUserMyBoardArgs } from "../../../../commons/types/generated/types";
 import useAuth from "../../../commons/hooks";
 import { FETCH_LOGINED_USER } from "../MyPage.queries";
 import MyWriteUI from "./MyWrite.presenter";
@@ -14,8 +14,8 @@ export default function MyWrite() {
     },
   });
   const { data: WriteData, refetch } = useQuery<
-    Pick<IQuery, "fetchUserMyBoard1">,
-    IQueryFetchUserMyBoard1Args
+    Pick<IQuery, "fetchUserMyBoard">,
+    IQueryFetchUserMyBoardArgs
   >(FETCH_USER_MY_BOARD, {
     variables: {
       userId: String(UserData?.fetchLoginedUser.id),

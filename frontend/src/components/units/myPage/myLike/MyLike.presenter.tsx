@@ -10,14 +10,22 @@ export default function MyLikeUI(props: IMyLikeUIProps) {
     <>
       <B.Wrapper>
         <LayoutSidebar />
-        <B.Body>
+        <S.Body>
           <B.StayMenu>찜목록</B.StayMenu>
           <B.Line />
           <S.LikeWrapper key={uuidv4()}>
             {props.favoriteData?.fetchUserFavoriteCafe?.map((el) => (
               <>
                 <S.CafeWrapper>
-                  <S.CafeImage src="/Rectangle 3118.png" />
+                  {/* <S.CafeImage src="/Rectangle 3118.png" /> */}
+                  {el.cafeList?.cafeListImage?.[0]?.url ? (
+                    <S.CafeImage
+                      src={`https://storage.googleapis.com/team04-storage/${el.cafeList?.cafeListImage?.[0]?.url}`}
+                    />
+                  ) : (
+                    <S.CafeImage src="/Rectangle 3118.png" />
+                  )}
+
                   <S.CafeName>
                     {el.cafeList?.title}
                     {/* <S.HeartIcon /> */}
@@ -35,7 +43,7 @@ export default function MyLikeUI(props: IMyLikeUIProps) {
               />
             )}
           </S.PaginationWrapper>
-        </B.Body>
+        </S.Body>
       </B.Wrapper>
     </>
   );
