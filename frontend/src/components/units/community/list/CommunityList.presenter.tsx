@@ -6,6 +6,7 @@ import CommunityLikeCountList from "./likeCount/CommunityLikeCountList.container
 import SearchBar from "../../../commons/searchbar/01/SearchBar.container";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { StyledEngineProvider } from "@mui/material/styles";
+import CommunitySearchList from "./CommunitySearchList";
 
 export default function CommunityListUI(props: IBoardListUIProps) {
   return (
@@ -33,23 +34,29 @@ export default function CommunityListUI(props: IBoardListUIProps) {
           {/* </S.SortList> */}
 
           <S.InputWrapper>
-            <SearchBar
-              placeholder="게시글을 검색해보세요"
-              refetch={
-                props.alignment === "createdAt" ? props.refetchCreatedAt : props.refetchLikeCount
-              }
-              refetchBoardsNumber={props.refetchBoardsNumber}
-              refetchSearch={props.refetchSearch}
-              onChangeKeyword={props.onChangeKeyword}
-            />
+            {props.alignment === "createdAt" ? (
+              <SearchBar
+                refetchCreatedAt={props.refetchCreatedAt}
+                refetchSearchBoards={props.refetchSearchBoards}
+                refetchSearch={props.refetchSearch}
+                onChangeKeyword={props.onChangeKeyword}
+              />
+            ) : (
+              <></>
+            )}
+            <Link href="/community/new">
+              <a>
+                <S.WriteBtn>글쓰기</S.WriteBtn>
+              </a>
+            </Link>
           </S.InputWrapper>
         </S.NavWrapper>
-        <Link href="/community/new">
-          <a>
-            <S.WriteBtn />
-          </a>
-        </Link>
-        {props.alignment === "createdAt" ? <CommunityCreatedAtList /> : <CommunityLikeCountList />}
+        {props.alignment === "createdAt" ? (
+          <CommunityCreatedAtList search={props.search} />
+        ) : (
+          <CommunityLikeCountList />
+        )}
+        {/* {props.keyword !== "" ? <CommunitySearchList search={props.search} /> : <></>} */}
       </S.BodyWrapper>
     </S.Wrapper>
   );

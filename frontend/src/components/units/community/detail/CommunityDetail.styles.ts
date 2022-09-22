@@ -101,6 +101,7 @@ export const LikeCount = styled.div`
 export const LikeIcon = styled(LikeFilled)`
   font-size: 24px;
   cursor: pointer;
+  color: #1e3932;
   @media ${breakPoints.mobile} {
     font-size: 20px;
   }

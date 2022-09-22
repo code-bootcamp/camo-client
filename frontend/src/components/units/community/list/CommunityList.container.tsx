@@ -1,9 +1,11 @@
 import CommunityListUI from "./CommunityList.presenter";
 import {
+  FETCH_BOARDS,
   FETCH_BOARDS_CREATED_AT,
   FETCH_BOARDS_LIKE_COUNT,
   FETCH_BOARDS_NUMBER,
   SEARCH_BOARDS,
+  // SEARCH_BOARDS,
 } from "./CommunityList.queries";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
@@ -11,7 +13,7 @@ import {
   IQuery,
   IQueryFetchBoardsCreatedAtArgs,
   IQueryFetchBoardsLikeCountArgs,
-  IQuerySearchBoardsArgs,
+  // IQuerySearchBoardsArgs,
 } from "../../../../commons/types/generated/types";
 import { MouseEvent, useState } from "react";
 
@@ -21,6 +23,12 @@ export default function CommunityList() {
   const onClickMoveToNew = () => {
     router.push("/community/new");
   };
+
+  const [keyword, setKeyword] = useState("");
+
+  const { data: dataList, refetch: refetchList } = useQuery(FETCH_BOARDS);
+
+  const { data: dataSearchBoards, refetch: refetchSearchBoards } = useQuery(SEARCH_BOARDS);
 
   const { refetch: refetchCreatedAt } = useQuery<
     Pick<IQuery, "fetchBoardsCreatedAt">,
@@ -49,12 +57,15 @@ export default function CommunityList() {
     }
   };
 
-  const { data: dataSearch, refetch: refetchSearch } = useQuery<
-    Pick<IQuery, "searchBoards">,
-    IQuerySearchBoardsArgs
-  >(SEARCH_BOARDS);
+  const onClickMoveToBoardDetail = (event: MouseEvent<HTMLDivElement>) => {
+    if (!(event.target instanceof HTMLDivElement)) return;
+    router.push(`/boards/${event.target.id}`);
+  };
 
-  const [keyword, setKeyword] = useState("");
+  // const { data: dataSearch, refetch: refetchSearch } = useQuery<
+  //   Pick<IQuery, "searchBoards">,
+  //   IQuerySearchBoardsArgs
+  // >(SEARCH_BOARDS);
 
   const onChangeKeyword = (value: string) => {
     setKeyword(value);
@@ -68,6 +79,11 @@ export default function CommunityList() {
 
   return (
     <CommunityListUI
+      // dataList={dataList}
+      // refetchList={refetchList}
+      search={dataSearchBoards?.searchBoards}
+      refetchSearchBoards={refetchSearchBoards}
+      onClickMoveToBoardDetail={onClickMoveToBoardDetail}
       onClickMoveToNew={onClickMoveToNew}
       refetchCreatedAt={refetchCreatedAt}
       refetchLikeCount={refetchLikeCount}
@@ -76,8 +92,6 @@ export default function CommunityList() {
       boardsNumber={dataBoardsNumber}
       onClickPage={onClickPage}
       lastPage={lastPage}
-      dataSearch={dataSearch}
-      refetchSearch={refetchSearch}
       keyword={keyword}
       onChangeKeyword={onChangeKeyword}
       alignment={alignment}

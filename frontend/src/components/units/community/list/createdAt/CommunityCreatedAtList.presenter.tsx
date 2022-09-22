@@ -24,7 +24,16 @@ export default function CommunityCreatedAtListUI(props: ICreatedAtListUIProps) {
             </S.ItemImgWrapper>
             <S.ItemTextWrapper>
               <S.ItemTextTitleWrapper>
-                <S.ItemTextTitle>{el.title}</S.ItemTextTitle>
+                <S.ItemTextTitle>
+                  {el.title
+                    .replaceAll(props.keyword, `@#$%${props.keyword}@#$%`)
+                    .split("@#$%")
+                    .map((el: any) => (
+                      <S.TextToken key={uuidv4()} isMatched={props.keyword === el}>
+                        {el}
+                      </S.TextToken>
+                    ))}
+                </S.ItemTextTitle>
                 {el.tags?.map(({ name }: ITagsProps) => {
                   return name === "" ? (
                     <></>
