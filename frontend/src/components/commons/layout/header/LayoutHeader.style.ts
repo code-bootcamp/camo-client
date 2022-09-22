@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  /* position: fixed; */
   background-color: #1e3932;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
 
@@ -33,6 +34,8 @@ export const HeaderWrapper = styled.div`
 
   @media ${breakPoints.mobile} {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     /* background-color: #454545; */
   }
 `;
@@ -46,7 +49,7 @@ export const LogoMenuWrapper = styled.div`
 
 export const Logo = styled.img`
   height: 3.3rem;
-  margin-right: 2rem;
+  /* margin-right: 2rem; */
   margin-top: 0.8rem;
 `;
 export const MenuWrapper = styled.div`
@@ -120,10 +123,16 @@ export const LoginUser = styled.h3`
 
 export const MenuTab = styled(MenuOutlined)`
   display: none !important;
+  color: white;
   @media ${breakPoints.mobile} {
     display: block !important;
+    /* position: relative; */
+    position: absolute;
     font-size: 2rem;
     cursor: pointer;
+    color: white !important;
+    padding-left: 20rem;
+    /* background-color: black; */
   }
 `;
 
@@ -148,6 +157,7 @@ export const HamburgerMenu = styled.div`
   display: none;
   @media (max-width: 637px) {
     display: inline;
+    position: absolute;
   }
 `;
 
@@ -160,4 +170,9 @@ export const Item = styled.div`
   :hover {
     color: #c84e50;
   }
+`;
+
+export const MyPageItem = styled(Item)`
+  font-size: 1rem;
+  padding-left: 2rem;
 `;

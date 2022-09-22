@@ -64,45 +64,7 @@ export const globalStyles = css`
     width: 100% !important;
   }
 
-  // 햄버거
-  /* .MuiButton-root {
-    padding: 0px;
-    min-width: 0px;
-    text-transform: none;
-  }
-
-  .MuiButton-text {
-    padding: 0px;
-  } */
-
-  // 모달
-  /* .ant-btn {
-    padding: none;
-    position: fixed;
-  } */
-
-  /* .ant-modal-content {
-    border-radius: 10px;
-  }
-
-  .ant-btn-primary {
-    border-color: #1e3932;
-    background: #1e3932;
-  }
-  .ant-btn {
-    background-color: #1e3932;
-  }
-  .ant-modal-confirm-body .ant-modal-confirm-content {
-    margin-top: 8px;
-    font-size: 16px;
-    font-weight: 500;
-  }
-  ::selection {
-    color: #fff;
-    background: #1e3932;
-  }
-  html {
-    --antd-wave-shadow-color: #1e3932;
-    --scroll-bar: 0;
+  /* .anticon {
+    color: white;
   } */
 `;
