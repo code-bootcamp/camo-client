@@ -1,6 +1,7 @@
 import { LikeFilled } from "@ant-design/icons";
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
+import { ITextTokenProps } from "./CommunityList.types";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -36,6 +37,7 @@ export const NavWrapper = styled.div`
   @media (max-width: 1100px) {
     // 모바일
     width: 100%;
+    height: 130px;
     display: flex;
     flex-direction: column;
   }
@@ -43,54 +45,38 @@ export const NavWrapper = styled.div`
 
 export const SortList = styled.div`
   @media (max-width: 1100px) {
-    margin: 1rem 0;
   }
 `;
 
 export const InputWrapper = styled.div`
-  width: 230px;
+  width: 320px;
   height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-export const Search = styled.input`
-  width: 12rem;
-  height: 2rem;
-  padding-left: 0.7erem;
-`;
-
 export const WriteBtn = styled.button`
-  width: 5rem;
-  height: 5rem;
+  width: 70px;
+  height: 40px;
   background-color: #1e3932;
   border: none;
-  border-radius: 50%;
   color: white;
   cursor: pointer;
-  position: fixed;
   color: #fff;
-  right: 3%;
-  bottom: 5%;
+  font-weight: 600;
+  font-size: 16px;
 
-  ::before {
+  /* ::before {
     content: "+";
     font-size: 3rem;
     line-height: 2rem;
-  }
-  :hover::before {
+  } */
+  /* :hover::before {
     content: "글쓰기";
     font-size: 1.2rem;
     line-height: 1.3rem;
-  }
-
-  @media ${breakPoints.mobile} {
-    right: 12%;
-    bottom: 25%;
-    width: 4rem;
-    height: 4rem;
-  }
+  } */
 `;
 
 export const ItemWrapper = styled.div`
@@ -192,4 +178,8 @@ export const PagesWrapper = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+`;
+
+export const TextToken = styled.span`
+  color: ${(props: ITextTokenProps) => (props.isMatched ? "red" : "black")};
 `;
