@@ -28,7 +28,7 @@ export const BodyWrapper = styled.div`
 `;
 
 export const NavWrapper = styled.div`
-  margin: 1rem;
+  padding: 1rem;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -84,6 +84,13 @@ export const WriteBtn = styled.button`
     font-size: 1.2rem;
     line-height: 1.3rem;
   }
+
+  @media ${breakPoints.mobile} {
+    right: 12%;
+    bottom: 25%;
+    width: 4rem;
+    height: 4rem;
+  }
 `;
 
 export const ItemWrapper = styled.div`
@@ -93,8 +100,8 @@ export const ItemWrapper = styled.div`
   grid-template-columns: repeat(2, 600px);
   @media (max-width: 1100px) {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    padding: 0 3%;
+    grid-template-columns: repeat(1, 350px);
+    padding: 0 0 0 0;
   }
 `;
 

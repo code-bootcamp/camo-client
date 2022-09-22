@@ -2,6 +2,8 @@ import { useMutation, useQuery } from "@apollo/client";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { SyntheticEvent, useEffect, useState } from "react";
+// import { useRecoilState } from "recoil";
+// import { userInfoState } from "../../../../commons/store";
 import {
   IMutation,
   IMutationDeleteBoardArgs,
@@ -18,12 +20,15 @@ import {
   FETCH_LOGINED_USER,
   TOGGLE_LIKE_FEED,
 } from "./CommunityDetail.queries";
-import _ from "lodash";
 
 export default function CommunityDetail() {
+  // const [userInfo] = useRecoilState(userInfoState);
   const router = useRouter();
 
   const [like, setLike] = useState(false);
+  // const [like, setLike] = useRecoilState(likeState);
+
+  // console.log("좋아요", like);
 
   const [deleteBoard] = useMutation<Pick<IMutation, "deleteBoard">, IMutationDeleteBoardArgs>(
     DELETE_BOARD
@@ -47,7 +52,11 @@ export default function CommunityDetail() {
     variables: { boardId: String(router.query.communityId) },
   });
 
-  const getDebounce = _.debounce(async () => {
+  console.log("fetchLoginedUser", dataUser?.fetchLoginedUser.id);
+  console.log("User", dataFavoriteUser?.fetchFavoriteUser[0]?.user?.id);
+  // console.log("User.id", dataFavoriteUser?.fetchFavoriteUser.user?.id);
+
+  const onClickLike = async () => {
     try {
       const result = await toggleLikeFeed({
         variables: {
@@ -56,19 +65,58 @@ export default function CommunityDetail() {
       });
       refetch();
       setLike(Boolean(result.data?.toggleLikeFeed));
-      result.data?.toggleLikeFeed
-        ? Modal.success({ content: "이 게시글 좋네요😊" })
-        : Modal.success({ content: "좋아요를 취소합니다🥲" });
+
+      if (!result.data?.toggleLikeFeed) {
+        Modal.success({ content: "좋아요를 취소합니다🥲" });
+      } else {
+        Modal.success({ content: "이 게시글 좋네요😊" });
+      }
+      console.log(like);
     } catch (error) {
       if (error instanceof Error) {
-        Modal.error({ content: error.message });
+        console.log(error.message);
       }
     }
-  }, 500);
-
-  const onClickLike = async () => {
-    getDebounce();
   };
+
+  useEffect(() => {
+    dataFavoriteUser?.fetchFavoriteUser?.filter(
+      (el) => el.user?.id === dataUser?.fetchLoginedUser.id
+    ).length === 1
+      ? // .map((el) => true)
+        setLike(true)
+      : setLike(false);
+  }, [dataUser?.fetchLoginedUser]);
+
+  // const onClickLike = async () => {
+  //   try {
+  //     const result = await toggleLikeFeed({
+  //       variables: {
+  //         boardId: String(router.query.communityId),
+  //       },
+  //     });
+  //     // setLike(Boolean(result.data?.toggleLikeFeed));
+  //     // refetch();
+  //     if (result.data?.toggleLikeFeed === true) {
+  //       Modal.success({ content: "이 게시글 좋네요😊" });
+  //       setLike((prev) => !prev);
+  //       refetch();
+  //     }
+  //     if (result.data?.toggleLikeFeed === false) {
+  //       Modal.success({ content: "좋아요를 취소합니다🥲" });
+  //       setLike((prev) => !prev);
+  //       refetch();
+  //     }
+  //   } catch (error) {
+  //     if (error instanceof Error) {
+  //       Modal.error({ content: error.message });
+  //     }
+  //   }
+  // };
+
+  // const wpswkd = dataFavoriteUser?.fetchFavoriteUser.user
+  //   ?.filter((el: any) => el.id === dataUser?.fetchLoginedUser.id)
+  //   .map((el: any) => true);
 
   // useEffect(() => {
   //   dataFavoriteUser?.fetchFavoriteUser.user?.filter(
@@ -78,10 +126,12 @@ export default function CommunityDetail() {
   //     : setLike(false);
   // }, [dataFavoriteUser?.fetchFavoriteUser.user]);
 
-  useEffect(() => {
-    if (dataFavoriteUser?.fetchFavoriteUser[0]?.user?.id === dataUser?.fetchLoginedUser.id)
-      setLike(true);
-  }, [dataFavoriteUser]);
+  // useEffect(() => {
+  //   dataFavoriteUser?.fetchFavoriteUser[0]?.user?.id === dataUser?.fetchLoginedUser.id && !undefined
+  //     ? setLike(true)
+  //     : setLike(false);
+  // }, [dataBoard]);
+
   // useEffect(() => {
   //   console.log(dataFavoriteUser?.fetchFavoriteUser.map((el) => el.id));
   //   if (

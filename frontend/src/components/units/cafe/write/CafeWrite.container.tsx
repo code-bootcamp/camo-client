@@ -8,6 +8,8 @@ import { FETCH_CAFE_LISTS_CREATED_AT } from "../list/CafeList.queries";
 import CafeWriteUI from "./CafeWrite.presenter";
 import { CREATE_CAFE_LIST, UPDATE_CAFE_LIST } from "./CafeWrite.queries";
 import { Editor } from "@toast-ui/react-editor";
+import { FETCH_CAFE_LIST } from "../detail/CafeDetail.queries";
+import { IQuery } from "../../../../commons/types/generated/types";
 // import * as yup from "yup";
 // import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -15,6 +17,10 @@ import { Editor } from "@toast-ui/react-editor";
 //    title: yup.string().required("카페 이름을 입력해주세요."),
 //    contents: yup.string().required("내용을 입력해주세요."),
 // });
+
+// interface ICafeProps {
+//   data: Pick<IQuery, "fetchCafeList">;
+// }
 
 export default function CafeWrite(props: any) {
   useAuth();
@@ -26,7 +32,7 @@ export default function CafeWrite(props: any) {
   const [createCafeList] = useMutation(CREATE_CAFE_LIST);
   const [updateCafeList] = useMutation(UPDATE_CAFE_LIST);
 
-  const { register, handleSubmit, setValue, trigger, reset, formState } = useForm({
+  const { register, handleSubmit, setValue, trigger, formState } = useForm({
     // resolver: yupResolver(schema),
     mode: "onChange",
   });
@@ -69,21 +75,6 @@ export default function CafeWrite(props: any) {
     setIsAddressOpen(false);
   };
 
-  useEffect(() => {
-    if (props.data !== undefined) {
-      // reset({
-      // contents: props.data.fetchCafeList.contents,
-      // tags: props.data.fetchCafeList.tags?.join(),
-      // });
-      // if (props.data.fetchCafeList.cafeListImage?.url) {
-      //   setFileUrls([...props.data.fetchCafeList.cafeListImage.url]);
-      // }
-      if (props.data.fetchCafeList.cafeListImage?.length) {
-        setFileUrls([...props.data?.fetchCafeList.cafeListImage.map((el: any) => el.url)]);
-      }
-    }
-  }, [props.data]);
-
   const onChangeFileUrls = (fileUrl: string, index: number) => {
     const newFileUrls = [...fileUrls];
     newFileUrls[index] = fileUrl;
@@ -92,6 +83,25 @@ export default function CafeWrite(props: any) {
     // setValue("fileURLs", newFileUrls);
     // trigger("fileURLs");
   };
+
+  useEffect(() => {
+    if (props.data !== undefined || null) {
+      // reset({
+      // contents: props.data.fetchCafeList.contents,
+      // tags: props.data.fetchCafeList.tags?.join(),
+      // });
+      // if (props.data.fetchCafeList.cafeListImage?.url) {
+      //   setFileUrls([...props.data.fetchCafeList.cafeListImage.url]);
+      // }
+      if (props.data?.fetchCafeList.cafeListImage?.length) {
+        setFileUrls([...props.data?.fetchCafeList?.cafeListImage.map((el: any) => el.url)]);
+      }
+    }
+  }, [props.data]);
+
+  // console.log("[0]", props.data?.fetchCafeList.cafeListImage[0]);
+  console.log("되냐", props.data?.fetchCafeList.cafeListImage);
+  console.log("length", props.data?.fetchCafeList.cafeListImage?.length);
 
   const onClickCreate = async (data: any) => {
     console.log("데이타", data);
@@ -112,7 +122,7 @@ export default function CafeWrite(props: any) {
             deposit: Number(data.deposit || ""),
             contents: data.contents || "",
             // fileURLs: data.fileURLs,
-            images: [...fileUrls] || "",
+            image: [...fileUrls] || "",
             // tags: data.cafeListTag?.split(",") || "",
             tags: data.tags?.split(" ") || "",
           },
@@ -163,19 +173,27 @@ export default function CafeWrite(props: any) {
             deposit: Number(data.deposit) || "",
             remarks: data.remarks || "",
             contents: data.contents || "",
-            tags: data.tags?.split(" ") || "",
+            // tags: data.tags?.split(" ") || "",
             // tags: data.cafeListTag?.split(",") || "",
-            images: [...fileUrls] || "",
+            image: [...fileUrls] || "",
             // fileURLs: data.fileURLs,
           },
         },
+        refetchQueries: [
+          {
+            query: FETCH_CAFE_LIST,
+            variables: {
+              cafeListId: String(router.query.cafeId),
+            },
+          },
+        ],
       });
       router.push(`/cafe/${result.data?.updateCafeList.id}`);
       // router.push(`/cafe/`);
       // message.success("수정 성공!");
       // console.log(result);
-    } catch (error) {
-      // console.log("수정 실패", error);
+    } catch (error: any) {
+      console.log("실패", error.message);
       Modal.error({ content: "수정 실패" });
       // alert("수정 실패");
     }

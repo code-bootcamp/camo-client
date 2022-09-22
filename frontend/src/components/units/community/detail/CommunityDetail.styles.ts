@@ -215,7 +215,6 @@ export const Address = styled.span`
 export const MapWrapper = styled.div`
   width: 100%;
   height: 20rem;
-  background-color: pink;
 `;
 
 export const FooterWrapper = styled.div`

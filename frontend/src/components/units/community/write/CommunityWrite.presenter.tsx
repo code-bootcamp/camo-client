@@ -33,7 +33,7 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
       <S.TopTitleWrap>
         <S.TopTitle>
           COMMUNITY
-          <span>{props.isEdit ? " | 글쓰기 수정" : " | 글쓰기"}</span>
+          <S.SubTitle>{props.isEdit ? " | 글쓰기 수정" : " | 글쓰기"}</S.SubTitle>
         </S.TopTitle>
       </S.TopTitleWrap>
       <S.Form

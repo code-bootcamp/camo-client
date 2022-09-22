@@ -28,12 +28,6 @@ export default function CommunityDetailUI(props: any) {
                 ? 0
                 : props.dataBoard?.fetchBoard.likeCount}
             </S.LikeCount>
-            {/* toggleLikeFeed 값을 스테이트에 담아서 T/F 에 따라 보이는 아이콘 다르게 하기 */}
-            {/* {!props.dataBoard?.fetchBoard.favoriteBoard.isLike ? (
-              <S.LikeIcon onClick={props.onClickLike} />
-            ) : (
-              <S.DisLikeIcon onClick={props.onClickLike} />
-            )} */}
             {props.like ? (
               <S.LikeIcon onClick={props.onClickLike} />
             ) : (
