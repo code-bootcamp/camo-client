@@ -34,7 +34,7 @@ export default function CommunityListUI(props: IBoardListUIProps) {
           {/* </S.SortList> */}
 
           <S.InputWrapper>
-            {props.alignment === "createdAt" ? (
+            {/* {props.alignment === "createdAt" ? (
               // <SearchBar
               //   refetchCreatedAt={props.refetchCreatedAt}
               //   refetchSearchBoards={props.refetchSearchBoards}
@@ -47,7 +47,7 @@ export default function CommunityListUI(props: IBoardListUIProps) {
               </>
             ) : (
               <></>
-            )}
+            )} */}
             <Link href="/community/new">
               <a>
                 <S.WriteBtn>글쓰기</S.WriteBtn>
