@@ -1,10 +1,18 @@
-import { SearchBar, SearchBarInput } from "./SearchBar.styles";
+import * as S from "./SearchBar.styles";
+import { useRecoilState } from "recoil";
+import { searchKeyword } from "../../../../commons/store";
+import { ISearchBarsUIProps } from "./SearchBar.types";
 
-export default function SearchBarUI(props: any) {
+export default function SearchBarPresenter(props: ISearchBarsUIProps) {
+  const [camoKeyword] = useRecoilState(searchKeyword);
+
   return (
-    <SearchBar>
-      <SearchBarInput placeholder="검색어를 입력해 주세요." onChange={props.onChangeSearchBar} />
-      {/* <SearchBtn onChange={props.onChangeSearch}>검색하기</SearchBtn> */}
-    </SearchBar>
+    <S.Wrap>
+      <S.SearchBarInput
+        defaultValue={camoKeyword}
+        placeholder="검색어를 입력하세요"
+        onChange={props.onChangeSearchBar}
+      />
+    </S.Wrap>
   );
 }

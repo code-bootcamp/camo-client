@@ -35,12 +35,16 @@ export default function CommunityListUI(props: IBoardListUIProps) {
 
           <S.InputWrapper>
             {props.alignment === "createdAt" ? (
-              <SearchBar
-                refetchCreatedAt={props.refetchCreatedAt}
-                refetchSearchBoards={props.refetchSearchBoards}
-                refetchSearch={props.refetchSearch}
-                onChangeKeyword={props.onChangeKeyword}
-              />
+              // <SearchBar
+              //   refetchCreatedAt={props.refetchCreatedAt}
+              //   refetchSearchBoards={props.refetchSearchBoards}
+              //   refetchSearch={props.refetchSearch}
+              //   onChangeKeyword={props.onChangeKeyword}
+              // />
+              <>
+                <S.SearchButton onClick={props.onClickSearchPage} src="/images/search/search.svg" />
+                <S.SearchInput onChange={props.onChangeSearchBar} value={props.nputs} />
+              </>
             ) : (
               <></>
             )}
