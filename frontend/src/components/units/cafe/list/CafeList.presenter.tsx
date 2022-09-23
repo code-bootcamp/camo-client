@@ -11,11 +11,33 @@ import Favorite from "@mui/icons-material/Favorite";
 import PopUp from "../../../commons/popup";
 // import { WriteBtn } from "../../community/list/CommunityList.styles";
 import { StyledEngineProvider, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import TopButton from "../../../commons/topbutton";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 export default function CafeListUI(props: any) {
-  console.log(props.data);
+  // console.log(props.data);
+
+  const [windowSize, setWindowSize] = React.useState(false);
+
+  const handleResize = () => {
+    if (window.innerWidth <= 767) {
+      setWindowSize(true);
+    }
+    // else {
+    //   setWindowSize(false);
+    // }
+  };
+
+  React.useEffect(() => {
+    if (window.innerWidth <= 767) {
+      setWindowSize(true);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [windowSize]);
 
   return (
     <>
@@ -76,6 +98,7 @@ export default function CafeListUI(props: any) {
               <C.WriteBtn>카페 등록</C.WriteBtn>
             </a>
           </Link>
+          {/* <C.TopBtn>Top</C.TopBtn> */}
         </C.BarWrapper>
 
         {/* <div style={{ border: "1px solid #fff", width: "80%", height: "800px", overflow: "auto" }}> */}
@@ -145,6 +168,8 @@ export default function CafeListUI(props: any) {
           </C.PostAllWrap>
         </InfiniteScroll>
         {/* </div> */}
+
+        {windowSize && <TopButton />}
       </C.Wrapper>
       <PopUp />
     </>

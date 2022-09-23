@@ -176,6 +176,25 @@ export const WriteBtn = styled.div`
   }
 `;
 
+export const TopBtn = styled.div`
+  display: none;
+  @media ${breakPoints.mobile} {
+    display: flex;
+    flex-direction: column;
+    width: 3rem;
+    height: 3rem;
+    color: white;
+    background-color: #1e3932;
+    border-radius: 30rem;
+    text-align: center;
+    line-height: 3rem;
+    position: fixed;
+    top: 70%;
+    right: 5%;
+    z-index: 1000;
+    cursor: pointer;
+  }
+`;
 export const SearchText = styled.div`
   font-size: 1rem;
   width: 14%;

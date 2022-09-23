@@ -488,8 +488,9 @@ export const ZzimBtn = styled.div`
     color: gold;
   }
   @media ${breakPoints.mobile} {
-    /* display: none; */
+    display: flex;
     width: 3rem;
+    padding-left: 0.5rem;
     height: 2.2rem;
     line-height: 2.2rem;
     font-weight: 400;
