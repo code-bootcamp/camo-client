@@ -2,6 +2,7 @@ import Link from "next/link";
 import * as C from "./LayoutHeader.style";
 import { slide as Menu } from "react-burger-menu";
 import { ILayoutHeaderUIProps } from "./LayoutHeader.types";
+import { UserOutlined } from "@ant-design/icons";
 
 export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
   const styles = {
@@ -16,7 +17,7 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
       // background: "#ffffffe0",
     },
     bmBurgerBarsHover: {
-      background: "#ffffff",
+      // background: "#ffffff",
       // background: "none",
     },
     // 안먹음
@@ -57,13 +58,44 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
     <>
       <C.Wrapper>
         <C.HeaderWrapper>
-          <h1>
-            <Link href="/">
-              <a>
-                <C.Logo src="/Final_logo1.png" alt="logo" />
-              </a>
-            </Link>
-          </h1>
+          <C.LogoMenuWrapper>
+            <h1>
+              <Link href="/">
+                <a>
+                  <C.Logo src="/Final_logo1.png" alt="logo" />
+                </a>
+              </Link>
+            </h1>
+
+            <C.MenuWrapper>
+              <Link href="/">
+                <a>
+                  <C.MenuFonts>BLENDED</C.MenuFonts>
+                </a>
+              </Link>
+
+              <Link href="/cafe">
+                <a>
+                  <C.MenuFonts>CAFE</C.MenuFonts>
+                </a>
+              </Link>
+
+              <Link href="/community">
+                <a>
+                  <C.MenuFonts>COMMUNITY</C.MenuFonts>
+                </a>
+              </Link>
+              {props.accessToken ? (
+                <Link href="/myPage/myLike">
+                  <a>
+                    <C.MenuFonts>MY PAGE</C.MenuFonts>
+                  </a>
+                </Link>
+              ) : (
+                <a></a>
+              )}
+            </C.MenuWrapper>
+          </C.LogoMenuWrapper>
           <C.MenuTab />
           <C.HamburgerMenu>
             <Menu styles={styles} right>
@@ -151,6 +183,30 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
               )}
             </Menu>
           </C.HamburgerMenu>
+
+          {props.accessToken ? (
+            <C.LoginWrapper>
+              <C.LoginUser>
+                <UserOutlined />
+                &nbsp;
+                {props.data?.fetchLoginedUser.nickName}님
+              </C.LoginUser>
+              <C.LoginButton onClick={props.onClickLogout}>로그아웃</C.LoginButton>
+            </C.LoginWrapper>
+          ) : (
+            <C.LoginWrapper>
+              <Link href="/login">
+                <a>
+                  <C.LoginButton>로그인</C.LoginButton>
+                </a>
+              </Link>
+              <Link href="/login/selectSignUp">
+                <a>
+                  <C.LoginButton>회원가입</C.LoginButton>
+                </a>
+              </Link>
+            </C.LoginWrapper>
+          )}
         </C.HeaderWrapper>
       </C.Wrapper>
     </>

@@ -147,6 +147,13 @@ export default function MyDeletePage() {
     }
   };
 
+  const Social = styled.div`
+    font-size: 0.75rem;
+    color: gray;
+    display: flex;
+    justify-content: center;
+  `;
+
   return (
     <>
       <BigWrapper>
@@ -163,6 +170,8 @@ export default function MyDeletePage() {
               삭제되는 내용을 확인하시고 필요한 데이터는 미리 백업을 해주세요. <br /> <br />
               현재 예약한 데이터들이 모두 삭제되며, 예약한 내역들 또한 모두 삭제되고, 재가입해도
               자동으로 복구되지 않습니다.
+              <br />
+              <br />
               <InputTitle>비밀번호 입력</InputTitle>
               <InputWrapper>
                 <Input
@@ -177,7 +186,10 @@ export default function MyDeletePage() {
               </ButtonWrapper>
             </MainWrapper>
           </Wrapper>
+          <Social>소셜로그인 비밀번호는 social1!입니다.</Social>
           <br /> <br /> <br /> <br />
+          <br />
+          <br />
         </Body>
       </BigWrapper>
     </>

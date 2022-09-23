@@ -10,6 +10,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { ListItem, ListItemText, ListItemIcon, List, Button, Drawer } from "@material-ui/core";
 import { KeyboardArrowRight } from "@material-ui/icons";
 import MainPageQuestionContainer from "../../commons/mainPageQuestion/mainPageQuestion.container";
+import { useRecoilState } from "recoil";
+import { accessTokenState } from "../../../commons/store";
 
 const useStyles = makeStyles({
   list: {
@@ -23,6 +25,7 @@ const useStyles = makeStyles({
 type Anchor = "right";
 
 export default function LandingPage() {
+  const [accessToken] = useRecoilState(accessTokenState);
   const [ref, inView] = useInView({
     threshold: 0.1,
   });
@@ -134,13 +137,24 @@ export default function LandingPage() {
 
         {/* <C.MenuTab /> */}
         <C.Logo>
-          <Link href="/login/">
-            <a>
-              {" "}
-              <img src="/Final_logo1.png" alt="logo" />
-              {/* <img src="CAMO.png" /> */}
-            </a>
-          </Link>
+          {/* === */}
+          {accessToken ? (
+            <>
+              <Link href="/cafe/">
+                <a>
+                  <img src="/Final_logo1.png" alt="logo" />
+                </a>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link href="/login/">
+                <a>
+                  <img src="/Final_logo1.png" alt="logo" />
+                </a>
+              </Link>
+            </>
+          )}
         </C.Logo>
 
         <C.MainTitle>
