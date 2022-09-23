@@ -1,11 +1,9 @@
 import CommunityListUI from "./CommunityList.presenter";
 import {
-  FETCH_BOARDS,
   FETCH_BOARDS_CREATED_AT,
   FETCH_BOARDS_LIKE_COUNT,
   FETCH_BOARDS_NUMBER,
   SEARCH_BOARDS,
-  // SEARCH_BOARDS,
 } from "./CommunityList.queries";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
@@ -13,9 +11,14 @@ import {
   IQuery,
   IQueryFetchBoardsCreatedAtArgs,
   IQueryFetchBoardsLikeCountArgs,
-  // IQuerySearchBoardsArgs,
+  IQuerySearchBoardsArgs,
 } from "../../../../commons/types/generated/types";
 import { MouseEvent, useState } from "react";
+
+import _ from "lodash";
+import { ChangeEvent } from "react";
+import { useRecoilState } from "recoil";
+import { searchKeyword } from "../../../../commons/store";
 
 export default function CommunityList() {
   const router = useRouter();
@@ -26,9 +29,19 @@ export default function CommunityList() {
 
   const [keyword, setKeyword] = useState("");
 
-  const { data: dataList, refetch: refetchList } = useQuery(FETCH_BOARDS);
+  const [, setCamoKeyword] = useRecoilState(searchKeyword);
 
-  const { data: dataSearchBoards, refetch: refetchSearchBoards } = useQuery(SEARCH_BOARDS);
+  const [inputs, setInputs] = useState("");
+
+  function onChangeSearchBar(event: any) {
+    setInputs(event.target.value);
+  }
+
+  const onClickSearchPage = () => {
+    router.push("/community/search");
+    setCamoKeyword(inputs);
+    setInputs("");
+  };
 
   const { refetch: refetchCreatedAt } = useQuery<
     Pick<IQuery, "fetchBoardsCreatedAt">,
@@ -57,18 +70,18 @@ export default function CommunityList() {
     }
   };
 
-  const onClickMoveToBoardDetail = (event: MouseEvent<HTMLDivElement>) => {
-    if (!(event.target instanceof HTMLDivElement)) return;
-    router.push(`/boards/${event.target.id}`);
-  };
-
-  // const { data: dataSearch, refetch: refetchSearch } = useQuery<
+  // const { data: dataSearchBoards, refetch: refetchSearchBoards } = useQuery<
   //   Pick<IQuery, "searchBoards">,
   //   IQuerySearchBoardsArgs
-  // >(SEARCH_BOARDS);
+  // >(SEARCH_BOARDS, {
+  //   variables: {
+  //     search_board: keyword,
+  //   },
+  // });
 
-  const onChangeKeyword = (value: string) => {
-    setKeyword(value);
+  const onClickMoveToBoardDetail = (event: MouseEvent<HTMLDivElement>) => {
+    if (!(event.target instanceof HTMLDivElement)) return;
+    router.push(`/community/${event.target.id}`);
   };
 
   const [alignment, setAlignment] = useState("createdAt");
@@ -79,11 +92,6 @@ export default function CommunityList() {
 
   return (
     <CommunityListUI
-      // dataList={dataList}
-      // refetchList={refetchList}
-      search={dataSearchBoards?.searchBoards}
-      refetchSearchBoards={refetchSearchBoards}
-      onClickMoveToBoardDetail={onClickMoveToBoardDetail}
       onClickMoveToNew={onClickMoveToNew}
       refetchCreatedAt={refetchCreatedAt}
       refetchLikeCount={refetchLikeCount}
@@ -93,9 +101,12 @@ export default function CommunityList() {
       onClickPage={onClickPage}
       lastPage={lastPage}
       keyword={keyword}
-      onChangeKeyword={onChangeKeyword}
       alignment={alignment}
       handleChange={handleChange}
+      inputs={inputs}
+      onChangeSearchBar={onChangeSearchBar}
+      onClickSearchPage={onClickSearchPage}
+      onClickMoveToBoardDetail={onClickMoveToBoardDetail}
     />
   );
 }

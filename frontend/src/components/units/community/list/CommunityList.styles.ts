@@ -183,3 +183,16 @@ export const PagesWrapper = styled.div`
 export const TextToken = styled.span`
   color: ${(props: ITextTokenProps) => (props.isMatched ? "red" : "black")};
 `;
+
+export const SearchButton = styled.img``;
+
+export const SearchInput = styled.input`
+  width: 90%;
+  border: none;
+  background-color: #f2f2f2;
+  padding-left: 10px;
+  color: #808080;
+  &:focus {
+    outline: none;
+  }
+`;

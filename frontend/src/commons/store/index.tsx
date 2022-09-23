@@ -19,3 +19,8 @@ export const reservedState = atom({
   key: `reservedState/${uuidv4()}`,
   default: [],
 });
+
+export const searchKeyword = atom({
+  key: "searchKeyword",
+  default: "",
+});

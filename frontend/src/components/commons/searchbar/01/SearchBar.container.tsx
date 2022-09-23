@@ -1,24 +1,31 @@
-// import SearchBarUI from "./SearchBar.presenter";
-// import _ from "lodash";
-// import { ISearchBarProps } from "./SearchBar.types";
-// import { ChangeEvent } from "react";
+import SearchBarPresenter from "./SearchBar.presenter";
+import { ISearchBarsProps } from "./SearchBar.types";
 
-import SearchBarUI from "./SearchBar.presenter";
-import { ISearchBarProps } from "./SearchBar.types";
 import _ from "lodash";
-import { ChangeEvent } from "react";
+import { useEffect } from "react";
+import { searchKeyword } from "../../../../commons/store";
+import { useRecoilState } from "recoil";
 
-export default function SearchBar(props: ISearchBarProps) {
-  const getDebounce = _.debounce((value: string) => {
-    props.refetchCreatedAt({ page: 1 });
-    props.refetchSearchBoards({ search_board: value });
-    props.onChangeKeyword(value);
-  }, 1000);
+export default function SearchBarContainer(props: ISearchBarsProps) {
+  const [camoKeyword] = useRecoilState(searchKeyword);
 
-  const onChangeSearchBar = (event: ChangeEvent<HTMLInputElement>) => {
+  const getDebounce = _.debounce((data: string) => {
+    props.refetch({ search_board: data });
+    props.onChangeKeyword(data);
+  }, 500);
+
+  function onChangeSearchBar(event: any) {
     getDebounce(event.target.value);
-    // console.log(event.target.value);
-  };
+  }
 
-  return <SearchBarUI onChangeSearchBar={onChangeSearchBar} />;
+  useEffect(() => {
+    props.onChangeKeyword(camoKeyword);
+    if (camoKeyword !== "") {
+      props.refetch({
+        search_board: camoKeyword,
+      });
+    }
+  }, [camoKeyword]);
+
+  return <SearchBarPresenter onChangeSearchBar={onChangeSearchBar} />;
 }

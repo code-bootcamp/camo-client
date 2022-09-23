@@ -1,13 +1,16 @@
 import styled from "@emotion/styled";
 
-export const SearchBar = styled.div`
-  width: 13.3rem;
-  height: 2.2rem;
-  border-radius: 5px;
-  background-color: #eee;
+export const Wrap = styled.div`
+  width: 776px;
+  height: 52px;
+  border-bottom: 1px solid #bdbdbd;
+  padding: 0px 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  background-image: url("/images/search/search.svg");
+  background-repeat: no-repeat;
+  background-position: 0 10px;
 `;
 
 export const SearchBarInput = styled.input`
@@ -16,14 +19,5 @@ export const SearchBarInput = styled.input`
   border: none;
   outline: none;
   background: none;
-  padding-left: 1rem;
-`;
-
-export const SearchBtn = styled.button`
-  width: 4rem;
-  height: 2rem;
-  background-color: #1e3932;
-  border: none;
-  color: white;
-  cursor: pointer;
+  margin: 0px 20px;
 `;
