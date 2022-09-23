@@ -52,7 +52,8 @@ export const InputWrapper = styled.div`
   width: 320px;
   height: 40px;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: end;
   align-items: center;
 `;
 
