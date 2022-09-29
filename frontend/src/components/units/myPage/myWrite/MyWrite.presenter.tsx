@@ -9,7 +9,6 @@ import { PaginationWrapper } from "../myReservation/MyReservation.styles";
 import Dompurify from "dompurify";
 
 export default function MyWriteUI(props: IMyWriteUIProps) {
-  console.log(props.WriteData?.fetchUserMyBoard);
   return (
     <>
       <B.Wrapper>

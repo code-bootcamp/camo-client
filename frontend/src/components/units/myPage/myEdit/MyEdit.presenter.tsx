@@ -58,18 +58,6 @@ export default function MyEditUI(props: IMyEditUI) {
                   </S.RightContents>
                 </S.RowWrapper>
                 <S.Error>{props.formState.errors.nickName?.message}</S.Error>
-                {/* <S.RowWrapper>
-                  <S.LeftContents>현재 비밀번호</S.LeftContents>
-                  <S.RightContents>
-                    <S.Input
-                      id="password"
-                      type="password"
-                      placeholder="현재 비밀번호"
-                      {...props.register("password")}
-                    />
-                  </S.RightContents>
-                </S.RowWrapper>
-                <S.Error>{props.formState.errors.password?.message}</S.Error> */}
                 <S.RowWrapper>
                   <S.LeftContents>변경 비밀번호</S.LeftContents>
                   <S.RightContents>

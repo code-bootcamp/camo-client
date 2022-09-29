@@ -48,17 +48,13 @@ export default function Reservation() {
   const [endTime, setEndTime] = useState("");
   const [timeTable, setTimeTable] = useState(false);
   const [disabled, setDisabled] = useState(false);
-  // const [reserved, setReserved] = useRecoilState<any>(reservedState);
   const [reserved] = useRecoilState<any>(reservedState);
   const [open, setOpen] = useState(false);
-  // const size = useWindowSize();
 
   const { data: UserData } = useQuery(FETCH_LOGINED_USER);
   const { data: CafeData } = useQuery(FETCH_CAFE_LIST, {
     variables: { cafeListId: String(router.query.cafeId) },
   });
-
-  // console.log("ReservationContainer", CafeData);
 
   const [createPayment] = useMutation<Pick<IMutation, "createPayment">, IMutationCreatePaymentArgs>(
     CREATE_PAYMENT
@@ -84,7 +80,6 @@ export default function Reservation() {
     } else {
       setPrice(100);
     }
-    console.log(price, clicked);
     setTimeTable(false);
   };
   const onClickCancel = () => {
@@ -102,10 +97,6 @@ export default function Reservation() {
       setPrice(0);
     }
   }, [clicked, startTime]);
-
-  useEffect(() => {
-    console.log("changeDate", date);
-  }, [date]);
 
   const onIncrease = () => {
     setGuest((prev) => prev + 1);
@@ -130,9 +121,7 @@ export default function Reservation() {
   MaxDay.setDate(MaxDay.getDate() + 30);
 
   const onChangeDate = async (newValue: string) => {
-    console.log("onChangeDate", newValue);
     const date = getTime(newValue);
-    console.log("onChangeDate", date);
     setDisabled(false);
     setDate(date);
   };
@@ -155,29 +144,21 @@ export default function Reservation() {
         pay_method: "card",
         name: "CAMO",
         amount: CafeData?.fetchCafeList.deposit,
-        // amount: 100,
         buyer_email: UserData?.fetchLoginedUser.email,
         buyer_name: UserData?.fetchLoginedUser.name,
         buyer_tel: UserData?.fetchLoginedUser.phoneNumber,
-        // m_redirect_url: "http://localhost:3000/myPage/myReservation",
         m_redirect_url: "https://cafemoment.stie/myPage/myReservation",
       },
       async (rsp: any) => {
         if (rsp.success) {
-          // 결제 성공 시 로직
           try {
             const paymentResult = await createPayment({
               variables: {
                 impUid: String(rsp.imp_uid),
-                // amount: 100,
                 amount: CafeData?.fetchCafeList.deposit,
               },
             });
-            console.log(paymentResult);
-            // router.push("/myPage/myReservation");
-          } catch (error) {
-            console.log(error);
-          }
+          } catch (error) {}
           try {
             await createCafeReservation({
               variables: {
@@ -192,14 +173,9 @@ export default function Reservation() {
                 },
               },
             });
-            // console.log(ReservationResult);
             router.push("/myPage/myReservation");
-          } catch (error) {
-            // console.log(error);
-          }
-          // console.log(rsp);
+          } catch (error) {}
         } else {
-          // 결제 실패 시 로직
           alert("결제에 실패했습니다. 다시 시도해주세요.");
         }
       }
@@ -213,73 +189,17 @@ export default function Reservation() {
     <>
       <div>
         <Head>
-          {/* <!-- jQuery --> */}
           <script
             type="text/javascript"
             src="https://code.jquery.com/jquery-1.12.4.min.js"
           ></script>
-          {/* <!-- iamport.payment.js --> */}
           <script
             type="text/javascript"
             src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
           ></script>
         </Head>
       </div>
-      {/* {size.width > 767 ? (
-        <ReservationUI
-          hour={hour}
-          price={price}
-          date={date}
-          NextDay={NextDay}
-          MaxDay={MaxDay}
-          onChangeDate={onChangeDate}
-          guest={guest}
-          onIncrease={onIncrease}
-          onDecrease={onDecrease}
-          onClickTime={onClickTime}
-          timeTable={timeTable}
-          startTime={startTime}
-          endTime={endTime}
-          onClickPayment={onClickPayment}
-          onClickCancel={onClickCancel}
-          clicked={clicked}
-          reserved={reserved}
-          disabled={disabled}
-          onClickSetTime={onClickSetTime}
-          CafeData={CafeData}
-          // 모바일
-          open={open}
-          setOpen={setOpen}
-          onDismiss={onDismiss}
-        />
-      ) : (
-        <ReservationMobileUI
-          hour={hour}
-          price={price}
-          date={date}
-          NextDay={NextDay}
-          MaxDay={MaxDay}
-          onChangeDate={onChangeDate}
-          guest={guest}
-          onIncrease={onIncrease}
-          onDecrease={onDecrease}
-          onClickTime={onClickTime}
-          timeTable={timeTable}
-          startTime={startTime}
-          endTime={endTime}
-          onClickPayment={onClickPayment}
-          onClickCancel={onClickCancel}
-          clicked={clicked}
-          reserved={reserved}
-          disabled={disabled}
-          onClickSetTime={onClickSetTime}
-          CafeData={CafeData}
-          // 모바일
-          open={open}
-          setOpen={setOpen}
-          onDismiss={onDismiss}
-        />
-      )} */}
+
       <ReservationUI
         hour={hour}
         price={price}

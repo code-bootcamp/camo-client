@@ -75,19 +75,16 @@ export const Content = styled.main`
 `;
 
 export const Title = styled.h1`
-  /* font-family: "NanumSquare_ac"; */
   font-weight: 700;
   font-size: 1.1rem;
   color: #3c3430;
   @media ${breakPoints.mobile} {
-    /* padding-left: 10px; */
     width: 30vw;
     padding-left: 15px;
   }
   @media (max-width: 280px) {
     font-size: 10px;
     width: 30vw;
-    /* margin-left: 15px; */
   }
 `;
 

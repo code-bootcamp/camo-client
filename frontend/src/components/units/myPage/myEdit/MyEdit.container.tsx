@@ -48,22 +48,16 @@ export default function MyEdit() {
     mode: "onChange",
   });
 
-  // const onClickUpdate = async (data: IUpdate) => {
   const onClickUpdate = async (data: any) => {
     const { passwordConfirm, ...dataCheck } = data;
     try {
       const result2 = await updateLoginUser({
         variables: { updateUserInput: { ...dataCheck } },
       });
-      console.log(result2);
       location.reload();
-      // router.push("/");
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
-  // 모달로 삭제 보류 -> 페이지로 변경 (0911)
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   const [password, setPassword] = useState("");
 

@@ -113,7 +113,6 @@ export const EmailInput = styled.input`
 export const Error = styled.div`
   color: red;
   font-size: 12px;
-  /* background-color: black; */
 `;
 
 export const Form = styled.form`

@@ -62,10 +62,7 @@ export default function SignUpUI(props: ISignUpUIProps) {
               </S.GreenButton>
             </S.RowWrapper>
             <S.Error>{props.formState.errors.phoneNumberCheck?.message}</S.Error>
-            {/* <S.Line /> */}
-            {/* <Checkbox /> */}
             <S.SubmitButton>회원가입</S.SubmitButton>
-            {/* 여기 약관동의 추가하기(3차) */}
             <S.FooterWrapper>
               <S.FooterText>이미 아이디가 있으신가요?</S.FooterText>
               <Link href="/login">

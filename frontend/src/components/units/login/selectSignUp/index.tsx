@@ -59,7 +59,6 @@ const Select = styled.a`
   border: 0.5px solid #ddd;
   border-radius: 10px;
   box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.07);
-  /* background-color: pink; */
   cursor: pointer;
   :hover {
     background-color: #1e3932;
@@ -99,14 +98,12 @@ export default function SelectSignUp() {
               <Select>
                 <Label>카페 사장님</Label>
                 <CafeIcon src="/images/SignUp/Cafe_Black.svg" />
-                {/* <CafeIcon src="/images/SignUp/Cafe_White.svg" /> */}
               </Select>
             </Link>
             <Link href="/login/signUp">
               <Select>
                 <Label>일반 회원</Label>
                 <UserIcon src="/images/SignUp/User_Black.svg" />
-                {/* <UserIcon src="/images/SignUp/User_White.svg" /> */}
               </Select>
             </Link>
           </RowWrapper>

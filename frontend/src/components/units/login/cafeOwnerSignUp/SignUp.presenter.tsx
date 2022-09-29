@@ -67,10 +67,7 @@ export default function CafeSignUpUI(props: ISignUpUIProps) {
               </S.GreenButton>
             </S.RowWrapper>
             <S.Error>{props.formState.errors.phoneNumberCheck?.message}</S.Error>
-
-            {/* <Checkbox /> */}
             <S.SubmitButton>회원가입</S.SubmitButton>
-            {/* <S.Line /> */}
             <S.FooterWrapper>
               <S.FooterText>이미 아이디가 있으신가요?</S.FooterText>
               <Link href="/login">
