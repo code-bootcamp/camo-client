@@ -19,19 +19,16 @@ export const RowWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin: auto;
-  /* margin-bottom: 1.25rem; */
   margin-right: 4rem;
 
   @media ${breakPoints.mobile} {
     width: 80vw;
     margin: auto;
-    /* padding-left: 4rem; */
   }
 `;
 
 export const Form = styled.form`
   width: 100%;
-  /* height: 100vh; */
   margin-top: 150px;
   display: flex;
   flex-direction: column;

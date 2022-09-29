@@ -4,9 +4,6 @@ import { breakPoints } from "../../commons/styles/media";
 export const MainWrapper = styled.main`
   width: 18.75rem;
   height: 400px;
-  /* position: sticky;
-  left: 90%;
-  bottom: 30%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,10 +12,8 @@ export const MainWrapper = styled.main`
   border-radius: 12px;
   padding: 24px;
   box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-  /* margin-top: 300px; */
   color: black;
   @media ${breakPoints.mobile} {
-    /* display: none; */
     box-shadow: none;
     border: none;
     width: 90vw;
@@ -29,7 +24,6 @@ export const MainWrapper = styled.main`
 export const Label = styled.label`
   width: 50%;
   font-weight: 700;
-  /* font-size: 18px; */
   font-size: 1.6rem;
   text-align: center;
   @media ${breakPoints.mobile} {
@@ -94,16 +88,10 @@ export const SubmitButton = styled.button`
   border: 1px solid #1e3932;
   background-color: #1e3932;
   color: white;
-  /* color: white;
-  background-color: #c1aeee;
-  border: none; */
   border-radius: 4px;
   cursor: pointer;
 `;
 
-// tmp //
-
-// 시간
 export const TimeWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -121,7 +109,6 @@ export const ViewSetTime = styled.input`
   text-align: center;
 `;
 
-// 체크인
 export const CheckInWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -179,7 +166,7 @@ export const CartBox = styled.div`
     width: 100%;
   }
 `;
-// 시간선택시 나오는 Div
+
 export const TimesWrapper = styled.div`
   position: absolute;
   background-color: white;
@@ -214,11 +201,6 @@ export const TimeBox = styled.button`
   }
   :disabled {
     background-color: gray;
-    /* :hover {
-      background-color: none;
-      color: black;
-      cursor: initial;
-    } */
   }
 `;
 
@@ -234,10 +216,6 @@ export const TimeToggleCancel = styled.div`
 export const CheckGuest = styled.div`
   width: 100%;
   height: 42px;
-  /* border-top: 1px solid #d9dbe3;
-  border-bottom: 1px solid #d9dbe3; */
-  /* border: 1px solid #d9dbe3; */
-  /* border-radius: 20px; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -274,14 +252,10 @@ export const RowWrapper = styled.div`
 export const Text = styled.div`
   width: 40%;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
-  /* text-align: center; */
   padding-bottom: 5px;
   font-size: 1rem;
 `;
-
-// BottomSheet
 
 export const MobileWrapper = styled.div`
   display: none;

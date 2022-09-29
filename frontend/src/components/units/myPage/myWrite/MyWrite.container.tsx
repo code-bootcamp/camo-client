@@ -11,6 +11,7 @@ export default function MyWrite() {
   const { data: count } = useQuery(FETCH_USER_MY_BOARD_NUMBER, {
     variables: {
       userId: String(UserData?.fetchLoginedUser.id),
+      refetchQueries: [{ query: FETCH_USER_MY_BOARD_NUMBER }],
     },
   });
   const { data: WriteData, refetch } = useQuery<

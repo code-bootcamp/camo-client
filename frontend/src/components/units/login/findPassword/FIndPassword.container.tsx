@@ -70,11 +70,7 @@ export default function FindPassword() {
       const checkPhoneToken = result?.data?.checkSMSTokenValid;
       if (checkPhoneToken) Modal.success({ content: "인증이 완료되었습니다." });
       setCheckSMSToken(true);
-      console.log(result);
-      console.log(checkPhoneToken);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
   const onClickSubmit = async (data: IFormPasswordUpdate) => {
     const { passwordConfirm, phoneNumberCheck, ...dataCheck } = data;
@@ -88,9 +84,7 @@ export default function FindPassword() {
       });
       Modal.success({ content: "비밀번호가 변경되었습니다." });
       router.push("/login");
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (

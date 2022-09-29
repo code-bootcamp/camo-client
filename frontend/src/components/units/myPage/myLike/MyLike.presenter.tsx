@@ -17,7 +17,6 @@ export default function MyLikeUI(props: IMyLikeUIProps) {
             {props.favoriteData?.fetchUserFavoriteCafe?.map((el) => (
               <>
                 <S.CafeWrapper>
-                  {/* <S.CafeImage src="/Rectangle 3118.png" /> */}
                   {el.cafeList?.cafeListImage?.[0]?.url ? (
                     <S.CafeImage
                       src={`https://storage.googleapis.com/team04-storage/${el.cafeList?.cafeListImage?.[0]?.url}`}
@@ -26,10 +25,7 @@ export default function MyLikeUI(props: IMyLikeUIProps) {
                     <S.CafeImage src="/Rectangle 3118.png" />
                   )}
 
-                  <S.CafeName>
-                    {el.cafeList?.title}
-                    {/* <S.HeartIcon /> */}
-                  </S.CafeName>
+                  <S.CafeName>{el.cafeList?.title}</S.CafeName>
                   <S.CafeDetail>{el.cafeList?.address}</S.CafeDetail>
                 </S.CafeWrapper>
               </>

@@ -7,7 +7,6 @@ import { LOGIN_USER } from "./Login.queries";
 import { ILoginType } from "./Login.types";
 import { accessTokenState } from "../../../commons/store";
 import { useRecoilState } from "recoil";
-// import { IMutation, IMutationLoginUserArgs } from "../../../commons/types/generated/types";
 import { useRouter } from "next/router";
 import { Modal } from "antd";
 
@@ -27,7 +26,6 @@ const schema = yup.object({
 export default function Login() {
   const router = useRouter();
   const [loginUser] = useMutation(LOGIN_USER);
-  // const [loginUser] = useMutation<Pick<IMutation, "loginUser">, IMutationLoginUserArgs>(LOGIN_USER);
   const [, setAccessToken] = useRecoilState(accessTokenState);
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(schema),
@@ -41,16 +39,13 @@ export default function Login() {
           ...data,
         },
       });
-      console.log(result);
       const accessToken = result?.data?.loginUser;
       if (!accessToken) return;
       setAccessToken(accessToken);
-      console.log(accessToken);
 
       router.push("/");
     } catch (error) {
       Modal.error({ content: error });
-      console.log(error);
     }
   };
   return (

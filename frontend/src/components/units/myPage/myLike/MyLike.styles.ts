@@ -4,19 +4,14 @@ import { breakPoints } from "../../../../../styles/media";
 
 export const LikeWrapper = styled.main`
   width: 80%;
-  /* height: 100vh; */
   display: grid;
   justify-content: center;
   text-align: start;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 1rem;
   margin: auto;
-  /* display: flex;
-  flex-direction: row;
-  justify-content: center; */
   width: 60%;
   flex-wrap: wrap;
-  /* padding-right: 10px; */
 
   @media ${breakPoints.mobile} {
     width: 100%;
@@ -36,18 +31,12 @@ export const CafeImage = styled.img`
 export const CafeWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  /* margin-top: 1rem;
-  margin-bottom: 1rem;
-  margin-right: 2rem;
-  margin-bottom: 32px; */
   margin: 1rem;
 `;
 
 export const CafeName = styled.h4`
   font-weight: 400;
-  /* margin: auto; */
   margin-top: 1rem;
-  /* display: flex; */
 `;
 
 export const CafeDetail = styled.h5`
@@ -60,7 +49,6 @@ export const CafeDetail = styled.h5`
 
 export const HeartIcon = styled(HeartFilled)`
   color: #ee8383;
-  /* padding-left: 100px; */
 `;
 
 export const PaginationWrapper = styled.div`
@@ -73,13 +61,11 @@ export const PaginationWrapper = styled.div`
 
 export const Body = styled.main`
   width: 60vw;
-  /* height: 100vh; */
   background-color: white;
   padding-top: 30px;
   padding-bottom: 30px;
   @media ${breakPoints.mobile} {
     width: 100vw;
     height: 200vh;
-    /* margin: auto; */
   }
 `;

@@ -61,8 +61,6 @@ export const SideMenu = styled.button`
 `;
 
 export const StaySideMenu = styled(SideMenu)`
-  /* text-decoration: underline; */
-  /* text-underline-position: under; */
   font-weight: 700;
   background-color: #6a564f;
   margin: auto;
@@ -81,7 +79,6 @@ export const StayMenu = styled.h3`
   letter-spacing: -0.5px;
 
   @media ${breakPoints.mobile} {
-    /* display: none; */
     padding-top: -2rem;
     padding-bottom: -2rem;
   }
@@ -108,7 +105,6 @@ export const UserWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  /* margin-right: 3rem; */
 `;
 
 export const Profile = styled.img`

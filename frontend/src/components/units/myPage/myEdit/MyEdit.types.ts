@@ -18,7 +18,6 @@ export interface IUpdate {
 
 export interface IMyEditUI {
   isOpenDeleteModal: boolean;
-  // onClickDelete: (data: IDelete) => Promise<void>;
   onClickDelete: () => Promise<void>;
   onClickOpenDeleteModal: () => void;
   onChangeDeleteUser: (event: ChangeEvent<HTMLInputElement>) => void;

@@ -11,7 +11,6 @@ export function useAuth() {
   useEffect(() => {
     if (!accessToken) {
       restoreAccessToken.toPromise().then((newAccessToken) => {
-        // console.log(newAccessToken);
         if (!newAccessToken) {
           router.push("/login");
           Modal.error({ content: "로그인을 먼저 해주세요." });

@@ -8,7 +8,6 @@ export const MainWrapper = styled.section`
   margin-top: 1.875rem;
   margin-bottom: 1.875rem;
   width: 40vw;
-  /* height: 12.5rem; */
   background-color: white;
   border-radius: 20px;
 
@@ -33,8 +32,6 @@ export const RowWrapper = styled.div`
 
 export const ContentBackGround = styled.section`
   width: 100vw;
-  /* height: 11.25rem; */
-  /* background-color: #eef6f4; */
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -74,7 +71,6 @@ export const Title = styled.h1`
   font-size: 1.25rem;
   color: #3c3430;
   @media ${breakPoints.mobile} {
-    /* padding-left: 10px; */
     width: 70vw;
     font-size: 1.25rem;
     padding-left: 15px;

@@ -71,13 +71,8 @@ export default function CafeOwnerSignUp() {
       });
       const checkPhoneToken = result?.data?.checkSMSTokenValid;
       if (checkPhoneToken) Modal.success({ content: "인증이 완료되었습니다." });
-      console.log(checkPhoneToken);
       setCheckSMSToken(true);
-      console.log(result);
-      console.log(checkPhoneToken);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const client = useApolloClient();
@@ -88,16 +83,12 @@ export default function CafeOwnerSignUp() {
         variables: { email },
       });
       Modal.success({ content: "사용가능한 아이디 입니다." });
-      console.log(result2);
     } catch (error) {
       Modal.error({ content: "이미 사용되고 있는 아이디입니다." });
-      console.log(error);
     }
   };
 
-  // const onClickSubmit = async (data: IFormSignUp) => {
   const onClickSubmit = async (data: any) => {
-    // console.log({ ...data });
     const { passwordConfirm, phoneNumberCheck, ...dataCheck } = data;
     if (!checkSMSToken) return alert("휴대폰 인증을 해야합니다");
     try {
@@ -105,9 +96,7 @@ export default function CafeOwnerSignUp() {
         variables: { CreateCafeOwnerInput: { ...dataCheck } },
       });
       router.push("/");
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const onClickCancel = () => {

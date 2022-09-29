@@ -53,23 +53,16 @@ export const Text = styled.h1`
   font-size: 1.5rem;
 `;
 
-export const RadioInputWrapper = styled.div`
-  /* width: 100%; */
-`;
+export const RadioInputWrapper = styled.div``;
 
 export const Radio = styled.input`
   font-size: 1.5rem;
 `;
 
-/** 재인
- * 구글 로고 다시 가져오기..
- */
 export const GoogleLogin = styled.img`
   width: 64%;
   height: 100%;
   cursor: pointer;
-  /* margin-right: 10px; */
-  /* background-color: black; */
   @media ${breakPoints.mobile} {
     width: 13vw;
     margin-right: 1rem;
@@ -101,12 +94,11 @@ export const SocialLoginWrapper = styled.div`
   justify-content: space-evenly;
   margin: auto;
   margin-right: 20px;
-  /* padding-bottom: 2rem; */
   padding-top: 2rem;
+
   @media ${breakPoints.mobile} {
     width: 55vw;
     margin: auto;
-    /* margin-left: 90px; */
   }
 `;
 

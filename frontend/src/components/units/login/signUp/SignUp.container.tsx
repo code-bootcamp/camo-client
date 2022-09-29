@@ -69,11 +69,7 @@ export default function SignUp() {
       const checkPhoneToken = result?.data?.checkSMSTokenValid;
       if (checkPhoneToken) Modal.success({ content: "인증이 완료되었습니다." });
       setCheckSMSToken(true);
-      console.log(result);
-      console.log(checkPhoneToken);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const client = useApolloClient();
@@ -86,7 +82,6 @@ export default function SignUp() {
       Modal.success({ content: "사용가능한 아이디 입니다." });
     } catch (error) {
       Modal.error({ content: "이미 사용되고 있는 아이디입니다." });
-      console.log(error);
     }
   };
 
