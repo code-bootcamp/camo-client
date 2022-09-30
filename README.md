@@ -68,21 +68,54 @@
 <br/>
 
 # :coffee: Flow Chart
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/072aa6fc-8ae0-45d4-8187-1f194f47d8f2/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T120921Z&X-Amz-Expires=86400&X-Amz-Signature=1ce45e4ec9ff7260379b1b21ba6f41a5f36e22117ab107302dea604251428305&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject"/>
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/072aa6fc-8ae0-45d4-8187-1f194f47d8f2/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T120921Z&X-Amz-Expires=86400&X-Amz-Signature=1ce45e4ec9ff7260379b1b21ba6f41a5f36e22117ab107302dea604251428305&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject" alt="Flow Chart"/>
 
 <br/>
 <br/>
 
 # :coffee: 서비스 시연
 ## 랜딩 페이지
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/bc027b21-9001-41bc-bece-89e22f8b3469/%EA%B7%B8%EB%A6%BC2.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T132642Z&X-Amz-Expires=86400&X-Amz-Signature=94729747b25a071bd8a6878b2926ece6476de336d52bc0e3e2134af28c6dda4c&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC2.gif%22&x-id=GetObject" width="600px" alt="랜딩페이지"/>
+
 ## 회원가입
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/bc027b21-9001-41bc-bece-89e22f8b3469/%EA%B7%B8%EB%A6%BC2.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T133911Z&X-Amz-Expires=86400&X-Amz-Signature=7967905488300039c1763212fbd674ee5aa4a1a5ea3959dbdf01bafaf6d29558&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC2.gif%22&x-id=GetObject" width="600px" alt="회원가입"/>
+
 ## 로그인
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/67091eb9-629a-434f-bf30-3ad8a2e85934/%EA%B7%B8%EB%A6%BC5.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T133951Z&X-Amz-Expires=86400&X-Amz-Signature=ca487ff8443e1d17b86ea8a9877d359da208cc6f2c307b7a5fc98dadcc353111&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC5.gif%22&x-id=GetObject" width="600px" alt="로그인"/>
+
+
 ## 회원정보 수정
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f2bfb387-3642-4f72-a3d4-416aabca0e57/%EA%B7%B8%EB%A6%BC8.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T134022Z&X-Amz-Expires=86400&X-Amz-Signature=ea9812a35eb05e22055dabc797536a2a6627a4c85d9cf148b55787a72a0f243c&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC8.gif%22&x-id=GetObject" width="600px" alt="회원정보 수정"/>
+
+
 ## 카페 목록
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9806fb3f-02ae-43d7-a3bf-800e9ba5c68f/%EA%B7%B8%EB%A6%BC10.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T134104Z&X-Amz-Expires=86400&X-Amz-Signature=8d1d682b0251c82c0ff6f5f5b0cd3da1fcffc5c130454d667ea65a5868aa0596&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC10.gif%22&x-id=GetObject" width="600px" alt="카페 목록"/>
+
+
 ## 카페 등록
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/53083eba-908c-40af-9fdc-b35ab373b54d/%EA%B7%B8%EB%A6%BC14.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T134135Z&X-Amz-Expires=86400&X-Amz-Signature=de12b9fa684d68cf2feced3f53ad85d20fdbc9ec7419bfcaf968000346568e2f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC14.gif%22&x-id=GetObject" width="600px" alt="카페 등록"/>
+
+
 ## 카페 상세
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/62d36e3b-4f23-4670-a443-91eaa6342fd6/%EA%B7%B8%EB%A6%BC24.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T134150Z&X-Amz-Expires=86400&X-Amz-Signature=8554947466e1bf6c550a53620b761f308fd0861d934278f484103b112b49a8c3&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC24.gif%22&x-id=GetObject" width="600px" alt="카페 상세"/>
+
+
 ## 예약
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/46937b7a-a59a-4b07-b94a-4bc4306aaed2/%EA%B7%B8%EB%A6%BC16.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T134207Z&X-Amz-Expires=86400&X-Amz-Signature=c719b90c0bc352f5e0f9a97b94d22fd86f1c7dfc1ac51e4c2b51cff1c1eb2079&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC16.gif%22&x-id=GetObject" width="600px" alt="예약"/>
+
+
 ## 커뮤니티 목록
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ef105eea-f3b9-48c6-b958-afebc357c761/%EA%B7%B8%EB%A6%BC20.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T134231Z&X-Amz-Expires=86400&X-Amz-Signature=2b4a66302b2fb7c16e432adef94c5a263f85df4755646fcc6b8aef8391bca303&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC20.gif%22&x-id=GetObject"  width="600px" alt="커뮤니티 목록"/>
+
+
 ## 커뮤니티 등록
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/cd6df1d1-1644-49c6-a6d9-27cba5b97c98/%EA%B7%B8%EB%A6%BC22.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T134256Z&X-Amz-Expires=86400&X-Amz-Signature=7fc3695fe7a98814ae6db34821952f0e1f0ddc23257be3f83a387ebb04efad35&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC22.gif%22&x-id=GetObject" width="600px" alt="커뮤니티 등록"/>
+
+
 ## 커뮤니티 상세/댓글
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ff159733-5ad9-4b86-b236-a1cf1acf0e22/%EA%B7%B8%EB%A6%BC18.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T134320Z&X-Amz-Expires=86400&X-Amz-Signature=24e82dc15ce376d204cf130c5c104e839310f32f1719743431cdb5d51bbc4103&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC18.gif%22&x-id=GetObject" width="600px" alt="커뮤니티 상세/댓글"/>
+
+
 ## 마이페이지
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/d6ddd7ab-c64a-4df3-9242-667b944f06d2/%EA%B7%B8%EB%A6%BC26.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T134346Z&X-Amz-Expires=86400&X-Amz-Signature=507a82063c4db6dd671a17f699fdc62a8bbcf6dff717da66af4398704af54834&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC26.gif%22&x-id=GetObject" width="600px" alt="마이페이지"/>
+
