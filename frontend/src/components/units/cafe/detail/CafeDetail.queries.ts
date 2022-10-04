@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
-export const FETCH_CAFE_LIST = gql`
-  query fetchCafeList($cafeListId: String!) {
-    fetchCafeList(cafeListId: $cafeListId) {
+export const FETCH_CAFE_BOARD = gql`
+  query fetchCafeBoard($cafeBoardId: String!) {
+    fetchCafeBoard(cafeBoardId: $cafeBoardId) {
       id
       title
       contents
@@ -16,11 +16,11 @@ export const FETCH_CAFE_LIST = gql`
       deposit
       createdAt
       remarks
-      cafeListTag {
+      tags {
         id
         name
       }
-      cafeListImage {
+      images {
         id
         url
       }
@@ -32,15 +32,15 @@ export const FETCH_CAFE_LIST = gql`
   }
 `;
 
-export const DELETE_CAFE_LIST = gql`
-  mutation deleteCafeList($cafeListId: String!) {
-    deleteCafeList(cafeListId: $cafeListId)
+export const DELETE_CAFE_BOARD = gql`
+  mutation deleteCafeBoard($cafeBoardId: String!) {
+    deleteCafeBoard(cafeBoardId: $cafeBoardId)
   }
 `;
 
 export const TOGGLE_FAVORITE_CAFES = gql`
-  mutation toggleFavoriteCafes($cafeListId: String!) {
-    toggleFavoriteCafes(cafeListId: $cafeListId)
+  mutation toggleFavoriteCafes($cafeBoardId: String!) {
+    toggleFavoriteCafes(cafeBoardId: $cafeBoardId)
   }
 `;
 

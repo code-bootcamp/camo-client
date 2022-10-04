@@ -14,7 +14,7 @@ export default function CommunityCreatedAtList() {
   const [keyword, setKeyword] = useState("");
 
   const { data, refetch } = useQuery<
-    Pick<IQuery, "fetchBoardsCreatedAt">,
+    Pick<IQuery, "fetchFreeBoardsCreatedAt">,
     IQueryFetchBoardsCreatedAtArgs
   >(FETCH_BOARDS_CREATED_AT, {
     fetchPolicy: "network-only",

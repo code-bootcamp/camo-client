@@ -54,7 +54,7 @@ export default function CafeWriteUI(props: any) {
               <C.InputBox
                 type="text"
                 placeholder="카페 이름을 입력해주세요"
-                defaultValue={props.data?.fetchCafeList.title || ""}
+                defaultValue={props.data?.fetchCafeBoard.title || ""}
                 {...props.register("title")}
               />
               <br />
@@ -65,7 +65,7 @@ export default function CafeWriteUI(props: any) {
               <C.ZipcodeWrapper>
                 <C.Zipcode
                   placeholder="000000"
-                  defaultValue={props.data?.fetchCafeList.zipcode || ""}
+                  defaultValue={props.data?.fetchCafeBoard.zipcode || ""}
                   readOnly
                   {...props.register("zipcode")}
                 />
@@ -79,7 +79,7 @@ export default function CafeWriteUI(props: any) {
               <C.Label></C.Label>
               <C.InputBox
                 type="text"
-                defaultValue={props.data?.fetchCafeList.address || ""}
+                defaultValue={props.data?.fetchCafeBoard.address || ""}
                 readOnly
                 {...props.register("address")}
               />
@@ -89,7 +89,7 @@ export default function CafeWriteUI(props: any) {
               <C.InputBox
                 type="text"
                 placeholder="상세주소를 적어주세요"
-                defaultValue={props.data?.fetchCafeList.addressDetail || ""}
+                defaultValue={props.data?.fetchCafeBoard.addressDetail || ""}
                 {...props.register("addressDetail")}
               />
             </C.LabelBox>
@@ -98,7 +98,7 @@ export default function CafeWriteUI(props: any) {
               <C.Label>카페 연락처</C.Label>
               <C.InputBox
                 type="text"
-                defaultValue={props.data?.fetchCafeList.phone || ""}
+                defaultValue={props.data?.fetchCafeBoard.phone || ""}
                 placeholder="010-1234-5678"
                 {...props.register("phone")}
               />
@@ -109,7 +109,7 @@ export default function CafeWriteUI(props: any) {
               <C.InputBox
                 type="text"
                 placeholder="카페 홈페이지 주소 또는 블로그, SNS 주소가 있으면 입력해주세요"
-                defaultValue={props.data?.fetchCafeList.homepage || ""}
+                defaultValue={props.data?.fetchCafeBoard.homepage || ""}
                 {...props.register("homepage")}
               />
             </C.LabelBox>
@@ -117,7 +117,7 @@ export default function CafeWriteUI(props: any) {
               <C.Label>한줄소개</C.Label>
               <C.InputBox
                 type="text"
-                defaultValue={props.data?.fetchCafeList.remarks || ""}
+                defaultValue={props.data?.fetchCafeBoard.remarks || ""}
                 placeholder="카페 한줄 소개를 적어주세요"
                 {...props.register("remarks")}
               />
@@ -127,10 +127,10 @@ export default function CafeWriteUI(props: any) {
               <C.InputBox
                 type="text"
                 placeholder="태그를 적어주세요. ex) 분위기 좋은, 예쁜, 조용한"
-                defaultValue={props.data?.fetchCafeList.cafeListTag?.map((el: any) => el.name)}
-                // defaultValue={props.data?.fetchCafeList.tags || ""}
+                defaultValue={props.data?.fetchCafeBoard.tags?.map((el: any) => el.name)}
+                // defaultValue={props.data?.fetchCafeBoard.tags || ""}
                 {...props.register("tags")}
-                // defaultValue={props.data?.createCafeList.cafeListTag}
+                // defaultValue={props.data?.createCafeList.tags}
               />
             </C.LabelBox>
             <C.LabelBox>
@@ -140,7 +140,7 @@ export default function CafeWriteUI(props: any) {
                 <ToastUI
                   onChangeContents={props.onChangeContents}
                   editorRef={props.editorRef}
-                  initialValue={props.data?.fetchCafeList.contents}
+                  initialValue={props.data?.fetchCafeBoard.contents}
                 />
               </C.WebeditorBox>
             </C.LabelBox>
@@ -182,13 +182,13 @@ export default function CafeWriteUI(props: any) {
               <C.Label>영업시간</C.Label>
               <C.InputShortBox
                 type="text"
-                defaultValue={props.data?.fetchCafeList.startTime || ""}
+                defaultValue={props.data?.fetchCafeBoard.startTime || ""}
                 placeholder="ex) 9:00"
                 {...props.register("startTime")}
               />
               <C.InputShortBox
                 type="text"
-                defaultValue={props.data?.fetchCafeList.endTime || ""}
+                defaultValue={props.data?.fetchCafeBoard.endTime || ""}
                 placeholder="ex) 22:00"
                 {...props.register("endTime")}
               />
@@ -196,7 +196,7 @@ export default function CafeWriteUI(props: any) {
             <C.LabelBox>
               <C.Label>예약금</C.Label>
               <C.InputBox
-                defaultValue={props.data?.fetchCafeList.deposit || ""}
+                defaultValue={props.data?.fetchCafeBoard.deposit || ""}
                 placeholder="카페 기본 음료 가격을 입력해주세요 (예: 5000 / 숫자만 입력해주세요)"
                 {...props.register("deposit")}
               />

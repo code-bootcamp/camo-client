@@ -57,8 +57,8 @@ export default function CafeList() {
     try {
       const result = await toggleFavoriteCafes({
         variables: {
-          cafeListId: event.currentTarget.id,
-          // cafeListId: router.query.cafeId as string,
+          cafeBoardId: event.currentTarget.id,
+          // cafeBoardId: router.query.cafeId as string,
         },
         refetchQueries: [{ query: FETCH_CAFE_LISTS_CREATED_AT }],
       });

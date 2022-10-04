@@ -10,8 +10,8 @@ export default function CommunityDetailUI(props: any) {
     <S.Wrapper>
       <S.TitleWrapper>
         <S.TitleHeader>
-          <S.Title>{props.dataBoard?.fetchBoard?.title}</S.Title>
-          {props.dataBoard?.fetchBoard.user?.id === props.dataUser?.fetchLoginedUser.id ? (
+          <S.Title>{props.dataBoard?.fetchFreeBoard?.title}</S.Title>
+          {props.dataBoard?.fetchFreeBoard.user?.id === props.dataUser?.fetchLoginedUser.id ? (
             <S.TitleIconWrapper>
               <S.EditIcon title="수정하기" onClick={props.onClickUpdate} />
               <S.DeleteIcon title="삭제하기" onClick={props.onClickDelete} />
@@ -21,12 +21,12 @@ export default function CommunityDetailUI(props: any) {
           )}
         </S.TitleHeader>
         <S.UserInfoWrapper>
-          <S.UserName>{props.dataBoard?.fetchBoard?.user?.nickName}</S.UserName>
+          <S.UserName>{props.dataBoard?.fetchFreeBoard?.user?.nickName}</S.UserName>
           <S.LikeWrapper>
             <S.LikeCount>
-              {props.dataBoard?.fetchBoard.likeCount === null || undefined
+              {props.dataBoard?.fetchFreeBoard.likeCount === null || undefined
                 ? 0
-                : props.dataBoard?.fetchBoard.likeCount}
+                : props.dataBoard?.fetchFreeBoard.likeCount}
             </S.LikeCount>
             {props.like ? (
               <S.LikeIcon onClick={props.onClickLike} />
@@ -36,16 +36,16 @@ export default function CommunityDetailUI(props: any) {
           </S.LikeWrapper>
         </S.UserInfoWrapper>
         <S.PostWrapper>
-          <S.PostDetail>{getDate(props.dataBoard?.fetchBoard?.createdAt)}</S.PostDetail>
+          <S.PostDetail>{getDate(props.dataBoard?.fetchFreeBoard?.createdAt)}</S.PostDetail>
         </S.PostWrapper>
       </S.TitleWrapper>
 
       <S.BodyWrapper>
         <S.ImgWrapper>
-          {props.dataBoard?.fetchBoard.images?.[0]?.url !== "" ? (
+          {props.dataBoard?.fetchFreeBoard.images?.[0]?.url !== "" ? (
             <S.MainImgWrapper>
               <S.MainImg
-                src={`https://storage.googleapis.com/team04-storage/${props.dataBoard?.fetchBoard.images?.[0]?.url}`}
+                src={`https://storage.googleapis.com/team04-storage/${props.dataBoard?.fetchFreeBoard.images?.[0]?.url}`}
                 alt="이미지"
                 onError={props.onErrorImg}
               />
@@ -53,7 +53,7 @@ export default function CommunityDetailUI(props: any) {
           ) : (
             <S.MainImgWrapper>
               <S.MainImg
-                src={`https://storage.googleapis.com/team04-storage/${props.dataBoard?.fetchBoard.images[1]?.url}`}
+                src={`https://storage.googleapis.com/team04-storage/${props.dataBoard?.fetchFreeBoard.images[1]?.url}`}
                 alt="이미지"
                 onError={props.onErrorImg}
               />
@@ -61,7 +61,7 @@ export default function CommunityDetailUI(props: any) {
           )}
 
           <S.SubImgWrapper>
-            {props.dataBoard?.fetchBoard.images?.map((el: any) => (
+            {props.dataBoard?.fetchFreeBoard.images?.map((el: any) => (
               <div key={uuidv4()}>
                 {el.url ? (
                   <S.Img
@@ -79,26 +79,26 @@ export default function CommunityDetailUI(props: any) {
           {typeof window !== "undefined" && (
             <S.Contents
               dangerouslySetInnerHTML={{
-                __html: Dompurify.sanitize(props.dataBoard?.fetchBoard?.contents as string),
+                __html: Dompurify.sanitize(props.dataBoard?.fetchFreeBoard?.contents as string),
               }}
             ></S.Contents>
           )}
           <S.AddressWrapper>
             <S.AddressTitle>📍위치 |</S.AddressTitle>
             <S.Address>
-              {props.dataBoard?.fetchBoard.zipcode} {props.dataBoard?.fetchBoard?.address}
+              {props.dataBoard?.fetchFreeBoard.zipcode} {props.dataBoard?.fetchFreeBoard?.address}
             </S.Address>
-            {props.dataBoard?.fetchBoard.addressDetail}
+            {props.dataBoard?.fetchFreeBoard.addressDetail}
           </S.AddressWrapper>
           <S.MapWrapper>
             <MapComponent
-              data={props.dataBoard?.fetchBoard}
-              address={(props.dataBoard?.fetchBoard?.address as string) || ""}
+              data={props.dataBoard?.fetchFreeBoard}
+              address={(props.dataBoard?.fetchFreeBoard?.address as string) || ""}
             />
           </S.MapWrapper>
           <S.FooterWrapper>
             <S.TagsWrapper>
-              {props.dataBoard?.fetchBoard.tags?.map((el: any) =>
+              {props.dataBoard?.fetchFreeBoard.tags?.map((el: any) =>
                 el.name === "" ? <></> : <S.Tags key={uuidv4()}>{`#${el.name}`}</S.Tags>
               )}
             </S.TagsWrapper>

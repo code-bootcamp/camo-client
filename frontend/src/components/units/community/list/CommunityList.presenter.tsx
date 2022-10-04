@@ -1,6 +1,6 @@
 import Link from "next/link";
 import * as S from "./CommunityList.styles";
-import { IBoardListUIProps } from "./CommunityList.types";
+import { IFreeBoardUIProps } from "./CommunityList.types";
 import CommunityCreatedAtList from "./createdAt/CommunityCreatedAtList.container";
 import CommunityLikeCountList from "./likeCount/CommunityLikeCountList.container";
 import SearchBar from "../../../commons/searchbar/01/SearchBar.container";
@@ -8,7 +8,7 @@ import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { StyledEngineProvider } from "@mui/material/styles";
 import CommunitySearchList from "./CommunitySearchList";
 
-export default function CommunityListUI(props: IBoardListUIProps) {
+export default function CommunityListUI(props: IFreeBoardUIProps) {
   return (
     <S.Wrapper>
       <S.Banner></S.Banner>

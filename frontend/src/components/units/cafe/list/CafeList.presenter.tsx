@@ -116,18 +116,18 @@ export default function CafeListUI(props: any) {
                     <C.DetailImage key={el.id} id={el.id} onClick={props.onClickDetail(el)}>
                       <img
                         src={
-                          `${props.data?.fetchCafeList?.cafeListImage[0]?.url}`
-                            ? `https://storage.googleapis.com/team04-storage/${el.cafeListImage?.[0]?.url}`
+                          `${props.data?.fetchCafeBoard?.images[0]?.url}`
+                            ? `https://storage.googleapis.com/team04-storage/${el.images?.[0]?.url}`
                             : "https://images.unsplash.com/photo-1513267048331-5611cad62e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                         }
                       />
 
                       {/* <img
                         src={
-                          // el.cafeListImage?.length !== 0 && el.cafeListImage[index]?.isMain
-                          props.data?.fetchCafeList?.cafeListImage?.length !== 0 &&
-                          props.data?.fetchCafeList?.cafeListImage[index]?.isMain === true
-                            ? `https://storage.googleapis.com/team04-storage/${el.cafeListImage[index].url}`
+                          // el.images?.length !== 0 && el.images[index]?.isMain
+                          props.data?.fetchCafeBoard?.images?.length !== 0 &&
+                          props.data?.fetchCafeBoard?.images[index]?.isMain === true
+                            ? `https://storage.googleapis.com/team04-storage/${el.images[index].url}`
                             : "https://images.unsplash.com/photo-1513267048331-5611cad62e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                         }
                       /> */}
@@ -136,7 +136,7 @@ export default function CafeListUI(props: any) {
 
                   <C.TextWrap>
                     <C.TagsWrap>
-                      {el.cafeListTag?.map(({ name }: { name: any }) => {
+                      {el.tags?.map(({ name }: { name: any }) => {
                         return <C.CafeTag key={uuidv4()}>#{name}</C.CafeTag>;
                       })}
                     </C.TagsWrap>
