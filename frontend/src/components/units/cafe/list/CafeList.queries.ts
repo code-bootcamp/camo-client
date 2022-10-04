@@ -16,11 +16,11 @@ export const FETCH_CAFE_LISTS_CREATED_AT = gql`
       contents
       createdAt
       remarks
-      cafeListTag {
+      tags {
         id
         name
       }
-      cafeListImage {
+      images {
         id
         url
       }

@@ -7,9 +7,9 @@ import {
   // IQueryFetchBoardsCreatedAtArgs,
 } from "../../../../commons/types/generated/types";
 
-export interface IBoardListUIProps {
+export interface IFreeBoardUIProps {
   dataBoardsNumber: any;
-  data?: Pick<IQuery, "fetchBoardsCreatedAt"> | Pick<IQuery, "fetchBoardsLikeCount">;
+  data?: Pick<IQuery, "fetchFreeBoardsCreatedAt"> | Pick<IQuery, "fetchFreeBoardsLikeCount">;
   onClickMoveToNew: () => void;
   // (event: MouseEvent<HTMLDivElement>) => void;
   // refetch: (
@@ -19,7 +19,7 @@ export interface IBoardListUIProps {
   refetchLikeCount: any;
   refetchBoardsNumber: (
     variables: Partial<OperationVariables>
-  ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoardsNumber">>>;
+  ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchFreeBoardsNumber">>>;
   boardsNumber?: number;
   keyword: string;
   onChangeKeyword: (value: string) => void;
@@ -33,7 +33,7 @@ export interface IBoardListUIProps {
 
 export interface ICreatedAtListUIProps {
   onFetchMore: () => void;
-  data: Pick<IQuery, "fetchBoardsCreatedAt"> | undefined;
+  data: Pick<IQuery, "fetchFreeBoardsCreatedAt"> | undefined;
   onErrorImg: (e: SyntheticEvent<HTMLImageElement>) => void;
   onClickMoveToDetail: (el: any) => (event: any) => void;
   keyword: string;
@@ -42,7 +42,7 @@ export interface ICreatedAtListUIProps {
 
 export interface ILikeCountListUIProps {
   onFetchMore: () => void;
-  data: Pick<IQuery, "fetchBoardsLikeCount"> | undefined;
+  data: Pick<IQuery, "fetchFreeBoardsLikeCount"> | undefined;
   onErrorImg: (e: SyntheticEvent<HTMLImageElement>) => void;
   onClickMoveToDetail: (el: any) => (event: any) => void;
   keyword: string;

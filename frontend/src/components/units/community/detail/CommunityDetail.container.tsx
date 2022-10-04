@@ -14,8 +14,8 @@ import {
 import { FETCH_BOARDS_CREATED_AT } from "../list/CommunityList.queries";
 import CommunityDetailUI from "./CommunityDetail.presenter";
 import {
-  DELETE_BOARD,
-  FETCH_BOARD,
+  DELETE_FREE_BOARD,
+  FETCH_FREE_BOARD,
   FETCH_FAVORITE_USER,
   FETCH_LOGINED_USER,
   TOGGLE_LIKE_FEED,
@@ -30,9 +30,10 @@ export default function CommunityDetail() {
 
   // console.log("좋아요", like);
 
-  const [deleteBoard] = useMutation<Pick<IMutation, "deleteBoard">, IMutationDeleteBoardArgs>(
-    DELETE_BOARD
-  );
+  const [deleteFreeBoard] = useMutation<
+    Pick<IMutation, "deleteFreeBoard">,
+    IMutationDeleteBoardArgs
+  >(DELETE_FREE_BOARD);
 
   const [toggleLikeFeed] = useMutation<
     Pick<IMutation, "toggleLikeFeed">,
@@ -43,13 +44,13 @@ export default function CommunityDetail() {
     Pick<IQuery, "fetchFavoriteUser">,
     IQueryFetchFavoriteUserArgs
   >(FETCH_FAVORITE_USER, {
-    variables: { boardId: String(router.query.communityId) },
+    variables: { freeBoardId: String(router.query.communityId) },
   });
 
   const { data: dataUser } = useQuery<Pick<IQuery, "fetchLoginedUser">>(FETCH_LOGINED_USER);
 
-  const { data: dataBoard, refetch } = useQuery(FETCH_BOARD, {
-    variables: { boardId: String(router.query.communityId) },
+  const { data: dataBoard, refetch } = useQuery(FETCH_FREE_BOARD, {
+    variables: { freeBoardId: String(router.query.communityId) },
   });
 
   console.log("fetchLoginedUser", dataUser?.fetchLoginedUser.id);
@@ -60,7 +61,7 @@ export default function CommunityDetail() {
     try {
       const result = await toggleLikeFeed({
         variables: {
-          boardId: String(router.query.communityId),
+          freeBoardId: String(router.query.communityId),
         },
       });
       refetch();
@@ -92,7 +93,7 @@ export default function CommunityDetail() {
   //   try {
   //     const result = await toggleLikeFeed({
   //       variables: {
-  //         boardId: String(router.query.communityId),
+  //         freeBoardId: String(router.query.communityId),
   //       },
   //     });
   //     // setLike(Boolean(result.data?.toggleLikeFeed));
@@ -148,9 +149,9 @@ export default function CommunityDetail() {
 
   const onClickDelete = async () => {
     try {
-      await deleteBoard({
+      await deleteFreeBoard({
         variables: {
-          boardId: String(router.query.communityId),
+          freeBoardId: String(router.query.communityId),
         },
         refetchQueries: [
           {

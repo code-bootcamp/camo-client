@@ -5,12 +5,12 @@ import { IQuery } from "../../../../commons/types/generated/types";
 
 export interface ICommunityNewProps {
   isEdit: boolean;
-  data?: Pick<IQuery, "fetchBoard">;
+  data?: Pick<IQuery, "fetchFreeBoard">;
 }
 
 export interface ICommunityUIProps {
   isEdit: boolean;
-  data?: Pick<IQuery, "fetchBoard">;
+  data?: Pick<IQuery, "fetchFreeBoard">;
   editorRef: LegacyRef<Editor>;
   onChangeContents: (editorType: EditorType) => void;
   isAddressOpen: boolean;

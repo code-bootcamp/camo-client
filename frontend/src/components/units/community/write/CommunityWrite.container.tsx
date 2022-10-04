@@ -48,8 +48,8 @@ export default function CommunityWrite(props: ICommunityNewProps) {
 
   // toastUI edit
   useEffect(() => {
-    if (props.data?.fetchBoard.contents) {
-      const htmlString = props.data?.fetchBoard.contents;
+    if (props.data?.fetchFreeBoard.contents) {
+      const htmlString = props.data?.fetchFreeBoard.contents;
       editorRef.current?.getInstance().setHTML(String(htmlString));
     }
   }, [props?.data]);
@@ -89,8 +89,8 @@ export default function CommunityWrite(props: ICommunityNewProps) {
       // if (props.data.fetchBoard.tags?.length) {
       //   setTagList(props.data.fetchBoard.tags?.map((el: any) => el.name));
       // }
-      if (props.data?.fetchBoard.images?.length) {
-        setFileUrls([...props.data?.fetchBoard.images.map((el: any) => el.url)]);
+      if (props.data?.fetchFreeBoard.images?.length) {
+        setFileUrls([...props.data?.fetchFreeBoard.images.map((el: any) => el.url)]);
       }
     }
   }, [props.data]);
@@ -148,7 +148,7 @@ export default function CommunityWrite(props: ICommunityNewProps) {
       const result = await updateBoard({
         variables: {
           boardId: router.query.communityId,
-          nickName: props.data?.fetchBoard.user.nickName,
+          nickName: props.data?.fetchFreeBoard.user.nickName,
           updateBoardInput: {
             title: data.title,
             zipcode: data.zipcode,
