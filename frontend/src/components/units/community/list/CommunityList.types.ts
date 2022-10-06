@@ -14,7 +14,7 @@ export interface IFreeBoardUIProps {
   // (event: MouseEvent<HTMLDivElement>) => void;
   // refetch: (
   //   variables?: Partial<IQueryFetchBoardsCreatedAtArgs> | null | undefined
-  // ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoardsCreatedAt">>>;
+  // ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchFreeBoardsCreatedAt">>>;
   refetchCreatedAt: any;
   refetchLikeCount: any;
   refetchBoardsNumber: (
@@ -32,21 +32,23 @@ export interface IFreeBoardUIProps {
 }
 
 export interface ICreatedAtListUIProps {
-  onFetchMore: () => void;
+  // onFetchMore: () => void;
   data: Pick<IQuery, "fetchFreeBoardsCreatedAt"> | undefined;
   onErrorImg: (e: SyntheticEvent<HTMLImageElement>) => void;
   onClickMoveToDetail: (el: any) => (event: any) => void;
   keyword: string;
   onChangeKeyword: (value: string) => void;
+  refetch: any;
 }
 
 export interface ILikeCountListUIProps {
-  onFetchMore: () => void;
+  // onFetchMore: () => void;
   data: Pick<IQuery, "fetchFreeBoardsLikeCount"> | undefined;
   onErrorImg: (e: SyntheticEvent<HTMLImageElement>) => void;
   onClickMoveToDetail: (el: any) => (event: any) => void;
   keyword: string;
   onChangeKeyword: (value: string) => void;
+  refetch: any;
 }
 
 export interface ITextTokenProps {

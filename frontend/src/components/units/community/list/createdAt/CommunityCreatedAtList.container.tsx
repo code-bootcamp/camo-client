@@ -1,10 +1,10 @@
 import CommunityListUI from "./CommunityCreatedAtList.presenter";
-import { FETCH_BOARDS_CREATED_AT } from "../CommunityList.queries";
+import { FETCH_FREE_BOARDS_CREATED_AT } from "../CommunityList.queries";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import {
   IQuery,
-  IQueryFetchBoardsCreatedAtArgs,
+  IQueryFetchFreeBoardsCreatedAtArgs,
 } from "../../../../../commons/types/generated/types";
 import { SyntheticEvent, useState } from "react";
 
@@ -15,8 +15,8 @@ export default function CommunityCreatedAtList() {
 
   const { data, refetch } = useQuery<
     Pick<IQuery, "fetchFreeBoardsCreatedAt">,
-    IQueryFetchBoardsCreatedAtArgs
-  >(FETCH_BOARDS_CREATED_AT, {
+    IQueryFetchFreeBoardsCreatedAtArgs
+  >(FETCH_FREE_BOARDS_CREATED_AT, {
     fetchPolicy: "network-only",
   });
 

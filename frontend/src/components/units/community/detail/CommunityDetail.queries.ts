@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const FETCH_FREE_BOARD = gql`
   query fetchFreeBoard($freeBoardId: String!) {
-    fetchBoard(freeBoardId: $freeBoardId) {
+    fetchFreeBoard(freeBoardId: $freeBoardId) {
       id
       title
       contents
@@ -38,28 +38,24 @@ export const FETCH_LOGINED_USER = gql`
 `;
 
 export const DELETE_FREE_BOARD = gql`
-  mutation deleteFreeBoard($freeBoardId: String!) {
-    deleteFreeBoard(freeBoardId: $freeBoardId)
+  mutation deleteFreeBoard($BoardId: String!) {
+    deleteFreeBoard(BoardId: $BoardId)
   }
 `;
 
-export const TOGGLE_LIKE_FEED = gql`
-  mutation toggleLikeFeed($freeBoardId: String!) {
-    toggleLikeFeed(freeBoardId: $freeBoardId)
+export const TOGGLE_FREE_BOARD_LIKE = gql`
+  mutation toggleFreeBoardLike($freeBoardId: String!) {
+    toggleFreeBoardLike(freeBoardId: $freeBoardId)
   }
 `;
 
-export const FETCH_FAVORITE_USER = gql`
-  query fetchFavoriteUser($freeBoardId: String!) {
-    fetchFavoriteUser(freeBoardId: $freeBoardId) {
+export const FETCH_FREE_BOARD_LIKE = gql`
+  query fetchFreeBoardLike($freeBoardId: String!) {
+    fetchFreeBoardLike(freeBoardId: $freeBoardId) {
       id
-      isLike
+      like
       user {
         id
-      }
-      freeBoard {
-        id
-        likeCount
       }
     }
   }

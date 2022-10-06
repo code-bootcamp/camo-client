@@ -2,11 +2,11 @@ import { useQuery } from "@apollo/client";
 import { MouseEvent, useState } from "react";
 import { IQuery } from "../../../../../commons/types/generated/types";
 import CommunityPaginationUI from "./Pagination.presenter";
-import { FETCH_BOARDS_NUMBER } from "./Pagination.querise";
+import { FETCH_FREE_BOARDS_NUMBER } from "./Pagination.querise";
 
 export default function CommunityPagination(props: any) {
   const { data: dataBoardsNumber } =
-    useQuery<Pick<IQuery, "fetchFreeBoardsNumber">>(FETCH_BOARDS_NUMBER);
+    useQuery<Pick<IQuery, "fetchFreeBoardsNumber">>(FETCH_FREE_BOARDS_NUMBER);
 
   const [isActive, setIsActive] = useState(false);
   const [startPage, setStartPage] = useState(1);

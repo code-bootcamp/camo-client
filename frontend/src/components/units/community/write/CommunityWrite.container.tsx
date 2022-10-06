@@ -6,20 +6,15 @@ import { MouseEvent, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../commons/hooks";
 import CommunityWriteUI from "./CommunityWrite.presenter";
-import {
-  CREATE_BOARD,
-  FETCH_BOARD,
-  // FETCH_BOARD,
-  UPDATE_BOARD,
-} from "./CommunityWrite.queries";
+import { CREATE_FREE_BOARD, FETCH_FREE_BOARD, UPDATE_FREE_BOARD } from "./CommunityWrite.queries";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Editor } from "@toast-ui/react-editor";
 import { ICommunityNewProps } from "./CommunityWrite.types";
-import { IUpdateBoardInput } from "../../../../commons/types/generated/types";
+import { IUpdateFreeBoardInput } from "../../../../commons/types/generated/types";
 
 const schema = yup.object({
-  title: yup.string().required("제목을 입력해주세요."),
-  contents: yup.string().required("내용을 입력해주세요."),
+  title: yup.string().required("제목을 입력해주세요.").typeError("제목을 입력해주세요."),
+  contents: yup.string().required("내용을 입력해주세요.").typeError("내용을 입력해주세요."),
 });
 
 export default function CommunityWrite(props: ICommunityNewProps) {
@@ -30,8 +25,8 @@ export default function CommunityWrite(props: ICommunityNewProps) {
   const [isAddressOpen, setIsAddressOpen] = useState(false);
   const [fileUrls, setFileUrls] = useState(["", "", ""]);
 
-  const [createBoard] = useMutation(CREATE_BOARD);
-  const [updateBoard] = useMutation(UPDATE_BOARD);
+  const [createFreeBoard] = useMutation(CREATE_FREE_BOARD);
+  const [updateFreeBoard] = useMutation(UPDATE_FREE_BOARD);
 
   const { register, handleSubmit, setValue, trigger, formState, getValues } = useForm({
     resolver: yupResolver(schema),
@@ -86,8 +81,8 @@ export default function CommunityWrite(props: ICommunityNewProps) {
 
   useEffect(() => {
     if (props.data !== undefined || null) {
-      // if (props.data.fetchBoard.tags?.length) {
-      //   setTagList(props.data.fetchBoard.tags?.map((el: any) => el.name));
+      // if (props.data.fetchFreeBoard.tags?.length) {
+      //   setTagList(props.data.fetchFreeBoard.tags?.map((el: any) => el.name));
       // }
       if (props.data?.fetchFreeBoard.images?.length) {
         setFileUrls([...props.data?.fetchFreeBoard.images.map((el: any) => el.url)]);
@@ -97,8 +92,8 @@ export default function CommunityWrite(props: ICommunityNewProps) {
 
   // // image Edit
   // useEffect(() => {
-  //   if (props.data?.fetchBoard.images) {
-  //     setFileUrls([...props.data?.fetchBoard.images]);
+  //   if (props.data?.fetchFreeBoard.images) {
+  //     setFileUrls([...props.data?.fetchFreeBoard.images]);
   //   }
   // }, [props.data]);
   console.log(fileUrls);
@@ -109,9 +104,9 @@ export default function CommunityWrite(props: ICommunityNewProps) {
       if (!fileUrls) {
         Modal.error({ content: "이미지 3장을 등록해주세요🖼" });
       } else if (fileUrls) {
-        const result = await createBoard({
+        const result = await createFreeBoard({
           variables: {
-            createBoardInput: {
+            createFreeBoardInput: {
               title: data.title,
               contents: data.contents,
               zipcode: data.zipcode || "",
@@ -122,7 +117,7 @@ export default function CommunityWrite(props: ICommunityNewProps) {
             },
           },
         });
-        router.push(`/community/${result.data?.createBoard.id}`);
+        router.push(`/community/${result.data?.createFreeBoard.id}`);
       }
     } catch (error: any) {
       console.log("등록실패", error);
@@ -139,15 +134,16 @@ export default function CommunityWrite(props: ICommunityNewProps) {
 
   const onClickEdit = async (data: any) => {
     console.log(String(router.query.communityId));
-    const updateBoardInput: IUpdateBoardInput = {};
-    if (data.title) updateBoardInput.title = data.title;
-    if (data.content) updateBoardInput.contents = data.content;
-    if (data.tags) updateBoardInput.tags = data.tags;
-    if (fileUrls) updateBoardInput.image = fileUrls;
+    const updateFreeBoardInput: IUpdateFreeBoardInput = {};
+    if (data.title) updateFreeBoardInput.title = data.title;
+    if (data.content) updateFreeBoardInput.contents = data.content;
+    if (data.tags) updateFreeBoardInput.tags = data.tags;
+    if (fileUrls) updateFreeBoardInput.image = fileUrls;
     try {
-      const result = await updateBoard({
+      const result = await updateFreeBoard({
         variables: {
-          boardId: router.query.communityId,
+          freeBoardId: router.query.communityId,
+
           nickName: props.data?.fetchFreeBoard.user.nickName,
           updateBoardInput: {
             title: data.title,
@@ -161,9 +157,9 @@ export default function CommunityWrite(props: ICommunityNewProps) {
         },
         refetchQueries: [
           {
-            query: FETCH_BOARD,
+            query: FETCH_FREE_BOARD,
             variables: {
-              boardId: String(router.query.communityId),
+              freeBoardId: String(router.query.communityId),
             },
           },
         ],

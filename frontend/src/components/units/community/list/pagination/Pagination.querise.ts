@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
-export const FETCH_BOARDS_CREATED_AT = gql`
-  query fetchBoardsCreatedAt($page: Float = 1, $sortBy: String = "DESC") {
-    fetchBoardsCreatedAt(page: $page, sortBy: $sortBy) {
+export const FETCH_FREE_BOARDS_CREATED_AT = gql`
+  query fetchFreeBoardsCreatedAt($page: Float = 1, $sortBy: String = "DESC") {
+    fetchFreeBoardsCreatedAt(page: $page, sortBy: $sortBy) {
       id
       title
       likeCount
@@ -23,9 +23,9 @@ export const FETCH_BOARDS_CREATED_AT = gql`
   }
 `;
 
-export const FETCH_BOARDS_LIKE_COUNT = gql`
-  query fetchBoardsLikeCount($page: Float = 1, $sortBy: String = "DESC") {
-    fetchBoardsLikeCount(page: $page, sortBy: $sortBy) {
+export const FETCH_FREE_BOARDS_LIKE_COUNT = gql`
+  query fetchFreeBoardsLikeCount($page: Float = 1, $sortBy: String = "DESC") {
+    fetchFreeBoardsLikeCount(page: $page, sortBy: $sortBy) {
       id
       title
       likeCount
@@ -46,8 +46,8 @@ export const FETCH_BOARDS_LIKE_COUNT = gql`
   }
 `;
 
-export const FETCH_BOARDS_NUMBER = gql`
-  query fetchBoardsNumber {
-    fetchBoardsNumber
+export const FETCH_FREE_BOARDS_NUMBER = gql`
+  query fetchFreeBoardsNumber {
+    fetchFreeBoardsNumber
   }
 `;

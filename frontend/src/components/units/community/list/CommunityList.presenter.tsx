@@ -6,7 +6,7 @@ import CommunityLikeCountList from "./likeCount/CommunityLikeCountList.container
 import SearchBar from "../../../commons/searchbar/01/SearchBar.container";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { StyledEngineProvider } from "@mui/material/styles";
-import CommunitySearchList from "./CommunitySearchList";
+// import CommunitySearchList from "./CommunitySearchList";
 
 export default function CommunityListUI(props: IFreeBoardUIProps) {
   return (
@@ -17,6 +17,7 @@ export default function CommunityListUI(props: IFreeBoardUIProps) {
           {/* <S.SortList> */}
           <StyledEngineProvider injectFirst>
             <ToggleButtonGroup
+              className="toggle"
               color="standard"
               value={props.alignment}
               exclusive
@@ -43,7 +44,7 @@ export default function CommunityListUI(props: IFreeBoardUIProps) {
               // />
               <>
                 <S.SearchButton onClick={props.onClickSearchPage} src="/images/search/search.svg" />
-                <S.SearchInput onChange={props.onChangeSearchBar} value={props.nputs} />
+                <S.SearchInput onChange={props.onChangeSearchBar} value={props.inputs} />
               </>
             ) : (
               <></>
@@ -55,11 +56,11 @@ export default function CommunityListUI(props: IFreeBoardUIProps) {
             </Link>
           </S.InputWrapper>
         </S.NavWrapper>
-        {props.alignment === "createdAt" ? (
+        {/* {props.alignment === "createdAt" ? (
           <CommunityCreatedAtList search={props.search} />
         ) : (
           <CommunityLikeCountList />
-        )}
+        )} */}
         {/* {props.keyword !== "" ? <CommunitySearchList search={props.search} /> : <></>} */}
       </S.BodyWrapper>
     </S.Wrapper>
