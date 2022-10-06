@@ -89,8 +89,8 @@
 
 
 ## 카페 목록
-![Uploading 그림24-min.gif…]()
-
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9806fb3f-02ae-43d7-a3bf-800e9ba5c68f/%EA%B7%B8%EB%A6%BC10.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T135551Z&X-Amz-Expires=86400&X-Amz-Signature=528edba2d8df85e054187f7dcf99c174da20435ec872a5d2be171d49585bc80c&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC10.gif%22&x-id=GetObject" width="100%" alt="카페 목록"/>
+![그림24-min](https://user-images.githubusercontent.com/44810842/194218641-996c593f-76ea-41b2-9b2d-4b160660281e.gif)
 
 ## 카페 등록
 <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/53083eba-908c-40af-9fdc-b35ab373b54d/%EA%B7%B8%EB%A6%BC14.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T134135Z&X-Amz-Expires=86400&X-Amz-Signature=de12b9fa684d68cf2feced3f53ad85d20fdbc9ec7419bfcaf968000346568e2f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC14.gif%22&x-id=GetObject" width="100%" alt="카페 등록"/>
