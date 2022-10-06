@@ -9,17 +9,17 @@ import {
 
 export interface IBoardListUIProps {
   dataBoardsNumber: any;
-  data?: Pick<IQuery, "fetchBoardsCreatedAt"> | Pick<IQuery, "fetchBoardsLikeCount">;
+  data?: Pick<IQuery, "fetchFreeBoardsCreatedAt"> | Pick<IQuery, "fetchFreeBoardsLikeCount">;
   onClickMoveToNew: () => void;
   // (event: MouseEvent<HTMLDivElement>) => void;
   // refetch: (
   //   variables?: Partial<IQueryFetchBoardsCreatedAtArgs> | null | undefined
-  // ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoardsCreatedAt">>>;
+  // ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchFreeBoardsCreatedAt">>>;
   refetchCreatedAt: any;
   refetchLikeCount: any;
   refetchBoardsNumber: (
     variables: Partial<OperationVariables>
-  ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoardsNumber">>>;
+  ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchFreeBoardsNumber">>>;
   boardsNumber?: number;
   keyword: string;
   onChangeKeyword: (value: string) => void;
@@ -32,21 +32,23 @@ export interface IBoardListUIProps {
 }
 
 export interface ICreatedAtListUIProps {
-  onFetchMore: () => void;
-  data: Pick<IQuery, "fetchBoardsCreatedAt"> | undefined;
+  // onFetchMore: () => void;
+  data: Pick<IQuery, "fetchFreeBoardsCreatedAt"> | undefined;
   onErrorImg: (e: SyntheticEvent<HTMLImageElement>) => void;
   onClickMoveToDetail: (el: any) => (event: any) => void;
   keyword: string;
   onChangeKeyword: (value: string) => void;
+  refetch: any;
 }
 
 export interface ILikeCountListUIProps {
-  onFetchMore: () => void;
-  data: Pick<IQuery, "fetchBoardsLikeCount"> | undefined;
+  // onFetchMore: () => void;
+  data: Pick<IQuery, "fetchFreeBoardsLikeCount"> | undefined;
   onErrorImg: (e: SyntheticEvent<HTMLImageElement>) => void;
   onClickMoveToDetail: (el: any) => (event: any) => void;
   keyword: string;
   onChangeKeyword: (value: string) => void;
+  refetch: any;
 }
 
 export interface ITextTokenProps {

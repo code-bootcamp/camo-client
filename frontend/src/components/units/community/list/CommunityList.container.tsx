@@ -1,17 +1,15 @@
 import CommunityListUI from "./CommunityList.presenter";
 import {
-  FETCH_BOARDS_CREATED_AT,
-  FETCH_BOARDS_LIKE_COUNT,
-  FETCH_BOARDS_NUMBER,
-  SEARCH_BOARDS,
+  FETCH_FREE_BOARDS_CREATED_AT,
+  FETCH_FREE_BOARDS_LIKE_COUNT,
+  FETCH_FREE_BOARDS_NUMBER,
 } from "./CommunityList.queries";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import {
   IQuery,
-  IQueryFetchBoardsCreatedAtArgs,
-  IQueryFetchBoardsLikeCountArgs,
-  IQuerySearchBoardsArgs,
+  IQueryFetchFreeBoardsCreatedAtArgs,
+  IQueryFetchFreeBoardsLikeCountArgs,
 } from "../../../../commons/types/generated/types";
 import { MouseEvent, useState } from "react";
 
@@ -44,20 +42,21 @@ export default function CommunityList() {
   };
 
   const { refetch: refetchCreatedAt } = useQuery<
-    Pick<IQuery, "fetchBoardsCreatedAt">,
-    IQueryFetchBoardsCreatedAtArgs
-  >(FETCH_BOARDS_CREATED_AT, {
+    Pick<IQuery, "fetchFreeBoardsCreatedAt">,
+    IQueryFetchFreeBoardsCreatedAtArgs
+  >(FETCH_FREE_BOARDS_CREATED_AT, {
     fetchPolicy: "network-only",
   });
 
   const { refetch: refetchLikeCount } = useQuery<
-    Pick<IQuery, "fetchBoardsLikeCount">,
-    IQueryFetchBoardsLikeCountArgs
-  >(FETCH_BOARDS_LIKE_COUNT, {
+    Pick<IQuery, "fetchFreeBoardsLikeCount">,
+    IQueryFetchFreeBoardsLikeCountArgs
+  >(FETCH_FREE_BOARDS_LIKE_COUNT, {
     fetchPolicy: "network-only",
   });
 
-  const { data: dataBoardsNumber, refetch: refetchBoardsNumber } = useQuery(FETCH_BOARDS_NUMBER);
+  const { data: dataBoardsNumber, refetch: refetchBoardsNumber } =
+    useQuery(FETCH_FREE_BOARDS_NUMBER);
 
   const lastPage = dataBoardsNumber ? Math.ceil(dataBoardsNumber?.fetchBoardsNumber / 10) : 0;
 

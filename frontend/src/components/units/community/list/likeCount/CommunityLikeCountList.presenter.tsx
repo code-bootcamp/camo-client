@@ -9,7 +9,7 @@ export default function CommunityLikeCountListUI(props: ILikeCountListUIProps) {
     <>
       {/* <InfiniteScroll pageStart={0} loadMore={props.onFetchMore} hasMore={true}> */}
       <S.ItemWrapper>
-        {props.data?.fetchBoardsLikeCount.map((el: any) => (
+        {props.data?.fetchFreeBoardsLikeCount.map((el: any) => (
           <S.ItemContent key={el.id} onClick={props.onClickMoveToDetail(el)}>
             <S.ItemImgWrapper>
               <S.ItemImg

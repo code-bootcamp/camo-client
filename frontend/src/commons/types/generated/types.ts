@@ -14,71 +14,35 @@ export type Scalars = {
   Upload: any;
 };
 
-export type IBoard = {
-  __typename?: 'Board';
+export type ICafeBoard = {
+  __typename?: 'CafeBoard';
+  CafeLikeCount?: Maybe<Scalars['Float']>;
   address?: Maybe<Scalars['String']>;
   addressDetail?: Maybe<Scalars['String']>;
-  cafeList?: Maybe<ICafeList>;
-  comment?: Maybe<Array<IComment>>;
-  contents: Scalars['String'];
-  createdAt: Scalars['DateTime'];
-  deletedAt?: Maybe<Scalars['DateTime']>;
-  favoriteBoard?: Maybe<Array<IFavoriteBoard>>;
-  id: Scalars['String'];
-  images?: Maybe<Array<IImage>>;
-  likeCount?: Maybe<Scalars['Float']>;
-  tags?: Maybe<Array<ITag>>;
-  title: Scalars['String'];
-  updatedAt?: Maybe<Scalars['DateTime']>;
-  user: IUser;
-  zipcode?: Maybe<Scalars['String']>;
-};
-
-export type ICafeList = {
-  __typename?: 'CafeList';
-  address?: Maybe<Scalars['String']>;
-  addressDetail?: Maybe<Scalars['String']>;
-  cafeListImage?: Maybe<Array<ICafeListImage>>;
-  cafeListTag?: Maybe<Array<ICafeListTag>>;
   cafeReservation?: Maybe<Array<ICafeReservation>>;
   contents: Scalars['String'];
   createdAt: Scalars['DateTime'];
   deletedAt?: Maybe<Scalars['DateTime']>;
   deposit?: Maybe<Scalars['Int']>;
   endTime?: Maybe<Scalars['String']>;
-  favoriteCafe?: Maybe<Array<IFavoriteCafe>>;
-  favoriteCafeCount?: Maybe<Scalars['Float']>;
   homepage?: Maybe<Scalars['String']>;
   id: Scalars['String'];
+  images?: Maybe<Array<IImage>>;
+  like?: Maybe<Array<ILike>>;
   phone?: Maybe<Scalars['String']>;
   remarks?: Maybe<Scalars['String']>;
   reviews?: Maybe<Array<IReview>>;
   startTime?: Maybe<Scalars['String']>;
+  tags?: Maybe<Array<ITag>>;
   title: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
   user?: Maybe<IUser>;
   zipcode?: Maybe<Scalars['String']>;
 };
 
-export type ICafeListImage = {
-  __typename?: 'CafeListImage';
-  cafeList?: Maybe<ICafeList>;
-  deletedAt?: Maybe<Scalars['String']>;
-  id: Scalars['String'];
-  isMain?: Maybe<Scalars['Boolean']>;
-  url: Scalars['String'];
-};
-
-export type ICafeListTag = {
-  __typename?: 'CafeListTag';
-  cafeList: Array<ICafeList>;
-  id: Scalars['String'];
-  name: Scalars['String'];
-};
-
 export type ICafeReservation = {
   __typename?: 'CafeReservation';
-  cafeList: ICafeList;
+  cafeBoard: ICafeBoard;
   deposit: Scalars['Int'];
   endTime: Scalars['String'];
   id: Scalars['String'];
@@ -109,27 +73,16 @@ export type IChatRoom = {
 
 export type IComment = {
   __typename?: 'Comment';
-  board?: Maybe<IBoard>;
   comment: Scalars['String'];
   createdAt: Scalars['DateTime'];
   deletedAt: Scalars['DateTime'];
+  freeBoard?: Maybe<IFreeBoard>;
   id: Scalars['String'];
   updatedAt: Scalars['DateTime'];
   user?: Maybe<IUser>;
 };
 
-export type ICreateBoardInput = {
-  address?: InputMaybe<Scalars['String']>;
-  addressDetail?: InputMaybe<Scalars['String']>;
-  cafeList?: InputMaybe<Scalars['String']>;
-  contents: Scalars['String'];
-  image?: InputMaybe<Array<Scalars['String']>>;
-  tags?: InputMaybe<Array<Scalars['String']>>;
-  title: Scalars['String'];
-  zipcode?: InputMaybe<Scalars['String']>;
-};
-
-export type ICreateCafeListInput = {
+export type ICreateCafeBoardInput = {
   address?: InputMaybe<Scalars['String']>;
   addressDetail?: InputMaybe<Scalars['String']>;
   contents: Scalars['String'];
@@ -159,8 +112,19 @@ export type ICreateCommentInput = {
   comment?: InputMaybe<Scalars['String']>;
 };
 
+export type ICreateFreeBoardInput = {
+  address?: InputMaybe<Scalars['String']>;
+  addressDetail?: InputMaybe<Scalars['String']>;
+  cafeBoard?: InputMaybe<Scalars['String']>;
+  contents: Scalars['String'];
+  image?: InputMaybe<Array<Scalars['String']>>;
+  tags?: InputMaybe<Array<Scalars['String']>>;
+  title: Scalars['String'];
+  zipcode?: InputMaybe<Scalars['String']>;
+};
+
 export type ICreateReservationInput = {
-  cafeListId: Scalars['String'];
+  cafeBoardId: Scalars['String'];
   endTime: Scalars['String'];
   orderRequest?: InputMaybe<Scalars['String']>;
   reservationDate: Scalars['DateTime'];
@@ -182,53 +146,75 @@ export type ICreateUserInput = {
   phoneNumber?: InputMaybe<Scalars['String']>;
 };
 
-export type IFavoriteCafe = {
-  __typename?: 'FavoriteCafe';
-  cafeList?: Maybe<ICafeList>;
+export type IFreeBoard = {
+  __typename?: 'FreeBoard';
+  address?: Maybe<Scalars['String']>;
+  addressDetail?: Maybe<Scalars['String']>;
+  cafeBoard?: Maybe<ICafeBoard>;
+  comment?: Maybe<Array<IComment>>;
+  contents: Scalars['String'];
+  createdAt: Scalars['DateTime'];
+  deletedAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
-  isLike: Scalars['Boolean'];
-  user?: Maybe<IUser>;
+  images?: Maybe<Array<IImage>>;
+  like?: Maybe<Array<ILike>>;
+  likeCount?: Maybe<Scalars['Float']>;
+  tags?: Maybe<Array<ITag>>;
+  title: Scalars['String'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  user: IUser;
+  zipcode?: Maybe<Scalars['String']>;
 };
 
 export type IImage = {
   __typename?: 'Image';
-  board: IBoard;
+  cafeBoard?: Maybe<ICafeBoard>;
+  freeBoard: IFreeBoard;
   id: Scalars['String'];
   isMain?: Maybe<Scalars['Boolean']>;
   url: Scalars['String'];
 };
 
+export type ILike = {
+  __typename?: 'Like';
+  cafeBoard?: Maybe<ICafeBoard>;
+  freeBoard?: Maybe<IFreeBoard>;
+  id: Scalars['String'];
+  isLike: Scalars['Boolean'];
+  user?: Maybe<IUser>;
+};
+
 export type IMutation = {
   __typename?: 'Mutation';
   checkSMSTokenValid: Scalars['Boolean'];
-  createBoard: IBoard;
-  createCafeList: ICafeList;
+  createCafeBoard: ICafeBoard;
   createCafeOwner: IUser;
   createCafeReservation: ICafeReservation;
   createCancel: IPayment;
   createComment: IComment;
+  createFreeBoard: IFreeBoard;
   createPayment: IPayment;
   createReview: IReview;
   createRoom: IChatRoom;
   createUser: IUser;
-  deleteBoard: Scalars['Boolean'];
-  deleteCafeList: Scalars['Boolean'];
+  deleteCafeBoard: Scalars['Boolean'];
   deleteComment: Scalars['Boolean'];
+  deleteFreeBoard: Scalars['Boolean'];
   deleteLoginUser: Scalars['Boolean'];
   deleteReview: Scalars['Boolean'];
   deleteUser: Scalars['Boolean'];
   loginUser: Scalars['String'];
   logoutUser: Scalars['String'];
   restoreAccessToken: Scalars['String'];
-  restoreBoard: Scalars['Boolean'];
-  restoreCafeList: Scalars['Boolean'];
+  restoreCafeBoard: Scalars['Boolean'];
+  restoreFreeBoard: Scalars['Boolean'];
   restoreUser: Scalars['Boolean'];
   sendTokenToSMS: Scalars['String'];
-  toggleFavoriteCafes: Scalars['Boolean'];
-  toggleLikeFeed: Scalars['Boolean'];
-  updateBoard: IBoard;
-  updateCafeList: ICafeList;
+  toggleCafeBoardLike: Scalars['Boolean'];
+  toggleFreeBoardLike: Scalars['Boolean'];
+  updateCafeBoard: ICafeBoard;
   updateComment: IComment;
+  updateFreeBoard: IFreeBoard;
   updateLoginUser: IUser;
   updateReview: IReview;
   updateUserPassword: IUser;
@@ -242,13 +228,8 @@ export type IMutationCheckSmsTokenValidArgs = {
 };
 
 
-export type IMutationCreateBoardArgs = {
-  createBoardInput: ICreateBoardInput;
-};
-
-
-export type IMutationCreateCafeListArgs = {
-  createCafeListInput: ICreateCafeListInput;
+export type IMutationCreateCafeBoardArgs = {
+  createCafeBoardInput: ICreateCafeBoardInput;
 };
 
 
@@ -274,6 +255,11 @@ export type IMutationCreateCommentArgs = {
 };
 
 
+export type IMutationCreateFreeBoardArgs = {
+  createBoardInput: ICreateFreeBoardInput;
+};
+
+
 export type IMutationCreatePaymentArgs = {
   amount: Scalars['Int'];
   impUid: Scalars['String'];
@@ -296,18 +282,18 @@ export type IMutationCreateUserArgs = {
 };
 
 
-export type IMutationDeleteBoardArgs = {
-  boardId: Scalars['String'];
-};
-
-
-export type IMutationDeleteCafeListArgs = {
-  cafeListId: Scalars['String'];
+export type IMutationDeleteCafeBoardArgs = {
+  cafeBoardId: Scalars['String'];
 };
 
 
 export type IMutationDeleteCommentArgs = {
   commentId: Scalars['String'];
+};
+
+
+export type IMutationDeleteFreeBoardArgs = {
+  boardId: Scalars['String'];
 };
 
 
@@ -332,13 +318,13 @@ export type IMutationLoginUserArgs = {
 };
 
 
-export type IMutationRestoreBoardArgs = {
-  boardId: Scalars['String'];
+export type IMutationRestoreCafeBoardArgs = {
+  cafeBoardId: Scalars['String'];
 };
 
 
-export type IMutationRestoreCafeListArgs = {
-  cafeListId: Scalars['String'];
+export type IMutationRestoreFreeBoardArgs = {
+  boardId: Scalars['String'];
 };
 
 
@@ -352,33 +338,33 @@ export type IMutationSendTokenToSmsArgs = {
 };
 
 
-export type IMutationToggleFavoriteCafesArgs = {
-  cafeListId: Scalars['String'];
+export type IMutationToggleCafeBoardLikeArgs = {
+  cafeBoardId: Scalars['String'];
 };
 
 
-export type IMutationToggleLikeFeedArgs = {
-  boardId: Scalars['String'];
+export type IMutationToggleFreeBoardLikeArgs = {
+  freeBoardId: Scalars['String'];
 };
 
 
-export type IMutationUpdateBoardArgs = {
-  boardId: Scalars['String'];
+export type IMutationUpdateCafeBoardArgs = {
+  cafeBoardId: Scalars['String'];
   nickName: Scalars['String'];
-  updateBoardInput: IUpdateBoardInput;
-};
-
-
-export type IMutationUpdateCafeListArgs = {
-  cafeListId: Scalars['String'];
-  updateCafeListInput: IUpdateCafeListInput;
+  updateCafeBoardInput: IUpdateCafeBoardInput;
 };
 
 
 export type IMutationUpdateCommentArgs = {
   commentId: Scalars['String'];
   updateCommentInput: IUpdateCommentInput;
-  userId: Scalars['String'];
+};
+
+
+export type IMutationUpdateFreeBoardArgs = {
+  freeBoardId: Scalars['String'];
+  nickName: Scalars['String'];
+  updateFreeBoardInput: IUpdateFreeBoardInput;
 };
 
 
@@ -422,39 +408,38 @@ export type IQuery = {
   __typename?: 'Query';
   checkUserEmail: Scalars['Boolean'];
   connectionRoom: IChatRoom;
-  fetchBoard: IBoard;
-  fetchBoardWithDeleted: Array<IBoard>;
-  fetchBoards: Array<IBoard>;
-  fetchBoardsCreatedAt: Array<IBoard>;
-  fetchBoardsLikeCount: Array<IBoard>;
-  fetchBoardsNumber: Scalars['Int'];
-  fetchCafeList: ICafeList;
-  fetchCafeListNumber: Scalars['Int'];
-  fetchCafeLists: Array<ICafeList>;
-  fetchCafeListsCreatedAt: Array<ICafeList>;
-  fetchCafeListsFavoriteCafe: Array<ICafeList>;
+  fetchCafeBoard: ICafeBoard;
+  fetchCafeBoardLike: Array<ILike>;
+  fetchCafeBoardNumber: Scalars['Float'];
+  fetchCafeBoards: Array<ICafeBoard>;
+  fetchCafeBoardsByCreatedAt: Array<ICafeBoard>;
+  fetchCafeBoardsNumber: Scalars['Int'];
   fetchCafeReservation: ICafeReservation;
   fetchCafeReservationNumber: Scalars['Float'];
   fetchComments: Array<IComment>;
-  fetchFavoriteCafeNumber: Scalars['Float'];
-  fetchFavoriteCafeUser: Array<IFavoriteCafe>;
-  fetchFavoriteUser: Array<IFavoriteBoard>;
+  fetchFreeBoard: IFreeBoard;
+  fetchFreeBoardLike: Array<IFreeBoard>;
+  fetchFreeBoardWithDeleted: Array<IFreeBoard>;
+  fetchFreeBoards: Array<IFreeBoard>;
+  fetchFreeBoardsCreatedAt: Array<IFreeBoard>;
+  fetchFreeBoardsLikeCount: Array<IFreeBoard>;
+  fetchFreeBoardsNumber: Scalars['Int'];
   fetchLoginedUser: IUser;
   fetchLogs: Array<IChatMessage>;
   fetchMyCafeReservation: Array<ICafeReservation>;
+  fetchMyFreeBoard: Array<IFreeBoard>;
   fetchReview: IReview;
   fetchReviews: Array<IReview>;
   fetchUserByEmail: IUser;
-  fetchUserFavoriteCafe: Array<IFavoriteCafe>;
-  fetchUserMyBoard: Array<IBoard>;
+  fetchUserCafeBoardLike: Array<ILike>;
+  fetchUserFreeBoardNumber: Scalars['Float'];
   fetchUserWithDeleted: Array<IUser>;
   fetchUserbyEmail: IUser;
   fetchUserbyId: IUser;
-  fetchUsermyBoardNumber: Scalars['Float'];
   fetchUsers: Array<IUser>;
-  searchBoards: Array<IBoard>;
-  searchCafeList: Array<ICafeList>;
-  searchMyBoards: Array<IBoard>;
+  searchCafeBoards: Array<ICafeBoard>;
+  searchFreeBoards: Array<IFreeBoard>;
+  searchMyFreeBoards: Array<IFreeBoard>;
 };
 
 
@@ -469,45 +454,27 @@ export type IQueryConnectionRoomArgs = {
 };
 
 
-export type IQueryFetchBoardArgs = {
-  boardId: Scalars['String'];
+export type IQueryFetchCafeBoardArgs = {
+  cafeBoardId: Scalars['String'];
 };
 
 
-export type IQueryFetchBoardsArgs = {
+export type IQueryFetchCafeBoardLikeArgs = {
+  cafeBoardId: Scalars['String'];
+};
+
+
+export type IQueryFetchCafeBoardNumberArgs = {
+  userId: Scalars['String'];
+};
+
+
+export type IQueryFetchCafeBoardsArgs = {
   page?: InputMaybe<Scalars['Float']>;
 };
 
 
-export type IQueryFetchBoardsCreatedAtArgs = {
-  page?: InputMaybe<Scalars['Float']>;
-  sortBy?: InputMaybe<Scalars['String']>;
-};
-
-
-export type IQueryFetchBoardsLikeCountArgs = {
-  page?: InputMaybe<Scalars['Float']>;
-  sortBy?: InputMaybe<Scalars['String']>;
-};
-
-
-export type IQueryFetchCafeListArgs = {
-  cafeListId: Scalars['String'];
-};
-
-
-export type IQueryFetchCafeListsArgs = {
-  page?: InputMaybe<Scalars['Float']>;
-};
-
-
-export type IQueryFetchCafeListsCreatedAtArgs = {
-  page?: InputMaybe<Scalars['Float']>;
-  sortBy?: InputMaybe<Scalars['String']>;
-};
-
-
-export type IQueryFetchCafeListsFavoriteCafeArgs = {
+export type IQueryFetchCafeBoardsByCreatedAtArgs = {
   page?: InputMaybe<Scalars['Float']>;
   sortBy?: InputMaybe<Scalars['String']>;
 };
@@ -528,18 +495,30 @@ export type IQueryFetchCommentsArgs = {
 };
 
 
-export type IQueryFetchFavoriteCafeNumberArgs = {
-  userId: Scalars['String'];
+export type IQueryFetchFreeBoardArgs = {
+  freeBoardId: Scalars['String'];
 };
 
 
-export type IQueryFetchFavoriteCafeUserArgs = {
-  cafeListId: Scalars['String'];
+export type IQueryFetchFreeBoardLikeArgs = {
+  freeBoardId: Scalars['String'];
 };
 
 
-export type IQueryFetchFavoriteUserArgs = {
-  boardId: Scalars['String'];
+export type IQueryFetchFreeBoardsArgs = {
+  page?: InputMaybe<Scalars['Float']>;
+};
+
+
+export type IQueryFetchFreeBoardsCreatedAtArgs = {
+  page?: InputMaybe<Scalars['Float']>;
+  sortBy?: InputMaybe<Scalars['String']>;
+};
+
+
+export type IQueryFetchFreeBoardsLikeCountArgs = {
+  page?: InputMaybe<Scalars['Float']>;
+  sortBy?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -549,6 +528,12 @@ export type IQueryFetchLogsArgs = {
 
 
 export type IQueryFetchMyCafeReservationArgs = {
+  page?: InputMaybe<Scalars['Float']>;
+  userId: Scalars['String'];
+};
+
+
+export type IQueryFetchMyFreeBoardArgs = {
   page?: InputMaybe<Scalars['Float']>;
   userId: Scalars['String'];
 };
@@ -564,14 +549,13 @@ export type IQueryFetchUserByEmailArgs = {
 };
 
 
-export type IQueryFetchUserFavoriteCafeArgs = {
+export type IQueryFetchUserCafeBoardLikeArgs = {
   page?: InputMaybe<Scalars['Float']>;
   userId: Scalars['String'];
 };
 
 
-export type IQueryFetchUserMyBoardArgs = {
-  page?: InputMaybe<Scalars['Float']>;
+export type IQueryFetchUserFreeBoardNumberArgs = {
   userId: Scalars['String'];
 };
 
@@ -586,28 +570,23 @@ export type IQueryFetchUserbyIdArgs = {
 };
 
 
-export type IQueryFetchUsermyBoardNumberArgs = {
-  userId: Scalars['String'];
-};
-
-
-export type IQuerySearchBoardsArgs = {
-  search_board?: InputMaybe<Scalars['String']>;
-};
-
-
-export type IQuerySearchCafeListArgs = {
+export type IQuerySearchCafeBoardsArgs = {
   search_cafelist?: InputMaybe<Scalars['String']>;
 };
 
 
-export type IQuerySearchMyBoardsArgs = {
+export type IQuerySearchFreeBoardsArgs = {
+  search_board?: InputMaybe<Scalars['String']>;
+};
+
+
+export type IQuerySearchMyFreeBoardsArgs = {
   search?: InputMaybe<Scalars['String']>;
 };
 
 export type IReview = {
   __typename?: 'Review';
-  cafeList: ICafeList;
+  cafeBoard: ICafeBoard;
   comment: Scalars['String'];
   createdAt: Scalars['DateTime'];
   deletedAt: Scalars['DateTime'];
@@ -619,7 +598,8 @@ export type IReview = {
 
 export type ITag = {
   __typename?: 'Tag';
-  boards: Array<IBoard>;
+  cafeBoard: Array<ICafeBoard>;
+  freeBoard: Array<IFreeBoard>;
   id: Scalars['String'];
   name: Scalars['String'];
 };
@@ -630,18 +610,7 @@ export enum IUser_Role_Enum {
   User = 'USER'
 }
 
-export type IUpdateBoardInput = {
-  address?: InputMaybe<Scalars['String']>;
-  addressDetail?: InputMaybe<Scalars['String']>;
-  cafeList?: InputMaybe<Scalars['String']>;
-  contents?: InputMaybe<Scalars['String']>;
-  image?: InputMaybe<Array<Scalars['String']>>;
-  tags?: InputMaybe<Array<Scalars['String']>>;
-  title?: InputMaybe<Scalars['String']>;
-  zipcode?: InputMaybe<Scalars['String']>;
-};
-
-export type IUpdateCafeListInput = {
+export type IUpdateCafeBoardInput = {
   address?: InputMaybe<Scalars['String']>;
   addressDetail?: InputMaybe<Scalars['String']>;
   contents?: InputMaybe<Scalars['String']>;
@@ -662,6 +631,17 @@ export type IUpdateCommentInput = {
   comment?: InputMaybe<Scalars['String']>;
 };
 
+export type IUpdateFreeBoardInput = {
+  address?: InputMaybe<Scalars['String']>;
+  addressDetail?: InputMaybe<Scalars['String']>;
+  cafeBoard?: InputMaybe<Scalars['String']>;
+  contents?: InputMaybe<Scalars['String']>;
+  image?: InputMaybe<Array<Scalars['String']>>;
+  tags?: InputMaybe<Array<Scalars['String']>>;
+  title?: InputMaybe<Scalars['String']>;
+  zipcode?: InputMaybe<Scalars['String']>;
+};
+
 export type IUpdateReviewInput = {
   comment: Scalars['String'];
   reviewId: Scalars['String'];
@@ -674,24 +654,16 @@ export type IUpdateUserInput = {
 
 export type IUser = {
   __typename?: 'User';
-  board?: Maybe<Array<IBoard>>;
+  board?: Maybe<Array<IFreeBoard>>;
   cafeName?: Maybe<Scalars['String']>;
   cafeReservation?: Maybe<Array<ICafeReservation>>;
   deletedAt?: Maybe<Scalars['DateTime']>;
   email: Scalars['String'];
-  favoriteCafe?: Maybe<Array<IFavoriteCafe>>;
   id: Scalars['String'];
+  like?: Maybe<Array<ILike>>;
   name: Scalars['String'];
   nickName?: Maybe<Scalars['String']>;
   phoneNumber?: Maybe<Scalars['String']>;
   role?: Maybe<IUser_Role_Enum>;
   signupDate: Scalars['DateTime'];
-};
-
-export type IFavoriteBoard = {
-  __typename?: 'favoriteBoard';
-  board?: Maybe<IBoard>;
-  id: Scalars['String'];
-  isLike: Scalars['Boolean'];
-  user?: Maybe<IUser>;
 };

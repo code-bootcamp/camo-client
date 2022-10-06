@@ -49,15 +49,17 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
             type="text"
             placeholder="제목을 입력해주세요"
             {...props.register("title")}
-            defaultValue={props.data?.fetchBoard.title}
+            defaultValue={props.data?.fetchFreeBoard.title}
           />
+          {/* <S.Error>{props.inputsError.title}</S.Error> */}
           <S.Label>내용</S.Label>
           <S.ContentWrapper>
             <ToastUI
-              initialValue={props.data?.fetchBoard.contents}
+              initialValue={props.data?.fetchFreeBoard.contents}
               editorRef={props.editorRef}
               onChangeContents={props.onChangeContents}
             />
+            {/* <S.Error>{props.inputsError.contents}</S.Error> */}
             {/* <S.ContentsReactQuill onChange={props.onChangeContents} /> */}
           </S.ContentWrapper>
           <S.Label>이미지</S.Label>
@@ -76,14 +78,14 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
             <S.TagInput
               type="text"
               readOnly
-              defaultValue={props.data?.fetchBoard.tags?.map((el) => el.name)}
+              defaultValue={props.data?.fetchFreeBoard.tags?.map((el) => el.name)}
               {...props.register("tags")}
             />
           ) : (
             <S.TagInput
               type="text"
               placeholder="태그1 태그2"
-              defaultValue={props.data?.fetchBoard.tags?.map((el) => el.name)}
+              defaultValue={props.data?.fetchFreeBoard.tags?.map((el) => el.name)}
               {...props.register("tags")}
             />
           )}
@@ -91,14 +93,14 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
           <S.MapAddressWrapper>
             <S.MapWrapper>
               <MapComponent
-                address={props.isEdit ? props.data?.fetchBoard?.address || "" : props.address}
+                address={props.isEdit ? props.data?.fetchFreeBoard?.address || "" : props.address}
               />
             </S.MapWrapper>
             <S.AddressWrapper>
               <S.AddressInput
                 type="text"
                 placeholder="000000"
-                defaultValue={props.data?.fetchBoard.zipcode}
+                defaultValue={props.data?.fetchFreeBoard.zipcode}
                 readOnly
                 {...props.register("zipcode")}
               />
@@ -107,12 +109,12 @@ export default function CommunityWriteUI(props: ICommunityUIProps) {
               </S.AddressButton>
               <S.AddressDetailWrapper>
                 <S.AddressDetailInput
-                  defaultValue={props.data?.fetchBoard.address}
+                  defaultValue={props.data?.fetchFreeBoard.address}
                   readOnly
                   {...props.register("address")}
                 />
                 <S.AddressDetailInput
-                  defaultValue={props.data?.fetchBoard.addressDetail}
+                  defaultValue={props.data?.fetchFreeBoard.addressDetail}
                   {...props.register("addressDetail")}
                 />
               </S.AddressDetailWrapper>

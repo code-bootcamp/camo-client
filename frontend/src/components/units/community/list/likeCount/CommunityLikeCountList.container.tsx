@@ -1,10 +1,10 @@
 import CommunityListUI from "./CommunityLikeCountList.presenter";
-import { FETCH_BOARDS_LIKE_COUNT } from "../CommunityList.queries";
+import { FETCH_FREE_BOARDS_LIKE_COUNT } from "../CommunityList.queries";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import {
   IQuery,
-  IQueryFetchBoardsLikeCountArgs,
+  IQueryFetchFreeBoardsLikeCountArgs,
 } from "../../../../../commons/types/generated/types";
 import { SyntheticEvent, useState } from "react";
 
@@ -14,9 +14,9 @@ export default function CommunityLikeCountList() {
   const [keyword, setKeyword] = useState("");
 
   const { data, refetch } = useQuery<
-    Pick<IQuery, "fetchBoardsLikeCount">,
-    IQueryFetchBoardsLikeCountArgs
-  >(FETCH_BOARDS_LIKE_COUNT, {
+    Pick<IQuery, "fetchFreeBoardsLikeCount">,
+    IQueryFetchFreeBoardsLikeCountArgs
+  >(FETCH_FREE_BOARDS_LIKE_COUNT, {
     fetchPolicy: "network-only",
   });
 

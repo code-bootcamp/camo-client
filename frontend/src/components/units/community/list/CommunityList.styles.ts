@@ -4,7 +4,7 @@ import { breakPoints } from "../../../commons/styles/media";
 import { ITextTokenProps } from "./CommunityList.types";
 
 export const Wrapper = styled.div`
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,17 +29,19 @@ export const BodyWrapper = styled.div`
 `;
 
 export const NavWrapper = styled.div`
-  padding: 1rem;
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  /* background-color: pink; */
   @media (max-width: 1100px) {
-    // 모바일
-    width: 100%;
-    height: 130px;
-    display: flex;
     flex-direction: column;
+    align-items: center;
+    .toggle {
+      display: none;
+    }
   }
 `;
 
@@ -49,11 +51,12 @@ export const SortList = styled.div`
 `;
 
 export const InputWrapper = styled.div`
-  width: 320px;
+  /* width: 320px; */
   height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: pink;
 `;
 
 export const WriteBtn = styled.button`

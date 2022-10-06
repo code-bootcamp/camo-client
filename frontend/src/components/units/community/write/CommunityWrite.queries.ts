@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
-export const CREATE_BOARD = gql`
-  mutation createBoard($createBoardInput: CreateBoardInput!) {
-    createBoard(createBoardInput: $createBoardInput) {
+export const CREATE_FREE_BOARD = gql`
+  mutation createFreeBoard($createFreeBoardInput: createFreeBoardInput!) {
+    createFreeBoard(createFreeBoardInput: $createFreeBoardInput) {
       id
       title
       contents
@@ -25,13 +25,17 @@ export const CREATE_BOARD = gql`
   }
 `;
 
-export const UPDATE_BOARD = gql`
-  mutation updateBoard(
-    $boardId: String!
+export const UPDATE_FREE_BOARD = gql`
+  mutation updateFreeBoard(
+    $freeBoardId: String!
     $nickName: String!
-    $updateBoardInput: UpdateBoardInput!
+    $updateFreeBoardInput: updateFreeBoardInput!
   ) {
-    updateBoard(boardId: $boardId, nickName: $nickName, updateBoardInput: $updateBoardInput) {
+    updateFreeBoard(
+      freeBoardId: $freeBoardId
+      nickName: $nickName
+      updateFreeBoardInput: $updateFreeBoardInput
+    ) {
       id
       title
       contents
@@ -50,9 +54,9 @@ export const UPDATE_BOARD = gql`
   }
 `;
 
-export const FETCH_BOARD = gql`
-  query fetchBoard($boardId: String!) {
-    fetchBoard(boardId: $boardId) {
+export const FETCH_FREE_BOARD = gql`
+  query fetchFreeBoard($freeBoardId: String!) {
+    fetchFreeBoard(freeBoardId: $freeBoardId) {
       id
       title
       contents

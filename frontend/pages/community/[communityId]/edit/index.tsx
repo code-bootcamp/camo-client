@@ -1,11 +1,11 @@
 import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { IQuery, IQueryFetchBoardArgs } from "../../../../src/commons/types/generated/types";
+import { IQuery, IQueryFetchFreeBoardArgs } from "../../../../src/commons/types/generated/types";
 import CommunityWrite from "../../../../src/components/units/community/write/CommunityWrite.container";
 
-export const FETCH_BOARD = gql`
-  query fetchBoard($boardId: String!) {
-    fetchBoard(boardId: $boardId) {
+export const FETCH_FREE_BOARD = gql`
+  query fetchFreeBoard($freeBoardId: String!) {
+    fetchFreeBoard(freeBoardId: $freeBoardId) {
       id
       title
       contents
@@ -17,14 +17,6 @@ export const FETCH_BOARD = gql`
       tags {
         id
         name
-      }
-      favoriteBoard {
-        id
-        isLike
-        user {
-          id
-          nickName
-        }
       }
       user {
         id
@@ -47,9 +39,12 @@ export const FETCH_BOARD = gql`
 export default function BoardsEditPage() {
   const router = useRouter();
 
-  const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(FETCH_BOARD, {
-    variables: { boardId: String(router.query.communityId) },
-  });
+  const { data } = useQuery<Pick<IQuery, "fetchFreeBoard">, IQueryFetchFreeBoardArgs>(
+    FETCH_FREE_BOARD,
+    {
+      variables: { freeBoardId: String(router.query.communityId) },
+    }
+  );
 
   return <CommunityWrite isEdit={true} data={data} />;
 }

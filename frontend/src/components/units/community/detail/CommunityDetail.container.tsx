@@ -6,19 +6,19 @@ import { SyntheticEvent, useEffect, useState } from "react";
 // import { userInfoState } from "../../../../commons/store";
 import {
   IMutation,
-  IMutationDeleteBoardArgs,
-  IMutationToggleLikeFeedArgs,
+  IMutationDeleteFreeBoardArgs,
+  IMutationToggleFreeBoardLikeArgs,
   IQuery,
-  IQueryFetchFavoriteUserArgs,
+  IQueryFetchFreeBoardLikeArgs,
 } from "../../../../commons/types/generated/types";
-import { FETCH_BOARDS_CREATED_AT } from "../list/CommunityList.queries";
+import { FETCH_FREE_BOARDS_CREATED_AT } from "../list/CommunityList.queries";
 import CommunityDetailUI from "./CommunityDetail.presenter";
 import {
-  DELETE_BOARD,
-  FETCH_BOARD,
-  FETCH_FAVORITE_USER,
+  DELETE_FREE_BOARD,
+  FETCH_FREE_BOARD,
+  FETCH_FREE_BOARD_LIKE,
   FETCH_LOGINED_USER,
-  TOGGLE_LIKE_FEED,
+  TOGGLE_FREE_BOARD_LIKE,
 } from "./CommunityDetail.queries";
 
 export default function CommunityDetail() {
@@ -30,43 +30,44 @@ export default function CommunityDetail() {
 
   // console.log("좋아요", like);
 
-  const [deleteBoard] = useMutation<Pick<IMutation, "deleteBoard">, IMutationDeleteBoardArgs>(
-    DELETE_BOARD
-  );
+  const [deleteFreeBoard] = useMutation<
+    Pick<IMutation, "deleteFreeBoard">,
+    IMutationDeleteFreeBoardArgs
+  >(DELETE_FREE_BOARD);
 
-  const [toggleLikeFeed] = useMutation<
-    Pick<IMutation, "toggleLikeFeed">,
-    IMutationToggleLikeFeedArgs
-  >(TOGGLE_LIKE_FEED);
+  const [toggleFreeBoardLike] = useMutation<
+    Pick<IMutation, "toggleFreeBoardLike">,
+    IMutationToggleFreeBoardLikeArgs
+  >(TOGGLE_FREE_BOARD_LIKE);
 
-  const { data: dataFavoriteUser } = useQuery<
-    Pick<IQuery, "fetchFavoriteUser">,
-    IQueryFetchFavoriteUserArgs
-  >(FETCH_FAVORITE_USER, {
-    variables: { boardId: String(router.query.communityId) },
+  const { data: dataFreeBoardLike } = useQuery<
+    Pick<IQuery, "fetchFreeBoardLike">,
+    IQueryFetchFreeBoardLikeArgs
+  >(FETCH_FREE_BOARD_LIKE, {
+    variables: { freeBoardId: String(router.query.communityId) },
   });
 
   const { data: dataUser } = useQuery<Pick<IQuery, "fetchLoginedUser">>(FETCH_LOGINED_USER);
 
-  const { data: dataBoard, refetch } = useQuery(FETCH_BOARD, {
-    variables: { boardId: String(router.query.communityId) },
+  const { data: dataFreeBoard, refetch } = useQuery(FETCH_FREE_BOARD, {
+    variables: { freeBoardId: String(router.query.communityId) },
   });
 
   console.log("fetchLoginedUser", dataUser?.fetchLoginedUser.id);
-  console.log("User", dataFavoriteUser?.fetchFavoriteUser[0]?.user?.id);
+  console.log("User", dataFreeBoardLike?.fetchFreeBoardLike[0]?.user?.id);
   // console.log("User.id", dataFavoriteUser?.fetchFavoriteUser.user?.id);
 
   const onClickLike = async () => {
     try {
-      const result = await toggleLikeFeed({
+      const result = await toggleFreeBoardLike({
         variables: {
-          boardId: String(router.query.communityId),
+          freeBoardId: String(router.query.communityId),
         },
       });
       refetch();
-      setLike(Boolean(result.data?.toggleLikeFeed));
+      setLike(Boolean(result.data?.toggleFreeBoardLike));
 
-      if (!result.data?.toggleLikeFeed) {
+      if (!result.data?.toggleFreeBoardLike) {
         Modal.success({ content: "좋아요를 취소합니다🥲" });
       } else {
         Modal.success({ content: "이 게시글 좋네요😊" });
@@ -80,7 +81,7 @@ export default function CommunityDetail() {
   };
 
   useEffect(() => {
-    dataFavoriteUser?.fetchFavoriteUser?.filter(
+    dataFreeBoardLike?.fetchFreeBoardLike?.filter(
       (el) => el.user?.id === dataUser?.fetchLoginedUser.id
     ).length === 1
       ? // .map((el) => true)
@@ -92,7 +93,7 @@ export default function CommunityDetail() {
   //   try {
   //     const result = await toggleLikeFeed({
   //       variables: {
-  //         boardId: String(router.query.communityId),
+  //         freeBoardId: String(router.query.communityId),
   //       },
   //     });
   //     // setLike(Boolean(result.data?.toggleLikeFeed));
@@ -148,13 +149,13 @@ export default function CommunityDetail() {
 
   const onClickDelete = async () => {
     try {
-      await deleteBoard({
+      await deleteFreeBoard({
         variables: {
           boardId: String(router.query.communityId),
         },
         refetchQueries: [
           {
-            query: FETCH_BOARDS_CREATED_AT,
+            query: FETCH_FREE_BOARDS_CREATED_AT,
           },
         ],
       });
@@ -173,13 +174,13 @@ export default function CommunityDetail() {
   return (
     <CommunityDetailUI
       like={like}
-      dataBoard={dataBoard}
+      dataFreeBoard={dataFreeBoard}
       dataUser={dataUser}
       onClickDelete={onClickDelete}
       onErrorImg={onErrorImg}
       onClickUpdate={onClickUpdate}
       onClickLike={onClickLike}
-      dataFavoriteUser={dataFavoriteUser}
+      dataFreeBoardLike={dataFreeBoardLike}
     />
   );
 }
