@@ -75,7 +75,7 @@
 
 # :coffee: 서비스 시연
 ## 랜딩 페이지
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/bc027b21-9001-41bc-bece-89e22f8b3469/%EA%B7%B8%EB%A6%BC2.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T135407Z&X-Amz-Expires=86400&X-Amz-Signature=0fe104115571b7ce320568cf05bf6f7b13088bfc7c27e2bfe2b50ae4d6d3944d&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC2.gif%22&x-id=GetObject" width="100%" alt="랜딩페이지"/>
+<img src="https://user-images.githubusercontent.com/44810842/194227351-57d4a3ea-20c6-4b04-8b92-61bec3a49be4.gif" width="100%" alt="랜딩 페이지"/>
 
 ## 회원가입
 <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4cd54ccb-3821-4ed5-8d91-fd881e0aa1f3/%EA%B7%B8%EB%A6%BC4.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T135513Z&X-Amz-Expires=86400&X-Amz-Signature=76c897c2badc80509e0bfc17ab6d3777bb9393e59354c82cb52f90f3117ed662&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC4.gif%22&x-id=GetObject" width="100%" alt="회원가입"/>
@@ -92,22 +92,19 @@
 <img src="https://user-images.githubusercontent.com/44810842/194226008-38cc4d31-dd56-4d4f-96fb-8049214f2067.gif" width="100%" alt="카페 목록"/>
 
 
-
-
 ## 카페 등록
 <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/53083eba-908c-40af-9fdc-b35ab373b54d/%EA%B7%B8%EB%A6%BC14.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T134135Z&X-Amz-Expires=86400&X-Amz-Signature=de12b9fa684d68cf2feced3f53ad85d20fdbc9ec7419bfcaf968000346568e2f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC14.gif%22&x-id=GetObject" width="100%" alt="카페 등록"/>
 
 
 ## 카페 상세
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/62d36e3b-4f23-4670-a443-91eaa6342fd6/%EA%B7%B8%EB%A6%BC24.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T135755Z&X-Amz-Expires=86400&X-Amz-Signature=2dae78a3831e53c2af89d439510755922198645c5cc4d95642063cd36e388ade&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC24.gif%22&x-id=GetObject" width="100%" alt="카페 상세"/>
-
+<img src="https://user-images.githubusercontent.com/44810842/194227777-08d7e6b5-c9ef-4baf-8ea1-f2987e2726dd.gif" width="100%" alt="카페 상세"/>
 
 ## 예약
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/46937b7a-a59a-4b07-b94a-4bc4306aaed2/%EA%B7%B8%EB%A6%BC16.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T140119Z&X-Amz-Expires=86400&X-Amz-Signature=11cd10f09e0c877529010b25331e0681448f11f2f3304819bc37acb3d7b0b2d9&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC16.gif%22&x-id=GetObject" width="100%" alt="예약"/>
+<img src="https://user-images.githubusercontent.com/44810842/194227853-2609e0f4-9402-4402-8322-fb637dffa3c5.gif" width="100%" alt="예약"/>
 
 
 ## 커뮤니티 목록
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ff159733-5ad9-4b86-b236-a1cf1acf0e22/%EA%B7%B8%EB%A6%BC18.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T135858Z&X-Amz-Expires=86400&X-Amz-Signature=bc88c1b60c8c2fdba180d8e988c9d5946f5aa2b82e1bda09ef54232db30965b9&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC18.gif%22&x-id=GetObject"  width="100%" alt="커뮤니티 목록"/>
+<img src="https://user-images.githubusercontent.com/44810842/194228010-0eb75ecf-e544-4f6e-a2c2-776736ed0e20.gif" width="100%" alt="커뮤니티 목록"/>
 
 
 ## 커뮤니티 등록
@@ -115,7 +112,7 @@
 
 
 ## 커뮤니티 상세/댓글
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/cd6df1d1-1644-49c6-a6d9-27cba5b97c98/%EA%B7%B8%EB%A6%BC22.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T140027Z&X-Amz-Expires=86400&X-Amz-Signature=6d8a92f3057f2472ffa5c6aebf2bf0ade6914b44ccbff880d90c3d2587ef8bcc&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC22.gif%22&x-id=GetObject" width="100%" alt="커뮤니티 상세/댓글"/>
+<img src="https://user-images.githubusercontent.com/44810842/194228134-b12ab45a-3a52-48eb-882c-7adde1d19fda.gif" width="100%" alt="커뮤니티 상세/댓글"/>
 
 
 ## 마이페이지
