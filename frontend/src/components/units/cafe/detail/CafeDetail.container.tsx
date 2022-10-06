@@ -5,8 +5,8 @@ import { message } from "antd";
 import { FETCH_CAFE_LISTS_CREATED_AT } from "../list/CafeList.queries";
 import CafeDetailUI from "./CafeDetail.presenter";
 import {
-  DELETE_CAFE_LIST,
-  FETCH_CAFE_LIST,
+  DELETE_CAFE_BOARD,
+  FETCH_CAFE_BOARD,
   FETCH_LOGINED_USER,
   TOGGLE_FAVORITE_CAFES,
 } from "./CafeDetail.queries";
@@ -18,7 +18,7 @@ export default function CafeDetail(props: any) {
   const [isActive, setIsActive] = useState(false);
   // const [like, setLike] = useState(false);
 
-  const [deleteCafeList] = useMutation(DELETE_CAFE_LIST);
+  const [deleteCafeList] = useMutation(DELETE_CAFE_BOARD);
   const [toggleFavoriteCafes] = useMutation(TOGGLE_FAVORITE_CAFES);
   const { data: userData } = useQuery<Pick<IQuery, "fetchLoginedUser">>(FETCH_LOGINED_USER);
 
@@ -27,11 +27,9 @@ export default function CafeDetail(props: any) {
   };
 
   // refetch 추가
-  const { data, refetch } = useQuery(FETCH_CAFE_LIST, {
+  const { data, refetch } = useQuery(FETCH_CAFE_BOARD, {
     variables: { cafeListId: router.query.cafeId },
   });
-  console.log(data);
-  console.log(`데이타"${data}`);
 
   //
   // 이미지클릭시 보기

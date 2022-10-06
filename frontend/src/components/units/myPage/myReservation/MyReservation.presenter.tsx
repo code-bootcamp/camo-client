@@ -7,7 +7,6 @@ import { ICafeReservation } from "../../../../commons/types/generated/types";
 import PaginationContainer from "./pagination/Pagination.container";
 
 export default function MyReservationUI(props: IMyReservationUIProps) {
-  console.log(props.data);
   return (
     <>
       <B.Wrapper>

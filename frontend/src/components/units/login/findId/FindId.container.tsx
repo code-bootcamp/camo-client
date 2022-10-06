@@ -56,33 +56,22 @@ export default function FindId() {
       const checkPhoneToken = result?.data?.checkSMSTokenValid;
       if (checkPhoneToken) Modal.success({ content: "인증이 완료되었습니다." });
       setCheckSMSToken(true);
-      console.log(result);
-      console.log(checkPhoneToken);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const onClickSubmit = async (data: IFormEmailCheck) => {
     const { phoneNumberCheck, ...dataCheck } = data;
-    // if (!checkSMSToken) return;
-    // Modal.error({ content: "휴대폰 인증을 해야합니다" });
     try {
       const result = await client.query({
         query: FETCH_USER_BY_EMAIL,
         variables: {
-          // phoneNumber: data.phoneNumber,
           ...dataCheck,
         },
       });
-      console.log(result);
-      console.log(userEmailData?.fetchUserByEmail);
-      console.log(result.data.fetchUserByEmail.email);
+
       Modal.info({ content: `고객님의 아이디는 ${result.data.fetchUserByEmail.email} 입니다.` });
       router.push("/login");
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
   return (
     <FindIdUI

@@ -38,7 +38,7 @@ export const FETCH_LOGINED_USER = gql`
 `;
 
 export const DELETE_FREE_BOARD = gql`
-  mutation deleteFReeBoard($BoardId: String!) {
+  mutation deleteFreeBoard($BoardId: String!) {
     deleteFreeBoard(BoardId: $BoardId)
   }
 `;
@@ -56,10 +56,6 @@ export const FETCH_FREE_BOARD_LIKE = gql`
       like
       user {
         id
-      }
-      board {
-        id
-        likeCount
       }
     }
   }

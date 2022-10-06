@@ -6,9 +6,9 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../commons/hooks";
 import { FETCH_CAFE_LISTS_CREATED_AT } from "../list/CafeList.queries";
 import CafeWriteUI from "./CafeWrite.presenter";
-import { CREATE_CAFE_LIST, UPDATE_CAFE_LIST } from "./CafeWrite.queries";
+import { CREATE_CAFE_BOARD, UPDATE_CAFE_BOARD } from "./CafeWrite.queries";
 import { Editor } from "@toast-ui/react-editor";
-import { FETCH_CAFE_LIST } from "../detail/CafeDetail.queries";
+import { FETCH_CAFE_BOARD } from "../detail/CafeDetail.queries";
 import { IQuery } from "../../../../commons/types/generated/types";
 // import * as yup from "yup";
 // import { yupResolver } from "@hookform/resolvers/yup";
@@ -19,7 +19,7 @@ import { IQuery } from "../../../../commons/types/generated/types";
 // });
 
 // interface ICafeProps {
-//   data: Pick<IQuery, "fetchCafeList">;
+//   data: Pick<IQuery, "fetchCafe">;
 // }
 
 export default function CafeWrite(props: any) {
@@ -29,8 +29,8 @@ export default function CafeWrite(props: any) {
   const [isAddressOpen, setIsAddressOpen] = useState(false);
   const [fileUrls, setFileUrls] = useState(["", "", ""]);
 
-  const [createCafeList] = useMutation(CREATE_CAFE_LIST);
-  const [updateCafeList] = useMutation(UPDATE_CAFE_LIST);
+  const [createCafeBoard] = useMutation(CREATE_CAFE_BOARD);
+  const [updateCafeBoard] = useMutation(UPDATE_CAFE_BOARD);
 
   const { register, handleSubmit, setValue, trigger, formState } = useForm({
     // resolver: yupResolver(schema),
@@ -47,12 +47,12 @@ export default function CafeWrite(props: any) {
 
   // toastUI edit
   useEffect(() => {
-    const htmlString = props.data?.fetchCafeList.contents;
+    const htmlString = props.data?.fetchCafeBoard.contents;
     editorRef.current?.getInstance().setHTML(htmlString);
   }, [props?.data]);
 
-  // console.log(props.data?.fetchCafeList.cafeListImage);
-  // console.log(props.data?.fetchCafeList?.cafeListImage[0]?.url);
+  // console.log(props.data?.fetchCafe.cafeListImage);
+  // console.log(props.data?.fetchCafe?.cafeListImage[0]?.url);
   const onClickAddressModal = (event: MouseEvent<HTMLButtonElement>) => {
     if (event.currentTarget instanceof HTMLButtonElement) {
       switch (event.currentTarget.id) {
@@ -87,29 +87,23 @@ export default function CafeWrite(props: any) {
   useEffect(() => {
     if (props.data !== undefined || null) {
       // reset({
-      // contents: props.data.fetchCafeList.contents,
-      // tags: props.data.fetchCafeList.tags?.join(),
+      // contents: props.data.fetchCafe.contents,
+      // tags: props.data.fetchCafe.tags?.join(),
       // });
-      // if (props.data.fetchCafeList.cafeListImage?.url) {
-      //   setFileUrls([...props.data.fetchCafeList.cafeListImage.url]);
+      // if (props.data.fetchCafe.cafeListImage?.url) {
+      //   setFileUrls([...props.data.fetchCafe.cafeListImage.url]);
       // }
-      if (props.data?.fetchCafeList.cafeListImage?.length) {
-        setFileUrls([...props.data?.fetchCafeList?.cafeListImage.map((el: any) => el.url)]);
+      if (props.data?.fetchCafeBoard.images?.length) {
+        setFileUrls([...props.data?.fetchCafeBoard?.images.map((el: any) => el.url)]);
       }
     }
   }, [props.data]);
 
-  // console.log("[0]", props.data?.fetchCafeList.cafeListImage[0]);
-  console.log("되냐", props.data?.fetchCafeList.cafeListImage);
-  console.log("length", props.data?.fetchCafeList.cafeListImage?.length);
-
   const onClickCreate = async (data: any) => {
-    console.log("데이타", data);
-
     try {
-      const result = await createCafeList({
+      const result = await createCafeBoard({
         variables: {
-          createCafeListInput: {
+          createCafeBoardInput: {
             title: data.title || "",
             zipcode: data.zipcode || "",
             address: data.address || "",
@@ -122,7 +116,7 @@ export default function CafeWrite(props: any) {
             deposit: Number(data.deposit || ""),
             contents: data.contents || "",
             // fileURLs: data.fileURLs,
-            image: [...fileUrls] || "",
+            images: [...fileUrls] || "",
             // tags: data.cafeListTag?.split(",") || "",
             tags: data.tags?.split(" ") || "",
           },
@@ -136,7 +130,7 @@ export default function CafeWrite(props: any) {
 
       console.log("등록결과", result);
       message.success("등록 성공");
-      router.push(`/cafe/${result.data?.createCafeList.id}`);
+      router.push(`/cafe/${result.data?.createCafeBoard.id}`);
     } catch (error: any) {
       console.log("등록실패", error);
       Modal.error({ content: error.message });
@@ -147,21 +141,21 @@ export default function CafeWrite(props: any) {
   const onClickUpdate = async (data: any) => {
     console.log("업데이트 클릭");
     // const currentFiles = JSON.stringify(fileUrls);
-    // const defaultFiles = JSON.stringify(props.data?.fetchCafeList.cafeListImage);
+    // const defaultFiles = JSON.stringify(props.data?.fetchCafe.cafeListImage);
     // const isChangeFiles = currentFiles !== defaultFiles;
 
-    // const updateCafeList: IUpdateCafeListInput = {};
+    // const updateCafeBoard: IUpdateCafeListInput = {};
     // if (isChangeFiles) IUpdateCafeListInput.images = fileUrls;
-    // if (data.title) updateCafeList.title = data.title;
-    // if (data.contents) updateCafeList.title = data.contents;
-    // if (data.tags) updateCafeList.title = data.tags;
-    // if (data.remarks) updateCafeList.title = data.remarks;
+    // if (data.title) updateCafeBoard.title = data.title;
+    // if (data.contents) updateCafeBoard.title = data.contents;
+    // if (data.tags) updateCafeBoard.title = data.tags;
+    // if (data.remarks) updateCafeBoard.title = data.remarks;
 
     try {
-      const result = await updateCafeList({
+      const result = await updateCafeBoard({
         variables: {
-          cafeListId: router.query.cafeId as string,
-          updateCafeListInput: {
+          cafeBoardId: router.query.cafeId as string,
+          updateCafeBoardInput: {
             title: data.title || "",
             zipcode: data.zipcode || "",
             address: data.address || "",
@@ -175,20 +169,20 @@ export default function CafeWrite(props: any) {
             contents: data.contents || "",
             // tags: data.tags?.split(" ") || "",
             // tags: data.cafeListTag?.split(",") || "",
-            image: [...fileUrls] || "",
+            images: [...fileUrls] || "",
             // fileURLs: data.fileURLs,
           },
         },
         refetchQueries: [
           {
-            query: FETCH_CAFE_LIST,
+            query: FETCH_CAFE_BOARD,
             variables: {
-              cafeListId: String(router.query.cafeId),
+              cafeBoardId: String(router.query.cafeId),
             },
           },
         ],
       });
-      router.push(`/cafe/${result.data?.updateCafeList.id}`);
+      router.push(`/cafe/${result.data?.updateCafeBoard.id}`);
       // router.push(`/cafe/`);
       // message.success("수정 성공!");
       // console.log(result);

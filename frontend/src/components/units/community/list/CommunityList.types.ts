@@ -7,7 +7,7 @@ import {
   // IQueryFetchBoardsCreatedAtArgs,
 } from "../../../../commons/types/generated/types";
 
-export interface IBoardListUIProps {
+export interface IFreeBoardUIProps {
   dataBoardsNumber: any;
   data?: Pick<IQuery, "fetchFreeBoardsCreatedAt"> | Pick<IQuery, "fetchFreeBoardsLikeCount">;
   onClickMoveToNew: () => void;

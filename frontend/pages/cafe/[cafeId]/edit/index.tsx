@@ -3,9 +3,9 @@ import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import CafeWrite from "../../../../src/components/units/cafe/write/CafeWrite.container";
 
-export const FETCH_CAFE_LIST = gql`
-  query fetchCafeList($cafeListId: String!) {
-    fetchCafeList(cafeListId: $cafeListId) {
+export const FETCH_CAFE_BOARD = gql`
+  query fetchCafeBoard($cafeBoardId: String!) {
+    fetchCafeBoard(cafeBoardId: $cafeBoardId) {
       id
       title
       contents
@@ -19,11 +19,11 @@ export const FETCH_CAFE_LIST = gql`
       deposit
       createdAt
       remarks
-      cafeListTag {
+      tags {
         id
         name
       }
-      cafeListImage {
+      images {
         id
         url
       }
@@ -35,9 +35,9 @@ export const FETCH_CAFE_LIST = gql`
   }
 `;
 
-// export const FETCH_CAFE_LIST = gql`
-//   query fetchCafeList($cafeListId: String!) {
-//     fetchCafeList(cafeListId: $cafeListId) {
+// export const FETCH_CAFE_BOARD = gql`
+//   query fetchCafeBoard($cafeBoardId: String!) {
+//     fetchCafeBoard(cafeBoardId: $cafeBoardId) {
 //       id
 //       title
 //       contents
@@ -66,9 +66,9 @@ export const FETCH_CAFE_LIST = gql`
 export default function EditPage() {
   const router = useRouter();
 
-  const { data } = useQuery(FETCH_CAFE_LIST, {
+  const { data } = useQuery(FETCH_CAFE_BOARD, {
     variables: {
-      cafeListId: router.query.cafeId as string,
+      cafeBoardId: router.query.cafeId as string,
     },
   });
 

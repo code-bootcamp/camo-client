@@ -143,6 +143,7 @@ export default function CommunityWrite(props: ICommunityNewProps) {
       const result = await updateFreeBoard({
         variables: {
           freeBoardId: router.query.communityId,
+
           nickName: props.data?.fetchFreeBoard.user.nickName,
           updateBoardInput: {
             title: data.title,

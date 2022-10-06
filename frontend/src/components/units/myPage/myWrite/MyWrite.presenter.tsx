@@ -2,14 +2,12 @@ import LayoutSidebar from "../../../commons/layout/sidebar/LayoutSidebar.contain
 import * as B from "../MyPage.styles";
 import * as S from "./MyWrite.styles";
 import { v4 as uuidv4 } from "uuid";
-import { IBoard } from "../../../../commons/types/generated/types";
 import { IMyWriteUIProps } from "./MyWrite.types";
 import PaginationContainer from "../myReservation/pagination/Pagination.container";
 import { PaginationWrapper } from "../myReservation/MyReservation.styles";
 import Dompurify from "dompurify";
 
 export default function MyWriteUI(props: IMyWriteUIProps) {
-  console.log(props.WriteData?.fetchUserMyBoard);
   return (
     <>
       <B.Wrapper>
@@ -17,7 +15,7 @@ export default function MyWriteUI(props: IMyWriteUIProps) {
         <B.Body>
           <B.StayMenu>내가 쓴 글</B.StayMenu>
           <B.Line />
-          {props.WriteData?.fetchUserMyBoard?.map((el: IBoard) => (
+          {props.WriteData?.fetchUserMyBoard?.map((el: any) => (
             <S.MainWrapper key={uuidv4()}>
               <S.RowWrapper>
                 <S.ContentBackGround>
@@ -40,10 +38,10 @@ export default function MyWriteUI(props: IMyWriteUIProps) {
             </S.MainWrapper>
           ))}
           <PaginationWrapper>
-            {props.count?.fetchUsermyBoardNumber > 0 && (
+            {props.count?.fetchUserFreeBoardNumber > 0 && (
               <PaginationContainer
                 refetch={props.refetch}
-                count={props.count?.fetchUsermyBoardNumber}
+                count={props.count?.fetchUserFreeBoardNumber}
               />
             )}
           </PaginationWrapper>

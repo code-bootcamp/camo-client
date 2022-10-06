@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
-export const CREATE_CAFE_LIST = gql`
-  mutation createCafeList($createCafeListInput: CreateCafeListInput!) {
-    createCafeList(createCafeListInput: $createCafeListInput) {
+export const CREATE_CAFE_BOARD = gql`
+  mutation createCafeBoard($createCafeBoardInput: CreateCafeBoardInput!) {
+    createCafeBoard(createCafeBoardInput: $createCafeBoardInput) {
       id
       title
       zipcode
@@ -15,11 +15,11 @@ export const CREATE_CAFE_LIST = gql`
       contents
       homepage
       remarks
-      cafeListTag {
+      tags {
         id
         name
       }
-      cafeListImage {
+      images {
         id
         url
         isMain
@@ -28,9 +28,9 @@ export const CREATE_CAFE_LIST = gql`
   }
 `;
 
-export const UPDATE_CAFE_LIST = gql`
-  mutation updateCafeList($cafeListId: String!, $updateCafeListInput: UpdateCafeListInput!) {
-    updateCafeList(cafeListId: $cafeListId, updateCafeListInput: $updateCafeListInput) {
+export const UPDATE_CAFE_BOARD = gql`
+  mutation updateCafeBoard($cafeBoardId: String!, $updateCafeBoardInput: UpdateCafeBoardInput!) {
+    updateCafeBoard(cafeBoardId: $cafeBoardId, updateCafeBoardInput: $updateCafeBoardInput) {
       id
       title
       zipcode
@@ -45,11 +45,11 @@ export const UPDATE_CAFE_LIST = gql`
       remarks
       createdAt
       updatedAt
-      cafeListTag {
+      tags {
         id
         name
       }
-      cafeListImage {
+      images {
         id
         url
         isMain

@@ -3,14 +3,14 @@ import { MouseEvent, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import * as C from "./CafeDetail.styles";
-import { FETCH_CAFE_LIST } from "./CafeDetail.queries";
+import { FETCH_CAFE_BOARD } from "./CafeDetail.queries";
 import { useRouter } from "next/router";
 
 export default function CafeDetailImagePage(props: any) {
   const router = useRouter();
 
-  const { data } = useQuery(FETCH_CAFE_LIST, {
-    variables: { cafeListId: router.query.cafeId },
+  const { data } = useQuery(FETCH_CAFE_BOARD, {
+    variables: { cafeBoardId: router.query.cafeBoardId },
   });
   // const { data } = useQuery(FETCH_CAFE_LIST);
   console.log("데이타image", data);
@@ -40,8 +40,8 @@ export default function CafeDetailImagePage(props: any) {
       <C.MainImage src={`https://storage.googleapis.com/${mainImageSrc}`}></C.MainImage>
       <C.SubImageWrapper>
         <C.StyledSlider {...settings}>
-          {data?.fetchCafeList?.cafeListImage[0]?.url.split(",").map((el: any) => {
-            console.log("콘솔??", data?.fetchCafeList.cafeListImage[0].url.split(",")[0]);
+          {data?.fetchCafeBoard?.images[0]?.url.split(",").map((el: any) => {
+            console.log("콘솔??", data?.fetchCafeBoard.images[0].url.split(",")[0]);
             return (
               <C.SubImage
                 onClick={onClickSubImage}
@@ -51,8 +51,8 @@ export default function CafeDetailImagePage(props: any) {
               ></C.SubImage>
             );
           })}
-          {data?.fetchCafeList.cafeListImage[0]?.url.split(",").length < 3 &&
-            new Array(3 - data?.fetchCafeList.cafeListImage[0]?.url.split(",").length)
+          {data?.fetchCafeBoard.images[0]?.url.split(",").length < 3 &&
+            new Array(3 - data?.fetchCafeBoard.images[0]?.url.split(",").length)
               .fill(1)
               .map((_) => {
                 return <div key={uuidv4()}></div>;
