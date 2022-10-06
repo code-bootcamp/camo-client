@@ -89,7 +89,7 @@
 
 
 ## 카페 목록
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9806fb3f-02ae-43d7-a3bf-800e9ba5c68f/%EA%B7%B8%EB%A6%BC10.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220930%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220930T135551Z&X-Amz-Expires=86400&X-Amz-Signature=528edba2d8df85e054187f7dcf99c174da20435ec872a5d2be171d49585bc80c&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EA%25B7%25B8%25EB%25A6%25BC10.gif%22&x-id=GetObject" width="100%" alt="카페 목록"/>
+![Uploading 그림24-min.gif…]()
 
 
 ## 카페 등록
