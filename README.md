@@ -45,7 +45,7 @@
 :e-mail: ghfnsgldl@gmail.com <br/>
 :memo: https://velog.io/@jaein0304
 - 로그인/회원가입 ( 사장/유저 ), 예약/결제
-- 유저 정보 관련 페이지, 마이페이지, 모바일 헤더/푸터
+- 유저 정보 관련 페이지, 마이페이지, 모바일 Layout
 - AWS 배포 (Docker)
 - 노션 관리
 
@@ -53,7 +53,7 @@
 :e-mail: yeeunit22@gmail.com <br/>
 :memo: https://velog.io/@yeeunit22
 - 팝업, 지도, 무한스크롤, 이미지 업로드
-- 랜딩 페이지, 카페 페이지(CRUD), 웹 헤더/푸터
+- 랜딩 페이지, 카페 페이지(CRUD), 웹 Layout
 - 디자인
 - 발표 자료 제작
 
