@@ -42,7 +42,7 @@
 # :coffee: FrontEnd 소개
 
 ### 정재인
-:e-mail: ghfnsgldl@gmail.com <br/>
+:e-mail: jaein980304@gmail.com <br/>
 :memo: https://velog.io/@jaein0304
 - 로그인/회원가입 ( 사장/유저 ), 예약/결제
 - 유저 정보 관련 페이지, 마이페이지, 모바일 Layout
